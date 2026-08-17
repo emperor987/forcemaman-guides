@@ -153,6 +153,8 @@ export default function GuideGratuit() {
                   <img
                     src={images.guideEditorial}
                     alt="Aperçu du guide gratuit 7 systèmes"
+                    width={800}
+                    height={1000}
                     className="h-auto w-full object-cover"
                     loading="eager"
                     decoding="async"

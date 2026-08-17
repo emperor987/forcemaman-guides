@@ -3,6 +3,8 @@ import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
 import { cn } from "@/lib/utils";
+import { openCheckout } from "@/lib/payments";
+import { toast } from "sonner";
 import {
   ArrowRight,
   CheckCircle,
@@ -66,20 +68,59 @@ export default function ProductPage({
   const priceNumber = parseFloat(
     price.replace("€", "").replace(",", ".").trim(),
   );
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: title,
-    description: seoDescription,
-    brand: { "@type": "Brand", name: "ForceMaman" },
-    offers: {
-      "@type": "Offer",
-      price: Number.isFinite(priceNumber) ? priceNumber : undefined,
-      priceCurrency: "EUR",
-      availability: "https://schema.org/InStock",
-      url: `https://forcemaman.fr${path}`,
+  const productId = path.split("/").pop() ?? "";
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: title,
+      description: seoDescription,
+      image: `https://forcemaman.fr${cover}`,
+      brand: { "@type": "Brand", name: "ForceMaman" },
+      offers: {
+        "@type": "Offer",
+        price: Number.isFinite(priceNumber) ? priceNumber : undefined,
+        priceCurrency: "EUR",
+        availability: "https://schema.org/InStock",
+        url: `https://forcemaman.fr${path}`,
+      },
     },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Accueil", item: "https://forcemaman.fr/" },
+        { "@type": "ListItem", position: 2, name: "Nos Guides", item: "https://forcemaman.fr/guides" },
+        { "@type": "ListItem", position: 3, name: title, item: `https://forcemaman.fr${path}` },
+      ],
+    },
+  ];
+
+  const handleCheckout = () => {
+    const ok = openCheckout(productId);
+    if (!ok) {
+      toast("Le paiement en ligne arrive très bientôt.", {
+        description:
+          "En attendant, écris-nous à hello@forcemaman.fr pour réserver ton guide.",
+      });
+    }
   };
+
+  const checkoutButton = (extraClassName?: string) => (
+    <button
+      type="button"
+      onClick={handleCheckout}
+      className={
+        "inline-flex h-14 w-full items-center justify-center gap-3 rounded-full font-medium text-background transition-transform active:scale-[0.98] lg:px-10 " +
+        (extraClassName ?? "")
+      }
+      style={DARK_BUTTON_STYLE}
+    >
+      <Lock className="size-4 opacity-80" />
+      <span className="text-sm tracking-wide">Payer avec Stripe</span>
+      <ArrowRight className="size-4" />
+    </button>
+  );
 
   const trust = [
     { icon: Timer, label: "Téléchargement immédiat" },
@@ -93,6 +134,7 @@ export default function ProductPage({
         title={seoTitle}
         description={seoDescription}
         path={path}
+        image={`https://forcemaman.fr${cover}`}
         jsonLd={jsonLd}
       />
       {/* ============ HERO ============ */}
@@ -151,17 +193,7 @@ export default function ProductPage({
                 )}
               </div>
 
-              <button
-                type="button"
-                className="mt-8 inline-flex h-14 w-full max-w-md items-center justify-center gap-3 rounded-full font-medium text-background transition-transform active:scale-[0.98] lg:w-auto lg:px-10"
-                style={DARK_BUTTON_STYLE}
-              >
-                <Lock className="size-4 opacity-80" />
-                <span className="text-sm tracking-wide">
-                  Payer avec Stripe
-                </span>
-                <ArrowRight className="size-4" />
-              </button>
+              <div className="mt-8">{checkoutButton("max-w-md lg:w-auto")}</div>
               <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 lg:justify-start">
                 {trust.map((item) => (
                   <span
@@ -294,15 +326,9 @@ export default function ProductPage({
                 ? "Les 3 guides pour un accompagnement complet du post-partum."
                 : "Reçois ton guide en quelques secondes et commence à lire."}
             </p>
-            <button
-              type="button"
-              className="mx-auto mt-8 inline-flex h-14 w-full max-w-md items-center justify-center gap-3 rounded-full font-medium text-background transition-transform active:scale-[0.98]"
-              style={DARK_BUTTON_STYLE}
-            >
-              <Lock className="size-4 opacity-80" />
-              <span className="text-sm tracking-wide">Payer avec Stripe</span>
-              <ArrowRight className="size-4" />
-            </button>
+            <div className="mx-auto mt-8 max-w-md">
+              {checkoutButton()}
+            </div>
             <p className="mt-4 text-[11px] uppercase tracking-[0.2em] text-foreground/50">
               Paiement sécurisé par Stripe
             </p>

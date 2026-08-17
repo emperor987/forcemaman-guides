@@ -13,6 +13,7 @@ import "./index.css";
 const Landing = lazy(() => import("./pages/Landing.tsx"));
 const Guides = lazy(() => import("./pages/Guides.tsx"));
 const Journal = lazy(() => import("./pages/Journal.tsx"));
+const JournalArticle = lazy(() => import("./pages/JournalArticle.tsx"));
 const GuideGratuit = lazy(() => import("./pages/GuideGratuit.tsx"));
 const Contact = lazy(() => import("./pages/Contact.tsx"));
 const APpropos = lazy(() => import("./pages/APpropos.tsx"));
@@ -136,6 +137,7 @@ createRoot(document.getElementById("root")!).render(
               <Route path="/" element={<Landing />} />
               <Route path="/guides" element={<Guides />} />
               <Route path="/journal" element={<Journal />} />
+              <Route path="/journal/:slug" element={<JournalArticle />} />
               <Route path="/guide-gratuit" element={<GuideGratuit />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/a-propos" element={<APpropos />} />

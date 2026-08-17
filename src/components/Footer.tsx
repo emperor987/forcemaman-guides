@@ -94,13 +94,31 @@ export default function Footer() {
             Force<span className="italic">Maman</span>
           </p>
           <div className="flex items-center gap-5 text-foreground/70">
-            <a href="#" aria-label="Instagram" className="hover:text-foreground">
+            <a
+              href="https://www.instagram.com/forcemaman"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram @forcemaman"
+              className="hover:text-foreground"
+            >
               <Instagram className="size-4" />
             </a>
-            <a href="#" aria-label="Facebook" className="hover:text-foreground">
+            <a
+              href="https://www.facebook.com/forcemaman"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook @forcemaman"
+              className="hover:text-foreground"
+            >
               <Facebook className="size-4" />
             </a>
-            <a href="#" aria-label="Youtube" className="hover:text-foreground">
+            <a
+              href="https://www.youtube.com/@forcemaman"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="YouTube @forcemaman"
+              className="hover:text-foreground"
+            >
               <Youtube className="size-4" />
             </a>
           </div>

@@ -49,6 +49,18 @@ export default function Contact() {
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
+                  const data = new FormData(e.currentTarget);
+                  const firstName = String(data.get("firstName") ?? "");
+                  const email = String(data.get("email") ?? "");
+                  const subject = String(data.get("subject") ?? "");
+                  const message = String(data.get("message") ?? "");
+                  const mailSubject = encodeURIComponent(
+                    subject || "Message depuis le site ForceMaman",
+                  );
+                  const mailBody = encodeURIComponent(
+                    `Bonjour Maria,\n\n${message}\n\n${firstName ? `Bien à toi,\n${firstName}` : "Bien à toi."}\n${email ? `\n(Je réponds depuis : ${email})` : ""}`,
+                  );
+                  window.location.href = `mailto:hello@forcemaman.fr?subject=${mailSubject}&body=${mailBody}`;
                   setSent(true);
                 }}
                 className="mt-12 space-y-5 rounded-3xl border border-border/60 bg-card/60 p-7 shadow-[0_30px_80px_-60px_rgba(35,33,32,0.35)] sm:p-10"
@@ -60,6 +72,7 @@ export default function Contact() {
                     </span>
                     <input
                       required
+                      name="firstName"
                       type="text"
                       className="mt-2 h-12 w-full rounded-full border border-border bg-background px-5 text-sm text-foreground placeholder:text-muted-foreground focus:border-foreground focus:outline-none"
                       placeholder="Camille"
@@ -71,6 +84,7 @@ export default function Contact() {
                     </span>
                     <input
                       required
+                      name="email"
                       type="email"
                       className="mt-2 h-12 w-full rounded-full border border-border bg-background px-5 text-sm text-foreground placeholder:text-muted-foreground focus:border-foreground focus:outline-none"
                       placeholder="votre@email.com"
@@ -82,6 +96,7 @@ export default function Contact() {
                     Sujet
                   </span>
                   <input
+                    name="subject"
                     type="text"
                     className="mt-2 h-12 w-full rounded-full border border-border bg-background px-5 text-sm text-foreground placeholder:text-muted-foreground focus:border-foreground focus:outline-none"
                     placeholder="Une question, un mot doux…"
@@ -93,6 +108,7 @@ export default function Contact() {
                   </span>
                   <textarea
                     required
+                    name="message"
                     rows={6}
                     className="mt-2 w-full rounded-3xl border border-border bg-background px-5 py-4 text-sm leading-relaxed text-foreground placeholder:text-muted-foreground focus:border-foreground focus:outline-none"
                     placeholder="Prenez le temps qu'il vous faut…"

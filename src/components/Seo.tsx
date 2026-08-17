@@ -5,10 +5,12 @@ interface SeoProps {
   description: string;
   path: string;
   noindex?: boolean;
+  image?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const SITE_URL = "https://forcemaman.fr";
+const DEFAULT_IMAGE = `${SITE_URL}/logo.svg`;
 
 function upsertMeta(attr: "name" | "property", key: string, content: string) {
   let el = document.head.querySelector<HTMLMetaElement>(
@@ -47,17 +49,19 @@ function upsertJsonLd(data: Record<string, unknown>[]) {
 
 /**
  * Per-route SEO: document title, meta description, Open Graph, canonical URL
- * and JSON-LD structured data. The JSON-LD script is also rendered inline so
- * it is present in the DOM right after hydration for JS-rendering crawlers.
+ * and JSON-LD structured data. All tags are upserted into <head> only, so a
+ * page never carries duplicate meta or duplicate JSON-LD blocks.
  */
 export default function Seo({
   title,
   description,
   path,
   noindex = false,
+  image = DEFAULT_IMAGE,
   jsonLd,
 }: SeoProps) {
   const url = `${SITE_URL}${path}`;
+  const jsonLdKey = jsonLd ? JSON.stringify(jsonLd) : "";
 
   useEffect(() => {
     document.title = title;
@@ -68,7 +72,11 @@ export default function Seo({
     upsertMeta("property", "og:url", url);
     upsertMeta("property", "og:site_name", "ForceMaman");
     upsertMeta("property", "og:locale", "fr_FR");
-    upsertMeta("name", "twitter:card", "summary");
+    upsertMeta("property", "og:image", image);
+    upsertMeta("name", "twitter:card", "summary_large_image");
+    upsertMeta("name", "twitter:title", title);
+    upsertMeta("name", "twitter:description", description);
+    upsertMeta("name", "twitter:image", image);
     upsertLink("canonical", url);
     upsertMeta(
       "name",
@@ -78,14 +86,8 @@ export default function Seo({
     if (jsonLd) {
       upsertJsonLd(Array.isArray(jsonLd) ? jsonLd : [jsonLd]);
     }
-  }, [title, description, url, noindex, jsonLd]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [title, description, url, noindex, image, jsonLdKey]);
 
-  if (!jsonLd) return null;
-  const data = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
+  return null;
 }

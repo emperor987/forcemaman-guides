@@ -100,9 +100,10 @@ const faqItems = [
   },
 ];
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
   name: "La Bibliothèque des Guides ForceMaman",
   description:
     "Les guides post-partum de ForceMaman : liste de naissance, corps après l'accouchement, charge mentale, pack complet et ressources gratuites.",
@@ -137,7 +138,16 @@ const jsonLd = {
       },
     ],
   },
-};
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://forcemaman.fr/" },
+      { "@type": "ListItem", position: 2, name: "Nos Guides", item: "https://forcemaman.fr/guides" },
+    ],
+  },
+];
 
 export default function Guides() {
   const [query, setQuery] = useState("");
@@ -193,7 +203,7 @@ export default function Guides() {
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
-                href="#ressources"
+                href="#gratuits"
                 className="inline-flex h-12 items-center justify-center rounded-full bg-foreground px-7 text-[0.8rem] uppercase tracking-[0.18em] text-background transition-opacity hover:opacity-90"
               >
                 Télécharger les ressources gratuites

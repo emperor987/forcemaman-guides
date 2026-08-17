@@ -10,14 +10,17 @@ import { ArrowRight, Search, Sparkles } from "lucide-react";
 const piliers = [
   {
     tag: "Pilier · 01",
+    id: journalArticles[0].id,
     title: journalArticles[0].title,
   },
   {
     tag: "Méthode · 02",
+    id: journalArticles[1].id,
     title: journalArticles[1].title,
   },
   {
     tag: "Système · 03",
+    id: journalArticles[2].id,
     title: journalArticles[2].title,
   },
 ];
@@ -137,8 +140,8 @@ export default function Journal() {
             <div className="mt-10 grid gap-6 sm:grid-cols-3">
               {piliers.map((pilier, i) => (
                 <Reveal key={pilier.tag} delay={i * 80}>
-                  <a
-                    href="#lecture"
+                  <Link
+                    to={`/journal/${pilier.id}`}
                     className="group flex h-full flex-col justify-between rounded-3xl border border-border/60 bg-card/70 p-7 shadow-[0_30px_80px_-60px_rgba(35,33,32,0.35)] transition-all hover:border-foreground/40"
                   >
                     <div>
@@ -152,7 +155,7 @@ export default function Journal() {
                     <span className="mt-8 inline-flex items-center gap-1 text-[11px] uppercase tracking-[0.22em] text-foreground/70 group-hover:text-foreground">
                       Lire l'article <ArrowRight className="size-3" />
                     </span>
-                  </a>
+                  </Link>
                 </Reveal>
               ))}
             </div>
@@ -164,7 +167,10 @@ export default function Journal() {
           <section className="border-b border-border/60">
             <div className="mx-auto max-w-6xl px-6 py-16 lg:px-12 lg:py-24">
               <Reveal>
-                <a href="#lecture" className="group grid gap-10 lg:grid-cols-12 lg:gap-16">
+                <Link
+                  to={`/journal/${featured.id}`}
+                  className="group grid gap-10 lg:grid-cols-12 lg:gap-16"
+                >
                   <div className="lg:col-span-7">
                     <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-muted sm:aspect-[16/11]">
                       <img
@@ -186,7 +192,7 @@ export default function Journal() {
                       {featured.date} · {featured.readTime} de lecture
                     </p>
                   </div>
-                </a>
+                </Link>
               </Reveal>
             </div>
           </section>
@@ -203,7 +209,7 @@ export default function Journal() {
               <div className="grid gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
                 {gridArticles.map((article, i) => (
                   <Reveal key={article.id} delay={(i % 3) * 60}>
-                    <a href="#lecture" className="group block">
+                    <Link to={`/journal/${article.id}`} className="group block">
                       <div className="relative aspect-[4/4.6] overflow-hidden rounded-2xl bg-muted">
                         <img
                           src={article.image}
@@ -224,7 +230,7 @@ export default function Journal() {
                       <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                         {article.excerpt}
                       </p>
-                    </a>
+                    </Link>
                   </Reveal>
                 ))}
               </div>

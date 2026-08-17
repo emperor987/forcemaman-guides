@@ -3,10 +3,14 @@ import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
 import EmailForm from "@/components/EmailForm";
-import { freeGuideSystems } from "@/lib/ebooks";
+import { freeGuideSystems, ebooks, bundle } from "@/lib/ebooks";
 import { journalArticles } from "@/lib/journal";
 import { images } from "@/lib/assets";
-import { Check, Quote } from "lucide-react";
+import coverListe from "@/assets/covers/liste-naissance.svg";
+import coverCorps from "@/assets/covers/corps-apres.svg";
+import coverCharge from "@/assets/covers/charge-mentale.svg";
+import coverBundle from "@/assets/covers/bundle.svg";
+import { ArrowRight, Check, Quote } from "lucide-react";
 
 const guideSystems = freeGuideSystems;
 
@@ -44,20 +48,29 @@ const DARK_BUTTON_STYLE: React.CSSProperties = {
 
 const articleCards = [
   {
+    id: journalArticles[0].id,
     image: journalArticles[0].image,
     label: "Lecture essentielle",
     title: journalArticles[0].title,
   },
   {
+    id: journalArticles[1].id,
     image: journalArticles[1].image,
     label: "Organisation",
     title: journalArticles[1].title,
   },
   {
+    id: journalArticles[2].id,
     image: journalArticles[2].image,
     label: "Charge mentale",
     title: journalArticles[2].title,
   },
+];
+
+const guideCards = [
+  { ...ebooks[0], cover: coverListe },
+  { ...ebooks[1], cover: coverCorps },
+  { ...ebooks[2], cover: coverCharge },
 ];
 
 const jsonLd = [
@@ -154,6 +167,8 @@ export default function Landing() {
               <img
                 src={images.guideLifestyle}
                 alt="Aperçu du guide gratuit 7 systèmes"
+                width={1200}
+                height={800}
                 className="h-auto w-full object-cover"
                 loading="lazy"
                 decoding="async"
@@ -305,6 +320,8 @@ export default function Landing() {
               <img
                 src={images.founder}
                 alt="Maria Garcia, fondatrice de ForceMaman, ancienne sage-femme"
+                width={448}
+                height={448}
                 className="h-full w-full object-cover"
                 loading="lazy"
                 decoding="async"
@@ -382,6 +399,113 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* ============ LES GUIDES ============ */}
+      <section className="px-6 py-16">
+        <div className="mx-auto max-w-md sm:max-w-5xl">
+          <Reveal>
+            <div className="text-center">
+              <p className="text-[11px] uppercase tracking-[0.28em] text-foreground/55">
+                La bibliothèque
+              </p>
+              <h2 className="mx-auto mt-5 max-w-md font-serif text-[2.1rem] leading-[1.05] text-foreground">
+                Des guides écrits par une sage-femme,{" "}
+                <span className="italic">pour toi.</span>
+              </h2>
+              <p className="mx-auto mt-5 max-w-sm text-[15px] leading-relaxed text-foreground/65">
+                Trois ebooks PDF à télécharger immédiatement, ou le pack
+                complet avec 23% de réduction.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {guideCards.map((guide, i) => (
+              <Reveal key={guide.id} delay={i * 70}>
+                <Link
+                  to={guide.href}
+                  className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/40 bg-[color-mix(in_oklab,var(--background)_78%,transparent)] backdrop-blur-md transition-all duration-500 ease-out hover:-translate-y-[2px] hover:border-foreground/20"
+                  style={CARD_STYLE}
+                >
+                  <div className="relative aspect-[3/4] overflow-hidden bg-muted">
+                    <img
+                      src={guide.cover}
+                      alt={`Couverture du guide ${guide.title}`}
+                      width={600}
+                      height={800}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="font-serif text-[1.3rem] leading-tight text-foreground">
+                      {guide.title}
+                    </h3>
+                    <p className="mt-2 flex-1 text-[13px] leading-relaxed text-foreground/60">
+                      {guide.tagline}
+                    </p>
+                    <div className="mt-5 flex items-center justify-between">
+                      <span className="font-serif text-xl text-foreground">
+                        {guide.price}
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.2em] text-foreground/70 transition-transform duration-500 ease-out group-hover:translate-x-1">
+                        Voir le guide
+                        <ArrowRight className="size-3" />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={160}>
+            <Link
+              to={bundle.href}
+              className="group mt-6 flex flex-col items-center justify-between gap-6 overflow-hidden rounded-3xl border border-white/40 bg-[color-mix(in_oklab,var(--card)_60%,var(--background))] p-7 backdrop-blur-md transition-all duration-500 ease-out hover:border-foreground/20 sm:flex-row sm:p-8"
+              style={CARD_STYLE}
+            >
+              <div className="flex items-center gap-6">
+                <img
+                  src={coverBundle}
+                  alt="Couverture du Pack Complet ForceMaman"
+                  width={120}
+                  height={160}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-20 rounded-xl object-cover shadow-lg sm:w-24"
+                />
+                <div className="max-w-sm">
+                  <span className="inline-flex items-center rounded-full bg-brand-terracotta px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[#fff8f2]">
+                    {bundle.discount}
+                  </span>
+                  <h3 className="mt-3 font-serif text-2xl leading-tight text-foreground">
+                    {bundle.title}
+                  </h3>
+                  <p className="mt-2 text-[13px] leading-relaxed text-foreground/60">
+                    {bundle.tagline}
+                  </p>
+                </div>
+              </div>
+              <div className="flex shrink-0 flex-col items-center gap-2 sm:items-end">
+                <span className="flex items-baseline gap-2">
+                  <span className="font-serif text-3xl text-foreground">
+                    {bundle.price}
+                  </span>
+                  <span className="text-sm text-foreground/45 line-through">
+                    {bundle.originalPrice}
+                  </span>
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-foreground px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.18em] text-background transition-transform duration-500 ease-out group-hover:translate-x-1">
+                  Découvrir le pack
+                  <ArrowRight className="size-3" />
+                </span>
+              </div>
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ============ COMMENCEZ ICI ============ */}
       <section className="px-6 py-16">
         <div className="mx-auto max-w-md">
@@ -396,9 +520,9 @@ export default function Landing() {
 
           <div className="mt-10 space-y-4">
             {articleCards.map((card, i) => (
-              <Reveal key={card.title} delay={i * 80}>
+              <Reveal key={card.id} delay={i * 80}>
                 <Link
-                  to="/journal"
+                  to={`/journal/${card.id}`}
                   className="group flex gap-4 rounded-3xl border border-white/40 bg-[color-mix(in_oklab,var(--background)_75%,transparent)] p-3 backdrop-blur-md transition-all active:scale-[0.99]"
                   style={{
                     boxShadow:
@@ -409,6 +533,8 @@ export default function Landing() {
                     <img
                       src={card.image}
                       alt={card.title}
+                      width={96}
+                      height={96}
                       loading="lazy"
                       className="h-full w-full object-cover"
                     />
