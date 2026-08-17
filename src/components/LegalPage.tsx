@@ -1,6 +1,5 @@
-import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
 import Layout from "@/components/Layout";
+import Reveal from "@/components/Reveal";
 import { FileText } from "lucide-react";
 
 interface LegalSection {
@@ -24,60 +23,51 @@ export default function LegalPage({
   return (
     <Layout>
       {/* Header */}
-      <section className="bg-brand-cream py-16 md:py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <FileText className="w-14 h-14 text-brand-terracotta mx-auto mb-6" />
-            <h1 className="text-4xl md:text-5xl font-bold text-brand-text mb-4">
+      <section className="py-16 sm:py-20">
+        <div className="mx-auto max-w-4xl px-5 text-center">
+          <Reveal>
+            <FileText className="h-12 w-12 text-primary mx-auto" />
+            <h1 className="mt-5 font-display text-5xl sm:text-6xl font-bold text-ink text-balance leading-[0.95]">
               {title}
             </h1>
-            <p className="text-brand-text/60 text-sm">
+            <p className="mt-4 text-sm text-ink/60">
               Dernière mise à jour : {lastUpdated}
             </p>
             {intro && (
-              <p className="text-brand-text/70 max-w-2xl mx-auto mt-6 leading-relaxed">
+              <p className="mt-6 text-ink/75 max-w-2xl mx-auto leading-relaxed">
                 {intro}
               </p>
             )}
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
       {/* Content */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="border-brand-card shadow-none">
-            <CardContent className="p-8 md:p-12">
+      <section className="pb-20 sm:pb-24">
+        <div className="mx-auto max-w-4xl px-5">
+          <Reveal>
+            <div className="rounded-3xl border-2 border-ink bg-card p-8 sm:p-12 shadow-bold">
               <div className="space-y-10">
                 {sections.map((section, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.05 }}
-                  >
-                    <h2 className="text-xl font-bold text-brand-text mb-4">
+                  <div key={index}>
+                    <h2 className="font-display text-2xl font-bold text-ink mb-4">
                       {section.title}
                     </h2>
                     <div className="space-y-3">
                       {section.content.map((paragraph, pIndex) => (
                         <p
                           key={pIndex}
-                          className="text-brand-text/75 leading-relaxed"
+                          className="text-ink/75 leading-relaxed"
                         >
                           {paragraph}
                         </p>
                       ))}
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </Reveal>
         </div>
       </section>
     </Layout>

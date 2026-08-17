@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/input-otp";
 
 import { useAuth } from "@/hooks/use-auth";
-import { ArrowRight, Loader2, Mail, UserX } from "lucide-react";
+import { ArrowRight, BookOpen, Loader2, Mail, UserX } from "lucide-react";
 import { Suspense, useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router";
 import { Link } from "react-router";
@@ -108,41 +108,39 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-brand-cream">
+    <div className="min-h-screen flex flex-col bg-background">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-brand-cream/95 backdrop-blur-sm border-b border-brand-card">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-brand-terracotta flex items-center justify-center">
-                <span className="text-white font-bold text-lg">FM</span>
-              </div>
-              <span className="font-semibold text-xl text-brand-text hidden sm:block">
-                ForceMaman
-              </span>
-            </Link>
-            <Button variant="ghost" asChild className="text-brand-text">
-              <Link to="/guides">Retour à la boutique</Link>
-            </Button>
-          </div>
+      <header className="sticky top-0 z-50 border-b border-ink/10 bg-background/90 backdrop-blur">
+        <div className="mx-auto max-w-6xl px-5 py-4 flex items-center justify-between gap-4">
+          <Link
+            to="/"
+            className="flex items-center gap-2 font-display text-xl font-bold text-ink"
+          >
+            <BookOpen className="h-5 w-5 text-primary" />
+            ForceMaman
+          </Link>
+          <Link
+            to="/guides"
+            className="text-sm font-medium text-ink/65 hover:text-ink transition-colors"
+          >
+            Retour à la boutique
+          </Link>
         </div>
       </header>
 
       {/* Auth Content */}
       <div className="flex-1 flex items-center justify-center px-4 py-16">
-        <Card className="min-w-[350px] max-w-md w-full pb-0 border-brand-card shadow-lg">
+        <Card className="w-full max-w-md border-2 border-ink bg-card shadow-bold rounded-3xl">
           {step === "signIn" ? (
             <>
               <CardHeader className="text-center">
-                <div className="flex justify-center mb-2">
-                  <div className="w-16 h-16 rounded-full bg-brand-terracotta/10 flex items-center justify-center">
-                    <span className="text-2xl">🤍</span>
-                  </div>
+                <div className="mx-auto h-14 w-14 rounded-full border-2 border-ink bg-secondary flex items-center justify-center">
+                  <BookOpen className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle className="text-xl text-brand-text">
+                <CardTitle className="font-display text-2xl text-ink">
                   Bon retour parmi nous
                 </CardTitle>
-                <CardDescription className="text-brand-text/60">
+                <CardDescription className="text-ink/60">
                   Connecte-toi pour retrouver tes guides et tes achats
                 </CardDescription>
               </CardHeader>
@@ -150,12 +148,12 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                 <CardContent>
                   <div className="relative flex items-center gap-2">
                     <div className="relative flex-1">
-                      <Mail className="absolute left-3 top-3 h-4 w-4 text-brand-text/40" />
+                      <Mail className="absolute left-3 top-3 h-4 w-4 text-ink/40" />
                       <Input
                         name="email"
                         placeholder="ton@email.fr"
                         type="email"
-                        className="pl-9 border-brand-card"
+                        className="pl-9 border-2 border-ink bg-cream text-ink placeholder:text-ink/40 focus:ring-primary/30"
                         disabled={isLoading}
                         required
                       />
@@ -164,7 +162,7 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                       type="submit"
                       variant="outline"
                       size="icon"
-                      className="border-brand-card"
+                      className="border-2 border-ink text-ink"
                       disabled={isLoading}
                     >
                       {isLoading ? (
@@ -175,25 +173,23 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                     </Button>
                   </div>
                   {error && (
-                    <p className="mt-2 text-sm text-red-500">{error}</p>
+                    <p className="mt-2 text-sm text-destructive">{error}</p>
                   )}
 
                   <div className="mt-4">
                     <div className="relative">
                       <div className="absolute inset-0 flex items-center">
-                        <span className="w-full border-t border-brand-card" />
+                        <span className="w-full border-t-2 border-ink/10" />
                       </div>
                       <div className="relative flex justify-center text-xs uppercase">
-                        <span className="bg-card px-2 text-brand-text/40">
-                          ou
-                        </span>
+                        <span className="bg-card px-2 text-ink/40">ou</span>
                       </div>
                     </div>
 
                     <Button
                       type="button"
                       variant="outline"
-                      className="w-full mt-4 border-brand-card text-brand-text"
+                      className="w-full mt-4 border-2 border-ink text-ink"
                       onClick={handleGuestLogin}
                       disabled={isLoading}
                     >
@@ -207,10 +203,10 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
           ) : (
             <>
               <CardHeader className="text-center mt-4">
-                <CardTitle className="text-brand-text">
+                <CardTitle className="font-display text-2xl text-ink">
                   Vérifie ta boîte mail
                 </CardTitle>
-                <CardDescription className="text-brand-text/60">
+                <CardDescription className="text-ink/60">
                   Nous avons envoyé un code à {step.email}
                 </CardDescription>
               </CardHeader>
@@ -242,15 +238,15 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                     </InputOTP>
                   </div>
                   {error && (
-                    <p className="mt-2 text-sm text-red-500 text-center">
+                    <p className="mt-2 text-sm text-destructive text-center">
                       {error}
                     </p>
                   )}
-                  <p className="text-sm text-brand-text/60 text-center mt-4">
+                  <p className="text-sm text-ink/60 text-center mt-4">
                     Tu n'as pas reçu de code ?{" "}
                     <Button
                       variant="link"
-                      className="p-0 h-auto text-brand-terracotta"
+                      className="p-0 h-auto text-primary"
                       onClick={() => setStep("signIn")}
                     >
                       Réessaie
@@ -260,7 +256,7 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                 <CardFooter className="flex-col gap-2">
                   <Button
                     type="submit"
-                    className="w-full bg-brand-terracotta hover:bg-brand-terracotta/90 text-white"
+                    className="w-full bg-primary text-primary-foreground border-2 border-ink shadow-bold hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
                     disabled={isLoading || otp.length !== 6}
                   >
                     {isLoading ? (
@@ -280,7 +276,7 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                     variant="ghost"
                     onClick={() => setStep("signIn")}
                     disabled={isLoading}
-                    className="w-full text-brand-text/60"
+                    className="w-full text-ink/60"
                   >
                     Utiliser une autre adresse
                   </Button>
@@ -289,7 +285,7 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
             </>
           )}
 
-          <div className="py-4 px-6 text-xs text-center text-brand-text/50 bg-brand-cream border-t border-brand-card rounded-b-lg">
+          <div className="py-4 px-6 text-xs text-center text-ink/50 bg-secondary/40 border-t-2 border-ink/10 rounded-b-3xl">
             Espace personnel ForceMaman
           </div>
         </Card>

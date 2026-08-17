@@ -1,96 +1,122 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
+import { BookOpen, Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+const navLinks = [
+  { name: "Accueil", href: "/" },
+  { name: "Nos Guides", href: "/guides" },
+  { name: "FAQ", href: "/faq" },
+  { name: "Contact", href: "mailto:hello@forcemaman.fr", external: true },
+];
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
-  const navigation = [
-    { name: "Accueil", href: "/" },
-    { name: "Nos Guides", href: "/guides" },
-    { name: "FAQ", href: "/faq" },
-  ];
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <header className="sticky top-0 z-50 bg-brand-cream/95 backdrop-blur-sm border-b border-brand-card">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-brand-terracotta flex items-center justify-center">
-              <span className="text-white font-bold text-lg">FM</span>
-            </div>
-            <span className="font-semibold text-xl text-brand-text hidden sm:block">
-              ForceMaman
-            </span>
-          </Link>
+    <header className="sticky top-0 z-50 border-b border-ink/10 bg-background/90 backdrop-blur">
+      <div className="mx-auto max-w-6xl px-5 py-4 flex items-center justify-between gap-4">
+        {/* Logo */}
+        <Link
+          to="/"
+          className="flex items-center gap-2 font-display text-xl font-bold text-ink shrink-0 hover:opacity-80 transition-opacity"
+        >
+          <BookOpen className="h-5 w-5 text-primary" />
+          ForceMaman
+        </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navigation.map((item) => (
+        {/* Desktop nav */}
+        <nav className="hidden lg:flex items-center gap-10">
+          {navLinks.map((item) =>
+            item.external ? (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-sm font-normal text-ink/65 hover:text-ink transition-colors"
+              >
+                {item.name}
+              </a>
+            ) : (
               <Link
                 key={item.name}
                 to={item.href}
-                className={`text-sm font-medium transition-colors ${
-                  isActive(item.href)
-                    ? "text-brand-terracotta"
-                    : "text-brand-text/70 hover:text-brand-text"
-                }`}
+                className={cn(
+                  "text-sm font-normal text-ink/65 hover:text-ink transition-colors",
+                  isActive(item.href) && "text-primary font-medium",
+                )}
               >
                 {item.name}
               </Link>
-            ))}
-          </nav>
+            ),
+          )}
+        </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-brand-text"
+        <div className="flex items-center gap-2">
+          <Link
+            to="/guides"
+            className="hidden sm:inline-flex items-center justify-center rounded-xl border-2 border-ink bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold shadow-bold transition-transform hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
           >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            Voir les guides
+          </Link>
+          <button
+            type="button"
+            aria-label="Menu"
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen((v) => !v)}
+            className="lg:hidden inline-flex items-center justify-center rounded-lg border-2 border-ink/20 p-2 text-ink hover:border-ink transition-colors"
+          >
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-brand-cream border-b border-brand-card"
-          >
-            <nav className="px-4 py-4 space-y-3">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`block py-2 text-sm font-medium transition-colors ${
-                    isActive(item.href)
-                      ? "text-brand-terracotta"
-                      : "text-brand-text/70 hover:text-brand-text"
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <Button
-                asChild
-                className="w-full bg-brand-terracotta hover:bg-brand-terracotta/90 text-white"
-              >
-                <Link to="/auth">Mon Compte</Link>
-              </Button>
-            </nav>
-          </motion.div>
+      {/* Mobile menu */}
+      <div
+        className={cn(
+          "lg:hidden overflow-hidden border-ink/10 transition-all duration-300 ease-out",
+          isMenuOpen
+            ? "max-h-72 border-t opacity-100"
+            : "max-h-0 opacity-0",
         )}
-      </AnimatePresence>
+      >
+        <nav className="flex flex-col gap-1 px-5 py-4">
+          {navLinks.map((item) =>
+            item.external ? (
+              <a
+                key={item.name}
+                href={item.href}
+                className="rounded-lg px-3 py-2.5 text-sm font-medium text-ink/75 hover:bg-secondary hover:text-ink transition-colors"
+              >
+                {item.name}
+              </a>
+            ) : (
+              <Link
+                key={item.name}
+                to={item.href}
+                className={cn(
+                  "rounded-lg px-3 py-2.5 text-sm font-medium text-ink/75 hover:bg-secondary hover:text-ink transition-colors",
+                  isActive(item.href) && "text-primary font-semibold",
+                )}
+              >
+                {item.name}
+              </Link>
+            ),
+          )}
+          <Link
+            to="/guides"
+            className="mt-2 inline-flex items-center justify-center rounded-xl border-2 border-ink bg-primary text-primary-foreground px-4 py-2.5 text-sm font-semibold shadow-bold"
+          >
+            Voir les guides
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 }

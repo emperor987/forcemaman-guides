@@ -1,14 +1,14 @@
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router";
 import Layout from "@/components/Layout";
+import Reveal from "@/components/Reveal";
+import EbookCover from "@/components/EbookCover";
+import { cn } from "@/lib/utils";
 import {
-  BookOpen,
+  ArrowRight,
   CheckCircle,
   FileText,
-  ShoppingCart,
   Info,
+  ShoppingCart,
 } from "lucide-react";
 
 interface ProductPageProps {
@@ -43,188 +43,206 @@ export default function ProductPage({
   buttonAccent,
 }: ProductPageProps) {
   const ctaAccent = buttonAccent ?? accent;
+
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="bg-brand-cream py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      {/* Hero */}
+      <section className="py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-5">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Cover */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="flex justify-center"
-            >
-              <div className={`${accent} w-64 h-80 md:w-80 md:h-96 rounded-2xl flex items-center justify-center shadow-2xl`}>
-                <div className={`text-center ${coverTextColor}`}>
-                  <BookOpen className="w-20 h-20 mx-auto mb-4 opacity-80" />
-                  <p className="text-lg font-medium px-8 opacity-90">{title}</p>
-                </div>
+            <Reveal className="justify-self-center lg:justify-self-start">
+              <div className="relative">
+                <div
+                  className="absolute -inset-4 bg-rose-soft/50 rounded-3xl -rotate-2"
+                  aria-hidden="true"
+                />
+                <EbookCover
+                  title={title}
+                  accent={accent}
+                  textClass={coverTextColor}
+                  className="relative w-64 sm:w-80 aspect-[3/4] shadow-bold"
+                  iconSize="h-16 w-16"
+                  titleSize="text-lg sm:text-xl"
+                />
               </div>
-            </motion.div>
+            </Reveal>
 
             {/* Info */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              {discount && (
-                <Badge className={`${ctaAccent} text-white mb-4`}>
-                  {discount}
-                </Badge>
-              )}
-              <h1 className="text-4xl md:text-5xl font-bold text-brand-text mb-4">
-                {title}
-              </h1>
-              <p className={`text-xl ${accentText} mb-6`}>
-                {subtitle}
-              </p>
-              
-              <div className="flex items-baseline gap-3 mb-8">
-                <span className="text-4xl font-bold text-brand-text">
-                  {price}
-                </span>
-                {originalPrice && (
-                  <span className="text-xl text-brand-text/50 line-through">
-                    {originalPrice}
+            <div>
+              <Reveal>
+                {discount && (
+                  <span className="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ink">
+                    {discount}
                   </span>
                 )}
-              </div>
-
-              <Button
-                size="lg"
-                className={`${ctaAccent} hover:opacity-90 text-white px-8 mb-8`}
-              >
-                <ShoppingCart className="mr-2 w-5 h-5" />
-                Ajouter au panier
-              </Button>
-
-              <p className="text-sm text-brand-text/60">
-                Téléchargement instantané • Format PDF • Paiement sécurisé Stripe
-              </p>
-
-              <div className="mt-6 flex items-start gap-3 rounded-xl bg-brand-card/60 p-4">
-                <Info className="w-5 h-5 text-brand-text/60 mt-0.5 flex-shrink-0" />
-                <p className="text-sm text-brand-text/70 leading-relaxed">
-                  Ce guide est un outil d'accompagnement et d'information. Il ne
-                  remplace en aucun cas un avis médical professionnel. En cas de
-                  doute ou de problème de santé, consulte ta sage-femme, ton
-                  médecin ou un professionnel de santé qualifié.
+                <h1 className="mt-5 font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-ink text-balance leading-[0.98]">
+                  {title}
+                </h1>
+                <p className={cn("mt-3 text-lg font-medium", accentText)}>
+                  {subtitle}
                 </p>
-              </div>
-            </motion.div>
+              </Reveal>
+
+              <Reveal delay={100}>
+                <div className="mt-6 flex items-baseline gap-3">
+                  <span className="font-display text-5xl font-bold text-ink">
+                    {price}
+                  </span>
+                  {originalPrice && (
+                    <span className="text-xl text-ink/50 line-through">
+                      {originalPrice}
+                    </span>
+                  )}
+                </div>
+
+                <button
+                  type="button"
+                  className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground border-2 border-ink px-8 py-4 font-semibold text-base shadow-bold transition-transform hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+                >
+                  <ShoppingCart className="h-5 w-5" />
+                  Ajouter au panier
+                </button>
+                <p className="mt-3 text-sm text-ink/60">
+                  Téléchargement instantané · Format PDF · Paiement sécurisé
+                  Stripe
+                </p>
+              </Reveal>
+
+              <Reveal delay={180}>
+                <div className="mt-6 flex items-start gap-3 rounded-2xl border-2 border-ink/20 bg-secondary/40 p-4">
+                  <Info className="h-5 w-5 text-ink/60 mt-0.5 flex-shrink-0" />
+                  <p className="text-sm text-ink/70 leading-relaxed">
+                    Ce guide est un outil d'accompagnement et d'information. Il
+                    ne remplace en aucun cas un avis médical professionnel. En
+                    cas de doute ou de problème de santé, consulte ta
+                    sage-femme, ton médecin ou un professionnel de santé
+                    qualifié.
+                  </p>
+                </div>
+              </Reveal>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Description Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl font-bold text-brand-text mb-8">
-              À propos de ce guide
+      {/* Description */}
+      <section className="py-16 sm:py-20 bg-secondary/40 border-y-2 border-ink/10">
+        <div className="mx-auto max-w-4xl px-5">
+          <Reveal>
+            <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+              À propos
+            </span>
+            <h2 className="mt-3 font-display text-3xl sm:text-4xl font-bold text-ink">
+              De quoi parle ce guide ?
             </h2>
-            <div className="space-y-4 text-brand-text/80 leading-relaxed">
+            <div className="mt-6 space-y-4 text-ink/80 leading-relaxed">
               {description.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
-      {/* Chapters Section */}
-      <section className="py-16 bg-brand-cream">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl font-bold text-brand-text mb-8">
+      {/* Sommaire */}
+      <section className="py-16 sm:py-20">
+        <div className="mx-auto max-w-4xl px-5">
+          <Reveal>
+            <span className="text-primary font-semibold text-sm uppercase tracking-wider">
               Sommaire
+            </span>
+            <h2 className="mt-3 font-display text-3xl sm:text-4xl font-bold text-ink">
+              Le contenu du guide
             </h2>
-            <Card className="border-brand-card">
-              <CardContent className="p-6">
-                <ul className="space-y-4">
-                  {chapters.map((chapter, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <CheckCircle className={`w-5 h-5 ${accentText} mt-0.5 flex-shrink-0`} />
-                      <span className="text-brand-text/80">{chapter}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </motion.div>
+            <div className="mt-8 rounded-3xl border-2 border-ink bg-card p-6 sm:p-8 shadow-bold">
+              <ul className="space-y-4">
+                {chapters.map((chapter, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <CheckCircle
+                      className={cn("h-5 w-5 mt-0.5 flex-shrink-0", accentText)}
+                    />
+                    <span className="text-ink/80">{chapter}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* Preview Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl font-bold text-brand-text mb-8">
+      {/* Aperçu */}
+      <section className="py-16 sm:py-20 bg-secondary/40 border-y-2 border-ink/10">
+        <div className="mx-auto max-w-4xl px-5">
+          <Reveal>
+            <span className="text-primary font-semibold text-sm uppercase tracking-wider">
               Aperçu
+            </span>
+            <h2 className="mt-3 font-display text-3xl sm:text-4xl font-bold text-ink">
+              Un avant-goût des pages
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {previewPages.map((page, index) => (
-                <Card key={index} className="border-brand-card">
-                  <CardContent className="p-6">
-                    <div className={`${accent}/10 rounded-xl p-8 flex items-center justify-center min-h-[200px]`}>
-                      <div className="text-center">
-                        <FileText className={`w-12 h-12 ${accentText} mx-auto mb-2 opacity-50`} />
-                        <p className="text-sm text-brand-text/50">{page}</p>
-                      </div>
+          </Reveal>
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {previewPages.map((page, index) => (
+              <Reveal key={index} delay={index * 70}>
+                <div className="rounded-2xl border-2 border-ink bg-card p-6 shadow-bold h-full">
+                  <div
+                    className={cn(
+                      "rounded-xl p-8 flex items-center justify-center min-h-[180px] border-2 border-dashed border-ink/20",
+                      `${accent}/10`,
+                    )}
+                  >
+                    <div className="text-center">
+                      <FileText
+                        className={cn("h-10 w-10 mx-auto mb-2 opacity-50", accentText)}
+                      />
+                      <p className="text-sm text-ink/50">{page}</p>
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-            <p className="text-center text-sm text-brand-text/50 mt-6">
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal>
+            <p className="text-center text-sm text-ink/50 mt-6">
               Aperçu des premières pages du guide
             </p>
-          </motion.div>
+          </Reveal>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-brand-cream">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl font-bold text-brand-text mb-4">
+      {/* CTA */}
+      <section className="py-16 sm:py-20">
+        <div className="mx-auto max-w-3xl px-5 text-center">
+          <Reveal>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-ink">
               Prête à télécharger ?
             </h2>
-            <p className="text-brand-text/70 max-w-2xl mx-auto mb-8">
-              {type === "bundle" 
+            <p className="mt-3 text-ink/70 max-w-xl mx-auto">
+              {type === "bundle"
                 ? "Les 3 guides pour un accompagnement complet du post-partum."
                 : "Reçois ton guide en quelques secondes et commence à lire."}
             </p>
-            <Button
-              size="lg"
-              className={`${ctaAccent} hover:opacity-90 text-white px-8 mb-4`}
+            <button
+              type="button"
+              className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground border-2 border-ink px-8 py-4 font-semibold text-base shadow-bold transition-transform hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
             >
-              <ShoppingCart className="mr-2 w-5 h-5" />
+              <ShoppingCart className="h-5 w-5" />
               Ajouter au panier
-            </Button>
-            <p className="text-sm text-brand-text/60">
+            </button>
+            <p className="mt-3 text-sm text-ink/60">
               Paiement sécurisé par Stripe
             </p>
-          </motion.div>
+            <div className="mt-6">
+              <Link
+                to="/guides"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+              >
+                Retour à tous les guides
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
     </Layout>

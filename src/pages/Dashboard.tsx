@@ -14,21 +14,21 @@ export default function Dashboard() {
   };
 
   return (
-    <main className="min-h-screen bg-brand-cream px-6 py-10 text-brand-text">
+    <main className="min-h-screen bg-background px-5 py-10 text-ink">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-8">
         <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-sm font-medium text-brand-text/60">
+            <p className="text-sm font-medium text-ink/60">
               Mon espace ForceMaman
             </p>
-            <h1 className="mt-1 text-3xl font-bold tracking-tight">
+            <h1 className="mt-1 font-display text-3xl font-bold tracking-tight">
               Bonjour{user?.name ? `, ${user.name}` : " et bienvenue"} 🤍
             </h1>
           </div>
           <Button
             type="button"
             variant="outline"
-            className="cursor-pointer gap-2 self-start border-brand-card"
+            className="cursor-pointer gap-2 self-start border-2 border-ink text-ink"
             onClick={handleSignOut}
           >
             <LogOut className="size-4" />
@@ -36,29 +36,36 @@ export default function Dashboard() {
           </Button>
         </header>
 
-        <Card className="border-brand-card shadow-none">
+        <Card className="border-2 border-ink bg-card shadow-bold rounded-3xl">
           <CardHeader>
-            <div className="mb-3 flex size-10 items-center justify-center rounded-lg bg-brand-terracotta/10 text-brand-terracotta">
+            <div className="mb-3 flex size-10 items-center justify-center rounded-lg bg-secondary text-primary border-2 border-ink">
               <BookOpen className="size-5" />
             </div>
-            <CardTitle>Mes guides</CardTitle>
+            <CardTitle className="font-display text-2xl text-ink">
+              Mes guides
+            </CardTitle>
           </CardHeader>
-          <CardContent className="text-sm leading-6 text-brand-text/70">
+          <CardContent className="text-sm leading-6 text-ink/70">
             Tes guides achetés apparaîtront ici. Tu pourras les télécharger à
             nouveau à tout moment depuis ton espace personnel.
           </CardContent>
         </Card>
 
-        <Card className="border-brand-card shadow-none bg-brand-card/50">
+        <Card className="border-2 border-ink bg-secondary/40 shadow-bold rounded-3xl">
           <CardHeader>
-            <CardTitle>Découvrir les guides</CardTitle>
+            <CardTitle className="font-display text-2xl text-ink">
+              Découvrir les guides
+            </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm text-brand-text/70">
+            <p className="text-sm text-ink/70">
               Trois guides bienveillants pour t'accompagner dans le post-partum,
               ou le Pack Complet avec 23% de réduction.
             </p>
-            <Button asChild className="bg-brand-terracotta hover:bg-brand-terracotta/90 text-white">
+            <Button
+              asChild
+              className="bg-primary text-primary-foreground border-2 border-ink shadow-bold hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+            >
               <Link to="/guides">Voir la boutique</Link>
             </Button>
           </CardContent>

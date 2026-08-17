@@ -1,358 +1,683 @@
-import { motion } from "framer-motion";
 import { Link } from "react-router";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import Layout from "@/components/Layout";
-import { 
-  BookOpen, 
-  Heart, 
-  Shield, 
-  Clock, 
-  Users, 
-  CheckCircle, 
+import Reveal from "@/components/Reveal";
+import EbookCover from "@/components/EbookCover";
+import { useTilt } from "@/hooks/use-tilt";
+import { ebooks, bundle } from "@/lib/ebooks";
+import { cn } from "@/lib/utils";
+import {
   ArrowRight,
-  Sparkles
+  BookOpen,
+  ChartLine,
+  ClipboardList,
+  CreditCard,
+  Heart,
+  Quote,
+  ShieldCheck,
+  Sparkles,
+  TrendingUp,
+  TriangleAlert,
 } from "lucide-react";
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 },
-};
-
-const guides = [
+const transformations = [
   {
-    title: "Ma Liste Naissance Complète",
-    accent: "bg-brand-terracotta",
-    price: "7,90€",
-    href: "/guides/liste-naissance",
-    description: "Tout ce qu'il faut préparer sereinement l'arrivée de bébé",
+    name: "Camille, 7e mois de grossesse",
+    coverIndex: 0,
+    before: "Je noyais entre douze listes contradictoires, je stressais à chaque recommandation trouvée en ligne.",
+    after: "Ma liste naissance complète et prête en deux heures. J'ai retrouvé le sommeil.",
   },
   {
-    title: "Mon Corps Après l'Accouchement",
-    accent: "bg-brand-sage",
-    price: "9,90€",
-    href: "/guides/corps-apres",
-    description: "Comprendre et accompagner les changements de ton corps",
+    name: "Inès, 6 semaines post-partum",
+    coverIndex: 1,
+    before: "Mon corps me semblait étranger, je ne savais pas ce qui était normal ou non.",
+    after: "Le guide Corps m'a rassurée et m'a donné des repères clairs, sans panique.",
   },
   {
-    title: "Charge Mentale & 40 Premiers Jours",
-    accent: "bg-brand-mauve",
-    price: "11,90€",
-    href: "/guides/charge-mentale",
-    description: "Gérer le tsunami émotionnel des premières semaines",
+    name: "Sarah, 3 mois post-partum",
+    coverIndex: 2,
+    before: "Je culpabilisais de ne pas tout gérer, de pleurer, de laisser les tâches s'accumuler.",
+    after: "Le guide Charge mentale m'a aidée à poser des limites et à en parler avec mon compagnon.",
   },
 ];
+
+const problems = [
+  {
+    icon: TriangleAlert,
+    title: "Des listes interminables",
+    text: "Cent un blogs, cent une opinions. Tu passes des heures à comparer au lieu de préparer sereinement l'arrivée de bébé.",
+  },
+  {
+    icon: ChartLine,
+    title: "Une culpabilité permanente",
+    text: "Injonctions, comparaisons, injonctions : le post-partum se vit déjà assez difficilement sans culpabilité en plus.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Zéro réel accompagnement",
+    text: "Du contenu générique, écrit sans expertise ni ton bienveillant, et souvent sans aucun rappel médical.",
+  },
+];
+
+const steps = [
+  {
+    icon: ClipboardList,
+    number: "01",
+    title: "Tu choisis ton guide",
+    text: "Liste de naissance, corps après l'accouchement ou charge mentale. Ou le pack complet pour tout avoir.",
+  },
+  {
+    icon: CreditCard,
+    number: "02",
+    title: "Tu paies en 30 secondes",
+    text: "Paiement sécurisé Stripe. Tu reçois ton PDF immédiatement par email, lisible sur tous tes appareils.",
+  },
+  {
+    icon: TrendingUp,
+    number: "03",
+    title: "Tu lis à ton rythme",
+    text: "Sur téléphone, tablette ou ordinateur. Imprimable, et lisible même à 3h du matin pendant une tétée.",
+  },
+];
+
+const methodology = [
+  {
+    icon: ShieldCheck,
+    title: "Sécurité d'abord",
+    text: "Chaque conseil reste dans le cadre des recommandations professionnelles, avec les rappels nécessaires.",
+  },
+  {
+    icon: Heart,
+    title: "Bienveillance absolue",
+    text: "Aucune injonction, aucune culpabilisation. Juste des réponses claires, à ton rythme.",
+  },
+  {
+    icon: BookOpen,
+    title: "Pensé avec rigueur",
+    text: "Huit ans à accompagner des centaines de mamans, et un vécu personnel : une double légitimité rare.",
+  },
+];
+
+const testimonials = [
+  {
+    initial: "L",
+    name: "Léa",
+    detail: "3 mois post-partum",
+    quote: "C'est le premier guide qui ne me donne pas l'impression d'échouer quand je ne coche pas tout. Le ton fait toute la différence.",
+    dark: false,
+  },
+  {
+    initial: "A",
+    name: "Amina",
+    detail: "Maman de jumelles, 6 mois",
+    quote: "Le guide Corps m'a enfin expliqué ce qui était normal. J'ai arrêté de m'inquiéter à la moindre douleur.",
+    dark: true,
+  },
+  {
+    initial: "C",
+    name: "Clara",
+    detail: "5 mois post-partum",
+    quote: "Ma sage-femme a validé les repères du guide. Pour moi, c'est ce qui fait la différence avec les blogs.",
+    dark: false,
+  },
+  {
+    initial: "M",
+    name: "Maya",
+    detail: "11 mois post-partum",
+    quote: "J'ai offert le pack à ma meilleure amie. Elle dit que c'est le cadeau le plus utile qu'on lui ait fait.",
+    dark: true,
+  },
+];
+
+const faqItems = [
+  {
+    question: "Comment reçois-je mon guide ?",
+    answer:
+      "Dès le paiement validé, tu reçois ton PDF par email. Téléchargeable sur ordinateur, tablette ou téléphone, autant de fois que tu le souhaites.",
+  },
+  {
+    question: "Le paiement est-il sécurisé ?",
+    answer:
+      "Oui. Les paiements passent par Stripe, un leader mondial du paiement en ligne. Aucune donnée bancaire n'est stockée sur notre site.",
+  },
+  {
+    question: "Puis-je me faire rembourser ?",
+    answer:
+      "Oui, sous 14 jours après ton achat. Écris-nous à hello@forcemaman.fr avec ton numéro de commande, nous nous occupons de tout.",
+  },
+  {
+    question: "Sur quels appareils puis-je lire les guides ?",
+    answer:
+      "Les PDF sont optimisés pour tous les écrans, et imprimables si tu préfères le papier.",
+  },
+  {
+    question: "Qui a écrit ces guides ?",
+    answer:
+      "Maria Garcia, sage-femme pendant 8 ans et maman. Chaque guide combine son expertise professionnelle et ce qu'elle a vécu après la naissance de sa fille.",
+  },
+  {
+    question: "Les guides remplacent-ils un avis médical ?",
+    answer:
+      "Non. Ce sont des outils d'information et d'accompagnement. En cas de doute ou de problème de santé, consulte un professionnel de santé qualifié.",
+  },
+];
+
+function HeroVisual() {
+  const tiltRef = useTilt(4);
+  return (
+    <div className="relative">
+      <div
+        className="absolute -inset-4 bg-rose-soft/60 rounded-3xl -rotate-2"
+        aria-hidden="true"
+      />
+      <div
+        ref={tiltRef}
+        className="relative grid place-items-center rounded-2xl border-2 border-ink bg-card p-6 sm:p-10 shadow-bold will-change-transform"
+      >
+        <div className="relative w-full max-w-[240px] sm:max-w-xs aspect-[3/4]">
+          <EbookCover
+            title={ebooks[2].title}
+            accent={ebooks[2].accent}
+            className="absolute inset-0 rotate-[7deg] translate-x-4 opacity-90"
+            titleSize="text-sm sm:text-base"
+          />
+          <EbookCover
+            title={ebooks[1].title}
+            accent={ebooks[1].accent}
+            className="absolute inset-0 -rotate-[5deg] -translate-x-3 opacity-90"
+            titleSize="text-sm sm:text-base"
+          />
+          <EbookCover
+            title={ebooks[0].title}
+            accent={ebooks[0].accent}
+            className="absolute inset-0 z-10 shadow-[6px_6px_0_0_var(--ink)]"
+            titleSize="text-sm sm:text-base"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Landing() {
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative bg-brand-cream py-20 md:py-32 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-3xl mx-auto"
-          >
-            <Badge className="bg-brand-terracotta/10 text-brand-terracotta mb-6 px-4 py-1.5">
-              Guides bienveillants pour mamans
-            </Badge>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-text mb-6 leading-tight">
+      {/* ============ HERO ============ */}
+      <section className="relative overflow-hidden">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:py-24 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <span
+              className="inline-block rounded-full border-2 border-ink bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ink animate-text-slide"
+              style={{ animationDelay: "0ms" }}
+            >
+              Post-partum · Guides bienveillants
+            </span>
+            <h1
+              className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-ink text-balance leading-[0.95] animate-text-slide"
+              style={{ animationDelay: "80ms" }}
+            >
               Tu viens d'accoucher.
               <br />
-              <span className="text-brand-terracotta">
-                Maintenant, on s'occupe de toi.
-              </span>
+              <span className="text-primary">Maintenant, on s'occupe de toi.</span>
             </h1>
-            <p className="text-lg md:text-xl text-brand-text/70 mb-8 leading-relaxed">
-              Des guides écrits par une sage-femme qui a elle-même vécu ce que tu vis. 
-              Pas de culpabilité, pas d'injonctions. Juste des réponses claires, 
-              bienveillantes et utiles pour traverser cette période.
+            <p
+              className="mt-6 text-lg text-ink/75 max-w-xl text-balance animate-text-slide"
+              style={{ animationDelay: "180ms" }}
+            >
+              Trois ebooks écrits par une sage-femme pour traverser le
+              post-partum avec clarté, sans culpabilité. Liste de naissance,
+              corps après l'accouchement, charge mentale : chaque guide répond
+              à une vraie question.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                asChild
-                size="lg"
-                className="bg-brand-terracotta hover:bg-brand-terracotta/90 text-white px-8"
+            <div
+              className="mt-8 flex flex-wrap gap-4 items-center animate-text-slide"
+              style={{ animationDelay: "260ms" }}
+            >
+              <Link
+                to="/guides"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground border-2 border-ink px-6 py-3.5 font-semibold shadow-bold transition-transform hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
               >
-                <Link to="/guides">
-                  Découvrir les guides
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="border-brand-text/20 text-brand-text hover:bg-brand-card"
-              >
-                <a href="#maria">L'histoire de Maria</a>
-              </Button>
+                Découvrir les guides
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <span className="text-sm text-ink/60">
+                Téléchargement immédiat · Paiement sécurisé Stripe
+              </span>
             </div>
-          </motion.div>
-        </div>
+          </div>
 
-        {/* Decorative elements */}
-        <div className="absolute top-10 left-10 w-72 h-72 bg-brand-terracotta/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-brand-sage/10 rounded-full blur-3xl" />
+          <Reveal delay={150}>
+            <HeroVisual />
+          </Reveal>
+        </div>
       </section>
 
-      {/* Maria's Story Section */}
-      <section id="maria" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            {...fadeInUp}
-            className="max-w-4xl mx-auto"
-          >
-            <div className="flex flex-col md:flex-row gap-12 items-center">
-              {/* Photo medallion */}
-              <div className="flex-shrink-0">
-                <div className="w-48 h-48 rounded-full bg-gradient-to-br from-brand-terracotta/20 to-brand-sage/20 flex items-center justify-center border-4 border-brand-card">
-                  <div className="w-44 h-44 rounded-full bg-brand-card flex items-center justify-center">
-                    <span className="text-6xl">👩‍⚕️</span>
+      {/* ============ TRANSFORMATIONS ============ */}
+      <section className="py-20 sm:py-24 bg-secondary/40 border-y-2 border-ink/10 cv-auto">
+        <div className="mx-auto max-w-6xl px-5">
+          <Reveal>
+            <div className="max-w-2xl">
+              <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+                Ce que ça change
+              </span>
+              <h2 className="mt-3 text-4xl sm:text-5xl font-display font-bold text-ink text-balance">
+                Avant. Après.
+                <br />
+                Le vrai changement.
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="mt-14 space-y-8">
+            {transformations.map((t, i) => (
+              <Reveal key={t.name} delay={i * 70}>
+                <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-6 rounded-3xl border-2 border-ink bg-card p-5 sm:p-6 shadow-bold">
+                  <EbookCover
+                    title={ebooks[t.coverIndex].title}
+                    accent={ebooks[t.coverIndex].accent}
+                    className="w-full min-h-48 md:min-h-full rounded-2xl"
+                    titleSize="text-base sm:text-lg"
+                  />
+                  <div className="flex flex-col justify-center">
+                    <p className="font-display text-xl font-semibold text-ink">
+                      {t.name}
+                    </p>
+                    <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <span className="text-xs font-bold uppercase tracking-wider text-ink/50">
+                          Avant
+                        </span>
+                        <p className="mt-1 text-ink/80 text-sm leading-relaxed">
+                          {t.before}
+                        </p>
+                      </div>
+                      <div className="border-l-0 sm:border-l-2 border-ink/10 sm:pl-4">
+                        <span className="text-xs font-bold uppercase tracking-wider text-primary">
+                          Après
+                        </span>
+                        <p className="mt-1 text-ink text-sm leading-relaxed font-medium">
+                          {t.after}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              {/* Text */}
+      {/* ============ LE PROBLÈME ============ */}
+      <section className="bg-ink text-cream py-20 sm:py-28 cv-auto">
+        <div className="mx-auto max-w-6xl px-5">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-12 items-center">
+            <Reveal>
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-brand-text mb-6">
-                  Je m'appelle Maria.
+                <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+                  Le problème
+                </span>
+                <h2 className="mt-3 text-4xl sm:text-5xl font-display font-bold text-balance">
+                  Les infos en ligne épuisent les jeunes mamans.
                 </h2>
-                <div className="space-y-4 text-brand-text/80 leading-relaxed">
-                  <p>
-                    Sage-femme pendant 8 ans, j'ai accompagné des centaines de mamans 
-                    le jour de l'accouchement. Et puis un jour, c'est moi qui ai eu ma 
-                    fille. Et j'ai découvert ce que personne ne m'avait dit : que le 
-                    plus dur commence souvent après, une fois rentrée à la maison, 
-                    seule avec ce petit être et toutes ces questions.
-                  </p>
-                  <p>
-                    ForceMaman, c'est les guides que j'aurais aimé avoir entre les mains 
-                    ce jour-là. Écrits avec ce que je sais en tant que professionnelle, 
-                    et ce que j'ai vécu en tant que maman.
-                  </p>
-                </div>
-                <p className="mt-6 font-medium text-brand-text italic">
-                  Maria, fondatrice de ForceMaman
+              </div>
+            </Reveal>
+            <Reveal delay={120} className="justify-self-end w-full max-w-sm">
+              <div className="rounded-2xl border-2 border-cream/20 w-full p-8">
+                <Heart className="h-12 w-12 text-primary" />
+                <p className="mt-4 font-display text-lg text-cream/90">
+                  Toi aussi, tu mérites mieux qu'une recherche Google à 2h du
+                  matin.
                 </p>
               </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Guides Preview Section */}
-      <section className="py-20 bg-brand-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            {...fadeInUp}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-text mb-4">
-              Trois guides pour te soutenir
-            </h2>
-            <p className="text-brand-text/70 max-w-2xl mx-auto">
-              Chaque guide aborde une étape essentielle du post-partum, 
-              avec des conseils pratiques et rassurants.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {guides.map((guide, index) => (
-              <motion.div
-                key={guide.href}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-shadow">
-                  <CardContent className="p-6">
-                    <div className={`w-12 h-12 ${guide.accent} rounded-xl flex items-center justify-center mb-4`}>
-                      <BookOpen className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-brand-text mb-2">
-                      {guide.title}
-                    </h3>
-                    <p className="text-brand-text/70 mb-4">
-                      {guide.description}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-2xl font-bold text-brand-text">
-                        {guide.price}
-                      </span>
-                      <Button
-                        asChild
-                        variant="outline"
-                        className="border-brand-text/20"
-                      >
-                        <Link to={guide.href}>
-                          Voir le guide
-                          <ArrowRight className="ml-2 w-4 h-4" />
-                        </Link>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+            </Reveal>
           </div>
 
-          <div className="text-center mt-8">
-            <Button
-              asChild
-              variant="link"
-              className="text-brand-terracotta"
-            >
-              <Link to="/guides">
-                Voir tous les guides
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Bundle Highlight Section */}
-      <section className="py-20 bg-gradient-to-br from-brand-terracotta/10 via-brand-card to-brand-sage/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            {...fadeInUp}
-            className="max-w-4xl mx-auto"
-          >
-            <Card className="border-0 shadow-2xl overflow-hidden">
-              <CardContent className="p-8 md:p-12">
-                <div className="flex flex-col md:flex-row items-center gap-8">
-                  <div className="flex-1">
-                    <Badge className="bg-brand-terracotta text-white mb-4">
-                      <Sparkles className="w-4 h-4 mr-1" />
-                      -23% de réduction
-                    </Badge>
-                    <h2 className="text-3xl md:text-4xl font-bold text-brand-text mb-4">
-                      Pack Complet ForceMaman
-                    </h2>
-                    <p className="text-brand-text/70 mb-6">
-                      Les 3 guides réunis pour un accompagnement complet du post-partum. 
-                      La boîte à outils idéale pour cette période unique.
-                    </p>
-                    <div className="flex items-baseline gap-3 mb-6">
-                      <span className="text-4xl font-bold text-brand-terracotta">
-                        22,90€
-                      </span>
-                      <span className="text-xl text-brand-text/50 line-through">
-                        29,70€
-                      </span>
-                    </div>
-                    <Button
-                      asChild
-                      size="lg"
-                      className="bg-brand-terracotta hover:bg-brand-terracotta/90 text-white"
-                    >
-                      <Link to="/guides/bundle">
-                        Découvrir le pack
-                        <ArrowRight className="ml-2 w-5 h-5" />
-                      </Link>
-                    </Button>
-                  </div>
-                  <div className="flex-shrink-0">
-                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-brand-card flex items-center justify-center">
-                      <BookOpen className="w-16 h-16 text-brand-terracotta" />
-                    </div>
-                  </div>
+          <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {problems.map((p, i) => (
+              <Reveal key={p.title} delay={i * 90}>
+                <div className="rounded-2xl border-2 border-cream/15 p-6 hover:border-primary transition-colors h-full">
+                  <p.icon className="h-7 w-7 text-primary" />
+                  <h3 className="mt-4 font-display text-xl font-semibold text-cream">
+                    {p.title}
+                  </h3>
+                  <p className="mt-2 text-cream/70 text-sm leading-relaxed">
+                    {p.text}
+                  </p>
                 </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Reassurance Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            {...fadeInUp}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-text mb-4">
-              Pourquoi faire confiance à ForceMaman ?
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {[
-              {
-                icon: Shield,
-                title: "Écrits par une professionnelle",
-                description: "8 ans de sage-femme, une expertise reconnue",
-              },
-              {
-                icon: Heart,
-                title: "Ton bienveillant",
-                description: "Z culpabilité, z injonction. Juste de l'accompagnement",
-              },
-              {
-                icon: Clock,
-                title: "Accès instantané",
-                description: "Télécharge tes guides en quelques secondes",
-              },
-              {
-                icon: Users,
-                title: "Déjà des centaines de mamans",
-                description: "Rejointes par des femmes qui témoignent",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Card className="h-full border-brand-card bg-brand-cream/50">
-                  <CardContent className="p-6 text-center">
-                    <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-brand-terracotta/10 flex items-center justify-center">
-                      <item.icon className="w-6 h-6 text-brand-terracotta" />
-                    </div>
-                    <h3 className="font-semibold text-brand-text mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-brand-text/70">
-                      {item.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-brand-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            {...fadeInUp}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-text mb-4">
+      {/* ============ COMMENT ÇA MARCHE ============ */}
+      <section className="py-20 sm:py-28 cv-auto">
+        <div className="mx-auto max-w-6xl px-5">
+          <Reveal>
+            <div className="max-w-2xl">
+              <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+                Comment ça marche
+              </span>
+              <h2 className="mt-3 text-4xl sm:text-5xl font-display font-bold text-balance text-ink">
+                Trois étapes. Un guide à toi.
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {steps.map((s, i) => (
+              <Reveal key={s.number} delay={i * 90}>
+                <div className="rounded-2xl border-2 border-ink bg-card p-6 shadow-bold h-full">
+                  <div className="flex items-start justify-between">
+                    <s.icon className="h-16 w-16 text-primary" strokeWidth={1.5} />
+                    <span className="font-display text-3xl font-bold text-ink/15">
+                      {s.number}
+                    </span>
+                  </div>
+                  <h3 className="mt-4 font-display text-xl font-semibold text-ink">
+                    {s.title}
+                  </h3>
+                  <p className="mt-2 text-ink/70 text-sm leading-relaxed">
+                    {s.text}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ MÉTHODOLOGIE / MARIA ============ */}
+      <section className="py-20 sm:py-28 bg-secondary/40 border-y-2 border-ink/10 cv-auto">
+        <div className="mx-auto max-w-6xl px-5">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <Reveal>
+              <div>
+                <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+                  Pourquoi ces guides
+                </span>
+                <h2 className="mt-3 text-4xl sm:text-5xl font-display font-bold text-ink text-balance leading-tight">
+                  Une expertise de sage-femme, pas un copier-coller de blog.
+                </h2>
+                <p className="mt-5 text-lg text-ink/75">
+                  Chaque guide est écrit par Maria Garcia, sage-femme pendant 8
+                  ans et maman. Elle y combine ce que sa profession lui a appris
+                  et ce qu'elle a vécu après la naissance de sa fille. Tu y
+                  retrouves les mots qu'elle aurait aimé lire à ce moment-là.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <div className="relative">
+                <div
+                  className="absolute -inset-4 bg-rose-soft/50 rounded-3xl rotate-2"
+                  aria-hidden="true"
+                />
+                <div className="relative rounded-2xl border-2 border-ink bg-card p-8 shadow-bold text-center">
+                  <div className="mx-auto h-24 w-24 rounded-full border-2 border-ink bg-secondary flex items-center justify-center">
+                    <span className="font-display text-3xl font-bold text-ink">
+                      M
+                    </span>
+                  </div>
+                  <p className="mt-5 font-display text-2xl font-bold text-ink">
+                    Je m'appelle Maria.
+                  </p>
+                  <p className="mt-3 text-ink/75 text-sm leading-relaxed text-left">
+                    Sage-femme pendant 8 ans, j'ai accompagné des centaines de
+                    mamans. Puis c'est moi qui ai eu ma fille, et j'ai découvert
+                    que le plus dur commence souvent après, une fois rentrée à la
+                    maison. ForceMaman, ce sont les guides que j'aurais aimé
+                    avoir entre les mains ce jour-là.
+                  </p>
+                  <p className="mt-4 text-ink/60 text-sm italic">
+                    Maria, fondatrice de ForceMaman
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
+            {methodology.map((m, i) => (
+              <Reveal key={m.title} delay={i * 90}>
+                <div className="rounded-2xl border-2 border-ink bg-card p-6 h-full">
+                  <m.icon className="h-7 w-7 text-primary" />
+                  <h3 className="mt-4 font-display text-xl font-semibold text-ink">
+                    {m.title}
+                  </h3>
+                  <p className="mt-2 text-ink/70 text-sm leading-relaxed">
+                    {m.text}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal>
+            <p className="mt-10 text-center text-sm text-ink/60 italic max-w-3xl mx-auto">
+              Les guides ForceMaman sont des outils d'information et
+              d'accompagnement. Ils ne remplacent pas un avis médical
+              professionnel. En cas de doute ou de problème de santé, consulte
+              ta sage-femme, ton médecin ou un professionnel de santé qualifié.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ============ PACK COMPLET ============ */}
+      <section className="py-20 sm:py-28 cv-auto">
+        <div className="mx-auto max-w-6xl px-5 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <Reveal className="order-2 lg:order-1">
+            <div className="relative">
+              <div
+                className="absolute -inset-4 bg-rose-soft/50 rounded-3xl rotate-2"
+                aria-hidden="true"
+              />
+              <div className="relative grid place-items-center rounded-2xl border-2 border-ink bg-card p-6 sm:p-10 shadow-bold">
+                <div className="relative w-full max-w-[220px] sm:max-w-xs aspect-[3/4]">
+                  <EbookCover
+                    title={ebooks[2].title}
+                    accent={ebooks[2].accent}
+                    className="absolute inset-0 rotate-[7deg] translate-x-4 opacity-90"
+                    titleSize="text-sm sm:text-base"
+                  />
+                  <EbookCover
+                    title={ebooks[1].title}
+                    accent={ebooks[1].accent}
+                    className="absolute inset-0 -rotate-[5deg] -translate-x-3 opacity-90"
+                    titleSize="text-sm sm:text-base"
+                  />
+                  <EbookCover
+                    title={ebooks[0].title}
+                    accent={ebooks[0].accent}
+                    className="absolute inset-0 z-10 shadow-[6px_6px_0_0_var(--ink)]"
+                    titleSize="text-sm sm:text-base"
+                  />
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="order-1 lg:order-2">
+            <Reveal>
+              <span className="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ink">
+                <Sparkles className="h-3.5 w-3.5 text-primary" />
+                Pack Complet · {bundle.discount}
+              </span>
+              <h2 className="mt-4 text-4xl sm:text-5xl font-display font-bold text-ink text-balance leading-tight">
+                Les trois guides.
+                <br />
+                Une seule boîte à outils.
+              </h2>
+              <p className="mt-5 text-ink/75 text-lg">
+                Liste de naissance, corps après l'accouchement, charge mentale :
+                le parcours complet pour aborder le post-partum avec sérénité.
+              </p>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <div className="mt-8 rounded-3xl border-2 border-ink bg-card p-6 sm:p-8 shadow-[8px_8px_0_0_var(--terracotta)]">
+                <ul className="space-y-4">
+                  {ebooks.map((e) => (
+                    <li key={e.id} className="flex items-center justify-between gap-4">
+                      <span className="flex items-center gap-3 text-ink">
+                        <span className={cn("h-3 w-3 rounded-full border-2 border-ink", e.accent)} />
+                        <span className="text-sm font-medium">{e.title}</span>
+                      </span>
+                      <span className="text-sm text-ink/60">{e.price}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-6 flex items-baseline gap-3 border-t-2 border-ink/10 pt-5">
+                  <span className="font-display text-3xl font-bold text-ink">
+                    {bundle.price}
+                  </span>
+                  <span className="text-lg text-ink/50 line-through">
+                    {bundle.originalPrice}
+                  </span>
+                  <span className="text-sm font-semibold text-primary">
+                    {bundle.discount}
+                  </span>
+                </div>
+                <Link
+                  to={bundle.href}
+                  className="mt-5 w-full inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground border-2 border-ink py-4 font-semibold text-base shadow-bold transition-transform hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+                >
+                  Découvrir le pack
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <p className="mt-3 text-xs text-ink/60 text-center">
+                  Paiement sécurisé Stripe · Téléchargement immédiat ·
+                  Remboursement 14 jours
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ TÉMOIGNAGES ============ */}
+      <section
+        id="temoignages"
+        className="py-20 sm:py-28 bg-secondary/40 border-y-2 border-ink/10 scroll-mt-24 cv-auto"
+      >
+        <div className="mx-auto max-w-6xl px-5">
+          <Reveal>
+            <div className="max-w-2xl">
+              <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+                Témoignages
+              </span>
+              <h2 className="mt-3 text-4xl sm:text-5xl font-display font-bold text-ink text-balance">
+                Ce que disent les premières lectrices.
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {testimonials.map((t, i) => (
+              <Reveal key={t.name} delay={(i % 2) * 90}>
+                <figure className="rounded-2xl border-2 border-ink bg-card p-6 shadow-bold h-full">
+                  <div className="flex items-center gap-4">
+                    <div
+                      aria-hidden="true"
+                      className={cn(
+                        "h-16 w-16 rounded-full border-2 border-ink flex items-center justify-center font-display font-bold text-2xl",
+                        t.dark ? "bg-ink text-background" : "bg-primary text-primary-foreground",
+                      )}
+                    >
+                      {t.initial}
+                    </div>
+                    <figcaption>
+                      <p className="font-display font-semibold text-ink text-lg">
+                        {t.name}
+                      </p>
+                      <p className="text-sm text-ink/60">{t.detail}</p>
+                    </figcaption>
+                  </div>
+                  <Quote className="mt-5 h-5 w-5 text-primary" />
+                  <blockquote className="mt-2 text-ink/80 leading-relaxed">
+                    {t.quote}
+                  </blockquote>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ FAQ ============ */}
+      <section className="py-20 sm:py-28 cv-auto">
+        <div className="mx-auto max-w-3xl px-5">
+          <Reveal>
+            <div className="text-center">
+              <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+                FAQ
+              </span>
+              <h2 className="mt-3 text-4xl sm:text-5xl font-display font-bold text-ink text-balance">
+                Tes questions, nos réponses.
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="mt-12">
+            <Accordion type="single" collapsible className="space-y-3">
+              {faqItems.map((item, i) => (
+                <Reveal key={item.question} delay={i * 40}>
+                  <AccordionItem
+                    value={item.question}
+                    className="border-2 border-ink rounded-2xl px-5 bg-card overflow-hidden"
+                  >
+                    <AccordionTrigger className="font-display text-lg font-semibold text-ink py-5 hover:no-underline [&[data-state=open]>svg]:text-primary">
+                      {item.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-ink/70 leading-relaxed pb-5">
+                      {item.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                </Reveal>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ CTA FINAL ============ */}
+      <section className="bg-ink text-cream py-20 sm:py-28 scroll-mt-24">
+        <div className="mx-auto max-w-2xl px-5 text-center">
+          <Reveal>
+            <Heart className="h-10 w-10 text-primary mx-auto" />
+            <h2 className="mt-5 text-4xl sm:text-5xl font-display font-bold text-balance">
               Prête à prendre soin de toi ?
             </h2>
-            <p className="text-brand-text/70 max-w-2xl mx-auto mb-8">
-              Tu n'as pas à traverser cette période seule. 
-              Nos guides sont là pour t'accompagner, à ton rythme.
+            <p className="mt-4 text-cream/75 text-lg">
+              Choisis le guide qui te parle, ou le pack complet pour un
+              accompagnement global. À toi de décider, à ton rythme.
             </p>
-            <Button
-              asChild
-              size="lg"
-              className="bg-brand-terracotta hover:bg-brand-terracotta/90 text-white px-8"
-            >
-              <Link to="/guides">
-                Voir les guides
-                <ArrowRight className="ml-2 w-5 h-5" />
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/guides"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground border-2 border-cream/40 px-6 py-3.5 font-semibold shadow-[8px_8px_0_0_rgba(255,255,255,0.15)] transition-transform hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+              >
+                Découvrir les guides
+                <ArrowRight className="h-4 w-4" />
               </Link>
-            </Button>
-          </motion.div>
+              <Link
+                to={bundle.href}
+                className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-cream/40 px-6 py-3.5 font-semibold text-cream hover:bg-cream/10 transition-colors"
+              >
+                Voir le pack complet
+              </Link>
+            </div>
+            <p className="mt-6 text-sm text-cream/50">
+              Paiement sécurisé Stripe · Remboursement sous 14 jours
+            </p>
+          </Reveal>
         </div>
       </section>
     </Layout>
