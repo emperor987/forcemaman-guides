@@ -8,8 +8,10 @@ export default function Bundle() {
       price="22,90€"
       originalPrice="29,70€"
       discount="-23%"
-      accent="bg-brand-terracotta"
-      accentText="text-brand-terracotta"
+      accent="bg-brand-card"
+      accentText="text-brand-text"
+      coverTextColor="text-brand-text"
+      buttonAccent="bg-brand-terracotta"
       description={[
         "Le Pack Complet ForceMaman réunit les trois guides essentiels pour traverser la période post-partum avec bienveillance et confiance. C'est la boîte à outils complète que j'aurais aimé avoir entre les mains après la naissance de ma fille.",
         "En tant que sage-femme, j'ai accompagné des centaines de mamans. En tant que maman, j'ai vécu ce que tu vis maintenant. Ce pack combine expertise professionnelle et vécu personnel pour t'offrir un accompagnement global : de la préparation de la naissance à la récupération physique, en passant par la gestion émotionnelle des premières semaines.",

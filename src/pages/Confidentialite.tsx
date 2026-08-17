@@ -1,0 +1,76 @@
+import LegalPage from "@/components/LegalPage";
+
+export default function Confidentialite() {
+  return (
+    <LegalPage
+      title="Politique de confidentialité"
+      lastUpdated="Août 2026"
+      intro="Chez ForceMaman, ta confiance est essentielle. Cette politique explique quelles données nous collectons, pourquoi, et comment elles sont protégées. Elle est rédigée simplement, parce que la vie privée n'a pas besoin d'être compliquée."
+      sections={[
+        {
+          title: "1. Responsable du traitement",
+          content: [
+            "Le responsable du traitement des données personnelles est SAFAA Beauty, dont ForceMaman est une marque distincte. Contact : contact@forcemaman.fr.",
+          ],
+        },
+        {
+          title: "2. Données collectées",
+          content: [
+            "Nous collectons uniquement les données strictement nécessaires au fonctionnement du site :",
+            "Ton adresse email, nécessaire pour t'envoyer tes guides après l'achat et te communiquer les informations liées à ta commande.",
+            "Les informations de commande (produits achetés, date, montant). Nous ne stockons jamais tes données bancaires, qui sont traitées directement par notre prestataire de paiement Stripe.",
+            "Des données techniques de navigation (adresse IP anonymisée, type d'appareil) pour assurer le bon fonctionnement du site et sa sécurité.",
+          ],
+        },
+        {
+          title: "3. Utilisation des données",
+          content: [
+            "Tes données sont utilisées pour :",
+            "Te délivrer les guides achetés et assurer le suivi de ta commande.",
+            "Te répondre lorsque tu nous contactes.",
+            "Améliorer ton expérience sur le site.",
+            "Respecter nos obligations légales (notamment fiscales et comptables).",
+            "Nous n'utilisons tes données que dans le cadre de l'exécution de ton achat et de nos obligations légales. Nous ne revendons jamais tes données à des tiers.",
+          ],
+        },
+        {
+          title: "4. Paiement sécurisé",
+          content: [
+            "Les paiements sont traités par Stripe, un prestataire de paiement certifié PCI-DSS. Les informations bancaires sont saisies sur la plateforme sécurisée de Stripe et ne transitent jamais par nos serveurs. Pour plus d'informations, consulte la politique de confidentialité de Stripe.",
+          ],
+        },
+        {
+          title: "5. Durée de conservation",
+          content: [
+            "Les données liées à tes commandes sont conservées pendant la durée légale de conservation des documents comptables (10 ans). Ton adresse email est conservée tant que tu restes inscrite à notre liste de diffusion, et tu peux te désinscrire à tout moment via le lien présent dans chaque email.",
+          ],
+        },
+        {
+          title: "6. Tes droits",
+          content: [
+            "Conformément au Règlement Général sur la Protection des Données (RGPD), tu disposes des droits suivants :",
+            "Droit d'accès, de rectification et d'effacement de tes données.",
+            "Droit à la limitation et à l'opposition du traitement.",
+            "Droit à la portabilité de tes données.",
+            "Droit de retirer ton consentement à tout moment.",
+            "Pour exercer ces droits, écris-nous à contact@forcemaman.fr. Nous te répondrons sous 30 jours maximum.",
+            "Tu peux également introduire une réclamation auprès de la CNIL (www.cnil.fr).",
+          ],
+        },
+        {
+          title: "7. Cookies",
+          content: [
+            "Ce site utilise des cookies strictement nécessaires à son fonctionnement (mémorisation de session, sécurité). Nous n'utilisons pas de cookies publicitaires ou de suivi tiers.",
+            "Tu peux configurer ton navigateur pour bloquer les cookies, mais certaines fonctionnalités du site pourraient ne plus fonctionner correctement.",
+          ],
+        },
+        {
+          title: "8. Sécurité",
+          content: [
+            "Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger tes données contre tout accès, altération ou divulgation non autorisés. Les échanges entre ton navigateur et notre site sont chiffrés via le protocole HTTPS.",
+          ],
+        },
+      ]}
+    />
+  );
+}

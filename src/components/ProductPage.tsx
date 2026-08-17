@@ -1,15 +1,14 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Layout from "@/components/Layout";
-import { 
-  BookOpen, 
-  ArrowRight,
+import {
+  BookOpen,
   CheckCircle,
   FileText,
-  ShoppingCart
+  ShoppingCart,
+  Info,
 } from "lucide-react";
 
 interface ProductPageProps {
@@ -24,6 +23,8 @@ interface ProductPageProps {
   chapters: string[];
   previewPages: string[];
   type?: "ebook" | "bundle";
+  coverTextColor?: string;
+  buttonAccent?: string;
 }
 
 export default function ProductPage({
@@ -38,7 +39,10 @@ export default function ProductPage({
   chapters,
   previewPages,
   type = "ebook",
+  coverTextColor = "text-white",
+  buttonAccent,
 }: ProductPageProps) {
+  const ctaAccent = buttonAccent ?? accent;
   return (
     <Layout>
       {/* Hero Section */}
@@ -53,7 +57,7 @@ export default function ProductPage({
               className="flex justify-center"
             >
               <div className={`${accent} w-64 h-80 md:w-80 md:h-96 rounded-2xl flex items-center justify-center shadow-2xl`}>
-                <div className="text-center text-white">
+                <div className={`text-center ${coverTextColor}`}>
                   <BookOpen className="w-20 h-20 mx-auto mb-4 opacity-80" />
                   <p className="text-lg font-medium px-8 opacity-90">{title}</p>
                 </div>
@@ -67,7 +71,7 @@ export default function ProductPage({
               transition={{ duration: 0.8 }}
             >
               {discount && (
-                <Badge className={`${accent} text-white mb-4`}>
+                <Badge className={`${ctaAccent} text-white mb-4`}>
                   {discount}
                 </Badge>
               )}
@@ -91,7 +95,7 @@ export default function ProductPage({
 
               <Button
                 size="lg"
-                className={`${accent} hover:opacity-90 text-white px-8 mb-8`}
+                className={`${ctaAccent} hover:opacity-90 text-white px-8 mb-8`}
               >
                 <ShoppingCart className="mr-2 w-5 h-5" />
                 Ajouter au panier
@@ -100,6 +104,16 @@ export default function ProductPage({
               <p className="text-sm text-brand-text/60">
                 Téléchargement instantané • Format PDF • Paiement sécurisé Stripe
               </p>
+
+              <div className="mt-6 flex items-start gap-3 rounded-xl bg-brand-card/60 p-4">
+                <Info className="w-5 h-5 text-brand-text/60 mt-0.5 flex-shrink-0" />
+                <p className="text-sm text-brand-text/70 leading-relaxed">
+                  Ce guide est un outil d'accompagnement et d'information. Il ne
+                  remplace en aucun cas un avis médical professionnel. En cas de
+                  doute ou de problème de santé, consulte ta sage-femme, ton
+                  médecin ou un professionnel de santé qualifié.
+                </p>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -202,7 +216,7 @@ export default function ProductPage({
             </p>
             <Button
               size="lg"
-              className={`${accent} hover:opacity-90 text-white px-8 mb-4`}
+              className={`${ctaAccent} hover:opacity-90 text-white px-8 mb-4`}
             >
               <ShoppingCart className="mr-2 w-5 h-5" />
               Ajouter au panier

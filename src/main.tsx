@@ -11,6 +11,16 @@ import "./index.css";
 
 // Lazy load route components for better code splitting
 const Landing = lazy(() => import("./pages/Landing.tsx"));
+const Guides = lazy(() => import("./pages/Guides.tsx"));
+const ListeNaissance = lazy(() => import("./pages/guides/ListeNaissance.tsx"));
+const CorpsApres = lazy(() => import("./pages/guides/CorpsApres.tsx"));
+const ChargeMentale = lazy(() => import("./pages/guides/ChargeMentale.tsx"));
+const Bundle = lazy(() => import("./pages/guides/Bundle.tsx"));
+const FAQ = lazy(() => import("./pages/FAQ.tsx"));
+const MentionsLegales = lazy(() => import("./pages/MentionsLegales.tsx"));
+const Confidentialite = lazy(() => import("./pages/Confidentialite.tsx"));
+const CGV = lazy(() => import("./pages/CGV.tsx"));
+const Remboursement = lazy(() => import("./pages/Remboursement.tsx"));
 const AuthPage = lazy(() => import("./pages/Auth.tsx"));
 const Dashboard = lazy(() => import("./pages/Dashboard.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
@@ -18,8 +28,10 @@ const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 // Simple loading fallback for route transitions
 function RouteLoading() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="animate-pulse text-muted-foreground">Loading...</div>
+    <div className="min-h-screen flex items-center justify-center bg-brand-cream">
+      <div className="animate-pulse text-brand-text/60">
+        Chargement...
+      </div>
     </div>
   );
 }
@@ -61,14 +73,14 @@ class RootErrorBoundary extends React.Component<
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-background text-foreground p-6">
+        <div className="min-h-screen flex items-center justify-center bg-brand-cream text-brand-text p-6">
           <div className="max-w-lg text-center">
-            <p className="text-sm font-semibold">Preview runtime error</p>
-            <p className="mt-2 text-xs text-muted-foreground break-words">
+            <p className="text-sm font-semibold">Erreur d'affichage</p>
+            <p className="mt-2 text-xs text-brand-text/60 break-words">
               {this.state.message}
             </p>
             {this.state.stack && (
-              <pre className="mt-3 text-left text-[10px] leading-4 text-muted-foreground/80 max-h-40 overflow-auto rounded border border-border/60 p-2">
+              <pre className="mt-3 text-left text-[10px] leading-4 text-brand-text/60 max-h-40 overflow-auto rounded border border-brand-card p-2">
                 {this.state.stack}
               </pre>
             )}
@@ -81,8 +93,6 @@ class RootErrorBoundary extends React.Component<
 }
 
 const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
-
-
 
 function RouteSyncer() {
   const location = useLocation();
@@ -107,7 +117,6 @@ function RouteSyncer() {
   return null;
 }
 
-
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <RootErrorBoundary>
@@ -120,6 +129,16 @@ createRoot(document.getElementById("root")!).render(
           <Suspense fallback={<RouteLoading />}>
             <Routes>
               <Route path="/" element={<Landing />} />
+              <Route path="/guides" element={<Guides />} />
+              <Route path="/guides/liste-naissance" element={<ListeNaissance />} />
+              <Route path="/guides/corps-apres" element={<CorpsApres />} />
+              <Route path="/guides/charge-mentale" element={<ChargeMentale />} />
+              <Route path="/guides/bundle" element={<Bundle />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/mentions-legales" element={<MentionsLegales />} />
+              <Route path="/confidentialite" element={<Confidentialite />} />
+              <Route path="/cgv" element={<CGV />} />
+              <Route path="/remboursement" element={<Remboursement />} />
               <Route
                 path="/auth"
                 element={<AuthPage redirectAfterAuth="/dashboard" />}

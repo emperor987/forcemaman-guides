@@ -20,7 +20,7 @@ export default function ListeNaissance() {
         "Les couches et l'hygiène",
         "Les vêtements : combien, lesquels, pour quand ?",
         "Le matériel de transport",
-        "Les accesses utiles (mais pas indispensables)",
+        "Les accessoires utiles (mais pas indispensables)",
         "La checklist complète par semaine",
         "Conseils pour une liste de naissance sereine",
       ]}

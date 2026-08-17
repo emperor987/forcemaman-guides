@@ -15,10 +15,10 @@ import {
 } from "@/components/ui/input-otp";
 
 import { useAuth } from "@/hooks/use-auth";
-import logo from "@/assets/logo.svg";
 import { ArrowRight, Loader2, Mail, UserX } from "lucide-react";
 import { Suspense, useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router";
+import { Link } from "react-router";
 
 interface AuthProps {
   redirectAfterAuth?: string;
@@ -52,6 +52,7 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
       navigate(redirect);
     }
   }, [authLoading, isAuthenticated, navigate, redirect]);
+
   const handleEmailSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsLoading(true);
@@ -66,7 +67,7 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
       setError(
         error instanceof Error
           ? error.message
-          : "Failed to send verification code. Please try again.",
+          : "L'envoi du code de vérification a échoué. Réessaie.",
       );
       setIsLoading(false);
     }
@@ -80,13 +81,11 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
       const formData = new FormData(event.currentTarget);
       await signIn("email-otp", formData);
 
-      console.log("signed in");
-
       navigate(redirect);
     } catch (error) {
       console.error("OTP verification error:", error);
 
-      setError("The verification code you entered is incorrect.");
+      setError("Le code de vérification saisi est incorrect.");
       setIsLoading(false);
 
       setOtp("");
@@ -97,55 +96,66 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
     setIsLoading(true);
     setError(null);
     try {
-      console.log("Attempting anonymous sign in...");
       await signIn("anonymous");
-      console.log("Anonymous sign in successful");
       navigate(redirect);
     } catch (error) {
       console.error("Guest login error:", error);
-      console.error("Error details:", JSON.stringify(error, null, 2));
-      setError(`Failed to sign in as guest: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      setError(
+        `Connexion impossible : ${error instanceof Error ? error.message : "erreur inconnue"}`,
+      );
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-brand-cream">
+      {/* Header */}
+      <header className="sticky top-0 z-50 bg-brand-cream/95 backdrop-blur-sm border-b border-brand-card">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <Link to="/" className="flex items-center gap-2">
+              <div className="w-10 h-10 rounded-full bg-brand-terracotta flex items-center justify-center">
+                <span className="text-white font-bold text-lg">FM</span>
+              </div>
+              <span className="font-semibold text-xl text-brand-text hidden sm:block">
+                ForceMaman
+              </span>
+            </Link>
+            <Button variant="ghost" asChild className="text-brand-text">
+              <Link to="/guides">Retour à la boutique</Link>
+            </Button>
+          </div>
+        </div>
+      </header>
 
-      
       {/* Auth Content */}
-      <div className="flex-1 flex items-center justify-center">
-        <div className="flex items-center justify-center h-full flex-col">
-        <Card className="min-w-[350px] pb-0 border shadow-md">
+      <div className="flex-1 flex items-center justify-center px-4 py-16">
+        <Card className="min-w-[350px] max-w-md w-full pb-0 border-brand-card shadow-lg">
           {step === "signIn" ? (
             <>
               <CardHeader className="text-center">
-              <div className="flex justify-center">
-                    <img
-                      src={logo}
-                      alt="Lock Icon"
-                      width={64}
-                      height={64}
-                      className="rounded-lg mb-4 mt-4 cursor-pointer"
-                      onClick={() => navigate("/")}
-                    />
+                <div className="flex justify-center mb-2">
+                  <div className="w-16 h-16 rounded-full bg-brand-terracotta/10 flex items-center justify-center">
+                    <span className="text-2xl">🤍</span>
                   </div>
-                <CardTitle className="text-xl">Get Started</CardTitle>
-                <CardDescription>
-                  Enter your email to log in or sign up
+                </div>
+                <CardTitle className="text-xl text-brand-text">
+                  Bon retour parmi nous
+                </CardTitle>
+                <CardDescription className="text-brand-text/60">
+                  Connecte-toi pour retrouver tes guides et tes achats
                 </CardDescription>
               </CardHeader>
               <form onSubmit={handleEmailSubmit}>
                 <CardContent>
-                  
                   <div className="relative flex items-center gap-2">
                     <div className="relative flex-1">
-                      <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                      <Mail className="absolute left-3 top-3 h-4 w-4 text-brand-text/40" />
                       <Input
                         name="email"
-                        placeholder="name@example.com"
+                        placeholder="ton@email.fr"
                         type="email"
-                        className="pl-9"
+                        className="pl-9 border-brand-card"
                         disabled={isLoading}
                         required
                       />
@@ -154,6 +164,7 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                       type="submit"
                       variant="outline"
                       size="icon"
+                      className="border-brand-card"
                       disabled={isLoading}
                     >
                       {isLoading ? (
@@ -166,28 +177,28 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                   {error && (
                     <p className="mt-2 text-sm text-red-500">{error}</p>
                   )}
-                  
+
                   <div className="mt-4">
                     <div className="relative">
                       <div className="absolute inset-0 flex items-center">
-                        <span className="w-full border-t" />
+                        <span className="w-full border-t border-brand-card" />
                       </div>
                       <div className="relative flex justify-center text-xs uppercase">
-                        <span className="bg-background px-2 text-muted-foreground">
-                          Or
+                        <span className="bg-card px-2 text-brand-text/40">
+                          ou
                         </span>
                       </div>
                     </div>
-                    
+
                     <Button
                       type="button"
                       variant="outline"
-                      className="w-full mt-4"
+                      className="w-full mt-4 border-brand-card text-brand-text"
                       onClick={handleGuestLogin}
                       disabled={isLoading}
                     >
                       <UserX className="mr-2 h-4 w-4" />
-                      Continue as Guest
+                      Continuer en tant qu'invitée
                     </Button>
                   </div>
                 </CardContent>
@@ -196,9 +207,11 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
           ) : (
             <>
               <CardHeader className="text-center mt-4">
-                <CardTitle>Check your email</CardTitle>
-                <CardDescription>
-                  We've sent a code to {step.email}
+                <CardTitle className="text-brand-text">
+                  Vérifie ta boîte mail
+                </CardTitle>
+                <CardDescription className="text-brand-text/60">
+                  Nous avons envoyé un code à {step.email}
                 </CardDescription>
               </CardHeader>
               <form onSubmit={handleOtpSubmit}>
@@ -214,7 +227,6 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                       disabled={isLoading}
                       onKeyDown={(e) => {
                         if (e.key === "Enter" && otp.length === 6 && !isLoading) {
-                          // Find the closest form and submit it
                           const form = (e.target as HTMLElement).closest("form");
                           if (form) {
                             form.requestSubmit();
@@ -234,31 +246,31 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                       {error}
                     </p>
                   )}
-                  <p className="text-sm text-muted-foreground text-center mt-4">
-                    Didn't receive a code?{" "}
+                  <p className="text-sm text-brand-text/60 text-center mt-4">
+                    Tu n'as pas reçu de code ?{" "}
                     <Button
                       variant="link"
-                      className="p-0 h-auto"
+                      className="p-0 h-auto text-brand-terracotta"
                       onClick={() => setStep("signIn")}
                     >
-                      Try again
+                      Réessaie
                     </Button>
                   </p>
                 </CardContent>
                 <CardFooter className="flex-col gap-2">
                   <Button
                     type="submit"
-                    className="w-full"
+                    className="w-full bg-brand-terracotta hover:bg-brand-terracotta/90 text-white"
                     disabled={isLoading || otp.length !== 6}
                   >
                     {isLoading ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Verifying...
+                        Vérification...
                       </>
                     ) : (
                       <>
-                        Verify code
+                        Vérifier le code
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </>
                     )}
@@ -268,28 +280,19 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
                     variant="ghost"
                     onClick={() => setStep("signIn")}
                     disabled={isLoading}
-                    className="w-full"
+                    className="w-full text-brand-text/60"
                   >
-                    Use different email
+                    Utiliser une autre adresse
                   </Button>
                 </CardFooter>
               </form>
             </>
           )}
 
-          <div className="py-4 px-6 text-xs text-center text-muted-foreground bg-muted border-t rounded-b-lg">
-            Secured by{" "}
-            <a
-              href="https://freebuff.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-primary transition-colors"
-            >
-              freebuff.com
-            </a>
+          <div className="py-4 px-6 text-xs text-center text-brand-text/50 bg-brand-cream border-t border-brand-card rounded-b-lg">
+            Espace personnel ForceMaman
           </div>
         </Card>
-        </div>
       </div>
     </div>
   );
