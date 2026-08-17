@@ -1,4 +1,8 @@
 import ProductPage from "@/components/ProductPage";
+import cover from "@/assets/covers/liste-naissance.svg";
+import preview1 from "@/assets/previews/liste-naissance-1.svg";
+import preview2 from "@/assets/previews/liste-naissance-2.svg";
+import preview3 from "@/assets/previews/liste-naissance-3.svg";
 
 export default function ListeNaissance() {
   return (
@@ -8,6 +12,8 @@ export default function ListeNaissance() {
       price="7,90€"
       accent="bg-brand-terracotta"
       accentText="text-brand-terracotta"
+      cover={cover}
+      previewImages={[preview1, preview2, preview3]}
       description={[
         "Tu es enceinte et tu te demandes vraiment de quoi tu auras besoin ? La liste de naissance peut sembler interminable, et il est facile de s'y perdre entre les conseils bien intentionnés et les listes complètes qui finissent par te stresser plus qu'autre chose.",
         "Ce guide a été pensé pour t'accompagner sereinement dans cette préparation. En tant que sage-femme, j'ai vu des centaines de mamans préparer l'arrivée de leur bébé. J'ai identifié ce qui est vraiment essentiel, ce qui est utile mais pas prioritaire, et ce qu'on peut laisser de côté sans regret.",

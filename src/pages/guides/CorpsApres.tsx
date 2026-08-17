@@ -1,4 +1,8 @@
 import ProductPage from "@/components/ProductPage";
+import cover from "@/assets/covers/corps-apres.svg";
+import preview1 from "@/assets/previews/corps-apres-1.svg";
+import preview2 from "@/assets/previews/corps-apres-2.svg";
+import preview3 from "@/assets/previews/corps-apres-3.svg";
 
 export default function CorpsApres() {
   return (
@@ -8,6 +12,8 @@ export default function CorpsApres() {
       price="9,90€"
       accent="bg-brand-sage"
       accentText="text-brand-sage"
+      cover={cover}
+      previewImages={[preview1, preview2, preview3]}
       description={[
         "Ton corps vient de vivre quelque chose d'extraordinaire. Et maintenant, tu te demandes : est-ce que tout reviendra comme avant ? Cette question, je l'ai entendue des centaines de fois en tant que sage-femme, et je me la suis posée moi-même après la naissance de ma fille.",
         "Ce guide n'est pas un programme de remise en forme. C'est un guide bienveillant pour comprendre ce qui se passe dans ton corps, savoir ce qui est normal, et apprendre à l'écouter. Tu y trouveras des informations sur la récupération physique, des séquences douces pour retrouver ton périnée, et surtout, des réassurances sur ce qui est temporaire et ce qui nécessite un avis professionnel.",

@@ -1,4 +1,8 @@
 import ProductPage from "@/components/ProductPage";
+import cover from "@/assets/covers/charge-mentale.svg";
+import preview1 from "@/assets/previews/charge-mentale-1.svg";
+import preview2 from "@/assets/previews/charge-mentale-2.svg";
+import preview3 from "@/assets/previews/charge-mentale-3.svg";
 
 export default function ChargeMentale() {
   return (
@@ -8,6 +12,8 @@ export default function ChargeMentale() {
       price="11,90€"
       accent="bg-brand-mauve"
       accentText="text-brand-mauve"
+      cover={cover}
+      previewImages={[preview1, preview2, preview3]}
       description={[
         "Les premières semaines après l'arrivée de bébé sont un tourbillon d'émotions. Joie immense, fatigue extrême, doutes paralysants, pleurs inexpliqués... tout peut coexister en l'espace de quelques heures. C'est normal. C'est même humain.",
         "Ce guide est là pour t'accompagner dans cette période intense. Tu y trouveras des outils concrets pour gérer la charge mentale, des conseils pour communiquer avec ton/ta partenaire, et des rituels d'autosoins qui ne demandent pas 30 minutes de libre (parce qu'on sait que c'est impossible).",

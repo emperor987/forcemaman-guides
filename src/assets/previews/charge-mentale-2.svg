@@ -1,0 +1,18 @@
+<svg width="1000" height="1290" viewBox="0 0 1000 1290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Introduction">
+  <rect width="1000" height="1290" fill="#FAF6F1"/>
+  <rect x="80" y="104" width="840" height="1090" rx="12" fill="rgba(92,74,58,0.14)"/>
+  <rect x="60" y="70" width="840" height="1090" rx="12" fill="#FFFFFF"/>
+  <rect x="60" y="70" width="840" height="14" rx="7" fill="#A78BA3"/>
+  <text x="480" y="240" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="30" letter-spacing="12" fill="#A78BA3">FORCEMAMAN</text>
+  <text x="480" y="390" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="72" fill="#5C4A3A">Introduction</text>
+  <line x1="380" y1="440" x2="580" y2="440" stroke="rgba(92,74,58,0.35)" stroke-width="1.5"/>
+  <rect x="200" y="520" width="600" height="18" rx="9" fill="#E8DFD4"/>
+  <rect x="200" y="566" width="560" height="18" rx="9" fill="#E8DFD4"/>
+  <rect x="200" y="612" width="620" height="18" rx="9" fill="#E8DFD4"/>
+  <rect x="200" y="658" width="520" height="18" rx="9" fill="#E8DFD4"/>
+  <rect x="200" y="760" width="600" height="18" rx="9" fill="#E8DFD4"/>
+  <rect x="200" y="806" width="560" height="18" rx="9" fill="#E8DFD4"/>
+  <rect x="200" y="852" width="640" height="18" rx="9" fill="#E8DFD4"/>
+  <rect x="200" y="898" width="540" height="18" rx="9" fill="#E8DFD4"/>
+  <text x="480" y="1060" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="26" fill="rgba(92,74,58,0.45)">2</text>
+</svg>

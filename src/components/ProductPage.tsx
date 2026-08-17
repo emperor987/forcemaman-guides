@@ -1,12 +1,10 @@
 import { Link } from "react-router";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
-import EbookCover from "@/components/EbookCover";
 import { cn } from "@/lib/utils";
 import {
   ArrowRight,
   CheckCircle,
-  FileText,
   Info,
   Lock,
 } from "lucide-react";
@@ -22,9 +20,9 @@ interface ProductPageProps {
   description: string[];
   chapters: string[];
   previewPages: string[];
+  previewImages: string[];
+  cover: string;
   type?: "ebook" | "bundle";
-  coverTextColor?: string;
-  buttonAccent?: string;
 }
 
 const DARK_BUTTON_STYLE: React.CSSProperties = {
@@ -50,8 +48,9 @@ export default function ProductPage({
   description,
   chapters,
   previewPages,
+  previewImages,
+  cover,
   type = "ebook",
-  coverTextColor = "text-white",
 }: ProductPageProps) {
   return (
     <Layout>
@@ -65,14 +64,21 @@ export default function ProductPage({
                 className="absolute -inset-5 rounded-[2rem] bg-[color-mix(in_oklab,var(--accent)_22%,transparent)] -rotate-2"
                 aria-hidden="true"
               />
-              <EbookCover
-                title={title}
-                accent={accent}
-                textClass={coverTextColor}
-                className="relative w-56 sm:w-72 lg:w-80 aspect-[3/4]"
-                iconSize="h-14 w-14 sm:h-16 sm:w-16"
-                titleSize="text-base sm:text-lg lg:text-xl"
-              />
+              <div
+                className="relative w-56 overflow-hidden rounded-2xl sm:w-72 lg:w-80"
+                style={{
+                  boxShadow:
+                    "0 40px 80px -30px rgba(35,33,32,0.5), inset 0 1px 0 rgba(255,255,255,0.3)",
+                }}
+              >
+                <img
+                  src={cover}
+                  alt={title}
+                  className="aspect-[3/4] h-auto w-full object-cover"
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
             </div>
           </Reveal>
 
@@ -199,24 +205,23 @@ export default function ProductPage({
           <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-3">
             {previewPages.map((page, index) => (
               <Reveal key={index} delay={index * 70}>
-                <div
-                  className="h-full rounded-3xl border border-foreground/10 bg-background/70 p-5"
+                <figure
+                  className="h-full rounded-3xl border border-foreground/10 bg-background/70 p-4"
                   style={CARD_STYLE}
                 >
-                  <div
-                    className={cn(
-                      "flex min-h-[180px] items-center justify-center rounded-2xl border border-dashed border-foreground/15 p-8",
-                      accent.includes("bg-brand") ? `${accent}/10` : "",
-                    )}
-                  >
-                    <div className="text-center">
-                      <FileText
-                        className={cn("mx-auto mb-2 size-10 opacity-50", accentText)}
-                      />
-                      <p className="text-sm text-foreground/50">{page}</p>
-                    </div>
+                  <div className="overflow-hidden rounded-2xl">
+                    <img
+                      src={previewImages[index]}
+                      alt={page}
+                      loading="lazy"
+                      decoding="async"
+                      className="aspect-[1000/1290] w-full object-cover"
+                    />
                   </div>
-                </div>
+                  <figcaption className="mt-4 text-center text-sm text-foreground/55">
+                    {page}
+                  </figcaption>
+                </figure>
               </Reveal>
             ))}
           </div>

@@ -29,10 +29,10 @@ const typeLabel = (item: LibraryItem) => {
 const CARD_CLASS =
   "group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border/60 bg-[color-mix(in_oklab,var(--background)_60%,white)] px-7 pb-7 pt-8 text-left transition-[transform,box-shadow,border-color] duration-500 ease-out hover:-translate-y-[2px] hover:border-foreground/20 hover:shadow-[0_24px_60px_-36px_rgba(35,33,32,0.22)] sm:px-8 sm:pb-8 sm:pt-9";
 
-function ResourceCard({ item }: { item: LibraryItem }) {
+function ResourceCard({ item, index }: { item: LibraryItem; index: number }) {
   const meta = badgeMeta[item.badge];
   return (
-    <Reveal delay={0}>
+    <Reveal delay={(index % 3) * 60}>
       <Link to={item.href} className={CARD_CLASS}>
         <span
           aria-hidden="true"
@@ -196,8 +196,8 @@ export default function Guides() {
           </Reveal>
           {popular.length > 0 ? (
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {popular.map((item) => (
-                <ResourceCard key={item.id} item={item} />
+              {popular.map((item, i) => (
+                <ResourceCard key={item.id} item={item} index={i} />
               ))}
             </div>
           ) : (
@@ -223,8 +223,8 @@ export default function Guides() {
             </header>
           </Reveal>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {guides.map((item) => (
-              <ResourceCard key={item.id} item={item} />
+            {guides.map((item, i) => (
+              <ResourceCard key={item.id} item={item} index={i} />
             ))}
           </div>
         </section>
@@ -245,8 +245,8 @@ export default function Guides() {
             </header>
           </Reveal>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {freebies.map((item) => (
-              <ResourceCard key={item.id} item={item} />
+            {freebies.map((item, i) => (
+              <ResourceCard key={item.id} item={item} index={i} />
             ))}
           </div>
         </section>

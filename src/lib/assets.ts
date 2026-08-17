@@ -8,7 +8,7 @@ import blog3 from "@/assets/ref/blog-3.jpg";
 import blog4 from "@/assets/ref/blog-4.jpg";
 import blog5 from "@/assets/ref/blog-5.jpg";
 import blog6 from "@/assets/ref/blog-6.jpg";
-import blog5Produits from "@/assets/ref/blog-5-produits-hero.jpg";
+import blog5Produits from "@/assets/ref/blog-5-produits.svg";
 import chariot from "@/assets/ref/chariot.jpg";
 import carnet from "@/assets/ref/carnet.jpg";
 import organiseur from "@/assets/ref/organiseur.jpg";
