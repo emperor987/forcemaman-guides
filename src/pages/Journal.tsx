@@ -1,9 +1,10 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import { journalArticles, journalCategories } from "@/lib/journal";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Search } from "lucide-react";
+import { ArrowRight, Search, Sparkles } from "lucide-react";
 
 const piliers = [
   {
@@ -54,7 +55,7 @@ export default function Journal() {
                 Lectures lentes <span className="italic">pour mères pressées.</span>
               </h1>
               <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
-                Des essais, des protocoles et des rituels — toujours réalistes,
+                Des essais, des protocoles et des rituels, toujours réalistes,
                 jamais culpabilisants.
               </p>
               <div className="mx-auto mt-8 max-w-md">
@@ -150,7 +151,7 @@ export default function Journal() {
                     </div>
                   </div>
                   <div className="flex flex-col justify-center lg:col-span-5">
-                    <p className="eyebrow">À la une — {featured.category}</p>
+                    <p className="eyebrow">À la une · {featured.category}</p>
                     <h2 className="mt-5 font-serif text-4xl leading-[1.05] text-foreground sm:text-5xl lg:text-6xl">
                       {featured.title}
                     </h2>
@@ -204,6 +205,41 @@ export default function Journal() {
                 ))}
               </div>
             )}
+          </div>
+        </section>
+
+        {/* ============ GUIDE GRATUIT CTA ============ */}
+        <section className="border-t border-border/60">
+          <div className="mx-auto max-w-6xl px-6 py-20 lg:px-12">
+            <Reveal>
+              <section className="relative overflow-hidden rounded-3xl border border-border/50 bg-gradient-to-br from-[color-mix(in_oklab,var(--accent)_55%,var(--background))] via-[color-mix(in_oklab,var(--accent)_25%,var(--background))] to-background p-8 shadow-[0_40px_100px_-60px_rgba(35,33,32,0.4)] sm:p-14">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -right-16 -top-16 size-64 rounded-full bg-foreground/5 blur-3xl"
+                />
+                <div className="relative grid items-center gap-8 sm:grid-cols-[1fr_auto]">
+                  <div>
+                    <div className="inline-flex items-center gap-2 rounded-full border border-foreground/15 bg-background/60 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-foreground/80">
+                      <Sparkles className="size-3" />
+                      Guide gratuit
+                    </div>
+                    <h2 className="mt-5 font-serif text-3xl leading-[1.1] text-foreground sm:text-4xl lg:text-[44px]">
+                      Recevez gratuitement : les 7 systèmes qui simplifient
+                      vraiment la vie avec un bébé
+                    </h2>
+                    <p className="mt-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+                      PDF · 7 systèmes · à lire en 12 minutes
+                    </p>
+                  </div>
+                  <Link
+                    to="/guide-gratuit"
+                    className="inline-flex h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-primary px-8 py-2 text-xs font-medium uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-primary/90 sm:w-auto"
+                  >
+                    Télécharger le guide gratuit
+                  </Link>
+                </div>
+              </section>
+            </Reveal>
           </div>
         </section>
       </div>

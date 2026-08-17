@@ -74,6 +74,16 @@ export default function Footer() {
                   CGV
                 </Link>
               </li>
+              <li>
+                <Link to="/remboursement" className="text-foreground/75 hover:text-foreground">
+                  Remboursements
+                </Link>
+              </li>
+              <li>
+                <Link to="/faq" className="text-foreground/75 hover:text-foreground">
+                  FAQ
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -95,7 +105,7 @@ export default function Footer() {
             </a>
           </div>
           <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
-            © {new Date().getFullYear()} — Tous droits réservés
+            © {new Date().getFullYear()} · Tous droits réservés
           </p>
         </div>
       </div>

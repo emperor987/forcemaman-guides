@@ -305,7 +305,7 @@ export default function Landing() {
               <p>
                 Après la naissance de mon premier bébé, j'ai compris une chose
                 : personne ne nous parle vraiment de la charge mentale qui
-                arrive avec lui. Pas seulement les couches et les biberons —
+                arrive avec lui. Pas seulement les couches et les biberons,
                 mais ce flux constant de petites décisions, de listes invisibles
                 et de choses à ne pas oublier.
               </p>

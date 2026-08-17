@@ -32,7 +32,7 @@ export default function Contact() {
                     Message envoyé.
                   </p>
                   <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                    Merci pour votre mot — je vous réponds sous 48 heures
+                    Merci pour votre mot, je vous réponds sous 48 heures
                     ouvrées.
                   </p>
                 </div>

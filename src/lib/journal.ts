@@ -35,7 +35,7 @@ export const journalArticles: JournalArticle[] = [
     featured: true,
     body: [
       "La charge mentale, ce n'est pas le nombre de tâches : c'est le nombre de choses que tu portes en permanence dans ta tête. Rendez-vous, lessive, carnet de santé, rappel de la crèche… Tout y passe, même la nuit.",
-      "La bonne nouvelle : ces sept gestes prennent moins de dix minutes par jour et déplacent le problème de ta tête vers des systèmes simples. Un carnet, trois bacs, une zone départ près de la porte — et le reste peut attendre.",
+      "La bonne nouvelle : ces sept gestes prennent moins de dix minutes par jour et déplacent le problème de ta tête vers des systèmes simples. Un carnet, trois bacs, une zone départ près de la porte, et le reste peut attendre.",
     ],
   },
   {
@@ -63,7 +63,7 @@ export const journalArticles: JournalArticle[] = [
     image: images.blog4,
     body: [
       "Le matin lent des magazines suppose une maison calme et un bébé qui dort. Dans la vraie vie, il faut une version courte, tenable, et sans culpabilité.",
-      "Trois minutes suffisent : ouvrir la fenêtre, boire un verre d'eau, poser une intention. Le reste de la journée peut commencer — vous avez déjà pris soin de vous.",
+      "Trois minutes suffisent : ouvrir la fenêtre, boire un verre d'eau, poser une intention. Le reste de la journée peut commencer, vous avez déjà pris soin de vous.",
     ],
   },
   {
@@ -77,7 +77,7 @@ export const journalArticles: JournalArticle[] = [
     image: images.blog3,
     body: [
       "Le batch cooking ne doit pas devenir une performance de plus. Il doit tenir avec un bébé dans les bras, une nuit hachée et une énergie aléatoire.",
-      "Trois bases neutres — une céréale, une légumineuse, un plat mijoté — suffisent à composer sept repas. Quarante minutes le dimanche, et la semaine respire.",
+      "Trois bases neutres (une céréale, une légumineuse, un plat mijoté) suffisent à composer sept repas. Quarante minutes le dimanche, et la semaine respire.",
     ],
   },
   {
@@ -105,7 +105,7 @@ export const journalArticles: JournalArticle[] = [
     image: images.blog5,
     body: [
       "On prépare le jour de l'accouchement. Personne ne prépare le mois qui suit : les nuits hachées, le corps qui se cherche, l'identité qui vacille.",
-      "Ce premier mois n'est pas une course. C'est une traversée — et la seule organisation qui tient est celle qui accepte d'être imparfaite.",
+      "Ce premier mois n'est pas une course. C'est une traversée, et la seule organisation qui tient est celle qui accepte d'être imparfaite.",
     ],
   },
   {
@@ -124,7 +124,7 @@ export const journalArticles: JournalArticle[] = [
   },
   {
     id: "journal-decharge",
-    title: "Tenir un journal de décharge — cinq minutes le soir",
+    title: "Tenir un journal de décharge, cinq minutes le soir",
     category: "Charge mentale",
     date: "Mars 2026",
     readTime: "6 min",

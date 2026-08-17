@@ -54,7 +54,7 @@ export default function Ressources() {
               </h1>
               <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
                 Ici vivent les outils, objets et lectures qui m'accompagnent
-                vraiment. Cette bibliothèque s'enrichit doucement — sans bruit,
+                vraiment. Cette bibliothèque s'enrichit doucement, sans bruit,
                 sans hâte.
               </p>
             </Reveal>
@@ -123,7 +123,7 @@ export default function Ressources() {
                         <ArrowRight className="size-3" />
                       </a>
                       <p className="mt-3 text-center text-[11px] text-muted-foreground">
-                        Lien affilié — sans coût supplémentaire pour vous.
+                        Lien affilié, sans coût supplémentaire pour vous.
                       </p>
                     </div>
                   </article>
