@@ -22,40 +22,40 @@ const reassurance = [
 const problemCards = [
   {
     number: "01",
-    text: "Vous n'avez pas besoin d'une nouvelle routine parfaite.",
+    text: "Tu n'as pas besoin d'une liste interminable ni d'acheter tout le magasin.",
   },
   {
     number: "02",
-    text: "Vous avez besoin de systèmes assez simples pour tenir les jours sans sommeil.",
+    text: "Tu as besoin d'essentiels simples, qui tiennent même les jours sans sommeil.",
   },
   {
     number: "03",
-    text: "Vous pouvez alléger votre charge mentale sans transformer toute votre maison.",
+    text: "Tu peux préparer l'arrivée de bébé sans te laisser submerger par les conseils.",
   },
 ];
 
 const forYouItems = [
-  "Vous avez constamment l'impression de devoir penser à tout.",
-  "Vous oubliez des détails importants parce que votre cerveau est déjà plein.",
-  "Vous voulez des solutions concrètes, pas des injonctions à faire plus.",
-  "Vous cherchez une organisation réaliste avec un bébé, un quotidien mouvant et peu d'énergie.",
+  "Tu te demandes de quoi tu as vraiment besoin pour l'arrivée de bébé.",
+  "Tu as peur d'oublier un élément essentiel au milieu de mille conseils.",
+  "Tu veux des réponses concrètes, pas une liste de plus qui stresse.",
+  "Tu cherches une préparation réaliste, adaptée à ton quotidien et à ton énergie.",
 ];
 
 const testimonials = [
   {
     quote:
-      "J'ai arrêté de me sentir responsable de tout retenir. Le système du cerveau externe m'a vraiment apaisée.",
-    name: "Camille, maman d'un bébé de 4 mois",
+      "J'ai enfin une liste claire, pensée par une sage-femme. Je prépare l'arrivée de bébé sereinement, sans tout retenir dans ma tête.",
+    name: "Camille, future maman",
   },
   {
     quote:
-      "Ce n'est pas une méthode parfaite de plus. C'est doux, concret, et faisable même quand on est épuisée.",
-    name: "Léa, jeune maman",
+      "Enfin un guide qui ne me dit pas quoi acheter en plus. C'est doux, concret, et parfait pour une future maman fatiguée.",
+    name: "Léa, enceinte de 7 mois",
   },
   {
     quote:
-      "J'ai mis en place deux systèmes seulement, et la maison me semble déjà moins lourde à porter.",
-    name: "Anaïs, maman en postpartum",
+      "Je me sens prête, sans stress. Les essentiels sont simples à rassembler, même en fin de grossesse.",
+    name: "Anaïs, future maman",
   },
 ];
 
@@ -66,14 +66,14 @@ const faqItems = [
       "Oui. Les 7 systèmes sont offerts, sans condition. Si tu décides un jour de passer à un guide complet, tu pourras, mais rien n'est obligatoire.",
   },
   {
-    question: "Est-ce adapté si mon bébé vient de naître ?",
+    question: "Est-ce adapté à mon avancement de grossesse ?",
     answer:
-      "Oui, le guide est pensé pour les premières semaines comme pour les mois qui suivent. Chaque système s'installe en quelques minutes, même avec un nouveau-né dans les bras.",
+      "Oui. La liste est organisée par âge gestationnel : chaque section te dit quoi préparer à quel moment, de la fin du deuxième trimestre jusqu'au jour J.",
   },
   {
     question: "Combien de temps faut-il pour commencer ?",
     answer:
-      "Tu peux poser ton premier système en moins de dix minutes après avoir reçu le guide. Aucune préparation n'est nécessaire.",
+      "Tu peux commencer à cocher tes premiers essentiels en moins de dix minutes après avoir reçu le guide. Aucune préparation n'est nécessaire.",
   },
   {
     question: "Vais-je recevoir trop d'emails ?",
@@ -86,9 +86,9 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
-    name: "Le Guide Gratuit ForceMaman · 7 Systèmes",
+    name: "La Liste de Naissance Essentielle · Guide Gratuit ForceMaman",
     description:
-      "Sept systèmes concrets pour simplifier la vie avec un bébé et alléger la charge mentale des jeunes mamans.",
+      "Sept essentiels pour préparer l'arrivée de bébé, pensés par une sage-femme. Un guide gratuit, clair et apaisant pour alléger la préparation.",
     url: "https://forcemaman.fr/guide-gratuit",
     inLanguage: "fr-FR",
     isAccessibleForFree: true,
@@ -108,8 +108,8 @@ export default function GuideGratuit() {
   return (
     <Layout>
       <Seo
-        title="Guide Gratuit · 7 systèmes pour alléger la charge mentale · ForceMaman"
-        description="Recevez gratuitement les 7 systèmes qui simplifient vraiment la vie avec un bébé : cerveau externe, 3 bacs, repas secours, panier tétée, zone départ."
+        title="Guide Gratuit · Ma Liste de Naissance Essentielle · ForceMaman"
+        description="Reçois gratuitement la Liste de Naissance Essentielle : les 7 essentiels pour préparer l'arrivée de bébé, pensés par une sage-femme. Sans stress ni achats superflus."
         path="/guide-gratuit"
         jsonLd={jsonLd}
       />
@@ -120,15 +120,14 @@ export default function GuideGratuit() {
             <Reveal>
               <p className="eyebrow">Guide gratuit</p>
               <h1 className="mx-auto mt-6 max-w-3xl font-serif text-[2.85rem] leading-[0.98] text-foreground sm:text-6xl lg:mx-0 lg:text-[4.65rem]">
-                7 systèmes qui simplifient <span className="italic">vraiment</span> la vie avec
-                un bébé.
+                Les 7 essentiels qui simplifient <span className="italic">vraiment</span>{" "}
+                l'arrivée de bébé.
               </h1>
             </Reveal>
             <Reveal delay={80}>
               <p className="mx-auto mt-7 max-w-xl text-[16px] leading-[1.75] text-foreground/68 lg:mx-0">
-                Un guide clair, apaisant et concret pour alléger votre charge
-                mentale sans ajouter une routine parfaite de plus à votre
-                quotidien.
+                Un guide clair et apaisant pour préparer l'arrivée de bébé sans
+                stress, sans liste interminable et sans culpabilité.
               </p>
             </Reveal>
             <Reveal delay={160}>
@@ -172,8 +171,8 @@ export default function GuideGratuit() {
           <Reveal>
             <p className="eyebrow">Le vrai problème</p>
             <h2 className="mt-5 font-serif text-[2.35rem] leading-[1.04] text-foreground sm:text-5xl">
-              Ce n'est pas votre énergie.{" "}
-              <span className="italic">C'est tout ce que vous portez.</span>
+              Ce n'est pas ton énergie.{" "}
+              <span className="italic">C'est tout ce que tu portes.</span>
             </h2>
           </Reveal>
           <div className="mt-12 grid gap-4 sm:grid-cols-3">
@@ -200,12 +199,11 @@ export default function GuideGratuit() {
             <div className="mx-auto max-w-2xl text-center">
               <p className="eyebrow">Dans le guide</p>
               <h2 className="mt-5 font-serif text-[2.35rem] leading-[1.04] text-foreground sm:text-5xl">
-                Les 7 systèmes <span className="italic">prêts à poser</span>
+                Les 7 essentiels <span className="italic">prêts à l'emploi</span>
               </h2>
               <p className="mx-auto mt-6 max-w-xl text-[15px] leading-relaxed text-foreground/65">
-                Chaque système a été pensé pour réduire une décision répétitive,
-                sécuriser un moment fragile ou libérer de la place dans votre
-                tête.
+                Chaque essentiel a été pensé par une sage-femme pour simplifier
+                un vrai moment du quotidien avec bébé, sans le moindre superflu.
               </p>
             </div>
           </Reveal>
@@ -262,10 +260,10 @@ export default function GuideGratuit() {
         <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <Reveal>
             <div>
-              <p className="eyebrow">Pour vous si</p>
+              <p className="eyebrow">Pour toi si</p>
               <h2 className="mt-5 font-serif text-[2.35rem] leading-[1.04] text-foreground sm:text-5xl">
-                Vous voulez moins penser,{" "}
-                <span className="italic">pas mieux performer.</span>
+                Tu veux préparer l'arrivée,{" "}
+                <span className="italic">pas te stresser.</span>
               </h2>
             </div>
           </Reveal>
@@ -350,13 +348,14 @@ export default function GuideGratuit() {
           <Reveal>
             <p className="eyebrow">Guide gratuit</p>
             <h2 className="mx-auto mt-5 max-w-2xl font-serif text-[2.45rem] leading-[1.02] text-foreground sm:text-5xl">
-              Prête à alléger votre <span className="italic">charge mentale</span> ?
+              Prête à préparer l'arrivée de bébé{" "}
+              <span className="italic">sereinement</span> ?
             </h2>
           </Reveal>
           <Reveal delay={80}>
             <p className="mx-auto mt-6 max-w-lg text-[15px] leading-relaxed text-foreground/68">
-              Recevez gratuitement les 7 systèmes qui simplifient vraiment la
-              vie avec un bébé.
+              Reçois gratuitement la Liste de Naissance Essentielle, offerte par
+              Maria.
             </p>
           </Reveal>
           <Reveal delay={160}>

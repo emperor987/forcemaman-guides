@@ -10,7 +10,7 @@ interface SeoProps {
 }
 
 const SITE_URL = "https://forcemaman.fr";
-const DEFAULT_IMAGE = `${SITE_URL}/logo.svg`;
+const DEFAULT_IMAGE = `${SITE_URL}/og-image.png`;
 
 function upsertMeta(attr: "name" | "property", key: string, content: string) {
   let el = document.head.querySelector<HTMLMetaElement>(

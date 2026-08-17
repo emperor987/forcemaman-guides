@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { Link } from "react-router";
+import { useAction } from "convex/react";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
 import { cn } from "@/lib/utils";
-import { openCheckout } from "@/lib/payments";
+import { api } from "@/convex/_generated/api";
 import { toast } from "sonner";
 import {
   ArrowRight,
@@ -96,13 +98,22 @@ export default function ProductPage({
     },
   ];
 
-  const handleCheckout = () => {
-    const ok = openCheckout(productId);
-    if (!ok) {
+  const [checkingOut, setCheckingOut] = useState(false);
+  const createCheckout = useAction(api.payments.createCheckoutSession);
+
+  const handleCheckout = async () => {
+    if (checkingOut) return;
+    setCheckingOut(true);
+    try {
+      const { url } = await createCheckout({ productId });
+      window.location.href = url;
+    } catch (error) {
+      console.error("Checkout error:", error);
       toast("Le paiement en ligne arrive très bientôt.", {
         description:
           "En attendant, écris-nous à hello@forcemaman.fr pour réserver ton guide.",
       });
+      setCheckingOut(false);
     }
   };
 
@@ -110,14 +121,17 @@ export default function ProductPage({
     <button
       type="button"
       onClick={handleCheckout}
+      disabled={checkingOut}
       className={
-        "inline-flex h-14 w-full items-center justify-center gap-3 rounded-full font-medium text-background transition-transform active:scale-[0.98] lg:px-10 " +
+        "inline-flex h-14 w-full items-center justify-center gap-3 rounded-full font-medium text-background transition-transform active:scale-[0.98] disabled:opacity-70 lg:px-10 " +
         (extraClassName ?? "")
       }
       style={DARK_BUTTON_STYLE}
     >
       <Lock className="size-4 opacity-80" />
-      <span className="text-sm tracking-wide">Payer avec Stripe</span>
+      <span className="text-sm tracking-wide">
+        {checkingOut ? "Redirection vers Stripe…" : "Payer avec Stripe"}
+      </span>
       <ArrowRight className="size-4" />
     </button>
   );

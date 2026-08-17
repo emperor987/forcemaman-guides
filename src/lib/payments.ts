@@ -1,37 +1,40 @@
 /**
- * Paiements Stripe (Payment Links).
+ * Livraison des ebooks ForceMaman.
  *
- * Chaque produit a un lien de paiement Stripe dédié, créé dans ton dashboard
- * Stripe (Produits → Payment Links). Colle ici les URLs exactes une fois tes
- * produits créés :
+ * Les fichiers PDF des 3 guides vivent dans /public/ebooks/ et sont servis
+ * sur la page /commande/reussie UNE FOIS le paiement Stripe vérifié par
+ * l'action Convex `payments:verifySession`.
  *
- *   liste-naissance : https://buy.stripe.com/...
- *   corps-apres     : https://buy.stripe.com/...
- *   charge-mentale  : https://buy.stripe.com/...
- *   bundle          : https://buy.stripe.com/...
- *
- * Tant qu'un lien n'est pas configuré, le bouton affiche un message clair
- * (paiement en cours d'activation) au lieu de rester silencieux.
+ * Pour remplacer les fichiers de démonstration par les vrais ebooks, dépose
+ * les PDF à ces emplacements exacts :
+ *   public/ebooks/liste-naissance.pdf
+ *   public/ebooks/corps-apres.pdf
+ *   public/ebooks/charge-mentale.pdf
  */
-export const stripePaymentLinks: Record<string, string> = {
-  "liste-naissance": "",
-  "corps-apres": "",
-  "charge-mentale": "",
-  bundle: "",
+export const PRODUCT_FILES: Record<
+  string,
+  { title: string; files: string[] }
+> = {
+  "liste-naissance": {
+    title: "Ma Liste Naissance Complète",
+    files: ["/ebooks/liste-naissance.pdf"],
+  },
+  "corps-apres": {
+    title: "Mon Corps Après l'Accouchement",
+    files: ["/ebooks/corps-apres.pdf"],
+  },
+  "charge-mentale": {
+    title: "Charge Mentale & 40 Premiers Jours",
+    files: ["/ebooks/charge-mentale.pdf"],
+  },
+  bundle: {
+    title: "Pack Complet ForceMaman",
+    files: [
+      "/ebooks/liste-naissance.pdf",
+      "/ebooks/corps-apres.pdf",
+      "/ebooks/charge-mentale.pdf",
+    ],
+  },
 };
 
-export function getCheckoutUrl(productId: string): string | null {
-  const link = stripePaymentLinks[productId]?.trim();
-  return link && /^https:\/\/buy\.stripe\.com\//.test(link) ? link : null;
-}
-
-/**
- * Ouvre le checkout Stripe si le lien est configuré. Retourne `false` si le
- * paiement n'est pas encore activé, pour que l'UI puisse afficher un message.
- */
-export function openCheckout(productId: string): boolean {
-  const url = getCheckoutUrl(productId);
-  if (!url) return false;
-  window.open(url, "_blank", "noopener,noreferrer");
-  return true;
-}
+export const SUPPORT_EMAIL = "hello@forcemaman.fr";

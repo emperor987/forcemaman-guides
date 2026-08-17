@@ -14,8 +14,8 @@ export default function Footer() {
               Un moment de clarté, <span className="italic">chaque semaine.</span>
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Des rituels simples et des systèmes pensés pour alléger votre
-              charge mentale.
+              Des repères doux et des conseils de sage-femme pour alléger ta
+              charge mentale après l'arrivée de bébé.
             </p>
             <EmailForm variant="footer" id="newsletter" className="mt-8" />
             <p className="mt-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
@@ -33,13 +33,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/ressources" className="text-foreground/75 hover:text-foreground">
-                  Ressources
+                <Link to="/guide-gratuit" className="text-foreground/75 hover:text-foreground">
+                  Guide Gratuit
                 </Link>
               </li>
               <li>
-                <Link to="/guide-gratuit" className="text-foreground/75 hover:text-foreground">
-                  Guide Gratuit
+                <Link to="/faq" className="text-foreground/75 hover:text-foreground">
+                  FAQ
                 </Link>
               </li>
               <li>
@@ -77,11 +77,6 @@ export default function Footer() {
               <li>
                 <Link to="/remboursement" className="text-foreground/75 hover:text-foreground">
                   Remboursements
-                </Link>
-              </li>
-              <li>
-                <Link to="/faq" className="text-foreground/75 hover:text-foreground">
-                  FAQ
                 </Link>
               </li>
             </ul>

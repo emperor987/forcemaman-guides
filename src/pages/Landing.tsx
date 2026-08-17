@@ -19,17 +19,17 @@ const methodCards = freeGuideSystems.slice(0, 6);
 const testimonials = [
   {
     quote:
-      "J'ai enfin arrêté d'avoir tout en tête en permanence. Le Cerveau Externe a tout changé.",
+      "Enfin une liste claire, pensée par une sage-femme. Je prépare l'arrivée de bébé sans stress, et sans tout retenir dans ma tête.",
     name: "Camille, maman de Léo (4 mois)",
   },
   {
     quote:
-      "Pour la première fois depuis la naissance, j'ai l'impression de respirer.",
+      "Ce guide m'a permis de comprendre ce qui arrivait à mon corps, sans paniquer. On se sent enfin accompagnée.",
     name: "Sarah, maman de Jules (7 mois)",
   },
   {
     quote:
-      "Des systèmes simples qui tiennent même les jours où je n'ai dormi que trois heures.",
+      "Des conseils concrets, même pour les jours où je n'ai dormi que trois heures. Je me sens beaucoup moins seule.",
     name: "Manon, maman de Rose (2 mois)",
   },
 ];
@@ -116,14 +116,15 @@ export default function Landing() {
           </Reveal>
           <Reveal delay={80}>
             <h1 className="mt-7 font-serif text-[2.75rem] leading-[1.04] text-foreground sm:text-5xl">
-              Des systèmes simples pour <span className="italic">alléger</span>{" "}
-              la charge mentale des jeunes mamans.
+              Des guides bienveillants pour traverser le post-partum,{" "}
+              <span className="italic">sans culpabilité.</span>
             </h1>
           </Reveal>
           <Reveal delay={160}>
             <p className="mx-auto mt-6 max-w-sm text-[15px] leading-relaxed text-foreground/65">
-              Des solutions concrètes pour arrêter d'avoir 50 choses en tête
-              toute la journée et simplifier la vie avec un bébé.
+              Trois ebooks PDF écrits par Maria Garcia, sage-femme pendant 8 ans
+              et maman, pour préparer l'arrivée de bébé, comprendre ton corps
+              et alléger ta charge mentale.
             </p>
           </Reveal>
           <Reveal delay={240}>
@@ -148,11 +149,11 @@ export default function Landing() {
               Le guide gratuit
             </p>
             <h2 className="mt-5 text-center font-serif text-[2.25rem] leading-[1.05] text-foreground">
-              Ce que vous trouverez <span className="italic">dans le guide gratuit</span>
+              Ce que tu trouveras <span className="italic">dans le guide gratuit</span>
             </h2>
             <p className="mx-auto mt-5 max-w-sm text-center text-[15px] leading-relaxed text-foreground/65">
-              Sept systèmes concrets pour simplifier la vie avec un bébé dès
-              aujourd'hui.
+              Sept essentiels concrets pour préparer l'arrivée de bébé, pensés
+              par une sage-femme.
             </p>
           </Reveal>
 
@@ -230,15 +231,15 @@ export default function Landing() {
         <div className="mx-auto max-w-md">
           <Reveal>
             <p className="text-center text-[11px] uppercase tracking-[0.28em] text-foreground/55">
-              La méthode
+              La préparation
             </p>
             <h2 className="mt-5 text-center font-serif text-[2.1rem] leading-[1.05] text-foreground">
-              Sept systèmes <span className="italic">signature</span>, pensés
+              Sept essentiels <span className="italic">signature</span>, pensés
               pour la vraie vie.
             </h2>
             <p className="mx-auto mt-5 max-w-sm text-center text-[15px] leading-relaxed text-foreground/65">
-              Des repères doux, pensés pour tenir même les jours où vous êtes
-              épuisée.
+              Des repères doux, pensés pour tenir même les jours où tu es
+              fatiguée.
             </p>
           </Reveal>
         </div>
@@ -279,7 +280,7 @@ export default function Landing() {
               Elles ont essayé
             </p>
             <h2 className="mt-5 text-center font-serif text-[2rem] leading-[1.05] text-foreground">
-              Vous n'avez pas besoin d'être <span className="italic">une maman parfaite.</span>
+              Tu n'as pas besoin d'être <span className="italic">une maman parfaite.</span>
             </h2>
           </Reveal>
 
@@ -511,10 +512,10 @@ export default function Landing() {
         <div className="mx-auto max-w-md">
           <Reveal>
             <p className="text-center text-[11px] uppercase tracking-[0.28em] text-foreground/55">
-              Commencez ici
+              Commence ici
             </p>
             <h2 className="mt-5 text-center font-serif text-[2rem] leading-[1.05] text-foreground">
-              Commencez <span className="italic">ici</span>.
+              Commence <span className="italic">ici</span>.
             </h2>
           </Reveal>
 

@@ -6,7 +6,7 @@ import { ConvexAuthProvider } from "@convex-dev/auth/react";
 import { ConvexReactClient } from "convex/react";
 import React, { StrictMode, useEffect, lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router";
 import "./index.css";
 
 // Lazy load route components for better code splitting
@@ -17,7 +17,7 @@ const JournalArticle = lazy(() => import("./pages/JournalArticle.tsx"));
 const GuideGratuit = lazy(() => import("./pages/GuideGratuit.tsx"));
 const Contact = lazy(() => import("./pages/Contact.tsx"));
 const APpropos = lazy(() => import("./pages/APpropos.tsx"));
-const Ressources = lazy(() => import("./pages/Ressources.tsx"));
+const OrderSuccess = lazy(() => import("./pages/OrderSuccess.tsx"));
 const ListeNaissance = lazy(() => import("./pages/guides/ListeNaissance.tsx"));
 const CorpsApres = lazy(() => import("./pages/guides/CorpsApres.tsx"));
 const ChargeMentale = lazy(() => import("./pages/guides/ChargeMentale.tsx"));
@@ -141,7 +141,8 @@ createRoot(document.getElementById("root")!).render(
               <Route path="/guide-gratuit" element={<GuideGratuit />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/a-propos" element={<APpropos />} />
-              <Route path="/ressources" element={<Ressources />} />
+              <Route path="/ressources" element={<Navigate to="/guide-gratuit" replace />} />
+              <Route path="/commande/reussie" element={<OrderSuccess />} />
               <Route path="/guides/liste-naissance" element={<ListeNaissance />} />
               <Route path="/guides/corps-apres" element={<CorpsApres />} />
               <Route path="/guides/charge-mentale" element={<ChargeMentale />} />

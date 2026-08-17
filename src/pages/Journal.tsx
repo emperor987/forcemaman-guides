@@ -254,11 +254,11 @@ export default function Journal() {
                       Guide gratuit
                     </div>
                     <h2 className="mt-5 font-serif text-3xl leading-[1.1] text-foreground sm:text-4xl lg:text-[44px]">
-                      Recevez gratuitement : les 7 systèmes qui simplifient
-                      vraiment la vie avec un bébé
+                      Reçois gratuitement la Liste de Naissance Essentielle,
+                      offerte par Maria
                     </h2>
                     <p className="mt-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-                      PDF · 7 systèmes · à lire en 12 minutes
+                      PDF · 7 essentiels · à lire en 10 minutes
                     </p>
                   </div>
                   <Link

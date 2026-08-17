@@ -9,8 +9,8 @@ import { ArrowRight, Search } from "lucide-react";
 const heroBullets = [
   "Moins de charge mentale.",
   "Moins d'oublis.",
-  "Moins d'allers-retours.",
-  "Plus de temps avec votre bébé.",
+  "Moins de stress dans la préparation.",
+  "Plus de temps avec ton bébé.",
 ];
 
 /** Styles de badge + ligne colorée, copiés du référence */
@@ -20,12 +20,8 @@ const badgeMeta: Record<LibraryItem["badge"], { label: string; line: string; dot
   temps: { label: "💛 Gain de temps", line: "#BFB4A6", dot: "#BFB4A6", text: "#847A6C" },
 };
 
-const typeLabel = (item: LibraryItem) => {
-  if (item.id === "bundle") return "Pack";
-  if (item.free && item.id === "checklist-sac") return "Checklist";
-  if (item.free) return "Gratuit";
-  return "Guide";
-};
+const typeLabel = (item: LibraryItem) =>
+  item.id === "bundle" ? "Pack" : "Guide";
 
 const CARD_CLASS =
   "group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border/60 bg-[color-mix(in_oklab,var(--background)_60%,white)] px-7 pb-7 pt-8 text-left transition-[transform,box-shadow,border-color] duration-500 ease-out hover:-translate-y-[2px] hover:border-foreground/20 hover:shadow-[0_24px_60px_-36px_rgba(35,33,32,0.22)] sm:px-8 sm:pb-8 sm:pt-9";
@@ -65,11 +61,7 @@ function ResourceCard({ item, index }: { item: LibraryItem; index: number }) {
           {item.benefit}
         </p>
         <span className="mt-8 inline-flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.22em] text-foreground/70 transition-transform duration-500 ease-out group-hover:translate-x-1">
-          {item.id === "bundle"
-            ? "Découvrir le pack"
-            : item.free
-              ? "Télécharger le PDF"
-              : "Voir le guide"}
+          {item.id === "bundle" ? "Découvrir le pack" : "Voir le guide"}
           <ArrowRight className="size-3" />
         </span>
       </Link>
@@ -164,10 +156,8 @@ export default function Guides() {
   );
 
   const popular = visible.filter((item) => item.featured);
-  const guides = visible.filter(
-    (item) => !item.free && item.id !== "bundle",
-  );
-  const freebies = visible.filter((item) => item.free || item.id === "bundle");
+  const guides = visible.filter((item) => item.id !== "bundle");
+  const freebies = visible.filter((item) => item.id === "bundle");
 
   return (
     <Layout>
@@ -185,12 +175,12 @@ export default function Guides() {
               La Bibliothèque des Guides
             </p>
             <h1 className="mt-6 font-serif text-[2.4rem] leading-[1.05] tracking-tight text-foreground sm:text-6xl">
-              Les guides qui ont transformé{" "}
-              <span className="italic">mon quotidien</span> de jeune maman.
+              Les guides qui t'accompagnent{" "}
+              <span className="italic">après l'arrivée de bébé.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-[0.95rem] leading-relaxed text-foreground/65 sm:text-base">
-              Les guides, checklists et plans d'organisation que j'utilise
-              réellement au quotidien.
+              Trois ebooks PDF et un pack complet, écrits par une sage-femme, à
+              télécharger immédiatement après le paiement.
             </p>
             <ul className="mx-auto mt-8 flex max-w-md flex-col gap-1.5 text-sm text-foreground/70">
               {heroBullets.map((b) => (
@@ -198,8 +188,8 @@ export default function Guides() {
               ))}
             </ul>
             <p className="mx-auto mt-6 max-w-lg text-sm text-foreground/55">
-              Tous les guides sont conçus pour être simples à mettre en place
-              et faciles à maintenir.
+              Chaque guide est conçu pour être lu en quelques minutes, sur
+              téléphone comme sur ordinateur, et conservé toute la vie.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
@@ -293,10 +283,11 @@ export default function Guides() {
                 Catégorie
               </p>
               <h2 className="mt-3 font-serif text-3xl text-foreground sm:text-4xl">
-                Le pack & les gratuits
+                Le pack & le guide gratuit
               </h2>
               <p className="mt-3 text-sm text-foreground/60">
-                Tout en un, ou commencer gratuitement par l'essentiel.
+                Tout en un avec 23% de réduction, ou commence gratuitement par
+                les essentiels de la liste de naissance.
               </p>
             </header>
           </Reveal>

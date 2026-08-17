@@ -6,7 +6,6 @@ const navLinks = [
   { name: "Accueil", href: "/" },
   { name: "Journal", href: "/journal" },
   { name: "Bibliothèque", href: "/guides" },
-  { name: "Ressources", href: "/ressources" },
   { name: "À propos", href: "/a-propos" },
   { name: "Contact", href: "/contact" },
 ];
