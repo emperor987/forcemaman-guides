@@ -1,20 +1,25 @@
 import { Link, useLocation } from "react-router";
-import { BookOpen, HelpCircle, Home, Sparkles } from "lucide-react";
+import { BookOpen, Gift, Home, Library, Newspaper } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
   { name: "Accueil", href: "/" },
-  { name: "Nos Guides", href: "/guides" },
-  { name: "FAQ", href: "/faq" },
-  { name: "Contact", href: "mailto:hello@forcemaman.fr", external: true },
+  { name: "Journal", href: "/journal" },
+  { name: "Bibliothèque", href: "/guides" },
+  { name: "Guide gratuit", href: "/guide-gratuit" },
 ];
 
-/** Mobile bottom nav (pill style, icon + label empilés, actif en pastille sombre) */
+/**
+ * Mobile bottom nav — barre flottante en pilule, fond ivoire clair.
+ * Seul l'item actif a un fond en pilule noire (icône + texte en couleur
+ * accent) ; les 3 autres items sont posés directement sur la barre,
+ * sans fond, avec une icône en ligne fine et le label en dessous.
+ */
 const mobileNav = [
   { name: "Accueil", href: "/", icon: Home },
-  { name: "Guides", href: "/guides", icon: BookOpen },
-  { name: "FAQ", href: "/faq", icon: HelpCircle },
-  { name: "Pack", href: "/guides/bundle", icon: Sparkles },
+  { name: "Journal", href: "/journal", icon: Newspaper },
+  { name: "Bibliothèque", href: "/guides", icon: Library },
+  { name: "Guide gratuit", href: "/guide-gratuit", icon: Gift },
 ];
 
 export default function Header() {
@@ -39,29 +44,19 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-10">
-            {navLinks.map((item) =>
-              item.external ? (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-sm font-normal text-ink/65 hover:text-ink transition-colors"
-                >
-                  {item.name}
-                </a>
-              ) : (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={cn(
-                    "text-sm font-normal text-ink/65 hover:text-ink transition-colors",
-                    isActive(item.href) && "text-primary font-medium",
-                  )}
-                >
-                  {item.name}
-                </Link>
-              ),
-            )}
+          <nav className="hidden lg:flex items-center gap-8">
+            {navLinks.map((item) => (
+              <Link
+                key={item.name}
+                to={item.href}
+                className={cn(
+                  "text-sm font-normal text-ink/65 hover:text-ink transition-colors",
+                  isActive(item.href) && "text-primary font-medium",
+                )}
+              >
+                {item.name}
+              </Link>
+            ))}
           </nav>
 
           <Link
@@ -73,12 +68,12 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile bottom nav (100% optimisé mobile) */}
+      {/* Mobile bottom nav — pilule flottante ivoire */}
       <nav
         aria-label="Navigation mobile"
-        className="lg:hidden fixed bottom-0 inset-x-0 z-50 border-t border-ink/10 bg-background/95 backdrop-blur pb-[env(safe-area-inset-bottom)]"
+        className="lg:hidden fixed bottom-4 inset-x-0 z-50 flex justify-center px-4 pb-[env(safe-area-inset-bottom)] pointer-events-none"
       >
-        <div className="mx-auto grid max-w-md grid-cols-4 gap-1.5 px-3 py-2.5">
+        <div className="pointer-events-auto flex items-center gap-1 rounded-full border-2 border-ink/15 bg-background/95 px-1.5 py-1.5 shadow-[0_18px_40px_-16px_rgba(92,74,58,0.5)] backdrop-blur">
           {mobileNav.map((item) => {
             const active = isMobileActive(item.href);
             return (
@@ -87,14 +82,22 @@ export default function Header() {
                 to={item.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "flex flex-col items-center gap-1 rounded-full px-2 py-2 transition-colors duration-200",
+                  "flex min-w-[64px] flex-col items-center gap-1 rounded-full px-3.5 py-2 transition-colors duration-200",
                   active
-                    ? "bg-ink text-cream shadow-[0_10px_20px_-10px_rgba(30,26,26,0.7)]"
-                    : "bg-card/80 text-ink/60 shadow-[0_4px_14px_-8px_rgba(92,74,58,0.35)] hover:text-ink",
+                    ? "bg-ink text-terracotta shadow-[0_10px_22px_-10px_rgba(92,74,58,0.65)]"
+                    : "text-ink/55 hover:text-ink",
                 )}
               >
-                <item.icon className="h-5 w-5" strokeWidth={active ? 2.2 : 2} />
-                <span className="text-[10px] font-semibold leading-none">
+                <item.icon
+                  className="h-5 w-5"
+                  strokeWidth={active ? 2 : 1.5}
+                />
+                <span
+                  className={cn(
+                    "text-[10px] leading-none",
+                    active ? "font-bold" : "font-medium",
+                  )}
+                >
                   {item.name}
                 </span>
               </Link>

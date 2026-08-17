@@ -41,13 +41,18 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link to="/guides" className="text-ink/70 hover:text-primary transition-colors">
-                Nos Guides
+              <Link to="/journal" className="text-ink/70 hover:text-primary transition-colors">
+                Journal
               </Link>
             </li>
             <li>
-              <Link to="/guides/bundle" className="text-ink/70 hover:text-primary transition-colors">
-                Pack Complet
+              <Link to="/guides" className="text-ink/70 hover:text-primary transition-colors">
+                Bibliothèque
+              </Link>
+            </li>
+            <li>
+              <Link to="/guide-gratuit" className="text-ink/70 hover:text-primary transition-colors">
+                Guide gratuit
               </Link>
             </li>
             <li>
@@ -112,7 +117,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t-2 border-ink/10">
-        <div className="mx-auto max-w-6xl px-5 py-5 pb-[calc(4.75rem+env(safe-area-inset-bottom))] lg:pb-5 text-center text-xs text-ink/60">
+        <div className="mx-auto max-w-6xl px-5 py-5 pb-[calc(6.5rem+env(safe-area-inset-bottom))] lg:pb-5 text-center text-xs text-ink/60">
           © {new Date().getFullYear()} ForceMaman. Tous droits réservés.
         </div>
       </div>

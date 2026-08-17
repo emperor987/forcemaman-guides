@@ -65,14 +65,16 @@
   --radius: 0.875rem;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-  /* ForceMaman official palette */
-  --ink: oklch(18% 0.012 50);
-  --cream: oklch(96.5% 0.018 75);
-  --terracotta: oklch(58% 0.135 35);
-  --rose-soft: oklch(86% 0.045 22);
+  /* ForceMaman official palette
+     Fond beige/blush #FAF6F1 · Texte #5C4A3A · Accent terracotta #C97D5D
+     Touches vert sauge #8A9A7E et mauve #A78BA3 */
+  --ink: #5c4a3a;
+  --cream: #faf6f1;
+  --terracotta: #c97d5d;
+  --rose-soft: #f3e2d5;
   --sage: #8a9a7e;
   --mauve: #a78ba3;
-  --card: oklch(99% 0.008 75);
+  --card: #fffdf9;
   --secondary: var(--rose-soft);
 
   /* shadcn mapping (light only, no dark mode) */
@@ -82,7 +84,7 @@
   --popover: var(--card);
   --popover-foreground: var(--ink);
   --primary: var(--terracotta);
-  --primary-foreground: oklch(98% 0.012 75);
+  --primary-foreground: #fff8f2;
   --secondary-foreground: var(--ink);
   --muted: var(--rose-soft);
   --muted-foreground: color-mix(in oklab, var(--ink) 62%, transparent);
