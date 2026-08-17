@@ -4,6 +4,9 @@ export default function Confidentialite() {
   return (
     <LegalPage
       title="Politique de confidentialité"
+      path="/confidentialite"
+      seoTitle="Politique de confidentialité · ForceMaman"
+      seoDescription="Comment ForceMaman collecte et protège tes données personnelles, simplement et en toute transparence."
       lastUpdated="Août 2026"
       intro="Chez ForceMaman, ta confiance est essentielle. Cette politique explique quelles données nous collectons, pourquoi, et comment elles sont protégées. Elle est rédigée simplement, parce que la vie privée n'a pas besoin d'être compliquée."
       sections={[

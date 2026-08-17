@@ -1,12 +1,16 @@
 import { Link } from "react-router";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
+import Seo from "@/components/Seo";
 import { cn } from "@/lib/utils";
 import {
   ArrowRight,
   CheckCircle,
   Info,
   Lock,
+  ShieldCheck,
+  Timer,
+  Undo2,
 } from "lucide-react";
 
 interface ProductPageProps {
@@ -22,6 +26,7 @@ interface ProductPageProps {
   previewPages: string[];
   previewImages: string[];
   cover: string;
+  path: string;
   type?: "ebook" | "bundle";
 }
 
@@ -50,10 +55,46 @@ export default function ProductPage({
   previewPages,
   previewImages,
   cover,
+  path,
   type = "ebook",
 }: ProductPageProps) {
+  const seoTitle = `${title} · ForceMaman`;
+  const seoDescription =
+    description[0].length > 155
+      ? `${description[0].slice(0, 152).trimEnd()}…`
+      : description[0];
+  const priceNumber = parseFloat(
+    price.replace("€", "").replace(",", ".").trim(),
+  );
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: title,
+    description: seoDescription,
+    brand: { "@type": "Brand", name: "ForceMaman" },
+    offers: {
+      "@type": "Offer",
+      price: Number.isFinite(priceNumber) ? priceNumber : undefined,
+      priceCurrency: "EUR",
+      availability: "https://schema.org/InStock",
+      url: `https://forcemaman.fr${path}`,
+    },
+  };
+
+  const trust = [
+    { icon: Timer, label: "Téléchargement immédiat" },
+    { icon: ShieldCheck, label: "Paiement sécurisé Stripe" },
+    { icon: Undo2, label: "Remboursement 14 jours" },
+  ];
+
   return (
     <Layout>
+      <Seo
+        title={seoTitle}
+        description={seoDescription}
+        path={path}
+        jsonLd={jsonLd}
+      />
       {/* ============ HERO ============ */}
       <section className="px-6 pb-16 pt-12 sm:pb-24 sm:pt-20">
         <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -121,9 +162,17 @@ export default function ProductPage({
                 </span>
                 <ArrowRight className="size-4" />
               </button>
-              <p className="mt-4 text-[11px] uppercase tracking-[0.2em] text-foreground/50">
-                Téléchargement instantané · PDF · Paiement sécurisé Stripe
-              </p>
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 lg:justify-start">
+                {trust.map((item) => (
+                  <span
+                    key={item.label}
+                    className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] text-foreground/55"
+                  >
+                    <item.icon className="size-3.5" />
+                    {item.label}
+                  </span>
+                ))}
+              </div>
             </Reveal>
 
             <Reveal delay={180}>

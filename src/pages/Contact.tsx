@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
+import Seo from "@/components/Seo";
 import { Check, Mail } from "lucide-react";
 
 export default function Contact() {
@@ -8,6 +9,11 @@ export default function Contact() {
 
   return (
     <Layout>
+      <Seo
+        title="Contact · Écris à ForceMaman"
+        description="Une question, une suggestion, un mot. Maria lit chaque message et répond personnellement sous 48 heures ouvrées."
+        path="/contact"
+      />
       <div className="bg-background">
         <div className="mx-auto max-w-xl px-6 py-20 lg:py-28">
           <Reveal>

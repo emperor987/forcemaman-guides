@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
+import Seo from "@/components/Seo";
 import { journalArticles, journalCategories } from "@/lib/journal";
 import { cn } from "@/lib/utils";
 import { ArrowRight, Search, Sparkles } from "lucide-react";
@@ -20,6 +21,23 @@ const piliers = [
     title: journalArticles[2].title,
   },
 ];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: "Le Journal ForceMaman",
+  description:
+    "Lectures lentes pour mères pressées : charge mentale, organisation du quotidien, systèmes postpartum, repas et routines réalistes.",
+  url: "https://forcemaman.fr/journal",
+  inLanguage: "fr-FR",
+  blogPost: journalArticles.map((article) => ({
+    "@type": "BlogPosting",
+    headline: article.title,
+    description: article.excerpt,
+    datePublished: article.date,
+    inLanguage: "fr-FR",
+  })),
+};
 
 export default function Journal() {
   const [query, setQuery] = useState("");
@@ -45,6 +63,12 @@ export default function Journal() {
 
   return (
     <Layout>
+      <Seo
+        title="Le Journal · lectures douces pour jeunes mamans · ForceMaman"
+        description="Des essais, des protocoles et des rituels pour alléger la charge mentale des jeunes mamans. Toujours réalistes, jamais culpabilisants."
+        path="/journal"
+        jsonLd={jsonLd}
+      />
       <div className="bg-background">
         {/* ============ HERO ============ */}
         <section className="border-b border-border/60">

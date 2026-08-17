@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
+import Seo from "@/components/Seo";
 import EmailForm from "@/components/EmailForm";
 import {
   Accordion,
@@ -81,9 +82,37 @@ const faqItems = [
   },
 ];
 
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: "Le Guide Gratuit ForceMaman · 7 Systèmes",
+    description:
+      "Sept systèmes concrets pour simplifier la vie avec un bébé et alléger la charge mentale des jeunes mamans.",
+    url: "https://forcemaman.fr/guide-gratuit",
+    inLanguage: "fr-FR",
+    isAccessibleForFree: true,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  },
+];
+
 export default function GuideGratuit() {
   return (
     <Layout>
+      <Seo
+        title="Guide Gratuit · 7 systèmes pour alléger la charge mentale · ForceMaman"
+        description="Recevez gratuitement les 7 systèmes qui simplifient vraiment la vie avec un bébé : cerveau externe, 3 bacs, repas secours, panier tétée, zone départ."
+        path="/guide-gratuit"
+        jsonLd={jsonLd}
+      />
       {/* ============ HERO ============ */}
       <section className="px-6 pb-20 pt-12 sm:px-8 sm:pb-28 sm:pt-20">
         <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1.02fr_0.78fr] lg:gap-20">

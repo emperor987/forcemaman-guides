@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
+import Seo from "@/components/Seo";
 import {
   BookOpen,
   CreditCard,
@@ -103,9 +104,27 @@ const faqCategories = [
   },
 ];
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqCategories.flatMap((category) =>
+    category.questions.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  ),
+};
+
 export default function FAQ() {
   return (
     <Layout>
+      <Seo
+        title="FAQ · Questions fréquentes sur les guides ForceMaman"
+        description="Tout savoir sur les ebooks ForceMaman : format PDF, paiement Stripe sécurisé, remboursement sous 14 jours, compatibilité de lecture et avertissements."
+        path="/faq"
+        jsonLd={jsonLd}
+      />
       {/* ============ HEADER ============ */}
       <section className="border-b border-border/60">
         <div className="mx-auto max-w-3xl px-6 pb-12 pt-16 text-center lg:pt-24">

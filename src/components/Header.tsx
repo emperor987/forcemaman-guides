@@ -29,6 +29,12 @@ export default function Header() {
 
   return (
     <>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-foreground focus:px-5 focus:py-2.5 focus:text-sm focus:font-medium focus:text-background"
+      >
+        Aller au contenu
+      </a>
       <header className="sticky top-0 z-40 w-full border-b border-border/50 bg-[color-mix(in_oklab,var(--background)_82%,transparent)] backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-12">
           {/* Logo */}

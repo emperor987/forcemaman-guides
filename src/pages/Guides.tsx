@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
+import Seo from "@/components/Seo";
 import { libraryItems, type LibraryItem } from "@/lib/ebooks";
 import { ArrowRight, Search } from "lucide-react";
 
@@ -99,6 +100,45 @@ const faqItems = [
   },
 ];
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "La Bibliothèque des Guides ForceMaman",
+  description:
+    "Les guides post-partum de ForceMaman : liste de naissance, corps après l'accouchement, charge mentale, pack complet et ressources gratuites.",
+  url: "https://forcemaman.fr/guides",
+  inLanguage: "fr-FR",
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Ma Liste Naissance Complète",
+        url: "https://forcemaman.fr/guides/liste-naissance",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Mon Corps Après l'Accouchement",
+        url: "https://forcemaman.fr/guides/corps-apres",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Charge Mentale & 40 Premiers Jours",
+        url: "https://forcemaman.fr/guides/charge-mentale",
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: "Pack Complet ForceMaman",
+        url: "https://forcemaman.fr/guides/bundle",
+      },
+    ],
+  },
+};
+
 export default function Guides() {
   const [query, setQuery] = useState("");
   const q = query.trim().toLowerCase();
@@ -121,6 +161,12 @@ export default function Guides() {
 
   return (
     <Layout>
+      <Seo
+        title="Nos Guides · ebooks post-partum par une sage-femme · ForceMaman"
+        description="Découvre les guides ForceMaman : Ma Liste Naissance Complète, Mon Corps Après l'Accouchement, Charge Mentale & 40 Premiers Jours et le Pack Complet. PDF à téléchargement immédiat."
+        path="/guides"
+        jsonLd={jsonLd}
+      />
       <div className="mx-auto max-w-6xl px-5 pb-24 pt-10 sm:px-8 lg:px-12">
         {/* ============ HERO ============ */}
         <Reveal>

@@ -1,9 +1,15 @@
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
+import Seo from "@/components/Seo";
 
 export default function APpropos() {
   return (
     <Layout>
+      <Seo
+        title="À propos · ForceMaman"
+        description="ForceMaman, les guides bienveillants du post-partum créés par Maria Garcia, ancienne sage-femme et maman."
+        path="/a-propos"
+      />
       <div className="mx-auto max-w-3xl px-6 py-32 lg:py-40">
         <Reveal>
           <p className="eyebrow">À propos</p>

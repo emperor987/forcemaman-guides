@@ -16,6 +16,7 @@ export default function Bundle() {
       accentText="text-brand-text"
       cover={cover}
       previewImages={[preview1, preview2, preview3]}
+      path="/guides/bundle"
       description={[
         "Le Pack Complet ForceMaman réunit les trois guides essentiels pour traverser la période post-partum avec bienveillance et confiance. C'est la boîte à outils complète que j'aurais aimé avoir entre les mains après la naissance de ma fille.",
         "En tant que sage-femme, j'ai accompagné des centaines de mamans. En tant que maman, j'ai vécu ce que tu vis maintenant. Ce pack combine expertise professionnelle et vécu personnel pour t'offrir un accompagnement global : de la préparation de la naissance à la récupération physique, en passant par la gestion émotionnelle des premières semaines.",

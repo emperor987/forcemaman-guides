@@ -13,6 +13,7 @@ export default function Layout({ children }: LayoutProps) {
       <AmbientBackground />
       <Header />
       <motion.main
+        id="main"
         className="flex-1 pb-24"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

@@ -4,6 +4,9 @@ export default function CGV() {
   return (
     <LegalPage
       title="Conditions Générales de Vente"
+      path="/cgv"
+      seoTitle="Conditions Générales de Vente · ForceMaman"
+      seoDescription="Les conditions de vente des ebooks ForceMaman : prix, paiement Stripe, livraison immédiate en PDF et politique de remboursement."
       lastUpdated="Août 2026"
       intro="Les présentes conditions générales de vente régissent les relations contractuelles entre SAFAA Beauty (dont ForceMaman est une marque distincte) et toute personne procédant à un achat sur le site. Elles sont rédigées en français et dans un langage clair, parce que comprendre ce que tu achètes, c'est important."
       sections={[

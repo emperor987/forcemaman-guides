@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
+import Seo from "@/components/Seo";
 
 interface LegalSection {
   title: string;
@@ -8,6 +9,9 @@ interface LegalSection {
 
 interface LegalPageProps {
   title: string;
+  path: string;
+  seoTitle?: string;
+  seoDescription?: string;
   lastUpdated: string;
   intro?: string;
   sections: LegalSection[];
@@ -15,12 +19,23 @@ interface LegalPageProps {
 
 export default function LegalPage({
   title,
+  path,
+  seoTitle,
+  seoDescription,
   lastUpdated,
   intro,
   sections,
 }: LegalPageProps) {
   return (
     <Layout>
+      <Seo
+        title={seoTitle ?? `${title} · ForceMaman`}
+        description={
+          seoDescription ??
+          `${title} du site ForceMaman, marque distincte de SAFAA Beauty.`
+        }
+        path={path}
+      />
       {/* ============ HEADER ============ */}
       <section className="border-b border-border/60">
         <div className="mx-auto max-w-3xl px-6 pb-12 pt-16 text-center lg:pt-24">

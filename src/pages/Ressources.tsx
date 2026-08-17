@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
+import Seo from "@/components/Seo";
 import { images } from "@/lib/assets";
 import { ArrowRight } from "lucide-react";
 
@@ -43,6 +44,11 @@ const products = [
 export default function Ressources() {
   return (
     <Layout>
+      <Seo
+        title="Ressources · outils pour simplifier le post-partum · ForceMaman"
+        description="Une sélection lente d'outils et d'objets qui accompagnent vraiment le quotidien postpartum : chariot, carnet cerveau externe, organisateur zone départ."
+        path="/ressources"
+      />
       <div className="bg-background">
         {/* Hero */}
         <section className="border-b border-border/60">
@@ -115,13 +121,13 @@ export default function Ressources() {
                           </li>
                         ))}
                       </ul>
-                      <a
-                        href="#"
+                      <Link
+                        to="/journal"
                         className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 py-3 text-[11px] font-medium uppercase tracking-[0.18em] text-background transition-colors hover:bg-foreground/90"
                       >
                         Voir le produit
                         <ArrowRight className="size-3" />
-                      </a>
+                      </Link>
                       <p className="mt-3 text-center text-[11px] text-muted-foreground">
                         Lien affilié, sans coût supplémentaire pour vous.
                       </p>

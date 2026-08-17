@@ -4,6 +4,9 @@ export default function Remboursement() {
   return (
     <LegalPage
       title="Politique de remboursement"
+      path="/remboursement"
+      seoTitle="Politique de remboursement · ForceMaman"
+      seoDescription="Remboursement sous 14 jours pour les guides ForceMaman, expliqué simplement. Satisfaite ou remboursée."
       lastUpdated="Août 2026"
       intro="Nous savons qu'acheter en ligne, ce n'est pas toujours simple. Notre volonté est que tu te sentes en confiance. Voici comment fonctionnent les remboursements chez ForceMaman, expliqués simplement."
       sections={[

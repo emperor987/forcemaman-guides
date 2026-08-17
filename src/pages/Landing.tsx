@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
+import Seo from "@/components/Seo";
 import EmailForm from "@/components/EmailForm";
 import { freeGuideSystems } from "@/lib/ebooks";
 import { journalArticles } from "@/lib/journal";
@@ -59,9 +60,39 @@ const articleCards = [
   },
 ];
 
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "ForceMaman",
+    url: "https://forcemaman.fr/",
+    inLanguage: "fr-FR",
+    description:
+      "Les guides bienveillants du post-partum, écrits par une sage-femme.",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "ForceMaman",
+    url: "https://forcemaman.fr/",
+    brand: "ForceMaman",
+    founder: {
+      "@type": "Person",
+      name: "Maria Garcia",
+      jobTitle: "Fondatrice et sage-femme",
+    },
+  },
+];
+
 export default function Landing() {
   return (
     <Layout>
+      <Seo
+        title="ForceMaman · Guides post-partum écrits par une sage-femme"
+        description="Liste de naissance, corps après l'accouchement, charge mentale : des guides PDF bienveillants, écrits par Maria Garcia, sage-femme. Téléchargement immédiat, paiement sécurisé Stripe."
+        path="/"
+        jsonLd={jsonLd}
+      />
       {/* ============ HERO ============ */}
       <section className="relative px-6 pb-16 pt-12 sm:pt-20">
         <div className="mx-auto max-w-md text-center">
@@ -122,9 +153,10 @@ export default function Landing() {
             >
               <img
                 src={images.guideLifestyle}
-                alt="Aperçu du guide 7 systèmes"
+                alt="Aperçu du guide gratuit 7 systèmes"
                 className="h-auto w-full object-cover"
                 loading="lazy"
+                decoding="async"
               />
             </div>
           </Reveal>
@@ -272,9 +304,10 @@ export default function Landing() {
             >
               <img
                 src={images.founder}
-                alt="Fondatrice de ForceMaman"
+                alt="Maria Garcia, fondatrice de ForceMaman, ancienne sage-femme"
                 className="h-full w-full object-cover"
                 loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="mt-6 flex justify-center">

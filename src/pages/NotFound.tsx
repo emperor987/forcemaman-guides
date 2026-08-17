@@ -1,11 +1,18 @@
 import { Link } from "react-router";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
+import Seo from "@/components/Seo";
 import { ArrowRight } from "lucide-react";
 
 export default function NotFound() {
   return (
     <Layout>
+      <Seo
+        title="Page introuvable · ForceMaman"
+        description="Cette page n'existe pas. Retrouve les guides post-partum de ForceMaman."
+        path="/404"
+        noindex
+      />
       <div className="min-h-[70vh] flex items-center justify-center bg-background py-20">
         <Reveal>
           <div className="text-center px-4">

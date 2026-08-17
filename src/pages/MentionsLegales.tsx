@@ -4,6 +4,7 @@ export default function MentionsLegales() {
   return (
     <LegalPage
       title="Mentions légales"
+      path="/mentions-legales"
       lastUpdated="Août 2026"
       intro="Conformément aux dispositions des articles 6-III et 19 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN), nous te présentons les informations légales relatives au site ForceMaman."
       sections={[
