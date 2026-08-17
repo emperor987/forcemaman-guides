@@ -10,7 +10,7 @@ export default function NotFound() {
         <Reveal>
           <div className="text-center px-4">
             <p className="font-display text-8xl font-bold text-primary">404</p>
-            <h1 className="mt-4 font-display text-4xl sm:text-5xl font-bold text-ink">
+            <h1 className="mt-4 font-display text-fluid-h2 font-bold text-ink">
               Cette page n'existe pas
             </h1>
             <p className="mt-4 text-ink/70 max-w-md mx-auto">

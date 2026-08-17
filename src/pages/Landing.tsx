@@ -1,4 +1,6 @@
+import { useRef } from "react";
 import { Link } from "react-router";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
@@ -6,7 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Layout from "@/components/Layout";
-import Reveal from "@/components/Reveal";
+import Reveal, { EASE } from "@/components/Reveal";
 import EbookCover from "@/components/EbookCover";
 import { useTilt } from "@/hooks/use-tilt";
 import { ebooks, bundle } from "@/lib/ebooks";
@@ -23,6 +25,7 @@ import {
   Sparkles,
   TrendingUp,
   TriangleAlert,
+  Zap,
 } from "lucide-react";
 
 const transformations = [
@@ -169,8 +172,28 @@ const faqItems = [
 
 function HeroVisual() {
   const tiltRef = useTilt(4);
+  const reduce = useReducedMotion();
+  const spotRef = useRef<HTMLDivElement>(null);
+
+  // Warm light that follows the cursor (lightweight: transform + opacity only)
+  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (reduce) return;
+    const el = spotRef.current;
+    if (!el) return;
+    const r = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
+    el.style.opacity = "1";
+    el.style.transform = `translate3d(${x - 110}px, ${y - 110}px, 0)`;
+  };
+
+  const handleLeave = () => {
+    const el = spotRef.current;
+    if (el) el.style.opacity = "0";
+  };
+
   return (
-    <div className="relative">
+    <div className="relative" onMouseMove={handleMove} onMouseLeave={handleLeave}>
       <div
         className="absolute -inset-4 bg-rose-soft/60 rounded-3xl -rotate-2"
         aria-hidden="true"
@@ -180,18 +203,22 @@ function HeroVisual() {
         className="relative grid place-items-center rounded-2xl border-2 border-ink bg-card p-6 sm:p-10 shadow-bold will-change-transform"
       >
         <div className="relative w-full max-w-[240px] sm:max-w-xs aspect-[3/4]">
-          <EbookCover
-            title={ebooks[2].title}
-            accent={ebooks[2].accent}
-            className="absolute inset-0 rotate-[7deg] translate-x-4 opacity-90"
-            titleSize="text-sm sm:text-base"
-          />
-          <EbookCover
-            title={ebooks[1].title}
-            accent={ebooks[1].accent}
-            className="absolute inset-0 -rotate-[5deg] -translate-x-3 opacity-90"
-            titleSize="text-sm sm:text-base"
-          />
+          <div className="absolute inset-0 animate-float" aria-hidden="true">
+            <EbookCover
+              title={ebooks[2].title}
+              accent={ebooks[2].accent}
+              className="absolute inset-0 rotate-[7deg] translate-x-4 opacity-90"
+              titleSize="text-sm sm:text-base"
+            />
+          </div>
+          <div className="absolute inset-0 animate-float-slow" aria-hidden="true">
+            <EbookCover
+              title={ebooks[1].title}
+              accent={ebooks[1].accent}
+              className="absolute inset-0 -rotate-[5deg] -translate-x-3 opacity-90"
+              titleSize="text-sm sm:text-base"
+            />
+          </div>
           <EbookCover
             title={ebooks[0].title}
             accent={ebooks[0].accent}
@@ -200,44 +227,74 @@ function HeroVisual() {
           />
         </div>
       </div>
+
+      {/* Cursor spotlight (subtle warm reveal, transform-only) */}
+      <div
+        ref={spotRef}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-20 rounded-2xl opacity-0 transition-opacity duration-300"
+        style={{
+          background:
+            "radial-gradient(220px circle at center, rgba(255, 246, 235, 0.5), transparent 70%)",
+          willChange: "transform",
+        }}
+      />
+
+      {/* Floating badges */}
+      <div className="absolute -top-5 -right-2 sm:-right-5 z-30 animate-float">
+        <div className="flex items-center gap-2 rounded-xl border-2 border-ink bg-card px-3 py-2 shadow-bold">
+          <Heart className="h-4 w-4 text-primary" />
+          <span className="text-xs font-semibold text-ink">Sage-femme · 8 ans</span>
+        </div>
+      </div>
+      <div className="absolute -bottom-5 -left-2 sm:-left-5 z-30 animate-float-slow">
+        <div className="flex items-center gap-2 rounded-xl border-2 border-ink bg-card px-3 py-2 shadow-bold">
+          <Zap className="h-4 w-4 text-primary" />
+          <span className="text-xs font-semibold text-ink">PDF · Immédiat</span>
+        </div>
+      </div>
     </div>
   );
 }
 
 export default function Landing() {
+  const reduce = useReducedMotion();
+  const fadeUp = (delay: number) => ({
+    initial: reduce ? false : { opacity: 0, y: 24 },
+    animate: reduce ? undefined : { opacity: 1, y: 0 },
+    transition: { duration: 0.6, ease: EASE, delay },
+  });
+
   return (
     <Layout>
       {/* ============ HERO ============ */}
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:py-24 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
-            <span
-              className="inline-block rounded-full border-2 border-ink bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ink animate-text-slide"
-              style={{ animationDelay: "0ms" }}
+            <motion.span
+              {...fadeUp(0)}
+              className="inline-block rounded-full border-2 border-ink bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ink"
             >
               Post-partum · Guides bienveillants
-            </span>
-            <h1
-              className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-ink text-balance leading-[0.95] animate-text-slide"
-              style={{ animationDelay: "80ms" }}
+            </motion.span>
+            <motion.h1
+              {...fadeUp(0.08)}
+              className="mt-6 font-display text-fluid-hero font-bold text-ink text-balance"
             >
               Tu viens d'accoucher.
               <br />
               <span className="text-primary">Maintenant, on s'occupe de toi.</span>
-            </h1>
-            <p
-              className="mt-6 text-lg text-ink/75 max-w-xl text-balance animate-text-slide"
-              style={{ animationDelay: "180ms" }}
+            </motion.h1>
+            <motion.p
+              {...fadeUp(0.18)}
+              className="mt-6 text-lg text-ink/75 max-w-xl text-balance"
             >
               Trois ebooks écrits par une sage-femme pour traverser le
               post-partum avec clarté, sans culpabilité. Liste de naissance,
               corps après l'accouchement, charge mentale : chaque guide répond
               à une vraie question.
-            </p>
-            <div
-              className="mt-8 flex flex-wrap gap-4 items-center animate-text-slide"
-              style={{ animationDelay: "260ms" }}
-            >
+            </motion.p>
+            <motion.div {...fadeUp(0.26)} className="mt-8 flex flex-wrap gap-4 items-center">
               <Link
                 to="/guides"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground border-2 border-ink px-6 py-3.5 font-semibold shadow-bold transition-transform hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
@@ -248,7 +305,7 @@ export default function Landing() {
               <span className="text-sm text-ink/60">
                 Téléchargement immédiat · Paiement sécurisé Stripe
               </span>
-            </div>
+            </motion.div>
           </div>
 
           <Reveal delay={150}>
@@ -265,7 +322,7 @@ export default function Landing() {
               <span className="text-primary font-semibold text-sm uppercase tracking-wider">
                 Ce que ça change
               </span>
-              <h2 className="mt-3 text-4xl sm:text-5xl font-display font-bold text-ink text-balance">
+              <h2 className="mt-3 text-fluid-h2 font-display font-bold text-ink text-balance">
                 Avant. Après.
                 <br />
                 Le vrai changement.
@@ -322,7 +379,7 @@ export default function Landing() {
                 <span className="text-primary font-semibold text-sm uppercase tracking-wider">
                   Le problème
                 </span>
-                <h2 className="mt-3 text-4xl sm:text-5xl font-display font-bold text-balance">
+                <h2 className="mt-3 text-fluid-h2 font-display font-bold text-balance">
                   Les infos en ligne épuisent les jeunes mamans.
                 </h2>
               </div>
@@ -364,7 +421,7 @@ export default function Landing() {
               <span className="text-primary font-semibold text-sm uppercase tracking-wider">
                 Comment ça marche
               </span>
-              <h2 className="mt-3 text-4xl sm:text-5xl font-display font-bold text-balance text-ink">
+              <h2 className="mt-3 text-fluid-h2 font-display font-bold text-balance text-ink">
                 Trois étapes. Un guide à toi.
               </h2>
             </div>
@@ -400,9 +457,9 @@ export default function Landing() {
             <Reveal>
               <div>
                 <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-                  Pourquoi ces guides
+                  Derrière ForceMaman, une femme
                 </span>
-                <h2 className="mt-3 text-4xl sm:text-5xl font-display font-bold text-ink text-balance leading-tight">
+                <h2 className="mt-3 text-fluid-h2 font-display font-bold text-ink text-balance leading-tight">
                   Une expertise de sage-femme, pas un copier-coller de blog.
                 </h2>
                 <p className="mt-5 text-lg text-ink/75">
@@ -430,10 +487,14 @@ export default function Landing() {
                   </p>
                   <p className="mt-3 text-ink/75 text-sm leading-relaxed text-left">
                     Sage-femme pendant 8 ans, j'ai accompagné des centaines de
-                    mamans. Puis c'est moi qui ai eu ma fille, et j'ai découvert
-                    que le plus dur commence souvent après, une fois rentrée à la
-                    maison. ForceMaman, ce sont les guides que j'aurais aimé
-                    avoir entre les mains ce jour-là.
+                    mamans le jour de l'accouchement. Et puis un jour, c'est moi
+                    qui ai eu ma fille. Et j'ai découvert ce que personne ne
+                    m'avait dit : que le plus dur commence souvent après, une
+                    fois rentrée à la maison, seule avec ce petit être et toutes
+                    ces questions. ForceMaman, c'est les guides que j'aurais aimé
+                    avoir entre les mains ce jour-là. Écrits avec ce que je sais
+                    en tant que professionnelle, et ce que j'ai vécu en tant que
+                    maman.
                   </p>
                   <p className="mt-4 text-ink/60 text-sm italic">
                     Maria, fondatrice de ForceMaman
@@ -510,7 +571,7 @@ export default function Landing() {
                 <Sparkles className="h-3.5 w-3.5 text-primary" />
                 Pack Complet · {bundle.discount}
               </span>
-              <h2 className="mt-4 text-4xl sm:text-5xl font-display font-bold text-ink text-balance leading-tight">
+              <h2 className="mt-4 text-fluid-h2 font-display font-bold text-ink text-balance leading-tight">
                 Les trois guides.
                 <br />
                 Une seule boîte à outils.
@@ -573,7 +634,7 @@ export default function Landing() {
               <span className="text-primary font-semibold text-sm uppercase tracking-wider">
                 Témoignages
               </span>
-              <h2 className="mt-3 text-4xl sm:text-5xl font-display font-bold text-ink text-balance">
+              <h2 className="mt-3 text-fluid-h2 font-display font-bold text-ink text-balance">
                 Ce que disent les premières lectrices.
               </h2>
             </div>
@@ -619,7 +680,7 @@ export default function Landing() {
               <span className="text-primary font-semibold text-sm uppercase tracking-wider">
                 FAQ
               </span>
-              <h2 className="mt-3 text-4xl sm:text-5xl font-display font-bold text-ink text-balance">
+              <h2 className="mt-3 text-fluid-h2 font-display font-bold text-ink text-balance">
                 Tes questions, nos réponses.
               </h2>
             </div>
@@ -652,7 +713,7 @@ export default function Landing() {
         <div className="mx-auto max-w-2xl px-5 text-center">
           <Reveal>
             <Heart className="h-10 w-10 text-primary mx-auto" />
-            <h2 className="mt-5 text-4xl sm:text-5xl font-display font-bold text-balance">
+            <h2 className="mt-5 text-fluid-h2 font-display font-bold text-balance">
               Prête à prendre soin de toi ?
             </h2>
             <p className="mt-4 text-cream/75 text-lg">

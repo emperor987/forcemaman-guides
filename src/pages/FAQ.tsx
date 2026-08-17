@@ -100,7 +100,7 @@ export default function FAQ() {
             <span className="inline-block rounded-full border-2 border-ink bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ink">
               FAQ
             </span>
-            <h1 className="mt-6 font-display text-5xl sm:text-6xl font-bold text-ink text-balance leading-[0.95]">
+            <h1 className="mt-6 font-display text-fluid-hero font-bold text-ink text-balance">
               Tes questions, nos réponses.
             </h1>
             <p className="mt-6 text-lg text-ink/75 max-w-xl mx-auto text-balance">
@@ -149,7 +149,7 @@ export default function FAQ() {
         <div className="mx-auto max-w-3xl px-5 text-center">
           <Reveal>
             <HelpCircle className="h-10 w-10 text-primary mx-auto" />
-            <h2 className="mt-5 font-display text-4xl sm:text-5xl font-bold text-balance">
+            <h2 className="mt-5 font-display text-fluid-h2 font-bold text-balance">
               Tu n'as pas trouvé ta réponse ?
             </h2>
             <p className="mt-4 text-cream/75 text-lg">

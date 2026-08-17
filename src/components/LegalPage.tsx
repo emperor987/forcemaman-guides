@@ -27,7 +27,7 @@ export default function LegalPage({
         <div className="mx-auto max-w-4xl px-5 text-center">
           <Reveal>
             <FileText className="h-12 w-12 text-primary mx-auto" />
-            <h1 className="mt-5 font-display text-5xl sm:text-6xl font-bold text-ink text-balance leading-[0.95]">
+            <h1 className="mt-5 font-display text-fluid-hero font-bold text-ink text-balance">
               {title}
             </h1>
             <p className="mt-4 text-sm text-ink/60">

@@ -202,10 +202,55 @@
   contain-intrinsic-size: auto 700px;
 }
 
+/* ============================================================
+   Fluid type scale (clamp-based, no breakpoint jumps)
+   ============================================================ */
+
+.text-fluid-hero {
+  font-size: clamp(2.4rem, 5.5vw + 0.9rem, 4.75rem);
+  line-height: 0.98;
+}
+
+.text-fluid-h2 {
+  font-size: clamp(1.9rem, 2.6vw + 0.8rem, 3.25rem);
+  line-height: 1.06;
+}
+
+.text-fluid-h3 {
+  font-size: clamp(1.35rem, 1.1vw + 0.9rem, 1.8rem);
+  line-height: 1.15;
+}
+
+/* ============================================================
+   Ambient float (transform-only, GPU friendly)
+   ============================================================ */
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+.animate-float {
+  animation: float 6s var(--ease) infinite;
+  will-change: transform;
+}
+
+.animate-float-slow {
+  animation: float 9s var(--ease) infinite;
+  will-change: transform;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-page-in,
   .animate-text-slide,
-  .animate-fade-in {
+  .animate-fade-in,
+  .animate-float,
+  .animate-float-slow {
     animation: none;
   }
   .reveal {

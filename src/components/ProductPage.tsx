@@ -76,7 +76,7 @@ export default function ProductPage({
                     {discount}
                   </span>
                 )}
-                <h1 className="mt-5 font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-ink text-balance leading-[0.98]">
+                <h1 className="mt-5 font-display text-fluid-h2 font-bold text-ink text-balance leading-[0.98]">
                   {title}
                 </h1>
                 <p className={cn("mt-3 text-lg font-medium", accentText)}>
@@ -127,13 +127,13 @@ export default function ProductPage({
       </section>
 
       {/* Description */}
-      <section className="py-16 sm:py-20 bg-secondary/40 border-y-2 border-ink/10">
+      <section className="py-16 sm:py-20 bg-secondary/40 border-y-2 border-ink/10 cv-auto">
         <div className="mx-auto max-w-4xl px-5">
           <Reveal>
             <span className="text-primary font-semibold text-sm uppercase tracking-wider">
               À propos
             </span>
-            <h2 className="mt-3 font-display text-3xl sm:text-4xl font-bold text-ink">
+            <h2 className="mt-3 font-display text-fluid-h3 font-bold text-ink">
               De quoi parle ce guide ?
             </h2>
             <div className="mt-6 space-y-4 text-ink/80 leading-relaxed">
@@ -146,13 +146,13 @@ export default function ProductPage({
       </section>
 
       {/* Sommaire */}
-      <section className="py-16 sm:py-20">
+      <section className="py-16 sm:py-20 cv-auto">
         <div className="mx-auto max-w-4xl px-5">
           <Reveal>
             <span className="text-primary font-semibold text-sm uppercase tracking-wider">
               Sommaire
             </span>
-            <h2 className="mt-3 font-display text-3xl sm:text-4xl font-bold text-ink">
+            <h2 className="mt-3 font-display text-fluid-h3 font-bold text-ink">
               Le contenu du guide
             </h2>
             <div className="mt-8 rounded-3xl border-2 border-ink bg-card p-6 sm:p-8 shadow-bold">
@@ -172,13 +172,13 @@ export default function ProductPage({
       </section>
 
       {/* Aperçu */}
-      <section className="py-16 sm:py-20 bg-secondary/40 border-y-2 border-ink/10">
+      <section className="py-16 sm:py-20 bg-secondary/40 border-y-2 border-ink/10 cv-auto">
         <div className="mx-auto max-w-4xl px-5">
           <Reveal>
             <span className="text-primary font-semibold text-sm uppercase tracking-wider">
               Aperçu
             </span>
-            <h2 className="mt-3 font-display text-3xl sm:text-4xl font-bold text-ink">
+            <h2 className="mt-3 font-display text-fluid-h3 font-bold text-ink">
               Un avant-goût des pages
             </h2>
           </Reveal>
@@ -215,7 +215,7 @@ export default function ProductPage({
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-3xl px-5 text-center">
           <Reveal>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-ink">
+            <h2 className="font-display text-fluid-h3 font-bold text-ink">
               Prête à télécharger ?
             </h2>
             <p className="mt-3 text-ink/70 max-w-xl mx-auto">

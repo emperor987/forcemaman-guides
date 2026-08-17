@@ -89,7 +89,7 @@ export default function Guides() {
             <span className="inline-block rounded-full border-2 border-ink bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ink">
               Nos guides
             </span>
-            <h1 className="mt-6 font-display text-5xl sm:text-6xl font-bold text-ink text-balance leading-[0.95]">
+            <h1 className="mt-6 font-display text-fluid-hero font-bold text-ink text-balance">
               Trois guides pour te soutenir.
             </h1>
             <p className="mt-6 text-lg text-ink/75 max-w-xl mx-auto text-balance">
@@ -101,7 +101,7 @@ export default function Guides() {
       </section>
 
       {/* Ebooks grid */}
-      <section className="pb-20 sm:pb-24">
+      <section className="pb-20 sm:pb-24 cv-auto">
         <div className="mx-auto max-w-6xl px-5">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {ebooks.map((ebook, i) => (
@@ -147,7 +147,7 @@ export default function Guides() {
       </section>
 
       {/* Bundle */}
-      <section className="py-20 sm:py-24 bg-secondary/40 border-y-2 border-ink/10">
+      <section className="py-20 sm:py-24 bg-secondary/40 border-y-2 border-ink/10 cv-auto">
         <div className="mx-auto max-w-4xl px-5">
           <Reveal>
             <div className="rounded-3xl border-2 border-ink bg-card p-6 sm:p-10 shadow-[8px_8px_0_0_var(--terracotta)] grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8 items-center">
@@ -207,11 +207,11 @@ export default function Guides() {
       </section>
 
       {/* Réassurance */}
-      <section className="py-20 sm:py-24">
+      <section className="py-20 sm:py-24 cv-auto">
         <div className="mx-auto max-w-6xl px-5">
           <Reveal>
             <div className="text-center">
-              <h2 className="text-4xl sm:text-5xl font-display font-bold text-ink text-balance">
+              <h2 className="text-fluid-h2 font-display font-bold text-ink text-balance">
                 Nos engagements
               </h2>
             </div>
@@ -235,14 +235,14 @@ export default function Guides() {
       </section>
 
       {/* Pourquoi ces guides */}
-      <section className="py-20 sm:py-24 bg-secondary/40 border-y-2 border-ink/10">
+      <section className="py-20 sm:py-24 bg-secondary/40 border-y-2 border-ink/10 cv-auto">
         <div className="mx-auto max-w-6xl px-5">
           <Reveal>
             <div className="max-w-2xl">
               <span className="text-primary font-semibold text-sm uppercase tracking-wider">
                 Pourquoi ces guides
               </span>
-              <h2 className="mt-3 text-4xl sm:text-5xl font-display font-bold text-ink text-balance">
+              <h2 className="mt-3 text-fluid-h2 font-display font-bold text-ink text-balance">
                 Une intention pour chaque guide.
               </h2>
             </div>
@@ -269,11 +269,11 @@ export default function Guides() {
       </section>
 
       {/* FAQ courte */}
-      <section className="py-20 sm:py-24">
+      <section className="py-20 sm:py-24 cv-auto">
         <div className="mx-auto max-w-3xl px-5">
           <Reveal>
             <div className="text-center">
-              <h2 className="text-4xl sm:text-5xl font-display font-bold text-ink text-balance">
+              <h2 className="text-fluid-h2 font-display font-bold text-ink text-balance">
                 Questions fréquentes
               </h2>
             </div>
@@ -318,7 +318,7 @@ export default function Guides() {
       <section className="bg-ink text-cream py-20 sm:py-24">
         <div className="mx-auto max-w-2xl px-5 text-center">
           <Reveal>
-            <h2 className="text-4xl sm:text-5xl font-display font-bold text-balance">
+            <h2 className="text-fluid-h2 font-display font-bold text-balance">
               Prête à commencer ?
             </h2>
             <p className="mt-4 text-cream/75 text-lg">
