@@ -294,33 +294,27 @@ export default function Landing() {
             <p className="mt-10 text-center text-[11px] uppercase tracking-[0.28em] text-foreground/55">
               La fondatrice
             </p>
-            <h2 className="mt-5 text-center font-serif text-[2rem] leading-[1.05] text-foreground">
-              Pourquoi j'ai créé <br />
-              <span className="italic">ForceMaman.</span>
+            <h2 className="mt-5 text-center font-serif text-[2rem] leading-[1.05] text-foreground sm:text-[2.35rem]">
+              Je m'appelle <span className="italic">Maria.</span>
             </h2>
           </Reveal>
 
           <Reveal delay={140}>
-            <div className="mt-8 space-y-5 text-[15px] leading-[1.75] text-foreground/75">
+            <div className="mt-8 space-y-5 text-[15px] leading-[1.75] text-foreground/75 sm:text-base">
               <p>
-                Après la naissance de mon premier bébé, j'ai compris une chose
-                : personne ne nous parle vraiment de la charge mentale qui
-                arrive avec lui. Pas seulement les couches et les biberons,
-                mais ce flux constant de petites décisions, de listes invisibles
-                et de choses à ne pas oublier.
+                Sage-femme pendant 8 ans, j'ai accompagné des centaines de
+                mamans le jour de l'accouchement. Et puis un jour, c'est moi qui
+                ai eu ma fille. Et j'ai découvert ce que personne ne m'avait dit
+                : que le plus dur commence souvent après, une fois rentrée à la
+                maison, seule avec ce petit être et toutes ces questions.
               </p>
               <p>
-                J'ai essayé les routines parfaites, les plannings Pinterest, les
-                applications miracles. Aucune ne tenait plus d'une semaine. Ce
-                qui a tout changé, ce sont des{" "}
-                <em className="italic">systèmes simples</em>, posés une seule
-                fois, qui fonctionnaient même les jours où je dormais quatre
-                heures.
+                ForceMaman, c'est les guides que j'aurais aimé avoir entre les
+                mains ce jour-là. Écrits avec ce que je sais en tant que
+                professionnelle, et ce que j'ai vécu en tant que maman.
               </p>
-              <p>
-                ForceMaman, c'est ça : pas un nouveau standard de maman
-                parfaite, juste des outils réalistes pour vous libérer un peu
-                d'espace mental. Sans culpabilité. Sans injonction.
+              <p className="font-serif text-[1.05rem] italic text-foreground/85">
+                Maria, fondatrice de ForceMaman
               </p>
             </div>
           </Reveal>
