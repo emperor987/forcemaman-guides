@@ -451,60 +451,75 @@ export default function Landing() {
       </section>
 
       {/* ============ MÉTHODOLOGIE / MARIA ============ */}
-      <section className="py-20 sm:py-28 bg-secondary/40 border-y-2 border-ink/10 cv-auto">
+      <section className="py-24 sm:py-32 cv-auto">
         <div className="mx-auto max-w-6xl px-5">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <Reveal>
-              <div>
-                <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-                  Derrière ForceMaman, une femme
-                </span>
-                <h2 className="mt-3 text-fluid-h2 font-display font-bold text-ink text-balance leading-tight">
-                  Une expertise de sage-femme, pas un copier-coller de blog.
-                </h2>
-                <p className="mt-5 text-lg text-ink/75">
-                  Chaque guide est écrit par Maria Garcia, sage-femme pendant 8
-                  ans et maman. Elle y combine ce que sa profession lui a appris
-                  et ce qu'elle a vécu après la naissance de sa fille. Tu y
-                  retrouves les mots qu'elle aurait aimé lire à ce moment-là.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={120}>
-              <div className="relative">
+          {/* Bloc fondatrice centré (référence 2) */}
+          <Reveal y={28} duration={0.7}>
+            <div className="mx-auto max-w-2xl text-center">
+              {/* Photo de Maria en cercle centré (médaillon M généré) */}
+              <div className="relative mx-auto h-28 w-28 sm:h-32 sm:w-32">
                 <div
-                  className="absolute -inset-4 bg-rose-soft/50 rounded-3xl rotate-2"
+                  className="absolute -inset-2.5 rounded-full border-2 border-dashed border-primary/25"
                   aria-hidden="true"
                 />
-                <div className="relative rounded-2xl border-2 border-ink bg-card p-8 shadow-bold text-center">
-                  <div className="mx-auto h-24 w-24 rounded-full border-2 border-ink bg-secondary flex items-center justify-center">
-                    <span className="font-display text-3xl font-bold text-ink">
-                      M
-                    </span>
-                  </div>
-                  <p className="mt-5 font-display text-2xl font-bold text-ink">
-                    Je m'appelle Maria.
-                  </p>
-                  <p className="mt-3 text-ink/75 text-sm leading-relaxed text-left">
-                    Sage-femme pendant 8 ans, j'ai accompagné des centaines de
-                    mamans le jour de l'accouchement. Et puis un jour, c'est moi
-                    qui ai eu ma fille. Et j'ai découvert ce que personne ne
-                    m'avait dit : que le plus dur commence souvent après, une
-                    fois rentrée à la maison, seule avec ce petit être et toutes
-                    ces questions. ForceMaman, c'est les guides que j'aurais aimé
-                    avoir entre les mains ce jour-là. Écrits avec ce que je sais
-                    en tant que professionnelle, et ce que j'ai vécu en tant que
-                    maman.
-                  </p>
-                  <p className="mt-4 text-ink/60 text-sm italic">
-                    Maria, fondatrice de ForceMaman
-                  </p>
+                <div className="relative h-full w-full overflow-hidden rounded-full border-2 border-ink bg-gradient-to-br from-secondary via-rose-soft to-card shadow-[0_16px_36px_-14px_rgba(92,74,58,0.45)] flex items-center justify-center">
+                  <span className="font-display text-4xl sm:text-5xl font-bold text-ink">
+                    M
+                  </span>
                 </div>
               </div>
-            </Reveal>
-          </div>
 
-          <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Badge pill douce (référence 1) */}
+              <div className="mt-7 inline-flex items-center gap-2 rounded-full border border-ink/10 bg-card px-4 py-2.5 shadow-[0_10px_24px_-12px_rgba(92,74,58,0.4)]">
+                <Heart className="h-4 w-4 text-primary" />
+                <span className="text-xs font-semibold text-ink">
+                  Créé par une maman, testé dans la vraie vie
+                </span>
+              </div>
+
+              {/* Label discret en majuscules espacées */}
+              <p className="mt-9 text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-ink/45">
+                La fondatrice
+              </p>
+
+              {/* Titre serif, mot clé en italique sur la deuxième ligne */}
+              <h2 className="mt-4 font-display text-fluid-h2 font-bold text-ink text-balance">
+                Une expertise de sage-femme, pas un{" "}
+                <em className="italic text-primary">copier-coller</em> de blog.
+              </h2>
+
+              <p className="mt-5 text-lg text-ink/75 leading-relaxed">
+                Chaque guide est écrit par Maria Garcia, sage-femme pendant 8
+                ans et maman. Elle y combine ce que sa profession lui a appris
+                et ce qu'elle a vécu après la naissance de sa fille. Tu y
+                retrouves les mots qu'elle aurait aimé lire à ce moment-là.
+              </p>
+
+              {/* Citation de Maria (texte validé, intact) */}
+              <figure className="mt-12 rounded-[2rem] border border-ink/10 bg-card/80 p-8 sm:p-12 shadow-[0_24px_60px_-28px_rgba(92,74,58,0.45)]">
+                <Quote className="mx-auto h-7 w-7 text-primary" />
+                <p className="mt-5 font-display text-2xl sm:text-3xl font-bold text-ink">
+                  Je m'appelle Maria.
+                </p>
+                <blockquote className="mx-auto mt-4 max-w-xl text-ink/75 leading-relaxed">
+                  Sage-femme pendant 8 ans, j'ai accompagné des centaines de
+                  mamans le jour de l'accouchement. Et puis un jour, c'est moi
+                  qui ai eu ma fille. Et j'ai découvert ce que personne ne
+                  m'avait dit : que le plus dur commence souvent après, une
+                  fois rentrée à la maison, seule avec ce petit être et toutes
+                  ces questions. ForceMaman, c'est les guides que j'aurais aimé
+                  avoir entre les mains ce jour-là. Écrits avec ce que je sais
+                  en tant que professionnelle, et ce que j'ai vécu en tant que
+                  maman.
+                </blockquote>
+                <figcaption className="mt-5 font-display text-lg italic text-ink/60">
+                  Maria, fondatrice de ForceMaman
+                </figcaption>
+              </figure>
+            </div>
+          </Reveal>
+
+          <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
             {methodology.map((m, i) => (
               <Reveal key={m.title} delay={i * 90}>
                 <div className="rounded-2xl border-2 border-ink bg-card p-6 h-full">

@@ -112,7 +112,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t-2 border-ink/10">
-        <div className="mx-auto max-w-6xl px-5 py-5 text-center text-xs text-ink/60">
+        <div className="mx-auto max-w-6xl px-5 py-5 pb-[calc(4.75rem+env(safe-area-inset-bottom))] lg:pb-5 text-center text-xs text-ink/60">
           © {new Date().getFullYear()} ForceMaman. Tous droits réservés.
         </div>
       </div>

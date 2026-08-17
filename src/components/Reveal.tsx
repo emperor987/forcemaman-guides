@@ -8,6 +8,8 @@ interface RevealProps {
   delay?: number;
   /** Vertical offset in px before the reveal */
   y?: number;
+  /** Animation duration in seconds */
+  duration?: number;
 }
 
 export const EASE = [0.22, 1, 0.36, 1] as const;
@@ -17,7 +19,13 @@ export const EASE = [0.22, 1, 0.36, 1] as const;
  * Animates transform/opacity only (GPU friendly), triggers once per element,
  * and is fully disabled when the user prefers reduced motion.
  */
-export default function Reveal({ children, className, delay = 0, y = 24 }: RevealProps) {
+export default function Reveal({
+  children,
+  className,
+  delay = 0,
+  y = 24,
+  duration = 0.55,
+}: RevealProps) {
   const reduce = useReducedMotion();
 
   return (
@@ -26,7 +34,11 @@ export default function Reveal({ children, className, delay = 0, y = 24 }: Revea
       initial={reduce ? false : { opacity: 0, y }}
       whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15, margin: "0px 0px -40px 0px" }}
-      transition={{ duration: 0.55, ease: EASE, delay: reduce ? 0 : delay }}
+      transition={{
+        duration: reduce ? 0 : duration,
+        ease: EASE,
+        delay: reduce ? 0 : delay,
+      }}
     >
       {children}
     </motion.div>
