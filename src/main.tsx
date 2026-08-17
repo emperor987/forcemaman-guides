@@ -14,6 +14,9 @@ const Landing = lazy(() => import("./pages/Landing.tsx"));
 const Guides = lazy(() => import("./pages/Guides.tsx"));
 const Journal = lazy(() => import("./pages/Journal.tsx"));
 const GuideGratuit = lazy(() => import("./pages/GuideGratuit.tsx"));
+const Contact = lazy(() => import("./pages/Contact.tsx"));
+const APpropos = lazy(() => import("./pages/APpropos.tsx"));
+const Ressources = lazy(() => import("./pages/Ressources.tsx"));
 const ListeNaissance = lazy(() => import("./pages/guides/ListeNaissance.tsx"));
 const CorpsApres = lazy(() => import("./pages/guides/CorpsApres.tsx"));
 const ChargeMentale = lazy(() => import("./pages/guides/ChargeMentale.tsx"));
@@ -134,6 +137,9 @@ createRoot(document.getElementById("root")!).render(
               <Route path="/guides" element={<Guides />} />
               <Route path="/journal" element={<Journal />} />
               <Route path="/guide-gratuit" element={<GuideGratuit />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/a-propos" element={<APpropos />} />
+              <Route path="/ressources" element={<Ressources />} />
               <Route path="/guides/liste-naissance" element={<ListeNaissance />} />
               <Route path="/guides/corps-apres" element={<CorpsApres />} />
               <Route path="/guides/charge-mentale" element={<ChargeMentale />} />

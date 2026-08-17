@@ -1,324 +1,284 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
-import EbookCover from "@/components/EbookCover";
-import NewsletterBlock from "@/components/NewsletterBlock";
-import {
-  badgeStyles,
-  libraryCategories,
-  libraryItems,
-  type LibraryItem,
-} from "@/lib/ebooks";
-import { cn } from "@/lib/utils";
-import {
-  ArrowRight,
-  CreditCard,
-  RotateCcw,
-  Search,
-  ShieldCheck,
-  Zap,
-} from "lucide-react";
+import { libraryItems, type LibraryItem } from "@/lib/ebooks";
+import { ArrowRight, Search } from "lucide-react";
 
-const benefits = [
-  {
-    icon: ShieldCheck,
-    title: "Écrits par une sage-femme",
-    text: "8 ans d'expérience et un vécu de maman, pour des repères fiables.",
-  },
-  {
-    icon: Zap,
-    title: "Téléchargement immédiat",
-    text: "Ton PDF arrive par email dès l'achat, sur tous tes appareils.",
-  },
-  {
-    icon: CreditCard,
-    title: "Paiement sécurisé",
-    text: "100 % Stripe. Aucune donnée bancaire n'est stockée sur le site.",
-  },
-  {
-    icon: RotateCcw,
-    title: "Remboursement 14 jours",
-    text: "Si un guide n'est pas pour toi, on te rembourse sans discussion.",
-  },
+const heroBullets = [
+  "Moins de charge mentale.",
+  "Moins d'oublis.",
+  "Moins d'allers-retours.",
+  "Plus de temps avec votre bébé.",
 ];
+
+/** Styles de badge + ligne colorée, copiés du référence */
+const badgeMeta: Record<LibraryItem["badge"], { label: string; line: string; dot: string; text: string }> = {
+  populaire: { label: "📥 Le plus téléchargé", line: "#C6B39A", dot: "#C6B39A", text: "#8B7658" },
+  essentiel: { label: "✨ Essentiel", line: "#A9B6A4", dot: "#A9B6A4", text: "#6E7C69" },
+  temps: { label: "💛 Gain de temps", line: "#BFB4A6", dot: "#BFB4A6", text: "#847A6C" },
+};
+
+const typeLabel = (item: LibraryItem) => {
+  if (item.id === "bundle") return "Pack";
+  if (item.free && item.id === "checklist-sac") return "Checklist";
+  if (item.free) return "Gratuit";
+  return "Guide";
+};
+
+const CARD_CLASS =
+  "group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border/60 bg-[color-mix(in_oklab,var(--background)_60%,white)] px-7 pb-7 pt-8 text-left transition-[transform,box-shadow,border-color] duration-500 ease-out hover:-translate-y-[2px] hover:border-foreground/20 hover:shadow-[0_24px_60px_-36px_rgba(35,33,32,0.22)] sm:px-8 sm:pb-8 sm:pt-9";
+
+function ResourceCard({ item }: { item: LibraryItem }) {
+  const meta = badgeMeta[item.badge];
+  return (
+    <Reveal delay={0}>
+      <Link to={item.href} className={CARD_CLASS}>
+        <span
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 h-px opacity-70"
+          style={{ background: meta.line }}
+        />
+        {item.badgeLabel && (
+          <span className="absolute right-6 top-6 rounded-full border border-foreground/12 bg-background/70 px-2.5 py-1 text-[0.6rem] uppercase tracking-[0.18em] text-foreground/60 backdrop-blur">
+            {meta.label}
+          </span>
+        )}
+        <div className="flex items-center gap-2">
+          <span
+            aria-hidden="true"
+            className="inline-block h-[5px] w-[5px] rounded-full"
+            style={{ background: meta.dot }}
+          />
+          <span
+            className="text-[0.6rem] font-medium uppercase tracking-[0.24em]"
+            style={{ color: meta.text }}
+          >
+            {typeLabel(item)}
+          </span>
+        </div>
+        <h3 className="mt-5 font-serif text-[1.35rem] leading-[1.2] tracking-[-0.005em] text-foreground sm:text-[1.5rem]">
+          {item.title}
+        </h3>
+        <p className="mt-3 flex-1 text-[0.9rem] leading-[1.65] text-foreground/60">
+          {item.benefit}
+        </p>
+        <span className="mt-8 inline-flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.22em] text-foreground/70 transition-transform duration-500 ease-out group-hover:translate-x-1">
+          {item.id === "bundle"
+            ? "Découvrir le pack"
+            : item.free
+              ? "Télécharger le PDF"
+              : "Voir le guide"}
+          <ArrowRight className="size-3" />
+        </span>
+      </Link>
+    </Reveal>
+  );
+}
 
 const faqItems = [
   {
-    question: "Comment reçois-je les guides ?",
+    question: "Les guides sont-ils vraiment complets ?",
     answer:
-      "Dès le paiement validé, tu reçois un lien de téléchargement par email. Les guides sont au format PDF, lisibles sur ordinateur, tablette ou téléphone, et imprimables si tu préfères le papier.",
+      "Oui. Chaque guide est écrit par une ancienne sage-femme, relu avec rigueur, et conçu pour être lu sur téléphone comme sur ordinateur.",
   },
   {
-    question: "Comment puis-je payer ?",
+    question: "Comment vais-je recevoir les guides ?",
     answer:
-      "Le paiement se fait par Stripe, de manière 100 % sécurisée, par carte bancaire. Aucune donnée bancaire n'est stockée sur notre site.",
+      "Ils arrivent par email, au format PDF, dès le paiement validé. Tu peux les télécharger autant de fois que tu le souhaites.",
+  },
+  {
+    question: "Le paiement est-il sécurisé ?",
+    answer:
+      "Oui. Les paiements passent par Stripe, un leader mondial du paiement en ligne. Aucune donnée bancaire n'est stockée sur le site.",
   },
   {
     question: "Puis-je me faire rembourser ?",
     answer:
       "Oui, sous 14 jours après l'achat. Écris-nous à hello@forcemaman.fr avec ton numéro de commande, nous traitons ta demande sous 48 heures.",
   },
-  {
-    question: "Les guides remplacent-ils un avis médical ?",
-    answer:
-      "Non. Ce sont des outils d'information et d'accompagnement. En cas de doute ou de problème de santé, consulte ta sage-femme, ton médecin ou un professionnel de santé qualifié.",
-  },
 ];
-
-function ProductCard({ item, index }: { item: LibraryItem; index: number }) {
-  return (
-    <Reveal delay={(index % 3) * 80}>
-      <div className="flex h-full flex-col overflow-hidden rounded-3xl border-2 border-ink bg-card shadow-bold transition-transform duration-300 hover:-translate-y-1">
-        <div className="relative">
-          <EbookCover
-            title={item.title}
-            accent={item.accent}
-            className="w-full aspect-[16/9] rounded-none border-0 border-b-2"
-            iconSize="h-10 w-10"
-            titleSize="text-sm sm:text-base"
-          />
-          <span
-            className={cn(
-              "absolute left-3 top-3 z-10 rounded-full border-2 border-ink px-2.5 py-1 text-[0.62rem] font-bold uppercase tracking-wider shadow-[3px_3px_0_0_var(--ink)]",
-              badgeStyles[item.badge],
-            )}
-          >
-            {item.badgeLabel}
-          </span>
-        </div>
-        <div className="flex flex-1 flex-col p-5 sm:p-6">
-          <h3 className="font-display text-lg font-semibold leading-snug text-ink">
-            {item.title}
-          </h3>
-          <p className="mt-2 text-sm leading-relaxed text-ink/70">
-            {item.benefit}
-          </p>
-          <div className="mt-auto flex items-center justify-between gap-3 border-t-2 border-ink/10 pt-5 mt-6">
-            <span
-              className={cn(
-                "font-display text-xl font-bold",
-                item.free ? "text-brand-sage" : "text-ink",
-              )}
-            >
-              {item.price}
-            </span>
-            <Link
-              to={item.href}
-              className="inline-flex items-center justify-center gap-1.5 rounded-xl border-2 border-ink px-4 py-2 text-sm font-semibold text-ink shadow-bold transition-transform hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
-            >
-              Découvrir
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-      </div>
-    </Reveal>
-  );
-}
 
 export default function Guides() {
   const [query, setQuery] = useState("");
-
   const q = query.trim().toLowerCase();
 
-  const visibleItems = useMemo(
+  const visible = useMemo(
     () =>
       libraryItems.filter(
         (item) =>
           !q ||
-          [item.title, item.benefit, item.badgeLabel]
-            .join(" ")
-            .toLowerCase()
-            .includes(q),
+          [item.title, item.benefit, item.badgeLabel].join(" ").toLowerCase().includes(q),
       ),
     [q],
   );
 
-  const featured = visibleItems.filter((item) => item.featured);
-  const hasResults = visibleItems.length > 0;
+  const popular = visible.filter((item) => item.featured);
+  const guides = visible.filter(
+    (item) => !item.free && item.id !== "bundle",
+  );
+  const freebies = visible.filter((item) => item.free || item.id === "bundle");
 
   return (
     <Layout>
-      {/* ============ HERO ============ */}
-      <section className="py-16 sm:py-24">
-        <div className="mx-auto max-w-6xl px-5">
-          <Reveal>
-            <div className="mx-auto max-w-3xl text-center">
-              <span className="inline-block rounded-full border-2 border-ink bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-wider text-ink">
-                La bibliothèque
-              </span>
-              <h1 className="mt-6 font-display text-fluid-hero font-bold text-ink text-balance">
-                Des guides pour chaque étape, écrits par une{" "}
-                <span className="text-primary">sage-femme</span>.
-              </h1>
-              <p className="mt-6 text-lg text-ink/75 text-balance">
-                De la liste de naissance aux premières semaines, des guides
-                clairs, bienveillants et sans jargon pour traverser le
-                post-partum accompagnée.
-              </p>
+      <div className="mx-auto max-w-6xl px-5 pb-24 pt-10 sm:px-8 lg:px-12">
+        {/* ============ HERO ============ */}
+        <Reveal>
+          <section className="pt-6 text-center sm:pt-14">
+            <p className="text-[0.65rem] uppercase tracking-[0.28em] text-foreground/50">
+              La Bibliothèque des Guides
+            </p>
+            <h1 className="mt-6 font-serif text-[2.4rem] leading-[1.05] tracking-tight text-foreground sm:text-6xl">
+              Les guides qui ont transformé{" "}
+              <span className="italic">mon quotidien</span> de jeune maman.
+            </h1>
+            <p className="mx-auto mt-6 max-w-xl text-[0.95rem] leading-relaxed text-foreground/65 sm:text-base">
+              Les guides, checklists et plans d'organisation que j'utilise
+              réellement au quotidien.
+            </p>
+            <ul className="mx-auto mt-8 flex max-w-md flex-col gap-1.5 text-sm text-foreground/70">
+              {heroBullets.map((b) => (
+                <li key={b}>{b}</li>
+              ))}
+            </ul>
+            <p className="mx-auto mt-6 max-w-lg text-sm text-foreground/55">
+              Tous les guides sont conçus pour être simples à mettre en place
+              et faciles à maintenir.
+            </p>
+            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <a
+                href="#ressources"
+                className="inline-flex h-12 items-center justify-center rounded-full bg-foreground px-7 text-[0.8rem] uppercase tracking-[0.18em] text-background transition-opacity hover:opacity-90"
+              >
+                Télécharger les ressources gratuites
+              </a>
+              <a
+                href="#guides"
+                className="inline-flex h-12 items-center justify-center rounded-full border border-foreground/25 px-7 text-[0.8rem] uppercase tracking-[0.18em] text-foreground/80 transition-colors hover:border-foreground/60 hover:text-foreground"
+              >
+                Découvrir les guides
+              </a>
             </div>
-          </Reveal>
+          </section>
+        </Reveal>
 
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {benefits.map((benefit, i) => (
-              <Reveal key={benefit.title} delay={i * 70}>
-                <div className="h-full rounded-2xl border-2 border-ink bg-card p-5 shadow-bold">
-                  <benefit.icon className="h-6 w-6 text-primary" strokeWidth={1.5} />
-                  <h3 className="mt-3 font-display text-base font-semibold text-ink">
-                    {benefit.title}
-                  </h3>
-                  <p className="mt-1.5 text-xs leading-relaxed text-ink/65">
-                    {benefit.text}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          {/* ============ RECHERCHE ============ */}
-          <Reveal delay={120}>
-            <div className="relative mx-auto mt-12 max-w-xl">
-              <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-ink/40" />
+        {/* ============ RECHERCHE ============ */}
+        <div id="ressources" className="mt-20 sm:mt-28 scroll-mt-24">
+          <div className="mx-auto max-w-xl">
+            <label htmlFor="search" className="sr-only">
+              Rechercher une ressource
+            </label>
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
               <input
+                id="search"
                 type="search"
+                placeholder="Rechercher : liste naissance, corps, charge mentale…"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Rechercher un guide, un thème, un besoin…"
-                aria-label="Rechercher un guide"
-                className="w-full rounded-full border-2 border-ink bg-card py-3.5 pl-12 pr-5 text-sm font-medium text-ink placeholder:text-ink/40 shadow-bold outline-none transition-colors focus:border-primary"
+                className="h-14 w-full rounded-full border border-border/70 bg-background pl-12 pr-5 text-sm text-foreground placeholder:text-foreground/40 focus:border-foreground/40 focus:outline-none"
               />
             </div>
-          </Reveal>
+          </div>
         </div>
-      </section>
 
-      {/* ============ LES PLUS TÉLÉCHARGÉS ============ */}
-      <section className="py-16 sm:py-20 bg-secondary/40 border-y-2 border-ink/10 cv-auto">
-        <div className="mx-auto max-w-6xl px-5">
+        {/* ============ LES PLUS POPULAIRES ============ */}
+        <section className="mt-20">
           <Reveal>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
-              <div>
-                <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-                  Les plus demandés
-                </span>
-                <h2 className="mt-3 font-display text-fluid-h2 font-bold text-ink text-balance">
-                  Les plus téléchargés
-                </h2>
-              </div>
-              <p className="text-sm text-ink/60">
-                Les guides préférés des mamans cette saison.
+            <div className="mb-8 text-center">
+              <p className="text-[0.65rem] uppercase tracking-[0.28em] text-foreground/50">
+                Populaires
               </p>
-            </div>
-          </Reveal>
-
-          {!hasResults && (
-            <div className="mt-12 rounded-3xl border-2 border-ink bg-card p-10 text-center shadow-bold">
-              <p className="font-display text-xl font-semibold text-ink">
-                Aucun guide ne correspond à ta recherche.
-              </p>
-              <p className="mt-2 text-sm text-ink/60">
-                Essaie un autre mot-clé, ou explore toute la bibliothèque.
-              </p>
-              <button
-                type="button"
-                onClick={() => setQuery("")}
-                className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl border-2 border-ink px-5 py-2.5 text-sm font-semibold text-ink shadow-bold transition-transform hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
-              >
-                Voir tous les guides
-              </button>
-            </div>
-          )}
-
-          {hasResults && (
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featured.map((item, i) => (
-                <ProductCard key={item.id} item={item} index={i} />
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* ============ PAR CATÉGORIES ============ */}
-      <section className="py-16 sm:py-20 cv-auto">
-        <div className="mx-auto max-w-6xl px-5 space-y-20">
-          {libraryCategories.map((category) => {
-            const items = visibleItems.filter(
-              (item) => item.category === category.id,
-            );
-            if (items.length === 0) return null;
-            return (
-              <div key={category.id}>
-                <Reveal>
-                  <div className="flex items-center gap-3">
-                    <span
-                      className={cn("h-3 w-3 rounded-full", category.dot)}
-                      aria-hidden="true"
-                    />
-                    <h2 className="font-display text-fluid-h3 font-bold text-ink">
-                      {category.title}
-                    </h2>
-                  </div>
-                  <p className="mt-2 max-w-2xl text-sm text-ink/65">
-                    {category.description}
-                  </p>
-                </Reveal>
-                <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {items.map((item, i) => (
-                    <ProductCard key={item.id} item={item} index={i} />
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* ============ FAQ ============ */}
-      <section className="py-16 sm:py-20 bg-secondary/40 border-y-2 border-ink/10 cv-auto">
-        <div className="mx-auto max-w-3xl px-5">
-          <Reveal>
-            <div className="text-center">
-              <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-                FAQ
-              </span>
-              <h2 className="mt-3 font-display text-fluid-h2 font-bold text-ink text-balance">
-                Tes questions, nos réponses.
+              <h2 className="mt-3 font-serif text-3xl text-foreground sm:text-4xl">
+                Les guides préférés des mamans
               </h2>
             </div>
           </Reveal>
+          {popular.length > 0 ? (
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {popular.map((item) => (
+                <ResourceCard key={item.id} item={item} />
+              ))}
+            </div>
+          ) : (
+            <p className="mt-8 text-center text-sm text-foreground/55">
+              Aucun guide ne correspond à ta recherche.
+            </p>
+          )}
+        </section>
 
-          <div className="mt-12">
-            <Accordion type="single" collapsible className="space-y-3">
+        {/* ============ LES GUIDES ============ */}
+        <section id="guides" className="mt-24 scroll-mt-24 sm:mt-32">
+          <Reveal>
+            <header className="mb-10 max-w-2xl">
+              <p className="text-[0.65rem] uppercase tracking-[0.28em] text-foreground/50">
+                Catégorie
+              </p>
+              <h2 className="mt-3 font-serif text-3xl text-foreground sm:text-4xl">
+                Les guides
+              </h2>
+              <p className="mt-3 text-sm text-foreground/60">
+                Des lectures courtes pour aller plus loin.
+              </p>
+            </header>
+          </Reveal>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {guides.map((item) => (
+              <ResourceCard key={item.id} item={item} />
+            ))}
+          </div>
+        </section>
+
+        {/* ============ PACK & GRATUITS ============ */}
+        <section id="gratuits" className="mt-24 scroll-mt-24 sm:mt-32">
+          <Reveal>
+            <header className="mb-10 max-w-2xl">
+              <p className="text-[0.65rem] uppercase tracking-[0.28em] text-foreground/50">
+                Catégorie
+              </p>
+              <h2 className="mt-3 font-serif text-3xl text-foreground sm:text-4xl">
+                Le pack & les gratuits
+              </h2>
+              <p className="mt-3 text-sm text-foreground/60">
+                Tout en un, ou commencer gratuitement par l'essentiel.
+              </p>
+            </header>
+          </Reveal>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {freebies.map((item) => (
+              <ResourceCard key={item.id} item={item} />
+            ))}
+          </div>
+        </section>
+
+        {/* ============ FAQ ============ */}
+        <section className="mt-28 border-t border-border/60 pt-16">
+          <div className="mx-auto max-w-2xl">
+            <Reveal>
+              <h2 className="text-center font-serif text-3xl text-foreground sm:text-4xl">
+                Questions fréquentes
+              </h2>
+            </Reveal>
+            <div className="mt-10 divide-y divide-border/60">
               {faqItems.map((item, i) => (
                 <Reveal key={item.question} delay={i * 40}>
-                  <AccordionItem
-                    value={item.question}
-                    className="overflow-hidden rounded-2xl border-2 border-ink bg-card px-5"
-                  >
-                    <AccordionTrigger className="py-5 font-display text-lg font-semibold text-ink hover:no-underline [&[data-state=open]>svg]:text-primary">
+                  <details className="group py-5">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-[0.95rem] text-foreground">
                       {item.question}
-                    </AccordionTrigger>
-                    <AccordionContent className="pb-5 leading-relaxed text-ink/70">
+                      <span className="text-foreground/40 transition-transform group-open:rotate-45">
+                        ＋
+                      </span>
+                    </summary>
+                    <p className="mt-3 text-sm leading-relaxed text-foreground/65">
                       {item.answer}
-                    </AccordionContent>
-                  </AccordionItem>
+                    </p>
+                  </details>
                 </Reveal>
               ))}
-            </Accordion>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* ============ NEWSLETTER ============ */}
-      <NewsletterBlock dark />
+        </section>
+      </div>
     </Layout>
   );
 }

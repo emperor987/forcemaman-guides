@@ -1,3 +1,5 @@
+import { images } from "@/lib/assets";
+
 export interface JournalArticle {
   id: string;
   title: string;
@@ -5,47 +7,133 @@ export interface JournalArticle {
   date: string;
   readTime: string;
   excerpt: string;
+  image: string;
   body: string[];
+  featured?: boolean;
 }
+
+export const journalCategories = [
+  "Tous",
+  "Organisation du quotidien",
+  "Systèmes postpartum",
+  "Charge mentale",
+  "Organisation bébé",
+  "Repas postpartum",
+  "Routines réalistes",
+];
 
 export const journalArticles: JournalArticle[] = [
   {
     id: "charge-mentale-7-gestes",
     title: "Comment alléger la charge mentale en sept gestes simples",
     category: "Charge mentale",
-    date: "12 août 2026",
-    readTime: "4 min",
+    date: "Juin 2026",
+    readTime: "8 min",
     excerpt:
-      "Le cerveau n'est pas fait pour tout retenir. Sept micro-gestes pour poser les choses hors de ta tête — et respirer.",
+      "Un protocole doux pour reposer le cerveau maternel sans ajouter une seule tâche à votre journée.",
+    image: images.blogFeatured,
+    featured: true,
     body: [
       "La charge mentale, ce n'est pas le nombre de tâches : c'est le nombre de choses que tu portes en permanence dans ta tête. Rendez-vous, lessive, carnet de santé, rappel de la crèche… Tout y passe, même la nuit.",
       "La bonne nouvelle : ces sept gestes prennent moins de dix minutes par jour et déplacent le problème de ta tête vers des systèmes simples. Un carnet, trois bacs, une zone départ près de la porte — et le reste peut attendre.",
     ],
   },
   {
-    id: "systeme-3-bacs",
-    title: "Le Système des 3 Bacs, expliqué en cinq minutes",
-    category: "Organisation",
-    date: "5 août 2026",
-    readTime: "3 min",
+    id: "5-produits",
+    title: "5 produits qui simplifient vraiment la vie avec un bébé",
+    category: "Organisation du quotidien",
+    date: "Juin 2026",
+    readTime: "8 min",
     excerpt:
-      "Trois bacs, zéro tri, une maison qui se range presque toute seule. Voici comment ça marche concrètement.",
+      "Cinq objets simples qui réduisent la charge mentale postpartum et transforment le quotidien avec un bébé.",
+    image: images.blog5Produits,
     body: [
-      "Le principe est d'une simplicité déconcertante : trois bacs étiquetés, une règle unique, et plus jamais de décision de rangement à prendre. Ce qui traîne va dans un bac, point final.",
-      "Ce système tient parce qu'il ne demande aucune énergie : les jours où tu n'as dormi que trois heures, il fonctionne encore. C'est exactement l'esprit de ForceMaman — des repères doux, pensés pour la vraie vie.",
+      "Quand on devient maman, on réalise vite qu'il ne manque pas forcément plus de temps. Il manque surtout des systèmes.",
+      "Au fil des mois, j'ai découvert que quelques produits bien choisis pouvaient réellement simplifier le quotidien, réduire les allers-retours inutiles et alléger la charge mentale.",
     ],
   },
   {
-    id: "checklist-sac-a-langer",
-    title: "La checklist du sac à langer, enfin complète",
-    category: "Sorties",
-    date: "29 juillet 2026",
+    id: "rituel-matin",
+    title: "Un rituel du matin réaliste, même avec un nouveau-né",
+    category: "Routines réalistes",
+    date: "Mai 2026",
+    readTime: "6 min",
+    excerpt:
+      "Trois minutes, une fenêtre ouverte, une intention. La version honnête du matin lent.",
+    image: images.blog4,
+    body: [
+      "Le matin lent des magazines suppose une maison calme et un bébé qui dort. Dans la vraie vie, il faut une version courte, tenable, et sans culpabilité.",
+      "Trois minutes suffisent : ouvrir la fenêtre, boire un verre d'eau, poser une intention. Le reste de la journée peut commencer — vous avez déjà pris soin de vous.",
+    ],
+  },
+  {
+    id: "batch-cooking",
+    title: "Le batch cooking postpartum, sans culpabilité",
+    category: "Repas postpartum",
+    date: "Mai 2026",
+    readTime: "10 min",
+    excerpt:
+      "Trois bases, sept repas, zéro plan compliqué. La méthode qui tient debout avec un bébé dans les bras.",
+    image: images.blog3,
+    body: [
+      "Le batch cooking ne doit pas devenir une performance de plus. Il doit tenir avec un bébé dans les bras, une nuit hachée et une énergie aléatoire.",
+      "Trois bases neutres — une céréale, une légumineuse, un plat mijoté — suffisent à composer sept repas. Quarante minutes le dimanche, et la semaine respire.",
+    ],
+  },
+  {
+    id: "linge",
+    title: "Le système du linge qui ne déborde plus jamais",
+    category: "Organisation du quotidien",
+    date: "Avril 2026",
     readTime: "5 min",
     excerpt:
-      "Plus jamais de départ stressé : la liste définitive, testée dans la vraie vie, pour ne rien oublier en sortant avec bébé.",
+      "Un panier, un jour, une règle. Pourquoi les familles organisées ne trient plus.",
+    image: images.blog2,
     body: [
-      "On connaît toutes ce moment : la porte est ouverte, bébé est dans la poussette, et il manque toujours quelque chose. La solution n'est pas de mieux mémoriser — c'est d'avoir une checklist permanente, collée sur le sac.",
-      "Dans le guide gratuit, tu retrouves la version complète à imprimer : l'essentiel, le confort, les urgences. Une fois posée, elle supprime des dizaines de micro-décisions à chaque sortie.",
+      "Le linge déborde quand chaque étape demande une décision. La solution n'est pas de plier mieux, mais de supprimer les décisions.",
+      "Un panier par personne, un jour fixe par cycle, et une règle simple : ce qui ne rentre plus dans le panier part dans le don. La maison ne déborde plus.",
+    ],
+  },
+  {
+    id: "premier-mois",
+    title: "Le premier mois postpartum : ce dont personne ne parle",
+    category: "Systèmes postpartum",
+    date: "Avril 2026",
+    readTime: "12 min",
+    excerpt:
+      "Hormones, identité, silence. Une lettre honnête à la femme que vous étiez avant.",
+    image: images.blog5,
+    body: [
+      "On prépare le jour de l'accouchement. Personne ne prépare le mois qui suit : les nuits hachées, le corps qui se cherche, l'identité qui vacille.",
+      "Ce premier mois n'est pas une course. C'est une traversée — et la seule organisation qui tient est celle qui accepte d'être imparfaite.",
+    ],
+  },
+  {
+    id: "chambre-bebe",
+    title: "Aménager la chambre de bébé sans surconsommer",
+    category: "Organisation bébé",
+    date: "Mars 2026",
+    readTime: "7 min",
+    excerpt:
+      "Huit éléments suffisent. Le reste est du marketing déguisé en nécessité.",
+    image: images.blog6,
+    body: [
+      "La chambre de bébé est devenue un terrain de marketing. Pourtant, huit éléments bien choisis suffisent pour dormir, changer et ranger.",
+      "Avant chaque achat, posez-vous une question : est-ce que cet objet supprime une décision ou en ajoute une ? La réponse change tout.",
+    ],
+  },
+  {
+    id: "journal-decharge",
+    title: "Tenir un journal de décharge — cinq minutes le soir",
+    category: "Charge mentale",
+    date: "Mars 2026",
+    readTime: "6 min",
+    excerpt:
+      "Vider la tête sur le papier, cinq minutes le soir, et la nuit s'allège déjà.",
+    image: images.blog1,
+    body: [
+      "Le cerveau maternel ne s'éteint pas la nuit : il rejoue les listes, les oublis, les choses à ne pas manquer. Le journal de décharge interrompt cette boucle.",
+      "Cinq minutes avant de dormir : tout ce qui tourne en boucle se pose sur le papier. Le sommeil n'est pas magique, mais il s'allège.",
     ],
   },
 ];

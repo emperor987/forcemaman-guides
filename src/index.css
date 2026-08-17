@@ -3,8 +3,10 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================================
-   ForceMaman - Design system (1:1 force-mom-ai.lovable.app)
-   Fraunces (display) + Inter (body), ink/cream/terracotta
+   ForceMaman — copie 1:1 du système de design postpartumreset.fr
+   Serif: Cormorant Garamond · Sans: Inter Variable
+   Palette: fond crème chaud, texte brun foncé, primary vert sauge,
+   accent pêche/terracotta clair, bordures sable.
    ============================================================ */
 
 @theme inline {
@@ -39,7 +41,7 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Brand tokens */
+  /* Brand tokens legacy (pages produit) — alignés sur la palette référence */
   --color-ink: var(--ink);
   --color-cream: var(--cream);
   --color-terracotta: var(--terracotta);
@@ -54,54 +56,53 @@
   --color-brand-mauve: var(--mauve);
 
   /* Fonts */
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
 
-  /* Offset shadow */
+  /* Offset shadow (legacy) */
   --shadow-bold: 8px 8px 0 0 var(--ink);
 }
 
 :root {
-  --radius: 0.875rem;
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  /* ===== Palette exacte de postpartumreset.fr ===== */
+  --radius: 0.25rem;
+  --background: oklch(97.6% 0.008 80);
+  --foreground: oklch(18% 0.005 50);
+  --card: oklch(98.5% 0.006 80);
+  --card-foreground: oklch(18% 0.005 50);
+  --popover: oklch(98.5% 0.006 80);
+  --popover-foreground: oklch(18% 0.005 50);
+  --primary: oklch(42% 0.03 145);
+  --primary-foreground: oklch(97.6% 0.008 80);
+  --secondary: oklch(93% 0.012 75);
+  --secondary-foreground: oklch(18% 0.005 50);
+  --muted: oklch(94% 0.01 75);
+  --muted-foreground: oklch(45% 0.012 60);
+  --accent: oklch(76% 0.07 45);
+  --accent-foreground: oklch(18% 0.005 50);
+  --destructive: oklch(55% 0.19 27);
+  --destructive-foreground: oklch(98.4% 0.003 247.858);
+  --border: oklch(89% 0.012 70);
+  --input: oklch(89% 0.012 70);
+  --ring: oklch(42% 0.03 145);
+  --sidebar: var(--background);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
 
-  /* ForceMaman official palette
-     Fond beige/blush #FAF6F1 · Texte #5C4A3A · Accent terracotta #C97D5D
-     Touches vert sauge #8A9A7E et mauve #A78BA3 */
-  --ink: #5c4a3a;
-  --cream: #faf6f1;
+  /* Legacy tokens (pages produit ForceMaman) */
+  --ink: oklch(18% 0.005 50);
+  --cream: oklch(97.6% 0.008 80);
   --terracotta: #c97d5d;
-  --rose-soft: #f3e2d5;
+  --rose-soft: oklch(93% 0.012 75);
   --sage: #8a9a7e;
   --mauve: #a78ba3;
-  --card: #fffdf9;
-  --secondary: var(--rose-soft);
-
-  /* shadcn mapping (light only, no dark mode) */
-  --background: var(--cream);
-  --foreground: var(--ink);
-  --card-foreground: var(--ink);
-  --popover: var(--card);
-  --popover-foreground: var(--ink);
-  --primary: var(--terracotta);
-  --primary-foreground: #fff8f2;
-  --secondary-foreground: var(--ink);
-  --muted: var(--rose-soft);
-  --muted-foreground: color-mix(in oklab, var(--ink) 62%, transparent);
-  --accent: var(--rose-soft);
-  --accent-foreground: var(--ink);
-  --destructive: oklch(55% 0.2 25);
-  --border: color-mix(in oklab, var(--ink) 12%, transparent);
-  --input: color-mix(in oklab, var(--ink) 25%, transparent);
-  --ring: var(--terracotta);
-  --sidebar: var(--cream);
-  --sidebar-foreground: var(--ink);
-  --sidebar-primary: var(--terracotta);
-  --sidebar-primary-foreground: oklch(98% 0.012 75);
-  --sidebar-accent: var(--rose-soft);
-  --sidebar-accent-foreground: var(--ink);
-  --sidebar-border: color-mix(in oklab, var(--ink) 12%, transparent);
-  --sidebar-ring: var(--terracotta);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @layer base {
@@ -114,20 +115,23 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizelegibility;
+    letter-spacing: -0.005em;
   }
   h1,
   h2,
   h3,
-  h4 {
-    font-family: var(--font-display);
+  .font-serif {
+    font-family: var(--font-serif);
     letter-spacing: -0.02em;
+    font-weight: 400;
+    line-height: 1.05;
   }
   ::selection {
-    background: var(--ink);
-    color: var(--cream);
+    background: var(--foreground);
+    color: var(--background);
   }
   button:not([disabled]),
   [role="button"]:not([disabled]) {
@@ -135,31 +139,19 @@
   }
 }
 
+/* Eyebrow — micro-label en capitales espacées (signature du site) */
+.eyebrow {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--muted-foreground);
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
 /* ============================================================
-   Motion (optimized: transform/opacity only, GPU friendly)
+   Motion & reveal (transform/opacity only, GPU friendly)
    ============================================================ */
-
-@keyframes page-slide-in {
-  0% {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes text-slide-up {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 @keyframes fade-in {
   0% {
@@ -170,19 +162,10 @@
   }
 }
 
-.animate-page-in {
-  animation: 0.35s var(--ease) both page-slide-in;
-}
-
-.animate-text-slide {
-  animation: 0.6s var(--ease) both text-slide-up;
-}
-
 .animate-fade-in {
   animation: 0.5s var(--ease) both fade-in;
 }
 
-/* Scroll reveal: class added by IntersectionObserver, transition only */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -198,14 +181,14 @@
   will-change: auto;
 }
 
-/* content-visibility for below-fold sections (avoids rendering cost) */
+/* content-visibility for below-fold sections */
 .cv-auto {
   content-visibility: auto;
   contain-intrinsic-size: auto 700px;
 }
 
 /* ============================================================
-   Fluid type scale (clamp-based, no breakpoint jumps)
+   Fluid type scale (legacy pages)
    ============================================================ */
 
 .text-fluid-hero {
@@ -224,7 +207,7 @@
 }
 
 /* ============================================================
-   Ambient float (transform-only, GPU friendly)
+   Ambient float (legacy)
    ============================================================ */
 
 @keyframes float {
@@ -248,8 +231,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-page-in,
-  .animate-text-slide,
   .animate-fade-in,
   .animate-float,
   .animate-float-slow {

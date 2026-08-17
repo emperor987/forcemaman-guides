@@ -1,124 +1,102 @@
 import { Link } from "react-router";
-import { BookOpen, Heart, Instagram, Mail, MapPin } from "lucide-react";
+import EmailForm from "@/components/EmailForm";
+import { Facebook, Instagram, Youtube } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="border-t-2 border-ink/10 bg-secondary/40">
-      <div className="mx-auto max-w-6xl px-5 py-14 grid grid-cols-2 md:grid-cols-4 gap-10">
-        {/* Brand */}
-        <div className="col-span-2 md:col-span-1">
-          <Link
-            to="/"
-            className="flex items-center gap-2 font-display text-xl font-bold text-ink hover:opacity-80 transition-opacity"
-          >
-            <BookOpen className="h-5 w-5 text-primary" />
-            ForceMaman
-          </Link>
-          <p className="mt-3 text-sm text-ink/70 max-w-xs">
-            Les guides bienveillants du post-partum, écrits par une sage-femme.
-            Pour traverser cette période avec clarté, sans culpabilité.
+    <footer className="border-t border-border/60 bg-background">
+      <div className="mx-auto max-w-7xl px-6 py-20 lg:px-12">
+        <div className="grid gap-16 lg:grid-cols-[1.4fr_1fr_1fr]">
+          {/* Newsletter */}
+          <div className="max-w-md">
+            <p className="eyebrow">Lettre du dimanche</p>
+            <h2 className="mt-5 font-serif text-3xl text-foreground sm:text-4xl">
+              Un moment de clarté, <span className="italic">chaque semaine.</span>
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Des rituels simples et des systèmes pensés pour alléger votre
+              charge mentale.
+            </p>
+            <EmailForm variant="footer" id="newsletter" className="mt-8" />
+            <p className="mt-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+              Gratuit • Désinscription en un clic • Aucun spam
+            </p>
+          </div>
+
+          {/* Explorer */}
+          <div>
+            <p className="eyebrow">Explorer</p>
+            <ul className="mt-6 space-y-3 text-sm">
+              <li>
+                <Link to="/journal" className="text-foreground/75 hover:text-foreground">
+                  Journal
+                </Link>
+              </li>
+              <li>
+                <Link to="/ressources" className="text-foreground/75 hover:text-foreground">
+                  Ressources
+                </Link>
+              </li>
+              <li>
+                <Link to="/guide-gratuit" className="text-foreground/75 hover:text-foreground">
+                  Guide Gratuit
+                </Link>
+              </li>
+              <li>
+                <Link to="/a-propos" className="text-foreground/75 hover:text-foreground">
+                  À propos
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Informations */}
+          <div>
+            <p className="eyebrow">Informations</p>
+            <ul className="mt-6 space-y-3 text-sm">
+              <li>
+                <Link to="/contact" className="text-foreground/75 hover:text-foreground">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link to="/mentions-legales" className="text-foreground/75 hover:text-foreground">
+                  Mentions légales
+                </Link>
+              </li>
+              <li>
+                <Link to="/confidentialite" className="text-foreground/75 hover:text-foreground">
+                  Confidentialité
+                </Link>
+              </li>
+              <li>
+                <Link to="/cgv" className="text-foreground/75 hover:text-foreground">
+                  CGV
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="mt-20 flex flex-col items-start justify-between gap-6 border-t border-border/60 pt-8 sm:flex-row sm:items-center">
+          <p className="font-serif text-lg text-foreground">
+            Force<span className="italic">Maman</span>
           </p>
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            className="mt-4 inline-flex items-center justify-center rounded-lg border-2 border-ink p-2 text-ink hover:bg-primary hover:text-primary-foreground transition-colors"
-          >
-            <Instagram className="h-4 w-4" />
-          </a>
-        </div>
-
-        {/* Navigation */}
-        <div>
-          <h4 className="font-display text-sm font-bold uppercase tracking-wider text-ink">
-            Navigation
-          </h4>
-          <ul className="mt-4 space-y-2 text-sm">
-            <li>
-              <Link to="/" className="text-ink/70 hover:text-primary transition-colors">
-                Accueil
-              </Link>
-            </li>
-            <li>
-              <Link to="/journal" className="text-ink/70 hover:text-primary transition-colors">
-                Journal
-              </Link>
-            </li>
-            <li>
-              <Link to="/guides" className="text-ink/70 hover:text-primary transition-colors">
-                Bibliothèque
-              </Link>
-            </li>
-            <li>
-              <Link to="/guide-gratuit" className="text-ink/70 hover:text-primary transition-colors">
-                Guide gratuit
-              </Link>
-            </li>
-            <li>
-              <Link to="/faq" className="text-ink/70 hover:text-primary transition-colors">
-                FAQ
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* Legal */}
-        <div>
-          <h4 className="font-display text-sm font-bold uppercase tracking-wider text-ink">
-            Légal
-          </h4>
-          <ul className="mt-4 space-y-2 text-sm">
-            <li>
-              <Link to="/mentions-legales" className="text-ink/70 hover:text-primary transition-colors">
-                Mentions légales
-              </Link>
-            </li>
-            <li>
-              <Link to="/confidentialite" className="text-ink/70 hover:text-primary transition-colors">
-                Confidentialité
-              </Link>
-            </li>
-            <li>
-              <Link to="/cgv" className="text-ink/70 hover:text-primary transition-colors">
-                CGV
-              </Link>
-            </li>
-            <li>
-              <Link to="/remboursement" className="text-ink/70 hover:text-primary transition-colors">
-                Remboursement
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        {/* Contact */}
-        <div>
-          <h4 className="font-display text-sm font-bold uppercase tracking-wider text-ink">
-            Contact
-          </h4>
-          <ul className="mt-4 space-y-3 text-sm text-ink/70">
-            <li className="flex items-start gap-2">
-              <Mail className="h-4 w-4 mt-0.5 text-primary shrink-0" />
-              <a href="mailto:hello@forcemaman.fr" className="hover:text-primary transition-colors">
-                hello@forcemaman.fr
-              </a>
-            </li>
-            <li className="flex items-start gap-2">
-              <MapPin className="h-4 w-4 mt-0.5 text-primary shrink-0" />
-              <span>Guadeloupe / Martinique</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <Heart className="h-4 w-4 mt-0.5 text-primary shrink-0" />
-              <span>Écrit avec bienveillance par Maria</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="border-t-2 border-ink/10">
-        <div className="mx-auto max-w-6xl px-5 py-5 pb-[calc(6.5rem+env(safe-area-inset-bottom))] lg:pb-5 text-center text-xs text-ink/60">
-          © {new Date().getFullYear()} ForceMaman. Tous droits réservés.
+          <div className="flex items-center gap-5 text-foreground/70">
+            <a href="#" aria-label="Instagram" className="hover:text-foreground">
+              <Instagram className="size-4" />
+            </a>
+            <a href="#" aria-label="Facebook" className="hover:text-foreground">
+              <Facebook className="size-4" />
+            </a>
+            <a href="#" aria-label="Youtube" className="hover:text-foreground">
+              <Youtube className="size-4" />
+            </a>
+          </div>
+          <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
+            © {new Date().getFullYear()} — Tous droits réservés
+          </p>
         </div>
       </div>
     </footer>
