@@ -36,6 +36,46 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://forcemaman.fr/journal/charge-mentale-7-gestes</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://forcemaman.fr/journal/5-produits</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://forcemaman.fr/journal/rituel-matin</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://forcemaman.fr/journal/batch-cooking</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://forcemaman.fr/journal/linge</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://forcemaman.fr/journal/premier-mois</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://forcemaman.fr/journal/chambre-bebe</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://forcemaman.fr/journal/journal-decharge</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://forcemaman.fr/guide-gratuit</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

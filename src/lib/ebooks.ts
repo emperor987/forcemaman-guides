@@ -1,11 +1,12 @@
 import {
+  Baby,
   Backpack,
-  Boxes,
-  Brain,
-  CookingPot,
-  DoorOpen,
+  BedDouble,
+  Heart,
   ListChecks,
-  ShoppingBasket,
+  Moon,
+  Package,
+  Shirt,
 } from "lucide-react";
 
 export interface Ebook {
@@ -87,7 +88,6 @@ export interface LibraryItem {
   badgeLabel: string;
   category: string;
   featured: boolean;
-  free?: boolean;
 }
 
 export const badgeStyles: Record<LibraryBadge, string> = {
@@ -111,8 +111,8 @@ export const libraryCategories = [
   },
   {
     id: "tout-en-un",
-    title: "Packs & Gratuits",
-    description: "Tout en un, ou commencer gratuitement par l'essentiel.",
+    title: "Le Pack Complet",
+    description: "Les 3 guides réunis pour un accompagnement global du post-partum.",
     dot: "bg-brand-mauve",
   },
 ];
@@ -170,34 +170,6 @@ export const libraryItems: LibraryItem[] = [
     category: "tout-en-un",
     featured: true,
   },
-  {
-    id: "guide-gratuit",
-    title: "Le Guide Gratuit · 7 Systèmes",
-    benefit: "Sept systèmes concrets pour alléger ta charge mentale, offerts.",
-    price: "Gratuit",
-    href: "/guide-gratuit",
-    accent: "bg-brand-sage",
-    accentText: "text-brand-sage",
-    badge: "essentiel",
-    badgeLabel: "Essentiel",
-    category: "tout-en-un",
-    featured: true,
-    free: true,
-  },
-  {
-    id: "checklist-sac",
-    title: "La Checklist du Sac à Langer",
-    benefit: "La liste permanente pour ne plus jamais rien oublier en sortant avec bébé.",
-    price: "Gratuit",
-    href: "/guide-gratuit",
-    accent: "bg-brand-mauve",
-    accentText: "text-brand-mauve",
-    badge: "temps",
-    badgeLabel: "Gain de temps",
-    category: "preparer",
-    featured: true,
-    free: true,
-  },
 ];
 
 export interface FreeGuideSystem {
@@ -208,52 +180,59 @@ export interface FreeGuideSystem {
 }
 
 export const freeGuide = {
-  title: "Le Guide Gratuit",
-  subtitle: "Les 7 systèmes qui simplifient vraiment la vie avec un bébé.",
+  title: "Ma Liste de Naissance Essentielle",
+  subtitle: "Les 7 essentiels pour préparer l'arrivée de bébé, offerts par Maria.",
   href: "/guide-gratuit",
 };
 
 export const freeGuideSystems: FreeGuideSystem[] = [
   {
     number: "01",
-    title: "Le Cerveau Externe",
-    text: "Un seul endroit fiable pour poser toutes tes tâches et vider ta tête.",
-    icon: Brain,
+    title: "Les bodies et pyjamas",
+    text: "Six bodies et six pyjamas suffisent les premiers jours. Le reste, c'est du superflu.",
+    icon: Shirt,
   },
   {
     number: "02",
-    title: "Le Système des 3 Bacs",
-    text: "Une maison qui se range presque toute seule, sans tri ni décision.",
-    icon: Boxes,
+    title: "Le coin sommeil",
+    text: "Un berceau ou cododo, une gigoteuse adaptée : le sommeil se prépare sans matériel inutile.",
+    icon: BedDouble,
   },
   {
     number: "03",
-    title: "Les Repas Secours",
-    text: "Trois options validées d'avance, prêtes pour les jours sans énergie.",
-    icon: CookingPot,
+    title: "Le nécessaire de change",
+    text: "Une trentaine de langes, un tapis à langer et de quoi nettoyer : le change devient un geste simple.",
+    icon: Baby,
   },
   {
     number: "04",
-    title: "Le Panier Tétée",
-    text: "Tout ce qu'il te faut à portée de main pendant les tétées.",
-    icon: ShoppingBasket,
+    title: "La trousse de premiers soins",
+    text: "Savon doux, sérum physiologique, coupe-ongles : le minimum pour les premiers soins.",
+    icon: Package,
   },
   {
     number: "05",
-    title: "La Zone Départ",
-    text: "Sortir avec bébé en cinq minutes, sans rien oublier ni stresser.",
-    icon: DoorOpen,
+    title: "La tenue de sortie",
+    text: "Combinaison, bonnet, couverture : sortir avec bébé sans stress ni oubli.",
+    icon: Heart,
   },
   {
     number: "06",
-    title: "Les 3 Priorités du Jour",
-    text: "Trois priorités par jour, et le reste peut attendre demain.",
-    icon: ListChecks,
+    title: "Le sac de maternité",
+    text: "Une valise à la fois complète et légère, prête deux semaines avant le terme.",
+    icon: Backpack,
   },
   {
     number: "07",
-    title: "La Checklist du Sac à Langer",
-    text: "La liste permanente pour ne plus jamais rien oublier en sortant.",
-    icon: Backpack,
+    title: "Ce qu'on peut laisser de côté",
+    text: "La liste de ce que le marketing te vend et dont tu n'auras finalement pas besoin.",
+    icon: Moon,
   },
+];
+
+export const freeGuideChecklist = [
+  "Moins de stress dans la préparation.",
+  "Moins d'achats inutiles.",
+  "Moins d'oubli le jour J.",
+  "Plus de sérénité pour accueillir bébé.",
 ];
