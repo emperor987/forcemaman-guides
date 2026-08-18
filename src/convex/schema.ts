@@ -43,6 +43,22 @@ const schema = defineSchema(
       maxUses: v.number(),
     }).index("by_token", ["token"])
       .index("by_session", ["sessionId"]),
+
+    // --- Newsletter subscribers (RGPD compliant) ---
+    subscribers: defineTable({
+      email: v.string(),
+      consentAt: v.number(),
+      consentText: v.string(),
+      unsubscribed: v.optional(v.boolean()),
+      unsubscribedAt: v.optional(v.number()),
+    }).index("by_email", ["email"]),
+
+    // --- Rate limiting ---
+    rateLimits: defineTable({
+      key: v.string(),
+      windowStart: v.number(),
+      count: v.number(),
+    }).index("by_key", ["key"]),
   },
   {
     schemaValidation: false,
