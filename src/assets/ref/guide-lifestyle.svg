@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" rx="24" fill="#FAF6F1"/>
+  <!-- Soft background circles -->
+  <circle cx="650" cy="120" r="180" fill="#E8DFD4" opacity="0.4"/>
+  <circle cx="150" cy="480" r="140" fill="#C97D5D" opacity="0.08"/>
+  <!-- Mother figure - fine line art -->
+  <g stroke="#5C4A3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- Head -->
+    <circle cx="360" cy="180" r="45"/>
+    <!-- Hair -->
+    <path d="M315 170 C310 130, 340 110, 370 115 C400 108, 420 125, 405 170"/>
+    <!-- Body -->
+    <path d="M340 225 C330 260, 310 310, 320 380"/>
+    <path d="M380 225 C390 260, 410 310, 400 380"/>
+    <!-- Arms holding baby -->
+    <path d="M330 260 C300 270, 280 300, 300 340"/>
+    <path d="M390 260 C420 270, 440 300, 420 340"/>
+    <!-- Baby in arms -->
+    <ellipse cx="360" cy="310" rx="35" ry="30"/>
+    <circle cx="360" cy="295" r="18"/>
+    <!-- Baby details -->
+    <circle cx="354" cy="293" r="2" fill="#5C4A3A"/>
+    <circle cx="366" cy="293" r="2" fill="#5C4A3A"/>
+    <path d="M356 300 Q360 303 364 300"/>
+  </g>
+  <!-- Decorative elements -->
+  <g stroke="#C97D5D" stroke-width="1.2" fill="none" opacity="0.6">
+    <!-- Small hearts -->
+    <path d="M520 200 C520 192, 530 188, 530 196 C530 188, 540 192, 540 200 C540 210, 530 216, 530 216 C530 216, 520 210, 520 200Z"/>
+    <path d="M200 250 C200 244, 208 241, 208 247 C208 241, 216 244, 216 250 C216 257, 208 262, 208 262 C208 262, 200 257, 200 250Z"/>
+    <!-- Stars -->
+    <path d="M600 350 L604 360 L614 362 L607 369 L609 379 L600 374 L591 379 L593 369 L586 362 L596 360Z"/>
+  </g>
+  <!-- Leaf decorations -->
+  <g stroke="#8A9A7E" stroke-width="1.2" fill="none" opacity="0.5">
+    <path d="M680 400 C690 380, 710 370, 720 380 C710 390, 690 395, 680 400Z"/>
+    <path d="M660 420 C670 400, 690 395, 695 405 C685 410, 670 415, 660 420Z"/>
+  </g>
+  <!-- Text area hint -->
+  <rect x="100" y="460" width="300" height="4" rx="2" fill="#E8DFD4"/>
+  <rect x="100" y="480" width="200" height="4" rx="2" fill="#E8DFD4"/>
+</svg>

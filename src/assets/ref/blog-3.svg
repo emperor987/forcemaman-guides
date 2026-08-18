@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <rect width="400" height="400" rx="16" fill="#FAF6F1"/>
+  <circle cx="200" cy="210" r="140" fill="#E8DFD4" opacity="0.25"/>
+  <!-- Cooking pot -->
+  <g stroke="#5C4A3A" stroke-width="1.5" stroke-linecap="round" fill="none">
+    <ellipse cx="200" cy="200" rx="80" ry="20"/>
+    <path d="M120 200 L130 300"/>
+    <path d="M280 200 L270 300"/>
+    <ellipse cx="200" cy="300" rx="70" ry="15"/>
+    <!-- Lid -->
+    <ellipse cx="200" cy="185" rx="75" ry="18"/>
+    <path d="M200 167 L200 150"/>
+    <circle cx="200" cy="147" r="6"/>
+    <!-- Steam -->
+    <path d="M175 145 C175 130, 185 125, 185 115" stroke="#C97D5D" stroke-width="1" opacity="0.4"/>
+    <path d="M200 140 C200 125, 210 120, 210 108" stroke="#8A9A7E" stroke-width="1" opacity="0.4"/>
+    <path d="M225 145 C225 130, 235 125, 235 115" stroke="#A78BA3" stroke-width="1" opacity="0.4"/>
+    <!-- Handles -->
+    <path d="M120 220 C105 220, 100 230, 105 240 C110 250, 120 248, 120 240"/>
+    <path d="M280 220 C295 220, 300 230, 295 240 C290 250, 280 248, 280 240"/>
+  </g>
+  <!-- Small decorative elements -->
+  <circle cx="320" cy="100" r="3" fill="#C97D5D" opacity="0.3"/>
+  <circle cx="80" cy="320" r="2.5" fill="#8A9A7E" opacity="0.3"/>
+</svg>

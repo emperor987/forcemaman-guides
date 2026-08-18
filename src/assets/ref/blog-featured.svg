@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" rx="20" fill="#FAF6F1"/>
+  <circle cx="400" cy="300" r="220" fill="#E8DFD4" opacity="0.3"/>
+  <!-- Abstract brain/mind illustration -->
+  <g stroke="#5C4A3A" stroke-width="1.5" stroke-linecap="round" fill="none">
+    <!-- Head silhouette -->
+    <path d="M340 180 C340 130, 370 100, 400 100 C430 100, 460 130, 460 180"/>
+    <path d="M340 180 C335 200, 335 230, 345 260"/>
+    <path d="M460 180 C465 200, 465 230, 455 260"/>
+    <!-- Flowing lines inside (thoughts) -->
+    <path d="M360 160 C380 150, 400 155, 420 145" stroke="#C97D5D" opacity="0.6"/>
+    <path d="M350 180 C375 170, 400 175, 430 165" stroke="#8A9A7E" opacity="0.5"/>
+    <path d="M355 200 C380 190, 400 195, 425 188" stroke="#A78BA3" opacity="0.5"/>
+    <!-- Simplified facial features -->
+    <circle cx="382" cy="190" r="2.5" fill="#5C4A3A"/>
+    <circle cx="418" cy="190" r="2.5" fill="#5C4A3A"/>
+    <path d="M393 215 Q400 220 407 215"/>
+  </g>
+  <!-- Floating elements representing mental load -->
+  <g stroke-linecap="round" fill="none">
+    <!-- Clock -->
+    <circle cx="550" cy="180" r="22" stroke="#C97D5D" stroke-width="1.2"/>
+    <path d="M550 165 L550 180 L560 185" stroke="#C97D5D" stroke-width="1.2"/>
+    <!-- Shopping list -->
+    <rect x="180" y="220" width="50" height="65" rx="6" stroke="#8A9A7E" stroke-width="1.2"/>
+    <line x1="192" y1="238" x2="218" y2="238" stroke="#8A9A7E" stroke-width="1"/>
+    <line x1="192" y1="250" x2="218" y2="250" stroke="#8A9A7E" stroke-width="1"/>
+    <line x1="192" y1="262" x2="210" y2="262" stroke="#8A9A7E" stroke-width="1"/>
+    <!-- Heart -->
+    <path d="M600 320 C600 312, 610 308, 610 316 C610 308, 620 312, 620 320 C620 330, 610 336, 610 336 C610 336, 600 330, 600 320Z" stroke="#C97D5D" stroke-width="1.2" fill="#C97D5D" fill-opacity="0.15"/>
+    <!-- Baby bottle -->
+    <rect x="160" y="380" width="16" height="35" rx="4" stroke="#A78BA3" stroke-width="1.2"/>
+    <rect x="158" y="372" width="20" height="10" rx="3" stroke="#A78BA3" stroke-width="1.2"/>
+    <!-- Star -->
+    <path d="M640 420 L644 430 L654 432 L647 439 L649 449 L640 444 L631 449 L633 439 L626 432 L636 430Z" stroke="#C97D5D" stroke-width="1" fill="#C97D5D" fill-opacity="0.1"/>
+  </g>
+  <!-- Bottom decorative line -->
+  <line x1="100" y1="520" x2="700" y2="520" stroke="#E8DFD4" stroke-width="1"/>
+  <circle cx="400" cy="520" r="4" fill="#C97D5D" opacity="0.5"/>
+</svg>

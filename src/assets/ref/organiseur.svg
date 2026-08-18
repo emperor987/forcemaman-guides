@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <rect width="400" height="400" rx="16" fill="#FAF6F1"/>
+  <circle cx="200" cy="210" r="140" fill="#E8DFD4" opacity="0.25"/>
+  <g stroke="#5C4A3A" stroke-width="1.5" stroke-linecap="round" fill="none">
+    <!-- 3 boxes/bins stacked -->
+    <rect x="100" y="100" width="90" height="70" rx="6"/>
+    <rect x="210" y="100" width="90" height="70" rx="6"/>
+    <rect x="100" y="190" width="200" height="70" rx="6"/>
+    <!-- Labels -->
+    <line x1="120" y1="125" x2="170" y2="125" stroke="#C97D5D" stroke-width="1"/>
+    <line x1="120" y1="140" x2="155" y2="140" stroke="#C97D5D" stroke-width="1" opacity="0.6"/>
+    <line x1="230" y1="125" x2="280" y2="125" stroke="#8A9A7E" stroke-width="1"/>
+    <line x1="230" y1="140" x2="265" y2="140" stroke="#8A9A7E" stroke-width="1" opacity="0.6"/>
+    <line x1="120" y1="215" x2="270" y2="215" stroke="#A78BA3" stroke-width="1"/>
+    <line x1="120" y1="230" x2="220" y2="230" stroke="#A78BA3" stroke-width="1" opacity="0.6"/>
+    <!-- Checkmarks -->
+    <path d="M115 125 L120 130 L130 118" stroke="#C97D5D" stroke-width="1.5"/>
+    <path d="M225 125 L230 130 L240 118" stroke="#8A9A7E" stroke-width="1.5"/>
+    <path d="M115 215 L120 220 L130 208" stroke="#A78BA3" stroke-width="1.5"/>
+  </g>
+  <circle cx="320" cy="100" r="3" fill="#C97D5D" opacity="0.3"/>
+  <circle cx="80" cy="320" r="2.5" fill="#8A9A7E" opacity="0.3"/>
+</svg>

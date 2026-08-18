@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <rect width="400" height="400" rx="16" fill="#FAF6F1"/>
+  <circle cx="200" cy="210" r="140" fill="#E8DFD4" opacity="0.25"/>
+  <!-- Mother holding newborn -->
+  <g stroke="#5C4A3A" stroke-width="1.5" stroke-linecap="round" fill="none">
+    <!-- Mother head -->
+    <circle cx="180" cy="140" r="35"/>
+    <!-- Hair -->
+    <path d="M145 130 C140 100, 165 85, 185 88 C205 83, 225 95, 215 130"/>
+    <!-- Face -->
+    <circle cx="172" cy="138" r="2" fill="#5C4A3A"/>
+    <circle cx="188" cy="138" r="2" fill="#5C4A3A"/>
+    <path d="M176 150 Q180 154 184 150"/>
+    <!-- Body -->
+    <path d="M165 175 C155 200, 145 240, 150 300"/>
+    <path d="M195 175 C205 200, 215 240, 210 300"/>
+    <!-- Arms cradling baby -->
+    <path d="M160 210 C140 220, 130 250, 145 270"/>
+    <path d="M200 210 C220 220, 230 250, 215 270"/>
+    <!-- Baby bundle -->
+    <ellipse cx="180" cy="255" rx="30" ry="25" fill="#E8DFD4" stroke="#C97D5D" stroke-width="1"/>
+    <!-- Baby head -->
+    <circle cx="180" cy="235" r="15"/>
+    <circle cx="176" cy="233" r="1.5" fill="#5C4A3A"/>
+    <circle cx="184" cy="233" r="1.5" fill="#5C4A3A"/>
+    <path d="M178 238 Q180 240 182 238"/>
+  </g>
+  <!-- Small heart -->
+  <path d="M280 150 C280 144, 288 141, 288 147 C288 141, 296 144, 296 150 C296 157, 288 162, 288 162 C288 162, 280 157, 280 150Z" fill="#C97D5D" fill-opacity="0.2" stroke="#C97D5D" stroke-width="1"/>
+  <circle cx="100" cy="320" r="2.5" fill="#8A9A7E" opacity="0.3"/>
+</svg>

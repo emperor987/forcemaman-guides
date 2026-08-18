@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <rect width="400" height="400" rx="16" fill="#FAF6F1"/>
+  <circle cx="200" cy="210" r="140" fill="#E8DFD4" opacity="0.25"/>
+  <!-- Laundry basket -->
+  <g stroke="#5C4A3A" stroke-width="1.5" stroke-linecap="round" fill="none">
+    <path d="M130 180 C130 170, 140 160, 200 160 C260 160, 270 170, 270 180"/>
+    <path d="M130 180 L145 300"/>
+    <path d="M270 180 L255 300"/>
+    <path d="M145 300 C145 310, 170 320, 200 320 C230 320, 255 310, 255 300"/>
+    <!-- Handle -->
+    <path d="M170 160 C170 130, 200 115, 200 115 C200 115, 230 130, 230 160"/>
+    <!-- Clothes peeking out -->
+    <path d="M155 175 C160 155, 175 150, 180 160" stroke="#C97D5D" stroke-width="1.2"/>
+    <path d="M210 170 C215 155, 230 152, 235 162" stroke="#8A9A7E" stroke-width="1.2"/>
+    <path d="M185 165 C190 148, 205 145, 210 155" stroke="#A78BA3" stroke-width="1.2"/>
+    <!-- Basket weave pattern -->
+    <line x1="150" y1="200" x2="155" y2="200" stroke="#5C4A3A" stroke-width="0.8" opacity="0.3"/>
+    <line x1="170" y1="220" x2="175" y2="220" stroke="#5C4A3A" stroke-width="0.8" opacity="0.3"/>
+    <line x1="190" y1="240" x2="195" y2="240" stroke="#5C4A3A" stroke-width="0.8" opacity="0.3"/>
+    <line x1="210" y1="220" x2="215" y2="220" stroke="#5C4A3A" stroke-width="0.8" opacity="0.3"/>
+    <line x1="230" y1="200" x2="235" y2="200" stroke="#5C4A3A" stroke-width="0.8" opacity="0.3"/>
+    <line x1="160" y1="260" x2="165" y2="260" stroke="#5C4A3A" stroke-width="0.8" opacity="0.3"/>
+    <line x1="180" y1="280" x2="185" y2="280" stroke="#5C4A3A" stroke-width="0.8" opacity="0.3"/>
+    <line x1="220" y1="260" x2="225" y2="260" stroke="#5C4A3A" stroke-width="0.8" opacity="0.3"/>
+  </g>
+  <circle cx="320" cy="100" r="3" fill="#C97D5D" opacity="0.3"/>
+  <circle cx="80" cy="320" r="2.5" fill="#8A9A7E" opacity="0.3"/>
+</svg>

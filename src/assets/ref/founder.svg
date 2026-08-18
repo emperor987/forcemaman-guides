@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" fill="none">
+  <circle cx="224" cy="224" r="224" fill="#FAF6F1"/>
+  <circle cx="224" cy="224" r="200" fill="#E8DFD4" opacity="0.3"/>
+  <!-- Portrait - fine line art -->
+  <g stroke="#5C4A3A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- Head -->
+    <circle cx="224" cy="180" r="60"/>
+    <!-- Hair -->
+    <path d="M164 165 C158 110, 195 80, 230 85 C265 78, 300 100, 284 165"/>
+    <path d="M164 165 C155 180, 152 200, 160 220"/>
+    <path d="M284 165 C293 180, 296 200, 288 220"/>
+    <!-- Face -->
+    <circle cx="206" cy="175" r="3.5" fill="#5C4A3A"/>
+    <circle cx="242" cy="175" r="3.5" fill="#5C4A3A"/>
+    <path d="M216 195 Q224 202 232 195"/>
+    <!-- Neck -->
+    <path d="M210 240 L210 260"/>
+    <path d="M238 240 L238 260"/>
+    <!-- Shoulders -->
+    <path d="M210 260 C180 265, 155 280, 145 310"/>
+    <path d="M238 260 C268 265, 293 280, 303 310"/>
+    <!-- Body -->
+    <path d="M145 310 C140 350, 145 390, 160 420"/>
+    <path d="M303 310 C308 350, 303 390, 288 420"/>
+    <!-- Arms -->
+    <path d="M170 290 C155 310, 148 340, 160 360"/>
+    <path d="M278 290 C293 310, 300 340, 288 360"/>
+    <!-- Hands meeting (holding something small) -->
+    <path d="M160 360 C175 370, 200 375, 224 372"/>
+    <path d="M288 360 C273 370, 248 375, 224 372"/>
+    <!-- Small heart in hands -->
+    <path d="M218 365 C218 360, 224 357, 224 362 C224 357, 230 360, 230 365 C230 370, 224 374, 224 374 C224 374, 218 370, 218 365Z" fill="#C97D5D" stroke="#C97D5D" stroke-width="1"/>
+  </g>
+  <!-- Decorative ring -->
+  <circle cx="224" cy="224" r="195" stroke="#C97D5D" stroke-width="0.8" opacity="0.3" fill="none"/>
+  <!-- Small dots decoration -->
+  <circle cx="224" cy="30" r="3" fill="#C97D5D" opacity="0.4"/>
+  <circle cx="380" cy="120" r="2.5" fill="#8A9A7E" opacity="0.4"/>
+  <circle cx="68" cy="120" r="2.5" fill="#A78BA3" opacity="0.4"/>
+</svg>

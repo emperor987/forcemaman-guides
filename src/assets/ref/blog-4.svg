@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <rect width="400" height="400" rx="16" fill="#FAF6F1"/>
+  <circle cx="200" cy="210" r="140" fill="#E8DFD4" opacity="0.25"/>
+  <!-- Window -->
+  <g stroke="#5C4A3A" stroke-width="1.5" stroke-linecap="round" fill="none">
+    <rect x="100" y="80" width="200" height="160" rx="8"/>
+    <line x1="200" y1="80" x2="200" y2="240"/>
+    <line x1="100" y1="160" x2="300" y2="160"/>
+    <!-- Sun through window -->
+    <circle cx="150" cy="130" r="18" fill="#C97D5D" fill-opacity="0.15" stroke="#C97D5D" stroke-width="1"/>
+    <!-- Coffee cup -->
+    <path d="M155 300 C155 280, 170 270, 200 270 C230 270, 245 280, 245 300"/>
+    <path d="M155 300 L155 330 C155 340, 175 350, 200 350 C225 350, 245 340, 245 330 L245 300"/>
+    <!-- Cup handle -->
+    <path d="M245 285 C265 285, 270 300, 265 310 C260 320, 245 318, 245 310"/>
+    <!-- Steam from cup -->
+    <path d="M185 265 C185 250, 195 245, 195 235" stroke="#C97D5D" stroke-width="1" opacity="0.4"/>
+    <path d="M200 262 C200 248, 210 243, 210 233" stroke="#8A9A7E" stroke-width="1" opacity="0.4"/>
+    <path d="M215 265 C215 250, 225 245, 225 235" stroke="#A78BA3" stroke-width="1" opacity="0.4"/>
+  </g>
+  <circle cx="320" cy="100" r="3" fill="#C97D5D" opacity="0.3"/>
+  <circle cx="80" cy="320" r="2.5" fill="#8A9A7E" opacity="0.3"/>
+</svg>
