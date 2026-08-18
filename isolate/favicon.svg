@@ -1,5 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="16" fill="#C97D5D"/>
-  <rect x="3.5" y="3.5" width="57" height="57" rx="12.5" fill="none" stroke="#FAF6F1" stroke-opacity="0.45" stroke-width="1.5"/>
-  <text x="33" y="46" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="38" font-style="italic" font-weight="600" fill="#FAF6F1">F</text>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D98A6B"/>
+      <stop offset="1" stop-color="#C97D5D"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#bg)"/>
+  <rect x="3.5" y="3.5" width="57" height="57" rx="11.5" fill="none" stroke="#FAF6F1" stroke-opacity="0.4" stroke-width="1.6"/>
+  <!-- Monogramme F (serif, ivoire) -->
+  <text x="33" y="45" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="37" font-style="italic" font-weight="600" fill="#FAF6F1">F</text>
+  <!-- Cœur mauve, accent bas droite -->
+  <path d="M48.5 49.5c-2.3-1.9-4.6-3.5-5.1-5.3-.5-1.7.6-3.4 2.4-3.4 1.2 0 2 .7 2.7 1.7.7-1 1.5-1.7 2.7-1.7 1.8 0 2.9 1.7 2.4 3.4-.5 1.8-2.8 3.4-5.1 5.3z" fill="#A78BA3"/>
 </svg>

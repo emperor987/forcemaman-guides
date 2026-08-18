@@ -1,0 +1,10 @@
+Emplacements des ebooks ForceMaman (livraison apres paiement Stripe).
+
+Remplace ces PDF de demonstration par les vrais ebooks, en gardant
+exactement ces noms de fichiers :
+
+  liste-naissance.pdf
+  corps-apres.pdf
+  charge-mentale.pdf
+
+Le Pack Complet sert les trois fichiers.
