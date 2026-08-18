@@ -1,11 +1,10 @@
-import { useMemo, useState } from "react";
 import { Link } from "react-router";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
 import { journalArticles } from "@/lib/journal";
 import AccentDots from "@/components/AccentDots";
-import { ArrowRight, Search, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 const piliers = [
   {
@@ -43,26 +42,12 @@ const jsonLd = {
 };
 
 export default function Journal() {
-  const [query, setQuery] = useState("");
-
-  const q = query.trim().toLowerCase();
-
   const featured = journalArticles[0];
 
   // La grille n'affiche pas l'article mis en avant (déjà visible dans
-  // « À la une ») pour éviter la double image, et filtre par recherche.
-  const gridArticles = useMemo(
-    () =>
-      journalArticles.filter(
-        (article) =>
-          article.id !== featured.id &&
-          (!q ||
-            [article.title, article.category, article.excerpt]
-              .join(" ")
-              .toLowerCase()
-              .includes(q)),
-      ),
-    [q, featured],
+  // « À la une ») pour éviter la double image.
+  const gridArticles = journalArticles.filter(
+    (article) => article.id !== featured.id,
   );
 
   return (
@@ -87,18 +72,6 @@ export default function Journal() {
                 Des essais, des protocoles et des rituels, toujours réalistes,
                 jamais culpabilisants.
               </p>
-              <div className="mx-auto mt-8 max-w-md">
-                <div className="relative">
-                  <Search className="absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-                  <input
-                    type="search"
-                    placeholder="Chercher un article, un rituel, un système…"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    className="h-12 w-full rounded-full border border-border bg-background pl-11 pr-5 text-sm text-foreground placeholder:text-muted-foreground focus:border-foreground focus:outline-none"
-                  />
-                </div>
-              </div>
             </Reveal>
           </div>
         </section>
@@ -182,7 +155,7 @@ export default function Journal() {
           <div className="mx-auto max-w-6xl px-6 py-20 lg:px-12 lg:py-28">
             {gridArticles.length === 0 ? (
               <p className="text-center text-sm text-muted-foreground">
-                Aucun article ne correspond à cette recherche.
+                Les prochains articles arrivent bientôt.
               </p>
             ) : (
               <div className="grid gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
