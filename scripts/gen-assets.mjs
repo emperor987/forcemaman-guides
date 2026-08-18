@@ -221,6 +221,7 @@ for (const k of Object.keys(FONT)) {
 mkdirSync("public", { recursive: true });
 const targets = [
   ["public/favicon-32x32.png", 32, drawIcon],
+  ["public/favicon-128x128.png", 128, drawIcon],
   ["public/apple-touch-icon.png", 180, drawIcon],
   ["public/favicon-192x192.png", 192, drawIcon],
   ["public/favicon-512x512.png", 512, drawIcon],
