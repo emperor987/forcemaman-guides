@@ -214,20 +214,6 @@ export default function Guides() {
               Chaque guide est conçu pour être lu en quelques minutes, sur
               téléphone comme sur ordinateur, et conservé toute la vie.
             </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <a
-                href="#gratuits"
-                className="inline-flex h-12 items-center justify-center rounded-full bg-foreground px-7 text-[0.8rem] uppercase tracking-[0.18em] text-background transition-opacity hover:opacity-90"
-              >
-                Télécharger les ressources gratuites
-              </a>
-              <a
-                href="#guides"
-                className="inline-flex h-12 items-center justify-center rounded-full border border-foreground/25 px-7 text-[0.8rem] uppercase tracking-[0.18em] text-foreground/80 transition-colors hover:border-foreground/60 hover:text-foreground"
-              >
-                Découvrir les guides
-              </a>
-            </div>
           </section>
         </Reveal>
 

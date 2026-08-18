@@ -3,8 +3,7 @@ import { Link } from "react-router";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
-import { journalArticles, journalCategories } from "@/lib/journal";
-import { cn } from "@/lib/utils";
+import { journalArticles } from "@/lib/journal";
 import AccentDots from "@/components/AccentDots";
 import { ArrowRight, Search, Sparkles } from "lucide-react";
 
@@ -45,25 +44,26 @@ const jsonLd = {
 
 export default function Journal() {
   const [query, setQuery] = useState("");
-  const [category, setCategory] = useState("Tous");
 
   const q = query.trim().toLowerCase();
 
+  const featured = journalArticles[0];
+
+  // La grille n'affiche pas l'article mis en avant (déjà visible dans
+  // « À la une ») pour éviter la double image, et filtre par recherche.
   const gridArticles = useMemo(
     () =>
       journalArticles.filter(
         (article) =>
-          (category === "Tous" || article.category === category) &&
+          article.id !== featured.id &&
           (!q ||
             [article.title, article.category, article.excerpt]
               .join(" ")
               .toLowerCase()
               .includes(q)),
       ),
-    [q, category],
+    [q, featured],
   );
-
-  const featured = journalArticles[0];
 
   return (
     <Layout>
@@ -100,29 +100,6 @@ export default function Journal() {
                 </div>
               </div>
             </Reveal>
-          </div>
-
-          {/* Pills catégories */}
-          <div className="mx-auto max-w-6xl px-6 pb-8 lg:px-12">
-            <div className="-mx-6 overflow-x-auto px-6 lg:mx-0 lg:px-0">
-              <div className="flex min-w-max items-center gap-2 lg:flex-wrap lg:justify-center lg:gap-3">
-                {journalCategories.map((cat) => (
-                  <button
-                    key={cat}
-                    type="button"
-                    onClick={() => setCategory(cat)}
-                    className={cn(
-                      "whitespace-nowrap rounded-full border px-4 py-2 text-[10px] font-medium uppercase tracking-[0.22em] transition-colors",
-                      category === cat
-                        ? "border-foreground bg-foreground text-background"
-                        : "border-border bg-background/60 text-muted-foreground hover:border-foreground/40 hover:text-foreground",
-                    )}
-                  >
-                    {cat}
-                  </button>
-                ))}
-              </div>
-            </div>
           </div>
         </section>
 

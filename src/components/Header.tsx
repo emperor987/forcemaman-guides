@@ -1,11 +1,11 @@
 import { Link, useLocation } from "react-router";
-import { BookOpen, Home, Library, Sparkles } from "lucide-react";
+import { BookOpen, Home, Library } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
   { name: "Accueil", href: "/" },
   { name: "Journal", href: "/journal" },
-  { name: "Bibliothèque", href: "/guides" },
+  { name: "Nos Guides", href: "/guides" },
   { name: "À propos", href: "/a-propos" },
   { name: "Contact", href: "/contact" },
 ];
@@ -14,8 +14,7 @@ const navLinks = [
 const mobileNav = [
   { name: "Accueil", href: "/", icon: Home },
   { name: "Journal", href: "/journal", icon: BookOpen },
-  { name: "Bibliothèque", href: "/guides", icon: Library },
-  { name: "Guide gratuit", href: "/guide-gratuit", icon: Sparkles },
+  { name: "Nos Guides", href: "/guides", icon: Library },
 ];
 
 export default function Header() {
@@ -99,16 +98,6 @@ export default function Header() {
                 {active ? (
                   <span className="absolute inset-0 rounded-full bg-foreground" />
                 ) : null}
-                {item.name === "Guide gratuit" && (
-                  <span
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-0 rounded-full"
-                    style={{
-                      background:
-                        "radial-gradient(circle at center, color-mix(in oklab, var(--accent) 75%, transparent), transparent 70%)",
-                    }}
-                  />
-                )}
                 <span
                   className={cn(
                     "relative z-10 flex flex-col items-center gap-0.5",
