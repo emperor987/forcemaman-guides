@@ -4,6 +4,7 @@ import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
 import { ebooks, bundle } from "@/lib/ebooks";
 import { images } from "@/lib/assets";
+import AccentDots from "@/components/AccentDots";
 import { ArrowRight, HeartHandshake, ShieldCheck, Sparkles } from "lucide-react";
 
 const values = [
@@ -59,6 +60,7 @@ export default function APpropos() {
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
             <p className="eyebrow">À propos</p>
+            <AccentDots className="mt-4" />
             <h1 className="mt-6 font-serif text-4xl leading-[1.03] text-foreground sm:text-6xl">
               Derrière ForceMaman, <span className="italic">une femme.</span>
             </h1>
@@ -72,7 +74,7 @@ export default function APpropos() {
       </section>
 
       {/* ============ MARIA ============ */}
-      <section className="border-y border-border/60 bg-card/35 px-6 py-16 sm:py-24">
+      <section className="cv-auto border-y border-border/60 bg-card/35 px-6 py-16 sm:py-24">
         <div className="mx-auto max-w-3xl">
           <Reveal>
             <div className="flex flex-col items-center">

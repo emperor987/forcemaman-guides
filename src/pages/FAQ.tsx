@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
+import AccentDots from "@/components/AccentDots";
 import {
   BookOpen,
   CreditCard,
@@ -130,6 +131,7 @@ export default function FAQ() {
         <div className="mx-auto max-w-3xl px-6 pb-12 pt-16 text-center lg:pt-24">
           <Reveal>
             <p className="eyebrow">FAQ</p>
+            <AccentDots className="mt-4" />
             <h1 className="mt-5 font-serif text-4xl leading-[1.05] text-foreground sm:text-6xl">
               Tes questions, <span className="italic">nos réponses.</span>
             </h1>
@@ -142,7 +144,7 @@ export default function FAQ() {
       </section>
 
       {/* ============ CATÉGORIES ============ */}
-      <section className="py-16 sm:py-24">
+      <section className="cv-auto py-16 sm:py-24">
         <div className="mx-auto max-w-4xl px-6">
           <div className="space-y-14">
             {faqCategories.map((category, catIndex) => (
@@ -177,7 +179,7 @@ export default function FAQ() {
       </section>
 
       {/* ============ CONTACT ============ */}
-      <section className="border-t border-border/60 px-6 py-20 sm:py-24">
+      <section className="cv-auto border-t border-border/60 px-6 py-20 sm:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
             <HelpCircle className="mx-auto size-8 text-foreground/40" />

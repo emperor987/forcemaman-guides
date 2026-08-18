@@ -115,7 +115,10 @@ function ScrollToTop() {
         return;
       }
     }
-    window.scrollTo(0, 0);
+    // Remontée instantanée (aucune animation) pour que la nouvelle page
+    // apparaisse immédiatement en haut : le scroll-behavior:smooth global
+    // ne doit pas s'appliquer ici.
+    window.scrollTo({ top: 0, behavior: "instant" });
   }, [pathname, hash]);
 
   return null;

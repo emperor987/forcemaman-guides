@@ -2,6 +2,7 @@ import { useState } from "react";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
+import AccentDots from "@/components/AccentDots";
 import { Check, Mail } from "lucide-react";
 
 export default function Contact() {
@@ -19,6 +20,7 @@ export default function Contact() {
           <Reveal>
             <div className="text-center">
               <p className="eyebrow">Contact</p>
+              <AccentDots className="mt-4" />
               <h1 className="mt-5 font-serif text-4xl leading-[1.05] text-foreground sm:text-5xl">
                 Écrivez-moi, <span className="italic">à votre rythme.</span>
               </h1>

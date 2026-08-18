@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
 import { cn } from "@/lib/utils";
+import AccentDots from "@/components/AccentDots";
 import {
   ArrowRight,
   CheckCircle,
@@ -114,7 +115,7 @@ export default function ProductPage({
       onClick={handleCheckout}
       disabled={checkingOut}
       className={
-        "inline-flex h-14 w-full items-center justify-center gap-3 rounded-full font-medium text-background transition-transform active:scale-[0.98] disabled:opacity-70 lg:px-10 " +
+        "btn-shine inline-flex h-14 w-full items-center justify-center gap-3 rounded-full font-medium text-background transition-transform active:scale-[0.98] disabled:opacity-70 lg:px-10 " +
         (extraClassName ?? "")
       }
       style={DARK_BUTTON_STYLE}
@@ -173,8 +174,9 @@ export default function ProductPage({
           {/* Info */}
           <div className="text-center lg:text-left">
             <Reveal>
+              <AccentDots className="justify-center lg:justify-start" />
               {discount && (
-                <span className="inline-flex items-center rounded-full border border-foreground/15 bg-background/70 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-foreground/70">
+                <span className="mt-4 inline-flex items-center rounded-full border border-foreground/15 bg-background/70 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-foreground/70">
                   {discount}
                 </span>
               )}
@@ -231,7 +233,7 @@ export default function ProductPage({
       </section>
 
       {/* ============ DESCRIPTION ============ */}
-      <section className="border-y border-border/60 bg-[color-mix(in_oklab,var(--accent)_10%,var(--background))] px-6 py-16 sm:py-24">
+      <section className="cv-auto border-y border-border/60 bg-[color-mix(in_oklab,var(--accent)_10%,var(--background))] px-6 py-16 sm:py-24">
         <div className="mx-auto max-w-3xl">
           <Reveal>
             <p className="eyebrow text-center lg:text-left">À propos</p>
@@ -248,7 +250,7 @@ export default function ProductPage({
       </section>
 
       {/* ============ SOMMAIRE ============ */}
-      <section className="px-6 py-16 sm:py-24">
+      <section className="cv-auto px-6 py-16 sm:py-24">
         <div className="mx-auto max-w-3xl">
           <Reveal>
             <p className="eyebrow text-center lg:text-left">Sommaire</p>
@@ -280,7 +282,7 @@ export default function ProductPage({
       </section>
 
       {/* ============ APERÇU ============ */}
-      <section className="border-y border-border/60 bg-[color-mix(in_oklab,var(--accent)_10%,var(--background))] px-6 py-16 sm:py-24">
+      <section className="cv-auto border-y border-border/60 bg-[color-mix(in_oklab,var(--accent)_10%,var(--background))] px-6 py-16 sm:py-24">
         <div className="mx-auto max-w-4xl">
           <Reveal>
             <p className="eyebrow text-center lg:text-left">Aperçu</p>
@@ -320,7 +322,7 @@ export default function ProductPage({
       </section>
 
       {/* ============ CTA ============ */}
-      <section className="px-6 py-16 sm:py-24">
+      <section className="cv-auto px-6 py-16 sm:py-24">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
             <h2 className="font-serif text-3xl leading-[1.05] text-foreground sm:text-4xl">

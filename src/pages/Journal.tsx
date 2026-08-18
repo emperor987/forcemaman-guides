@@ -5,6 +5,7 @@ import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
 import { journalArticles, journalCategories } from "@/lib/journal";
 import { cn } from "@/lib/utils";
+import AccentDots from "@/components/AccentDots";
 import { ArrowRight, Search, Sparkles } from "lucide-react";
 
 const piliers = [
@@ -78,6 +79,7 @@ export default function Journal() {
           <div className="mx-auto max-w-3xl px-6 pb-10 pt-16 text-center lg:pt-24">
             <Reveal>
               <p className="eyebrow">Le Journal</p>
+              <AccentDots className="mt-4" />
               <h1 className="mt-5 font-serif text-4xl leading-[1.05] text-foreground sm:text-6xl">
                 Lectures lentes <span className="italic">pour mères pressées.</span>
               </h1>
@@ -125,7 +127,7 @@ export default function Journal() {
         </section>
 
         {/* ============ COMMENCEZ ICI ============ */}
-        <section className="border-b border-border/60 bg-[color-mix(in_oklab,var(--accent)_15%,var(--background))]">
+        <section className="cv-auto border-b border-border/60 bg-[color-mix(in_oklab,var(--accent)_15%,var(--background))]">
           <div className="mx-auto max-w-6xl px-6 py-16 lg:px-12 lg:py-24">
             <Reveal>
               <div className="flex items-end justify-between gap-6">
@@ -164,7 +166,7 @@ export default function Journal() {
 
         {/* ============ À LA UNE ============ */}
         {featured && (
-          <section className="border-b border-border/60">
+          <section className="cv-auto border-b border-border/60">
             <div className="mx-auto max-w-6xl px-6 py-16 lg:px-12 lg:py-24">
               <Reveal>
                 <Link
@@ -199,7 +201,7 @@ export default function Journal() {
         )}
 
         {/* ============ GRILLE D'ARTICLES ============ */}
-        <section id="lecture">
+        <section id="lecture" className="cv-auto">
           <div className="mx-auto max-w-6xl px-6 py-20 lg:px-12 lg:py-28">
             {gridArticles.length === 0 ? (
               <p className="text-center text-sm text-muted-foreground">
@@ -239,7 +241,7 @@ export default function Journal() {
         </section>
 
         {/* ============ GUIDE GRATUIT CTA ============ */}
-        <section className="border-t border-border/60">
+        <section className="cv-auto border-t border-border/60">
           <div className="mx-auto max-w-6xl px-6 py-20 lg:px-12">
             <Reveal>
               <section className="relative overflow-hidden rounded-3xl border border-border/50 bg-gradient-to-br from-[color-mix(in_oklab,var(--accent)_55%,var(--background))] via-[color-mix(in_oklab,var(--accent)_25%,var(--background))] to-background p-8 shadow-[0_40px_100px_-60px_rgba(35,33,32,0.4)] sm:p-14">

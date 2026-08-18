@@ -7,6 +7,7 @@ import {
 } from "@stripe/stripe-js";
 import Layout from "@/components/Layout";
 import Seo from "@/components/Seo";
+import AccentDots from "@/components/AccentDots";
 import { api } from "@/convex/_generated/api";
 import coverListe from "@/assets/covers/liste-naissance.svg";
 import coverCorps from "@/assets/covers/corps-apres.svg";
@@ -208,7 +209,8 @@ export default function CheckoutEmbed() {
                     <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-foreground/50">
                       ForceMaman
                     </p>
-                    <h1 className="mt-1 font-serif text-lg leading-snug text-foreground">
+                    <AccentDots className="mt-2" />
+                    <h1 className="mt-2 font-serif text-lg leading-snug text-foreground">
                       {meta.title}
                     </h1>
                     <p className={`mt-1 font-serif text-2xl ${meta.accentText}`}>

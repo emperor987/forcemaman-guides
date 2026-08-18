@@ -11,6 +11,9 @@ import coverCorps from "@/assets/covers/corps-apres.svg";
 import coverCharge from "@/assets/covers/charge-mentale.svg";
 import coverBundle from "@/assets/covers/bundle.svg";
 import { ArrowRight, Check, Quote } from "lucide-react";
+import AccentDots from "@/components/AccentDots";
+import CountUp from "@/components/CountUp";
+import Marquee from "@/components/Marquee";
 
 const guideSystems = freeGuideSystems;
 
@@ -113,6 +116,7 @@ export default function Landing() {
             <p className="text-[11px] uppercase tracking-[0.28em] text-foreground/55">
               Pour les jeunes mamans
             </p>
+            <AccentDots className="mt-4" />
           </Reveal>
           <Reveal delay={80}>
             <h1 className="mt-7 font-serif text-[2.75rem] leading-[1.04] text-foreground sm:text-5xl">
@@ -135,11 +139,46 @@ export default function Landing() {
               Déjà rejoint par des centaines de jeunes mamans
             </p>
           </Reveal>
+
+          <Reveal delay={400}>
+            <dl className="mx-auto mt-10 grid max-w-sm grid-cols-3 divide-x divide-border/60 border-t border-border/60 pt-6">
+              <div className="px-2">
+                <dt className="sr-only">Années de pratique</dt>
+                <dd className="font-serif text-3xl text-foreground">
+                  <CountUp value={8} suffix=" ans" label="de pratique comme sage-femme" />
+                </dd>
+                <dd className="mt-1 text-[10px] uppercase tracking-[0.18em] text-foreground/50">
+                  de métier
+                </dd>
+              </div>
+              <div className="px-2">
+                <dt className="sr-only">Nombre de guides</dt>
+                <dd className="font-serif text-3xl text-foreground">
+                  <CountUp value={3} label="guides" />
+                </dd>
+                <dd className="mt-1 text-[10px] uppercase tracking-[0.18em] text-foreground/50">
+                  guides
+                </dd>
+              </div>
+              <div className="px-2">
+                <dt className="sr-only">Pages par guide</dt>
+                <dd className="font-serif text-3xl text-foreground">
+                  <CountUp value={40} label="pages par guide" />
+                </dd>
+                <dd className="mt-1 text-[10px] uppercase tracking-[0.18em] text-foreground/50">
+                  pages
+                </dd>
+              </div>
+            </dl>
+          </Reveal>
         </div>
       </section>
 
+      {/* ============ MARQUEE ============ */}
+      <Marquee />
+
       {/* ============ LE GUIDE GRATUIT ============ */}
-      <section className="px-6 py-16">
+      <section className="cv-auto px-6 py-16">
         <div className="mx-auto max-w-md">
           <Reveal>
             <p className="text-center text-[11px] uppercase tracking-[0.28em] text-foreground/55">
@@ -224,7 +263,7 @@ export default function Landing() {
       </section>
 
       {/* ============ LA MÉTHODE ============ */}
-      <section className="px-6 py-16">
+      <section className="cv-auto px-6 py-16">
         <div className="mx-auto max-w-md">
           <Reveal>
             <p className="text-center text-[11px] uppercase tracking-[0.28em] text-foreground/55">
@@ -270,7 +309,7 @@ export default function Landing() {
       </section>
 
       {/* ============ ELLES ONT ESSAYÉ ============ */}
-      <section className="px-6 py-16">
+      <section className="cv-auto px-6 py-16">
         <div className="mx-auto max-w-md">
           <Reveal>
             <p className="text-center text-[11px] uppercase tracking-[0.28em] text-foreground/55">
@@ -306,7 +345,7 @@ export default function Landing() {
       </section>
 
       {/* ============ LA FONDATRICE ============ */}
-      <section className="px-6 py-16">
+      <section className="cv-auto px-6 py-16">
         <div className="mx-auto max-w-md">
           <Reveal>
             <div className="relative mx-auto h-56 w-56 overflow-hidden rounded-full"
@@ -398,7 +437,7 @@ export default function Landing() {
       </section>
 
       {/* ============ LES GUIDES ============ */}
-      <section className="px-6 py-16">
+      <section className="cv-auto px-6 py-16">
         <div className="mx-auto max-w-md sm:max-w-5xl">
           <Reveal>
             <div className="text-center">
@@ -505,7 +544,7 @@ export default function Landing() {
       </section>
 
       {/* ============ COMMENCEZ ICI ============ */}
-      <section className="px-6 py-16">
+      <section className="cv-auto px-6 py-16">
         <div className="mx-auto max-w-md">
           <Reveal>
             <p className="text-center text-[11px] uppercase tracking-[0.28em] text-foreground/55">

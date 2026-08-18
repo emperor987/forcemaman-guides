@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
+import AccentDots from "@/components/AccentDots";
 
 interface LegalSection {
   title: string;
@@ -41,6 +42,7 @@ export default function LegalPage({
         <div className="mx-auto max-w-3xl px-6 pb-12 pt-16 text-center lg:pt-24">
           <Reveal>
             <p className="eyebrow">Informations légales</p>
+            <AccentDots className="mt-4" />
             <h1 className="mt-5 font-serif text-4xl leading-[1.05] text-foreground sm:text-6xl">
               {title}
             </h1>
@@ -57,7 +59,7 @@ export default function LegalPage({
       </section>
 
       {/* ============ CONTENU ============ */}
-      <section className="py-16 sm:py-24">
+      <section className="cv-auto py-16 sm:py-24">
         <div className="mx-auto max-w-3xl px-6">
           <Reveal>
             <div className="rounded-3xl border border-foreground/10 bg-[color-mix(in_oklab,var(--background)_70%,transparent)] p-7 backdrop-blur-md sm:p-12"

@@ -73,10 +73,14 @@ export default function Seo({
     upsertMeta("property", "og:site_name", "ForceMaman");
     upsertMeta("property", "og:locale", "fr_FR");
     upsertMeta("property", "og:image", image);
+    upsertMeta("property", "og:image:alt", title);
+    upsertMeta("property", "og:image:width", "1200");
+    upsertMeta("property", "og:image:height", "630");
     upsertMeta("name", "twitter:card", "summary_large_image");
     upsertMeta("name", "twitter:title", title);
     upsertMeta("name", "twitter:description", description);
     upsertMeta("name", "twitter:image", image);
+    upsertMeta("name", "twitter:image:alt", title);
     upsertLink("canonical", url);
     upsertMeta(
       "name",

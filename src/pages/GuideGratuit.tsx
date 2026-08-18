@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/accordion";
 import { freeGuideSystems } from "@/lib/ebooks";
 import { images } from "@/lib/assets";
+import AccentDots from "@/components/AccentDots";
 import { Check } from "lucide-react";
 
 const problemCards = [
@@ -112,6 +113,7 @@ export default function GuideGratuit() {
           <div className="text-center lg:text-left">
             <Reveal>
               <p className="eyebrow">Guide gratuit</p>
+              <AccentDots className="mt-4" />
               <h1 className="mx-auto mt-6 max-w-3xl font-serif text-[2.85rem] leading-[0.98] text-foreground sm:text-6xl lg:mx-0 lg:text-[4.65rem]">
                 7 systèmes qui simplifient <span className="italic">vraiment</span> la vie
                 avec un bébé.
@@ -145,7 +147,7 @@ export default function GuideGratuit() {
       </section>
 
       {/* ============ LE VRAI PROBLÈME ============ */}
-      <section className="border-y border-border/60 bg-card/35 px-6 py-20 sm:px-8 sm:py-28">
+      <section className="cv-auto border-y border-border/60 bg-card/35 px-6 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-4xl text-center">
           <Reveal>
             <p className="eyebrow">Le vrai problème</p>
@@ -172,7 +174,7 @@ export default function GuideGratuit() {
       </section>
 
       {/* ============ DANS LE GUIDE — LES 7 SYSTÈMES ============ */}
-      <section className="px-6 py-20 sm:px-8 sm:py-32">
+      <section className="cv-auto px-6 py-20 sm:px-8 sm:py-32">
         <div className="mx-auto max-w-6xl">
           <Reveal>
             <div className="mx-auto max-w-2xl text-center">

@@ -31,9 +31,15 @@ function ResourceCard({ item, index }: { item: LibraryItem; index: number }) {
   return (
     <Reveal delay={(index % 3) * 60}>
       <Link to={item.href} className={CARD_CLASS}>
+        {/* Halo d'accent par carte, révélé au survol (signature ForceMaman) */}
         <span
           aria-hidden="true"
-          className="absolute inset-x-0 top-0 h-px opacity-70"
+          className="pointer-events-none absolute -top-20 left-1/2 size-52 -translate-x-1/2 rounded-full opacity-0 blur-3xl transition-opacity duration-700 ease-out group-hover:opacity-30"
+          style={{ background: meta.line }}
+        />
+        <span
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-40 opacity-60 transition-[transform,opacity] duration-700 ease-out group-hover:scale-x-100 group-hover:opacity-100"
           style={{ background: meta.line }}
         />
         {item.badgeLabel && (
@@ -60,10 +66,18 @@ function ResourceCard({ item, index }: { item: LibraryItem; index: number }) {
         <p className="mt-3 flex-1 text-[0.9rem] leading-[1.65] text-foreground/60">
           {item.benefit}
         </p>
-        <span className="mt-8 inline-flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.22em] text-foreground/70 transition-transform duration-500 ease-out group-hover:translate-x-1">
-          {item.id === "bundle" ? "Découvrir le pack" : "Voir le guide"}
-          <ArrowRight className="size-3" />
-        </span>
+        <div className="mt-8 flex items-center justify-between gap-3">
+          <span
+            className="font-serif text-xl leading-none"
+            style={{ color: meta.text }}
+          >
+            {item.price}
+          </span>
+          <span className="inline-flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.22em] text-foreground/70 transition-transform duration-500 ease-out group-hover:translate-x-1">
+            {item.id === "bundle" ? "Découvrir le pack" : "Voir le guide"}
+            <ArrowRight className="size-3" />
+          </span>
+        </div>
       </Link>
     </Reveal>
   );
@@ -130,6 +144,15 @@ const jsonLd = [
       },
     ],
   },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
   },
   {
     "@context": "https://schema.org",
@@ -229,7 +252,7 @@ export default function Guides() {
         </div>
 
         {/* ============ LES PLUS POPULAIRES ============ */}
-        <section className="mt-20">
+        <section className="cv-auto mt-20">
           <Reveal>
             <div className="mb-8 text-center">
               <p className="text-[0.65rem] uppercase tracking-[0.28em] text-foreground/50">
@@ -254,7 +277,7 @@ export default function Guides() {
         </section>
 
         {/* ============ LES GUIDES ============ */}
-        <section id="guides" className="mt-24 scroll-mt-24 sm:mt-32">
+        <section id="guides" className="cv-auto mt-24 scroll-mt-24 sm:mt-32">
           <Reveal>
             <header className="mb-10 max-w-2xl">
               <p className="text-[0.65rem] uppercase tracking-[0.28em] text-foreground/50">
@@ -276,7 +299,7 @@ export default function Guides() {
         </section>
 
         {/* ============ PACK & GRATUITS ============ */}
-        <section id="gratuits" className="mt-24 scroll-mt-24 sm:mt-32">
+        <section id="gratuits" className="cv-auto mt-24 scroll-mt-24 sm:mt-32">
           <Reveal>
             <header className="mb-10 max-w-2xl">
               <p className="text-[0.65rem] uppercase tracking-[0.28em] text-foreground/50">
@@ -299,7 +322,7 @@ export default function Guides() {
         </section>
 
         {/* ============ FAQ ============ */}
-        <section className="mt-28 border-t border-border/60 pt-16">
+        <section className="cv-auto mt-28 border-t border-border/60 pt-16">
           <div className="mx-auto max-w-2xl">
             <Reveal>
               <h2 className="text-center font-serif text-3xl text-foreground sm:text-4xl">
