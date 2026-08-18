@@ -1,9 +1,8 @@
 /**
  * Action newsletter ForceMaman.
  *
- * Envoie le guide gratuit par email après inscription RGPD.
- * Stocke le consentement dans la table subscribers.
- * Rate limiting : max 3 tentatives par email par heure.
+ * Envoie le guide gratuit par email via le service email intégré Freebuff (VLY).
+ * Stocke le consentement RGPD dans la table subscribers.
  */
 
 "use node";
@@ -15,42 +14,9 @@ import { vly } from "../lib/vly-integrations";
 const GUIDE_URL = "https://forcemaman.fr/ebooks/guide-gratuit-7-systemes.pdf";
 const UNSUBSCRIBE_BASE = "https://forcemaman.fr/api/unsubscribe";
 
-/** Envoie via Resend si une clé RESEND_API_KEY est présente (sinon null). */
-async function sendViaResend(
-  email: string,
-  subject: string,
-  html: string,
-  text: string,
-): Promise<boolean | null> {
-  const key = process.env.RESEND_API_KEY;
-  if (!key) return null;
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${key}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from: "ForceMaman <bonjour@forcemaman.fr>",
-      to: [email],
-      subject,
-      html,
-      text,
-    }),
-  });
-  if (!res.ok) {
-    const body = await res.text().catch(() => "");
-    throw new Error(`Resend ${res.status} : ${body.slice(0, 200)}`);
-  }
-  return true;
-}
-
 /**
  * Inscription newsletter + envoi du guide gratuit.
- *
- * 1. Stocke le subscriber avec consentement RGPD
- * 2. Envoie l'email avec lien de désabonnement
- * 3. L'UI affiche l'écran de confirmation dans tous les cas
+ * Utilise le service email intégré Freebuff (VLY).
  */
 export const subscribe = action({
   args: { email: v.string() },
@@ -73,7 +39,6 @@ export const subscribe = action({
       if (e instanceof Error && e.message.includes("Trop de tentatives")) {
         throw e;
       }
-      // Sinon on continue (la table peut ne pas exister encore)
     }
 
     // 2. Construire l'email avec lien de désabonnement
@@ -115,20 +80,19 @@ export const subscribe = action({
       `Se désinscrire : ${unsubscribeUrl}`,
     ].join("\n");
 
-    // 3. Envoyer l'email
-    try {
-      const viaResend = await sendViaResend(email, subject, html, text);
-      if (viaResend !== null) {
-        return { ok: true, sent: true, error: null };
-      }
-      const result = await vly.email.send({ to: email, subject, html, text });
-      return {
-        ok: true,
-        sent: result.success !== false,
-        error: result.error ?? null,
-      };
-    } catch (error) {
-      return { ok: true, sent: false, error: String(error) };
+    // 3. Envoyer l'email via le service Freebuff (VLY)
+    const result = await vly.email.send({ to: email, subject, html, text });
+
+    if (result.success === false) {
+      console.error("Erreur envoi email VLY:", result.error);
+      // On ne bloque pas l'inscription même si l'email échoue
+      // L'utilisateur peut réessayer ou télécharger directement
     }
+
+    return {
+      ok: true,
+      sent: result.success !== false,
+      error: result.error ?? null,
+    };
   },
 });
