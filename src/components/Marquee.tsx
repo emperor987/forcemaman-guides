@@ -2,10 +2,10 @@ import { cn } from "@/lib/utils";
 
 const ITEMS = [
   "Téléchargement immédiat",
-  "Paiement sécurisé Stripe",
+  "Paiement sécurisé",
   "Écrit par une sage-femme",
   "Remboursement 14 jours",
-  "40 pages de contenu",
+  "40 pages",
   "Sans culpabilité",
 ];
 
@@ -48,9 +48,8 @@ export default function Marquee({ className }: { className?: string }) {
       )}
     >
       <span className="sr-only">
-        Téléchargement immédiat, paiement sécurisé Stripe, écrit par une
-        sage-femme, remboursement 14 jours, 40 pages de contenu, sans
-        culpabilité.
+        Téléchargement immédiat, paiement sécurisé, écrit par une sage-femme,
+        remboursement 14 jours, 40 pages, sans culpabilité.
       </span>
       {track}
     </div>

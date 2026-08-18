@@ -213,7 +213,7 @@
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 30s linear infinite;
+  animation: marquee 12s linear infinite;
   will-change: transform;
 }
 
@@ -297,12 +297,8 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-in,
   .animate-float,
-  .animate-float-slow,
-  .marquee-track {
+  .animate-float-slow {
     animation: none;
-  }
-  .marquee-track {
-    transform: translateX(0);
   }
   .reveal {
     opacity: 1;
