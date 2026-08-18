@@ -80,6 +80,8 @@ async function findOrCreateProduct(productId: string) {
     method: "POST",
     body: formEncode({
       name: cfg.name,
+      // Code fiscal Stripe des livres électroniques (ebooks PDF).
+      tax_code: "txcd_10000000",
       "metadata[forceMamanId]": productId,
       "metadata[marca]": "ForceMaman",
     }),
@@ -149,8 +151,15 @@ export const createCheckoutSession = action({
       method: "POST",
       body: formEncode({
         mode: "payment",
+        // Carte bancaire (Visa, Mastercard, CB…) : méthode activée par défaut
+        // sur les comptes Stripe, explicitement demandée ici.
+        "payment_method_types[0]": "card",
         "line_items[0][price]": priceId,
         "line_items[0][quantity]": 1,
+        // Les prix affichés (7,90 €, 9,90 €…) sont TTC : on désactive le
+        // calcul de taxe automatique de Managed Payments pour que l'acheteuse
+        // paie exactement le prix affiché sur le site.
+        "managed_payments[enabled]": "false",
         success_url: `${SITE_URL}/commande/reussie?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${SITE_URL}/guides/${args.productId}`,
         "metadata[productId]": args.productId,
