@@ -59,13 +59,7 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* CTA */}
-          <Link
-            to="/guides"
-            className="inline-flex h-9 items-center justify-center gap-2 whitespace-nowrap rounded-full border border-foreground/70 bg-transparent px-4 text-xs font-medium uppercase tracking-[0.18em] text-foreground transition-colors hover:bg-foreground hover:text-background"
-          >
-            Nos Guides
-          </Link>
+
         </div>
       </header>
 
