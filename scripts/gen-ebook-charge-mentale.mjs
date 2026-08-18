@@ -608,6 +608,6 @@ const book = createBook({
 // ---------- Deux passes : numéros de pages réels dans le sommaire ----------
 book.render();
 const sectionPages = { ...book.sectionPages };
-book.render();
+book.render(sectionPages); // ré-injecte les pages réelles pour paginer le sommaire
 console.log("Sections (1re passe) :", JSON.stringify(sectionPages, null, 0));
 book.write("public/ebooks/charge-mentale.pdf");

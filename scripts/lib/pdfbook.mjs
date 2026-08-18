@@ -758,10 +758,14 @@ export function createBook(cfg) {
       y = v;
     },
     C,
-    render() {
+    render(seedPages) {
       doc.pages = [];
       totalPages = 0;
       for (const k of Object.keys(sectionPages)) delete sectionPages[k];
+      // Deuxième passe : on re-injecte les numéros de pages réels calculés à
+      // la première passe pour que le sommaire soit paginé (voir les
+      // générateurs, qui appellent render(snapshot)).
+      if (seedPages) Object.assign(sectionPages, seedPages);
       C.content(this);
     },
     assemble() {
