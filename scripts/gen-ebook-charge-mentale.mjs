@@ -4,6 +4,7 @@
  * Usage : node scripts/gen-ebook-charge-mentale.mjs
  */
 import { createBook, COLORS } from "./lib/pdfbook.mjs";
+import { extraChapters } from "./lib/ebook3-extra.mjs";
 
 const book = createBook({
   title: "Charge Mentale & 40 Premiers Jours",
@@ -63,8 +64,11 @@ const book = createBook({
       ["10", "Les émotions du post-partum", "ch9"],
       ["11", "Tes proches et ton cercle social", "ch10"],
       ["12", "Se projeter sans pression", "ch11"],
-      ["13", "Mon suivi personnel", "suivi"],
-      ["14", "Rappel important et sources", "rappel"],
+      ["13", "Ta semaine type des 40 jours", "ch12"],
+      ["14", "Organiser la maison pour alléger ta tête", "ch13"],
+      ["15", "Tes ressources et les professionnels qui t'entourent", "ch14"],
+      ["16", "Mon suivi personnel", "suivi"],
+      ["17", "Rappel important et sources", "rappel"],
     ]);
 
     /* ================= CHAPITRE 1 ================= */
@@ -557,6 +561,9 @@ const book = createBook({
       "Rêver est un carburant, pas une pression : chaque âge de bébé ouvre de nouvelles portes.",
     ], { color: Mv, colorDark: MD, boxColor: COLORS.mauveSoft });
 
+    /* ================= CHAPITRES 12 à 14 ================= */
+    extraChapters(b);
+
     /* ================= SUIVI PERSONNEL ================= */
     b.chapterPage("suivi");
     b.label("Mon suivi personnel", Mv);
@@ -572,6 +579,12 @@ const book = createBook({
     b.chapterPage("suivi3");
     b.blankSection("Mes 3 autosoins de 5 minutes", "Trois micro-pauses par jour : note lesquelles, à quels moments, et coche chaque jour où elles ont tenu.", 6);
     b.blankSection("Mes petites victoires à noter", "Chaque jour ou chaque semaine, note une chose qui a bien tenu, un moment doux, un pas en avant. Relis ces pages les jours difficiles.", 7);
+    b.chapterPage("suivi4");
+    b.blankSection("Mes numéros et mes ressources", "Sage-femme, médecin, PMI, maternité, 15, 112, et les personnes qui peuvent aider : tout au même endroit, à portée de main les nuits difficiles.", 6);
+    b.blankSection("Ma semaine type à moi", "Mes repères qui fonctionnent : le moment fixe du matin, la sieste, la sortie, le sas du soir. Note ce qui marche, pour le reproduire.", 7);
+    b.chapterPage("suivi5");
+    b.blankSection("Mes phrases qui aident (chapitre 5)", "Les formulations douces qui désamorcent en couple et avec les proches : note celles qui marchent pour toi, pour les retrouver les jours de fatigue.", 7);
+    b.blankSection("Mon plan des 7 systèmes", "Jour 1 à 7 : note pour chaque système ce que tu as posé, ce qui fonctionne, ce que tu ajustes. Un système qui te convient vaut mieux que sept qui s'effondrent.", 7);
 
     /* ================= RAPPEL + SOURCES ================= */
     b.chapterPage("rappel");

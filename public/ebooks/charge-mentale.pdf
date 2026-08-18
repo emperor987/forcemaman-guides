@@ -3,7 +3,7 @@
 << /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<< /Type /Pages /Kids [3 0 R 4 0 R 5 0 R 6 0 R 7 0 R 8 0 R 9 0 R 10 0 R 11 0 R 12 0 R 13 0 R 14 0 R 15 0 R 16 0 R 17 0 R 18 0 R 19 0 R 20 0 R 21 0 R 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R 27 0 R 28 0 R 29 0 R 30 0 R 31 0 R 32 0 R 33 0 R 34 0 R] /Count 32 >>
+<< /Type /Pages /Kids [3 0 R 4 0 R 5 0 R 6 0 R 7 0 R 8 0 R 9 0 R 10 0 R 11 0 R 12 0 R 13 0 R 14 0 R 15 0 R 16 0 R 17 0 R 18 0 R 19 0 R 20 0 R 21 0 R 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R 27 0 R 28 0 R 29 0 R 30 0 R 31 0 R 32 0 R 33 0 R 34 0 R 35 0 R 36 0 R 37 0 R 38 0 R 39 0 R 40 0 R 41 0 R 42 0 R] /Count 40 >>
 endobj
 3 0 obj
 << /Length 2203 >>
@@ -67,7 +67,7 @@ BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 415.39 Td (sage-femme, ton médecin ou un
 endstream
 endobj
 5 0 obj
-<< /Length 3560 >>
+<< /Length 4223 >>
 stream
 0.85 0.82 0.78 RG 0.8 w 54.00 42.00 m 541.28 42.00 l S
 BT /F1 7.5 Tf 0.48 0.40 0.33 rg 54.00 32.00 Td (Charge Mentale & 40 Premiers Jours · ForceMaman) Tj ET
@@ -110,18 +110,27 @@ BT /F2 11 Tf 0.655 0.545 0.639 rg 54.00 418.89 Td (12) Tj ET
 BT /F1 11.5 Tf 0.361 0.290 0.227 rg 88.00 418.89 Td (Se projeter sans pression) Tj ET
 BT /F1 10.5 Tf 0.48 0.40 0.33 rg 541.28 418.89 Td () Tj ET
 BT /F2 11 Tf 0.655 0.545 0.639 rg 54.00 388.89 Td (13) Tj ET
-BT /F1 11.5 Tf 0.361 0.290 0.227 rg 88.00 388.89 Td (Mon suivi personnel) Tj ET
+BT /F1 11.5 Tf 0.361 0.290 0.227 rg 88.00 388.89 Td (Ta semaine type des 40 jours) Tj ET
 BT /F1 10.5 Tf 0.48 0.40 0.33 rg 541.28 388.89 Td () Tj ET
 BT /F2 11 Tf 0.655 0.545 0.639 rg 54.00 358.89 Td (14) Tj ET
-BT /F1 11.5 Tf 0.361 0.290 0.227 rg 88.00 358.89 Td (Rappel important et sources) Tj ET
+BT /F1 11.5 Tf 0.361 0.290 0.227 rg 88.00 358.89 Td (Organiser la maison pour alléger ta tête) Tj ET
 BT /F1 10.5 Tf 0.48 0.40 0.33 rg 541.28 358.89 Td () Tj ET
-0.85 0.82 0.78 RG 0.8 w 54.00 320.89 m 541.28 320.89 l S
-BT /F1 9.5 Tf 0.48 0.40 0.33 rg 54.00 310.89 Td (Ce guide est un outil d'accompagnement et d'information. Il ne remplace pas l'avis d'un professionnel de santé. En) Tj ET
-BT /F1 9.5 Tf 0.48 0.40 0.33 rg 54.00 296.89 Td (cas de doute ou de symptôme, consulte ta sage-femme, ton médecin ou un professionnel qualifié.) Tj ET
+BT /F2 11 Tf 0.655 0.545 0.639 rg 54.00 328.89 Td (15) Tj ET
+BT /F1 11.5 Tf 0.361 0.290 0.227 rg 88.00 328.89 Td (Tes ressources et les professionnels qui t'entourent) Tj ET
+BT /F1 10.5 Tf 0.48 0.40 0.33 rg 541.28 328.89 Td () Tj ET
+BT /F2 11 Tf 0.655 0.545 0.639 rg 54.00 298.89 Td (16) Tj ET
+BT /F1 11.5 Tf 0.361 0.290 0.227 rg 88.00 298.89 Td (Mon suivi personnel) Tj ET
+BT /F1 10.5 Tf 0.48 0.40 0.33 rg 541.28 298.89 Td () Tj ET
+BT /F2 11 Tf 0.655 0.545 0.639 rg 54.00 268.89 Td (17) Tj ET
+BT /F1 11.5 Tf 0.361 0.290 0.227 rg 88.00 268.89 Td (Rappel important et sources) Tj ET
+BT /F1 10.5 Tf 0.48 0.40 0.33 rg 541.28 268.89 Td () Tj ET
+0.85 0.82 0.78 RG 0.8 w 54.00 230.89 m 541.28 230.89 l S
+BT /F1 9.5 Tf 0.48 0.40 0.33 rg 54.00 220.89 Td (Ce guide est un outil d'accompagnement et d'information. Il ne remplace pas l'avis d'un professionnel de santé. En) Tj ET
+BT /F1 9.5 Tf 0.48 0.40 0.33 rg 54.00 206.89 Td (cas de doute ou de symptôme, consulte ta sage-femme, ton médecin ou un professionnel qualifié.) Tj ET
 endstream
 endobj
 6 0 obj
-<< /Length 7496 >>
+<< /Length 7435 >>
 stream
 0.85 0.82 0.78 RG 0.8 w 54.00 42.00 m 541.28 42.00 l S
 BT /F1 7.5 Tf 0.48 0.40 0.33 rg 54.00 32.00 Td (Charge Mentale & 40 Premiers Jours · ForceMaman) Tj ET
@@ -134,7 +143,6 @@ BT /F4 21 Tf 0.50 0.38 0.49 rg 54.00 769.89 Td (Les 40 premiers jours, c'est quo
 0.655 0.545 0.639 RG 1.5 w 336.60 664.80 m 336.60 730.80 l S
 0.655 0.545 0.639 RG 1.3 w 270.60 656.00 m 270.60 673.60 l S
 0.655 0.545 0.639 RG 1.3 w 323.40 656.00 m 323.40 673.60 l S
-0.655 0.545 0.639 RG 1.2 w 266.20 678.00 m 297.00 678.00 l S
 0.655 0.545 0.639 RG 1.2 w 266.20 678.00 m 297.00 678.00 l S
 0.655 0.545 0.639 RG 1.2 w 297.00 678.00 m 297.00 691.20 l S
 0.655 0.545 0.639 RG 1.2 w 297.00 691.20 m 310.20 691.20 l S
@@ -1203,11 +1211,307 @@ BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 631.39 Td (Rêver est un carburant, pas u
 endstream
 endobj
 28 0 obj
-<< /Length 1334 >>
+<< /Length 6417 >>
 stream
 0.85 0.82 0.78 RG 0.8 w 54.00 42.00 m 541.28 42.00 l S
 BT /F1 7.5 Tf 0.48 0.40 0.33 rg 54.00 32.00 Td (Charge Mentale & 40 Premiers Jours · ForceMaman) Tj ET
 BT /F1 7.5 Tf 0.48 0.40 0.33 rg 532.94 32.00 Td (26) Tj ET
+BT /F2 8.5 Tf 0.655 0.545 0.639 rg 54.00 787.89 Td (CHAPITRE 12) Tj ET
+BT /F4 21 Tf 0.50 0.38 0.49 rg 54.00 769.89 Td (Ta semaine type des 40 jours) Tj ET
+0.655 0.545 0.639 RG 1.5 w 257.40 664.80 m 336.60 664.80 l S
+0.655 0.545 0.639 RG 1.5 w 257.40 730.80 m 336.60 730.80 l S
+0.655 0.545 0.639 RG 1.5 w 257.40 664.80 m 257.40 730.80 l S
+0.655 0.545 0.639 RG 1.5 w 336.60 664.80 m 336.60 730.80 l S
+0.655 0.545 0.639 RG 1.3 w 270.60 656.00 m 270.60 673.60 l S
+0.655 0.545 0.639 RG 1.3 w 323.40 656.00 m 323.40 673.60 l S
+0.655 0.545 0.639 RG 1.2 w 266.20 678.00 m 297.00 678.00 l S
+0.655 0.545 0.639 RG 1.2 w 297.00 678.00 m 297.00 691.20 l S
+0.655 0.545 0.639 RG 1.2 w 297.00 691.20 m 310.20 691.20 l S
+0.655 0.545 0.639 RG 1.2 w 310.20 691.20 m 310.20 704.40 l S
+0.655 0.545 0.639 RG 1.2 w 310.20 704.40 m 323.40 704.40 l S
+0.655 0.545 0.639 RG 1.2 w 323.40 704.40 m 323.40 717.60 l S
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 722.89 Td (Les 40 premiers jours paraissent sans forme ni repères, et pourtant une trame se dessine, semaine) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 707.39 Td (après semaine. Ce chapitre te propose une semaine type, non pas comme un programme à suivre, mais) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 691.89 Td (comme un paysage à reconnaître : chaque semaine a son rythme, ses défis, et ses victoires.) Tj ET
+BT /F2 12.5 Tf 0.361 0.290 0.227 rg 54.00 666.39 Td (Les 6 semaines en un regard) Tj ET
+0.85 0.82 0.78 RG 0.7 w 54.00 648.89 m 541.28 648.89 l S
+BT /F2 10 Tf 0.50 0.38 0.49 rg 60.00 637.89 Td (Semaine 1) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 180.00 637.89 Td (L'installation : tu apprends à t'occuper de bébé, la maison est en mode « survie) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 180.00 623.89 Td (», les visites se limitent à l'essentiel. Objectif : nourrir, changer, dormir, et rien) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 180.00 609.89 Td (d'autre.) Tj ET
+0.85 0.82 0.78 RG 0.7 w 54.00 588.89 m 541.28 588.89 l S
+BT /F2 10 Tf 0.50 0.38 0.49 rg 60.00 577.89 Td (Semaines 2 à 3) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 180.00 577.89 Td (Le rythme s'installe : les premières vraies nuits hachées, le baby blues qui peut) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 180.00 563.89 Td (pointer, la visite de la sage-femme. Objectif : poser les 7 systèmes un par un,) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 180.00 549.89 Td (en douceur.) Tj ET
+0.85 0.82 0.78 RG 0.7 w 54.00 528.89 m 541.28 528.89 l S
+BT /F2 10 Tf 0.50 0.38 0.49 rg 60.00 517.89 Td (Semaines 4 à 5) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 180.00 517.89 Td (Les sorties redeviennent possibles : première promenade longue, premières) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 180.00 503.89 Td (visites choisies. Objectif : commencer à sortir, et accepter l'aide des proches.) Tj ET
+0.85 0.82 0.78 RG 0.7 w 54.00 482.89 m 541.28 482.89 l S
+BT /F2 10 Tf 0.50 0.38 0.49 rg 60.00 471.89 Td (Semaine 6 et au-delà) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 180.00 471.89 Td (Le cap des 40 jours : la consultation post-natale approche, la rééducation se) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 180.00 457.89 Td (programme, et tu commences à te projeter sans panique.) Tj ET
+0.85 0.82 0.78 RG 0.7 w 54.00 436.89 m 541.28 436.89 l S
+BT /F2 12.5 Tf 0.361 0.290 0.227 rg 54.00 416.89 Td (La journée type, un repère pas une prison) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 399.39 Td (Une journée des premiers jours ressemble souvent à ceci : des tétées ou biberons toutes les 2 à 3) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 383.89 Td (heures, des siestes courtes, des changes fréquents, et des moments de présence pure. Autour de cela,) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 368.39 Td (trois piliers : une vraie sieste pour toi dans la journée, un repas simple mais réel, et une sortie courte) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 352.89 Td (\(même 10 minutes\) dès que possible. Le soir, le sas du chapitre 4 \(préparer bébé, vérifier le sac, ranger) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 337.39 Td (le salon\) prépare un matin plus doux.) Tj ET
+BT /F2 12.5 Tf 0.361 0.290 0.227 rg 54.00 311.89 Td (Le piège des journées sans structure) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 294.39 Td (Sans aucune trame, les journées se ressemblent, s'étirent, et la fatigue morale grandit. Trois repères) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 278.89 Td (suffisent à structurer la journée : un moment fixe dans la matinée \(la toilette, même rapide, la tienne et) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 263.39 Td (celle de bébé\), un moment fixe l'après-midi \(la sortie ou la sieste\), un moment fixe le soir \(le sas du soir,) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 247.89 Td (en équipe si possible\). Le reste peut fluctuer sans problème.) Tj ET
+0.92 0.88 0.91 rg
+68.00 130.39 m 527.28 130.39 l 535.01 130.39 c 541.28 136.66 541.28 144.39 l 541.28 214.39 l 541.28 222.12 c 535.01 228.39 527.28 228.39 l 68.00 228.39 l 60.27 228.39 c 54.00 222.12 54.00 214.39 l 54.00 144.39 l 54.00 136.66 c 60.27 130.39 68.00 130.39 l h f
+0.655 0.545 0.639 rg 54.00 130.39 5.00 98.00 re f
+BT /F2 10.5 Tf 0.50 0.38 0.49 rg 74.00 212.39 Td (Le conseil de Maria) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 197.89 Td (La semaine type n'est pas un test : c'est un filet. Les jours où tout déborde, tu retombes dessus, et tu) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 183.39 Td (reprends juste après. Aucun jour « raté » ne défait les 40 jours.) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 168.89 Td (Note ta semaine à toi dans les pages de suivi à la fin du guide : les repères qui marchent pour toi, à tes) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 154.39 Td (horaires, avec ton bébé.) Tj ET
+BT /F2 12.5 Tf 0.361 0.290 0.227 rg 54.00 108.39 Td (Ta check-list semaine type) Tj ET
+0.655 0.545 0.639 RG 1.2 w 54.00 79.89 m 65.00 79.89 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 79.89 m 65.00 90.89 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 90.89 m 54.00 90.89 l S
+0.655 0.545 0.639 RG 1.2 w 54.00 90.89 m 54.00 79.89 l S
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 76.00 87.89 Td (Un moment fixe le matin : toilette de bébé et la tienne, même express) Tj ET
+endstream
+endobj
+29 0 obj
+<< /Length 2149 >>
+stream
+0.85 0.82 0.78 RG 0.8 w 54.00 42.00 m 541.28 42.00 l S
+BT /F1 7.5 Tf 0.48 0.40 0.33 rg 54.00 32.00 Td (Charge Mentale & 40 Premiers Jours · ForceMaman) Tj ET
+BT /F1 7.5 Tf 0.48 0.40 0.33 rg 532.94 32.00 Td (27) Tj ET
+0.655 0.545 0.639 RG 1.2 w 54.00 776.89 m 65.00 776.89 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 776.89 m 65.00 787.89 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 787.89 m 54.00 787.89 l S
+0.655 0.545 0.639 RG 1.2 w 54.00 787.89 m 54.00 776.89 l S
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 76.00 784.89 Td (Une vraie sieste pour toi chaque jour, et un repas simple mais réel) Tj ET
+0.655 0.545 0.639 RG 1.2 w 54.00 745.89 m 65.00 745.89 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 745.89 m 65.00 756.89 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 756.89 m 54.00 756.89 l S
+0.655 0.545 0.639 RG 1.2 w 54.00 756.89 m 54.00 745.89 l S
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 76.00 753.89 Td (Une sortie quotidienne courte dès que possible, même autour de la maison) Tj ET
+0.655 0.545 0.639 RG 1.2 w 54.00 714.89 m 65.00 714.89 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 714.89 m 65.00 725.89 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 725.89 m 54.00 725.89 l S
+0.655 0.545 0.639 RG 1.2 w 54.00 725.89 m 54.00 714.89 l S
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 76.00 722.89 Td (Le sas du soir en équipe : bébé préparé, sac vérifié, salon rangé en 10 minutes) Tj ET
+0.92 0.88 0.91 rg
+68.00 607.39 m 527.28 607.39 l 535.01 607.39 c 541.28 613.66 541.28 621.39 l 541.28 676.89 l 541.28 684.62 c 535.01 690.89 527.28 690.89 l 68.00 690.89 l 60.27 690.89 c 54.00 684.62 54.00 676.89 l 54.00 621.39 l 54.00 613.66 c 60.27 607.39 68.00 607.39 l h f
+0.655 0.545 0.639 rg 54.00 607.39 5.00 83.50 re f
+BT /F2 10.5 Tf 0.50 0.38 0.49 rg 74.00 674.89 Td (? retenir) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 660.39 Td (Chaque semaine des 40 jours a son propre rythme : on ne compare pas, on traverse.) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 645.89 Td (Trois repères fixes \(matin, après-midi, soir\) suffisent à structurer la journée.) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 631.39 Td (Une journée débordée n'est pas un échec : c'est une journée, et demain est une page neuve.) Tj ET
+endstream
+endobj
+30 0 obj
+<< /Length 7256 >>
+stream
+0.85 0.82 0.78 RG 0.8 w 54.00 42.00 m 541.28 42.00 l S
+BT /F1 7.5 Tf 0.48 0.40 0.33 rg 54.00 32.00 Td (Charge Mentale & 40 Premiers Jours · ForceMaman) Tj ET
+BT /F1 7.5 Tf 0.48 0.40 0.33 rg 532.94 32.00 Td (28) Tj ET
+BT /F2 8.5 Tf 0.655 0.545 0.639 rg 54.00 787.89 Td (CHAPITRE 13) Tj ET
+BT /F4 21 Tf 0.50 0.38 0.49 rg 54.00 769.89 Td (Organiser la maison pour alléger ta tête) Tj ET
+0.655 0.545 0.639 RG 1.5 w 248.60 695.60 m 244.20 722.00 270.60 730.80 297.00 730.80 c S
+0.655 0.545 0.639 RG 1.5 w 297.00 730.80 m 323.40 730.80 349.80 722.00 345.40 695.60 c S
+0.655 0.545 0.639 RG 1.5 w 345.40 695.60 m 345.40 669.20 319.00 660.40 297.00 660.40 c S
+0.655 0.545 0.639 RG 1.5 w 297.00 660.40 m 275.00 660.40 248.60 669.20 248.60 695.60 c S
+0.655 0.545 0.639 RG 1.4 w 283.80 730.80 m 283.80 748.40 310.20 748.40 310.20 730.80 c S
+0.655 0.545 0.639 RG 1.2 w 261.80 713.20 m 332.20 713.20 l S
+0.655 0.545 0.639 RG 1.3 w
+305.80 691.20 m 305.80 696.06 c 301.86 700.00 297.00 700.00 l 292.14 700.00 c 288.20 696.06 288.20 691.20 l 288.20 686.34 c 292.14 682.40 297.00 682.40 l 301.86 682.40 c 305.80 686.34 305.80 691.20 l h S
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 722.89 Td (Une maison organisée, c'est une tête allégée : moins de décisions à prendre, moins de recherches,) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 707.39 Td (moins de « où est-ce que j'ai mis ? ». Pas besoin d'une maison parfaite : besoin de zones simples,) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 691.89 Td (pensées une fois, qui fonctionnent toute seules. Voici les quatre zones qui changent tout.) Tj ET
+BT /F2 12.5 Tf 0.361 0.290 0.227 rg 54.00 666.39 Td (Les 4 zones à installer en 1 heure) Tj ET
+0.655 0.545 0.639 rg
+58.30 646.39 m 58.30 647.38 c 57.49 648.19 56.50 648.19 l 55.51 648.19 c 54.70 647.38 54.70 646.39 l 54.70 645.40 c 55.51 644.59 56.50 644.59 l 57.49 644.59 c 58.30 645.40 58.30 646.39 l h f
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 70.00 648.89 Td (La zone change : le matelas à langer avec tout à portée de main \(couches, coton, liniment, change de) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 70.00 633.39 Td (rechange\), et le panier nomade qui suit dans la maison) Tj ET
+0.655 0.545 0.639 rg
+58.30 615.39 m 58.30 616.38 c 57.49 617.19 56.50 617.19 l 55.51 617.19 c 54.70 616.38 54.70 615.39 l 54.70 614.40 c 55.51 613.59 56.50 613.59 l 57.49 613.59 c 58.30 614.40 58.30 615.39 l h f
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 70.00 617.89 Td (La zone sommeil : le lit de bébé prêt \(sur le dos, gigoteuse, rien d'autre\), la gigoteuse du soir sortie, la) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 70.00 602.39 Td (veilleuse en place) Tj ET
+0.655 0.545 0.639 rg
+58.30 584.39 m 58.30 585.38 c 57.49 586.19 56.50 586.19 l 55.51 586.19 c 54.70 585.38 54.70 584.39 l 54.70 583.40 c 55.51 582.59 56.50 582.59 l 57.49 582.59 c 58.30 583.40 58.30 584.39 l h f
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 70.00 586.89 Td (La zone tétée : un coussin, une bouteille d'eau, un en-cas, le téléphone et le chargeur, à portée de) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 70.00 571.39 Td (main de ton fauteuil) Tj ET
+0.655 0.545 0.639 rg
+58.30 553.39 m 58.30 554.38 c 57.49 555.19 56.50 555.19 l 55.51 555.19 c 54.70 554.38 54.70 553.39 l 54.70 552.40 c 55.51 551.59 56.50 551.59 l 57.49 551.59 c 58.30 552.40 58.30 553.39 l h f
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 70.00 555.89 Td (La zone cuisine : le stock des 3 repas de secours \(chapitre 4\), la machine à café ou la théière prête,) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 70.00 540.39 Td (les plats congelés visibles) Tj ET
+BT /F2 12.5 Tf 0.361 0.290 0.227 rg 54.00 512.89 Td (Les courses et le stock, sans y penser) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 495.39 Td (Prépare une liste de courses « de base » \(lait, couches, produits d'entretien, eau, en-cas\) et une liste «) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 479.89 Td (repas de secours », et commande en ligne quand c'est possible : les courses avec un nouveau-né sont) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 464.39 Td (un sport de combat, la livraison est un soin. Garde un stock de 2 semaines de l'essentiel, et accepte les) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 448.89 Td (courses des proches : une liste précise leur donne une mission claire.) Tj ET
+BT /F2 12.5 Tf 0.361 0.290 0.227 rg 54.00 423.39 Td (Les lessives, le rythme qui convient) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 405.89 Td (Avec un nouveau-né, la lessive tourne en continu : c'est un fait, pas un problème. La méthode des 3) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 390.39 Td (bacs \(Actuel, Taille suivante, ? laver\) évite les triages interminables, et un créneau fixe par jour \(le matin,) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 374.89 Td (pendant la première sieste\) évite que le linge s'accumule. Si quelqu'un propose de t'aider : la lessive et le) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 359.39 Td (pliage sont les missions les plus précieuses, et les moins fatigantes pour la personne qui aide.) Tj ET
+BT /F2 12.5 Tf 0.361 0.290 0.227 rg 54.00 333.89 Td (Le ménage : le minimum vital, et le reste) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 316.39 Td (Les 40 premiers jours, le ménage se réduit au minimum vital : la cuisine \(pour manger\), la salle de bain) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 300.89 Td (\(pour l'hygiène\), la zone change et la zone sommeil. Le reste attend, se délègue, ou se fait au rythme de) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 285.39 Td (ton énergie. La règle du suffisant du chapitre 4 s'applique ici aussi : une maison « suffisante » pendant) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 269.89 Td (quelques mois n'a jamais fait de mal à personne, et les proches qui proposent du ménage ne se font) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 254.39 Td (jamais refuser.) Tj ET
+0.92 0.88 0.91 rg
+68.00 136.89 m 527.28 136.89 l 535.01 136.89 c 541.28 143.16 541.28 150.89 l 541.28 220.89 l 541.28 228.62 c 535.01 234.89 527.28 234.89 l 68.00 234.89 l 60.27 234.89 c 54.00 228.62 54.00 220.89 l 54.00 150.89 l 54.00 143.16 c 60.27 136.89 68.00 136.89 l h f
+0.655 0.545 0.639 rg 54.00 136.89 5.00 98.00 re f
+BT /F2 10.5 Tf 0.50 0.38 0.49 rg 74.00 218.89 Td (Le conseil de Maria) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 204.39 Td (Installe les 4 zones AVANT la naissance si tu peux, ou le premier jour à la maison : une heure) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 189.89 Td (d'organisation vaut des semaines de « où est-ce que j'ai mis ? ».) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 175.39 Td (Chaque fois qu'une chose est rangée au même endroit, tu libères une décision. C'est ça, alléger sa) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 160.89 Td (charge : décider une fois, pour ne plus décider cent fois.) Tj ET
+BT /F2 12.5 Tf 0.361 0.290 0.227 rg 54.00 114.89 Td (Ta check-list maison) Tj ET
+0.655 0.545 0.639 RG 1.2 w 54.00 86.39 m 65.00 86.39 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 86.39 m 65.00 97.39 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 97.39 m 54.00 97.39 l S
+0.655 0.545 0.639 RG 1.2 w 54.00 97.39 m 54.00 86.39 l S
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 76.00 94.39 Td (Installer les 4 zones : change, sommeil, tétée, cuisine) Tj ET
+endstream
+endobj
+31 0 obj
+<< /Length 2272 >>
+stream
+0.85 0.82 0.78 RG 0.8 w 54.00 42.00 m 541.28 42.00 l S
+BT /F1 7.5 Tf 0.48 0.40 0.33 rg 54.00 32.00 Td (Charge Mentale & 40 Premiers Jours · ForceMaman) Tj ET
+BT /F1 7.5 Tf 0.48 0.40 0.33 rg 532.94 32.00 Td (29) Tj ET
+0.655 0.545 0.639 RG 1.2 w 54.00 776.89 m 65.00 776.89 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 776.89 m 65.00 787.89 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 787.89 m 54.00 787.89 l S
+0.655 0.545 0.639 RG 1.2 w 54.00 787.89 m 54.00 776.89 l S
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 76.00 784.89 Td (Préparer 2 listes de courses \(base + repas de secours\) et tester la commande en ligne) Tj ET
+0.655 0.545 0.639 RG 1.2 w 54.00 745.89 m 65.00 745.89 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 745.89 m 65.00 756.89 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 756.89 m 54.00 756.89 l S
+0.655 0.545 0.639 RG 1.2 w 54.00 756.89 m 54.00 745.89 l S
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 76.00 753.89 Td (Mettre en place les 3 bacs de vêtements et un créneau lessive quotidien) Tj ET
+0.655 0.545 0.639 RG 1.2 w 54.00 714.89 m 65.00 714.89 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 714.89 m 65.00 725.89 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 725.89 m 54.00 725.89 l S
+0.655 0.545 0.639 RG 1.2 w 54.00 725.89 m 54.00 714.89 l S
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 76.00 722.89 Td (Réduire le ménage au minimum vital et accepter l'aide des proches) Tj ET
+0.92 0.88 0.91 rg
+68.00 592.89 m 527.28 592.89 l 535.01 592.89 c 541.28 599.16 541.28 606.89 l 541.28 676.89 l 541.28 684.62 c 535.01 690.89 527.28 690.89 l 68.00 690.89 l 60.27 690.89 c 54.00 684.62 54.00 676.89 l 54.00 606.89 l 54.00 599.16 c 60.27 592.89 68.00 592.89 l h f
+0.655 0.545 0.639 rg 54.00 592.89 5.00 98.00 re f
+BT /F2 10.5 Tf 0.50 0.38 0.49 rg 74.00 674.89 Td (? retenir) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 660.39 Td (Quatre zones simples valent mieux qu'une maison parfaite : elles allègent la tête, pas seulement la) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 645.89 Td (maison.) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 631.39 Td (La livraison de courses est un soin, pas un luxe : elle te fait gagner de l'énergie, pas de l'argent perdu.) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 616.89 Td (Une maison « suffisante » est une maison qui te laisse de l'énergie pour l'essentiel : toi et bébé.) Tj ET
+endstream
+endobj
+32 0 obj
+<< /Length 6540 >>
+stream
+0.85 0.82 0.78 RG 0.8 w 54.00 42.00 m 541.28 42.00 l S
+BT /F1 7.5 Tf 0.48 0.40 0.33 rg 54.00 32.00 Td (Charge Mentale & 40 Premiers Jours · ForceMaman) Tj ET
+BT /F1 7.5 Tf 0.48 0.40 0.33 rg 532.94 32.00 Td (30) Tj ET
+BT /F2 8.5 Tf 0.655 0.545 0.639 rg 54.00 787.89 Td (CHAPITRE 14) Tj ET
+BT /F4 21 Tf 0.50 0.38 0.49 rg 54.00 769.89 Td (Tes ressources et les professionnels qui t'entourent) Tj ET
+0.655 0.545 0.639 RG 1.4 w
+319.00 700.00 m 319.00 712.15 c 309.15 722.00 297.00 722.00 l 284.85 722.00 c 275.00 712.15 275.00 700.00 l 275.00 687.85 c 284.85 678.00 297.00 678.00 l 309.15 678.00 c 319.00 687.85 319.00 700.00 l h S
+0.655 0.545 0.639 RG 1.2 w 327.80 700.00 m 341.00 700.00 l S
+0.655 0.545 0.639 RG 1.2 w 318.78 678.22 m 328.11 668.89 l S
+0.655 0.545 0.639 RG 1.2 w 297.00 669.20 m 297.00 656.00 l S
+0.655 0.545 0.639 RG 1.2 w 275.22 678.22 m 265.89 668.89 l S
+0.655 0.545 0.639 RG 1.2 w 266.20 700.00 m 253.00 700.00 l S
+0.655 0.545 0.639 RG 1.2 w 275.22 721.78 m 265.89 731.11 l S
+0.655 0.545 0.639 RG 1.2 w 297.00 730.80 m 297.00 744.00 l S
+0.655 0.545 0.639 RG 1.2 w 318.78 721.78 m 328.11 731.11 l S
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 722.89 Td (La charge mentale s'allège aussi quand on sait à qui s'adresser : les 40 premiers jours sont faits pour) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 707.39 Td (être traversés accompagnée, et les ressources existent, gratuites pour la plupart. Ce chapitre est ta carte) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 691.89 Td (des soutiens.) Tj ET
+BT /F2 12.5 Tf 0.361 0.290 0.227 rg 54.00 666.39 Td (La sage-femme, ton premier soutien) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 648.89 Td (Après le retour à la maison, la sage-femme propose un suivi à domicile pris en charge jusqu'au 12e jour) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 633.39 Td (de bébé : visites, surveillance, réponses à toutes tes questions, y compris sur ton moral. Plus tard, la) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 617.89 Td (consultation post-natale \(6e à 8e semaine\) fait le bilan complet et prescrit la rééducation. La sage-femme) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 602.39 Td (est formée au repérage de l'épuisement et de la dépression du post-partum : tu peux tout lui dire, sans) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 586.89 Td (filtre.) Tj ET
+BT /F2 12.5 Tf 0.361 0.290 0.227 rg 54.00 561.39 Td (La PMI, ce service public méconnu) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 543.89 Td (La Protection Maternelle et Infantile propose des consultations gratuites, des pesées de bébé, des) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 528.39 Td (conseils \(allaitement, sommeil, alimentation\), et un soutien aux parents, sans rendez-vous médical) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 512.89 Td (préalable. On y trouve aussi des ateliers \(portage, éveil, groupes de parents\) et des professionnels) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 497.39 Td (formés à écouter : c'est une ressource précieuse, faite pour toi, et elle ne coûte rien.) Tj ET
+BT /F2 12.5 Tf 0.361 0.290 0.227 rg 54.00 471.89 Td (Le médecin traitant et le pédiatre) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 454.39 Td (Ton médecin traitant suit bébé avec le carnet de santé \(examens obligatoires, vaccinations\) et peut te) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 438.89 Td (suivre toi aussi : fatigue, moral, contraception, douleurs. Le pédiatre, quand on en a un, est un) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 423.39 Td (interlocuteur de choix pour tout ce qui concerne bébé. N'attends pas le « vrai problème » pour appeler :) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 407.89 Td (une question simple, posée tôt, évite une inquiétude qui grossit.) Tj ET
+BT /F2 12.5 Tf 0.361 0.290 0.227 rg 54.00 382.39 Td (Les lignes d'écoute et les associations de parents) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 364.89 Td (Parler à un inconnu bienveillant, c'est parfois plus facile qu'en parler à ses proches. Des associations et) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 349.39 Td (des lignes d'écoute existent pour les parents : écoute, information, orientation, souvent anonymes et) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 333.89 Td (gratuites. Et les groupes de parents \(dans les maternités, les PMI, les associations\) offrent ce que rien) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 318.39 Td (ne remplace : se voir dans les yeux d'autres mamans et papas qui vivent la même période, et se dire « je) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 302.89 Td (ne suis pas seul\(e\) ».) Tj ET
+BT /F2 12.5 Tf 0.361 0.290 0.227 rg 54.00 277.39 Td (La santé mentale : où trouver de l'aide) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 259.89 Td (Si tu sens que le moral vacille durablement, plusieurs portes s'ouvrent : ta sage-femme ou ton médecin) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 244.39 Td (\(formés au repérage, ils peuvent te proposer un questionnaire simple comme l'EPDS\), la PMI, un) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 228.89 Td (psychologue ou psychiatre spécialisé en périnatalité, et des dispositifs qui remboursent des séances de) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 213.39 Td (psychologue \(comme MonParcoursPsy ou les séances d'accompagnement psychologique\). En cas) Tj ET
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 197.89 Td (d'urgence, le 15 ou le 112. Demander de l'aide, c'est un acte de soin, pas une faiblesse.) Tj ET
+0.92 0.88 0.91 rg
+68.00 65.89 m 527.28 65.89 l 535.01 65.89 c 541.28 72.16 541.28 79.89 l 541.28 164.39 l 541.28 172.12 c 535.01 178.39 527.28 178.39 l 68.00 178.39 l 60.27 178.39 c 54.00 172.12 54.00 164.39 l 54.00 79.89 l 54.00 72.16 c 60.27 65.89 68.00 65.89 l h f
+0.655 0.545 0.639 rg 54.00 65.89 5.00 112.50 re f
+BT /F2 10.5 Tf 0.50 0.38 0.49 rg 74.00 162.39 Td (Le conseil de Maria) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 147.89 Td (Note dès maintenant, au même endroit : ta sage-femme, ton médecin, la PMI de ton secteur, la) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 133.39 Td (maternité, et les numéros d'urgence. Quand la nuit est dure, chercher un numéro est le dernier effort à) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 118.89 Td (ne pas avoir à faire.) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 104.39 Td (Les ressources existent pour toi, que tu les utilises un jour ou jamais : les connaître, c'est déjà te) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 89.89 Td (rassurer.) Tj ET
+endstream
+endobj
+33 0 obj
+<< /Length 2741 >>
+stream
+0.85 0.82 0.78 RG 0.8 w 54.00 42.00 m 541.28 42.00 l S
+BT /F1 7.5 Tf 0.48 0.40 0.33 rg 54.00 32.00 Td (Charge Mentale & 40 Premiers Jours · ForceMaman) Tj ET
+BT /F1 7.5 Tf 0.48 0.40 0.33 rg 532.94 32.00 Td (31) Tj ET
+BT /F2 12.5 Tf 0.361 0.290 0.227 rg 54.00 787.89 Td (Ta check-list ressources) Tj ET
+0.655 0.545 0.639 RG 1.2 w 54.00 759.39 m 65.00 759.39 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 759.39 m 65.00 770.39 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 770.39 m 54.00 770.39 l S
+0.655 0.545 0.639 RG 1.2 w 54.00 770.39 m 54.00 759.39 l S
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 76.00 767.39 Td (Compiler tes numéros : sage-femme, médecin, PMI, maternité, 15, 112) Tj ET
+0.655 0.545 0.639 RG 1.2 w 54.00 728.39 m 65.00 728.39 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 728.39 m 65.00 739.39 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 739.39 m 54.00 739.39 l S
+0.655 0.545 0.639 RG 1.2 w 54.00 739.39 m 54.00 728.39 l S
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 76.00 736.39 Td (Connaître ta PMI et ses horaires, et noter un atelier ou groupe de parents près de chez toi) Tj ET
+0.655 0.545 0.639 RG 1.2 w 54.00 697.39 m 65.00 697.39 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 697.39 m 65.00 708.39 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 708.39 m 54.00 708.39 l S
+0.655 0.545 0.639 RG 1.2 w 54.00 708.39 m 54.00 697.39 l S
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 76.00 705.39 Td (Savoir qu'une consultation est possible dès que le moral vacille \(sage-femme, médecin, psy\)) Tj ET
+0.655 0.545 0.639 RG 1.2 w 54.00 666.39 m 65.00 666.39 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 666.39 m 65.00 677.39 l S
+0.655 0.545 0.639 RG 1.2 w 65.00 677.39 m 54.00 677.39 l S
+0.655 0.545 0.639 RG 1.2 w 54.00 677.39 m 54.00 666.39 l S
+BT /F1 10.5 Tf 0.361 0.290 0.227 rg 76.00 674.39 Td (Te rappeler : appeler n'est jamais déranger, et aucune question n'est superflue) Tj ET
+0.92 0.88 0.91 rg
+68.00 544.39 m 527.28 544.39 l 535.01 544.39 c 541.28 550.66 541.28 558.39 l 541.28 628.39 l 541.28 636.12 c 535.01 642.39 527.28 642.39 l 68.00 642.39 l 60.27 642.39 c 54.00 636.12 54.00 628.39 l 54.00 558.39 l 54.00 550.66 c 60.27 544.39 68.00 544.39 l h f
+0.655 0.545 0.639 rg 54.00 544.39 5.00 98.00 re f
+BT /F2 10.5 Tf 0.50 0.38 0.49 rg 74.00 626.39 Td (? retenir) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 611.89 Td (La sage-femme, la PMI, le médecin : trois soutiens disponibles, gratuits ou pris en charge, pensés) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 597.39 Td (pour toi.) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 582.89 Td (Les lignes d'écoute et les groupes de parents existent : parler, c'est déjà se soulager.) Tj ET
+BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 568.39 Td (Si le moral vacille durablement, on demande de l'aide : c'est un acte de soin, pas une faiblesse.) Tj ET
+endstream
+endobj
+34 0 obj
+<< /Length 1334 >>
+stream
+0.85 0.82 0.78 RG 0.8 w 54.00 42.00 m 541.28 42.00 l S
+BT /F1 7.5 Tf 0.48 0.40 0.33 rg 54.00 32.00 Td (Charge Mentale & 40 Premiers Jours · ForceMaman) Tj ET
+BT /F1 7.5 Tf 0.48 0.40 0.33 rg 532.94 32.00 Td (32) Tj ET
 BT /F2 8.5 Tf 0.655 0.545 0.639 rg 54.00 787.89 Td (MON SUIVI PERSONNEL) Tj ET
 BT /F4 20 Tf 0.50 0.38 0.49 rg 54.00 769.89 Td (Pages à remplir, sans pression) Tj ET
 BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 741.89 Td (Ces pages sont à toi : notes, listes, émotions, petites victoires. Remplis-les au fil de l'eau : c'est ta) Tj ET
@@ -1223,12 +1527,12 @@ BT /F1 9.5 Tf 0.48 0.40 0.33 rg 54.00 675.89 Td (Note tout ce qui occupe ta tête
 0.80 0.76 0.70 RG 0.7 w 54.00 528.39 m 541.28 528.39 l S
 endstream
 endobj
-29 0 obj
+35 0 obj
 << /Length 1562 >>
 stream
 0.85 0.82 0.78 RG 0.8 w 54.00 42.00 m 541.28 42.00 l S
 BT /F1 7.5 Tf 0.48 0.40 0.33 rg 54.00 32.00 Td (Charge Mentale & 40 Premiers Jours · ForceMaman) Tj ET
-BT /F1 7.5 Tf 0.48 0.40 0.33 rg 532.94 32.00 Td (27) Tj ET
+BT /F1 7.5 Tf 0.48 0.40 0.33 rg 532.94 32.00 Td (33) Tj ET
 BT /F4 13 Tf 0.50 0.38 0.49 rg 54.00 775.89 Td (Mes 3 listes en couple \(chapitre 5\)) Tj ET
 BT /F1 9.5 Tf 0.48 0.40 0.33 rg 54.00 756.89 Td (Les tâches à faire, les tâches à penser, les tâches à décider : remplis-les ensemble, puis répartissez les) Tj ET
 BT /F1 9.5 Tf 0.48 0.40 0.33 rg 54.00 743.39 Td (responsabilités pleines.) Tj ET
@@ -1249,12 +1553,12 @@ BT /F1 9.5 Tf 0.48 0.40 0.33 rg 54.00 536.89 Td (Repas, courses, tenir bébé, mén
 0.80 0.76 0.70 RG 0.7 w 54.00 411.39 m 541.28 411.39 l S
 endstream
 endobj
-30 0 obj
+36 0 obj
 << /Length 1532 >>
 stream
 0.85 0.82 0.78 RG 0.8 w 54.00 42.00 m 541.28 42.00 l S
 BT /F1 7.5 Tf 0.48 0.40 0.33 rg 54.00 32.00 Td (Charge Mentale & 40 Premiers Jours · ForceMaman) Tj ET
-BT /F1 7.5 Tf 0.48 0.40 0.33 rg 532.94 32.00 Td (28) Tj ET
+BT /F1 7.5 Tf 0.48 0.40 0.33 rg 532.94 32.00 Td (34) Tj ET
 BT /F4 13 Tf 0.50 0.38 0.49 rg 54.00 775.89 Td (Mes 3 autosoins de 5 minutes) Tj ET
 BT /F1 9.5 Tf 0.48 0.40 0.33 rg 54.00 756.89 Td (Trois micro-pauses par jour : note lesquelles, à quels moments, et coche chaque jour où elles ont tenu.) Tj ET
 0.80 0.76 0.70 RG 0.7 w 54.00 741.39 m 541.28 741.39 l S
@@ -1275,20 +1579,75 @@ BT /F1 9.5 Tf 0.48 0.40 0.33 rg 54.00 558.89 Td (pages les jours difficiles.) Tj
 0.80 0.76 0.70 RG 0.7 w 54.00 411.39 m 541.28 411.39 l S
 endstream
 endobj
-31 0 obj
+37 0 obj
+<< /Length 1621 >>
+stream
+0.85 0.82 0.78 RG 0.8 w 54.00 42.00 m 541.28 42.00 l S
+BT /F1 7.5 Tf 0.48 0.40 0.33 rg 54.00 32.00 Td (Charge Mentale & 40 Premiers Jours · ForceMaman) Tj ET
+BT /F1 7.5 Tf 0.48 0.40 0.33 rg 532.94 32.00 Td (35) Tj ET
+BT /F4 13 Tf 0.50 0.38 0.49 rg 54.00 775.89 Td (Mes numéros et mes ressources) Tj ET
+BT /F1 9.5 Tf 0.48 0.40 0.33 rg 54.00 756.89 Td (Sage-femme, médecin, PMI, maternité, 15, 112, et les personnes qui peuvent aider : tout au même endroit, à portée) Tj ET
+BT /F1 9.5 Tf 0.48 0.40 0.33 rg 54.00 743.39 Td (de main les nuits difficiles.) Tj ET
+0.80 0.76 0.70 RG 0.7 w 54.00 727.89 m 541.28 727.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 705.89 m 541.28 705.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 683.89 m 541.28 683.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 661.89 m 541.28 661.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 639.89 m 541.28 639.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 617.89 m 541.28 617.89 l S
+BT /F4 13 Tf 0.50 0.38 0.49 rg 54.00 577.89 Td (Ma semaine type à moi) Tj ET
+BT /F1 9.5 Tf 0.48 0.40 0.33 rg 54.00 558.89 Td (Mes repères qui fonctionnent : le moment fixe du matin, la sieste, la sortie, le sas du soir. Note ce qui marche, pour) Tj ET
+BT /F1 9.5 Tf 0.48 0.40 0.33 rg 54.00 545.39 Td (le reproduire.) Tj ET
+0.80 0.76 0.70 RG 0.7 w 54.00 529.89 m 541.28 529.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 507.89 m 541.28 507.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 485.89 m 541.28 485.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 463.89 m 541.28 463.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 441.89 m 541.28 441.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 419.89 m 541.28 419.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 397.89 m 541.28 397.89 l S
+endstream
+endobj
+38 0 obj
+<< /Length 1718 >>
+stream
+0.85 0.82 0.78 RG 0.8 w 54.00 42.00 m 541.28 42.00 l S
+BT /F1 7.5 Tf 0.48 0.40 0.33 rg 54.00 32.00 Td (Charge Mentale & 40 Premiers Jours · ForceMaman) Tj ET
+BT /F1 7.5 Tf 0.48 0.40 0.33 rg 532.94 32.00 Td (36) Tj ET
+BT /F4 13 Tf 0.50 0.38 0.49 rg 54.00 775.89 Td (Mes phrases qui aident \(chapitre 5\)) Tj ET
+BT /F1 9.5 Tf 0.48 0.40 0.33 rg 54.00 756.89 Td (Les formulations douces qui désamorcent en couple et avec les proches : note celles qui marchent pour toi, pour) Tj ET
+BT /F1 9.5 Tf 0.48 0.40 0.33 rg 54.00 743.39 Td (les retrouver les jours de fatigue.) Tj ET
+0.80 0.76 0.70 RG 0.7 w 54.00 727.89 m 541.28 727.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 705.89 m 541.28 705.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 683.89 m 541.28 683.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 661.89 m 541.28 661.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 639.89 m 541.28 639.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 617.89 m 541.28 617.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 595.89 m 541.28 595.89 l S
+BT /F4 13 Tf 0.50 0.38 0.49 rg 54.00 555.89 Td (Mon plan des 7 systèmes) Tj ET
+BT /F1 9.5 Tf 0.48 0.40 0.33 rg 54.00 536.89 Td (Jour 1 à 7 : note pour chaque système ce que tu as posé, ce qui fonctionne, ce que tu ajustes. Un système qui te) Tj ET
+BT /F1 9.5 Tf 0.48 0.40 0.33 rg 54.00 523.39 Td (convient vaut mieux que sept qui s'effondrent.) Tj ET
+0.80 0.76 0.70 RG 0.7 w 54.00 507.89 m 541.28 507.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 485.89 m 541.28 485.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 463.89 m 541.28 463.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 441.89 m 541.28 441.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 419.89 m 541.28 419.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 397.89 m 541.28 397.89 l S
+0.80 0.76 0.70 RG 0.7 w 54.00 375.89 m 541.28 375.89 l S
+endstream
+endobj
+39 0 obj
 << /Length 216 >>
 stream
 0.85 0.82 0.78 RG 0.8 w 54.00 42.00 m 541.28 42.00 l S
 BT /F1 7.5 Tf 0.48 0.40 0.33 rg 54.00 32.00 Td (Charge Mentale & 40 Premiers Jours · ForceMaman) Tj ET
-BT /F1 7.5 Tf 0.48 0.40 0.33 rg 532.94 32.00 Td (29) Tj ET
+BT /F1 7.5 Tf 0.48 0.40 0.33 rg 532.94 32.00 Td (37) Tj ET
 endstream
 endobj
-32 0 obj
+40 0 obj
 << /Length 2121 >>
 stream
 0.85 0.82 0.78 RG 0.8 w 54.00 42.00 m 541.28 42.00 l S
 BT /F1 7.5 Tf 0.48 0.40 0.33 rg 54.00 32.00 Td (Charge Mentale & 40 Premiers Jours · ForceMaman) Tj ET
-BT /F1 7.5 Tf 0.48 0.40 0.33 rg 532.94 32.00 Td (30) Tj ET
+BT /F1 7.5 Tf 0.48 0.40 0.33 rg 532.94 32.00 Td (38) Tj ET
 BT /F2 8.5 Tf 0.655 0.545 0.639 rg 54.00 787.89 Td (RAPPEL IMPORTANT) Tj ET
 BT /F4 17 Tf 0.50 0.38 0.49 rg 54.00 769.89 Td (Ce guide ne remplace pas un avis professionnel) Tj ET
 BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 744.89 Td (Les informations de ce guide sont des repères généraux, écrits dans un langage accessible. Elles ne) Tj ET
@@ -1306,12 +1665,12 @@ BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 601.89 Td (dépression du post-partum tou
 BT /F1 10 Tf 0.361 0.290 0.227 rg 74.00 587.39 Td (En parler à un professionnel, c'est un acte de courage et de soin, pas une faiblesse.) Tj ET
 endstream
 endobj
-33 0 obj
+41 0 obj
 << /Length 3893 >>
 stream
 0.85 0.82 0.78 RG 0.8 w 54.00 42.00 m 541.28 42.00 l S
 BT /F1 7.5 Tf 0.48 0.40 0.33 rg 54.00 32.00 Td (Charge Mentale & 40 Premiers Jours · ForceMaman) Tj ET
-BT /F1 7.5 Tf 0.48 0.40 0.33 rg 532.94 32.00 Td (31) Tj ET
+BT /F1 7.5 Tf 0.48 0.40 0.33 rg 532.94 32.00 Td (39) Tj ET
 BT /F2 8.5 Tf 0.655 0.545 0.639 rg 54.00 787.89 Td (REP?RES ET SOURCES OFFICIELLES) Tj ET
 BT /F4 17 Tf 0.50 0.38 0.49 rg 54.00 769.89 Td (Pour aller plus loin en confiance) Tj ET
 BT /F1 10.5 Tf 0.361 0.290 0.227 rg 54.00 744.89 Td (Les repères de ce guide s'appuient sur des sources officielles françaises, consultables librement :) Tj ET
@@ -1346,7 +1705,7 @@ BT /F1 9.5 Tf 0.48 0.40 0.33 rg 54.00 493.39 Td (que maman.) Tj ET
 BT /F1 9.5 Tf 0.48 0.40 0.33 rg 54.00 479.39 Td (? ForceMaman · Tous droits réservés · forcemaman.fr) Tj ET
 endstream
 endobj
-34 0 obj
+42 0 obj
 << /Length 1346 >>
 stream
 0.980 0.965 0.945 rg 0.00 0.00 595.28 841.89 re f
@@ -1364,189 +1723,229 @@ BT /F3 12 Tf 0.48 0.40 0.33 rg 54.00 730.89 Td (besoin.) Tj ET
 BT /F1 9.5 Tf 0.48 0.40 0.33 rg 312.17 330.00 Td (Maria, ancienne sage-femme et maman · ForceMaman) Tj ET
 endstream
 endobj
-35 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 3 0 R >>
-endobj
-36 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 4 0 R >>
-endobj
-37 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 5 0 R >>
-endobj
-38 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 6 0 R >>
-endobj
-39 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 7 0 R >>
-endobj
-40 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 8 0 R >>
-endobj
-41 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 9 0 R >>
-endobj
-42 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 10 0 R >>
-endobj
 43 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 11 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 3 0 R >>
 endobj
 44 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 12 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 4 0 R >>
 endobj
 45 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 13 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 5 0 R >>
 endobj
 46 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 14 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 6 0 R >>
 endobj
 47 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 15 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 7 0 R >>
 endobj
 48 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 16 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 8 0 R >>
 endobj
 49 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 17 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 9 0 R >>
 endobj
 50 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 18 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 10 0 R >>
 endobj
 51 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 19 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 11 0 R >>
 endobj
 52 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 20 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 12 0 R >>
 endobj
 53 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 21 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 13 0 R >>
 endobj
 54 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 22 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 14 0 R >>
 endobj
 55 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 23 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 15 0 R >>
 endobj
 56 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 24 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 16 0 R >>
 endobj
 57 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 25 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 17 0 R >>
 endobj
 58 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 26 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 18 0 R >>
 endobj
 59 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 27 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 19 0 R >>
 endobj
 60 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 28 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 20 0 R >>
 endobj
 61 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 29 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 21 0 R >>
 endobj
 62 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 30 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 22 0 R >>
 endobj
 63 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 31 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 23 0 R >>
 endobj
 64 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 32 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 24 0 R >>
 endobj
 65 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 33 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 25 0 R >>
 endobj
 66 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 35 0 R /F2 36 0 R /F3 37 0 R /F4 38 0 R >> >> /Contents 34 0 R >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 26 0 R >>
 endobj
 67 0 obj
-<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 27 0 R >>
 endobj
 68 0 obj
-<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 28 0 R >>
 endobj
 69 0 obj
-<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 29 0 R >>
 endobj
 70 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 30 0 R >>
+endobj
+71 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 31 0 R >>
+endobj
+72 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 32 0 R >>
+endobj
+73 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 33 0 R >>
+endobj
+74 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 34 0 R >>
+endobj
+75 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 35 0 R >>
+endobj
+76 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 36 0 R >>
+endobj
+77 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 37 0 R >>
+endobj
+78 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 38 0 R >>
+endobj
+79 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 39 0 R >>
+endobj
+80 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 40 0 R >>
+endobj
+81 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 41 0 R >>
+endobj
+82 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 43 0 R /F2 44 0 R /F3 45 0 R /F4 46 0 R >> >> /Contents 42 0 R >>
+endobj
+83 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+84 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+85 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >>
+endobj
+86 0 obj
 << /Type /Font /Subtype /Type1 /BaseFont /Times-BoldItalic >>
 endobj
 xref
-0 71
+0 87
 0000000000 65535 f 
 0000000009 00000 n 
 0000000058 00000 n 
-0000000327 00000 n 
-0000002582 00000 n 
-0000006191 00000 n 
-0000009803 00000 n 
-0000017351 00000 n 
-0000018441 00000 n 
-0000027217 00000 n 
-0000028689 00000 n 
-0000036033 00000 n 
-0000037491 00000 n 
-0000042706 00000 n 
-0000047523 00000 n 
-0000055461 00000 n 
-0000057274 00000 n 
-0000063848 00000 n 
-0000064909 00000 n 
-0000071302 00000 n 
-0000073456 00000 n 
-0000081449 00000 n 
-0000083248 00000 n 
-0000090582 00000 n 
-0000092885 00000 n 
-0000100566 00000 n 
-0000101645 00000 n 
-0000108266 00000 n 
-0000110509 00000 n 
-0000111896 00000 n 
-0000113511 00000 n 
-0000115096 00000 n 
-0000115364 00000 n 
-0000117538 00000 n 
-0000121484 00000 n 
-0000122883 00000 n 
-0000123050 00000 n 
-0000123217 00000 n 
-0000123384 00000 n 
-0000123551 00000 n 
-0000123718 00000 n 
-0000123885 00000 n 
-0000124052 00000 n 
-0000124220 00000 n 
-0000124388 00000 n 
-0000124556 00000 n 
-0000124724 00000 n 
-0000124892 00000 n 
-0000125060 00000 n 
-0000125228 00000 n 
-0000125396 00000 n 
-0000125564 00000 n 
-0000125732 00000 n 
-0000125900 00000 n 
-0000126068 00000 n 
-0000126236 00000 n 
-0000126404 00000 n 
-0000126572 00000 n 
-0000126740 00000 n 
-0000126908 00000 n 
-0000127076 00000 n 
-0000127244 00000 n 
-0000127412 00000 n 
-0000127580 00000 n 
-0000127748 00000 n 
-0000127916 00000 n 
-0000128084 00000 n 
-0000128252 00000 n 
-0000128323 00000 n 
-0000128399 00000 n 
-0000128478 00000 n 
+0000000383 00000 n 
+0000002638 00000 n 
+0000006247 00000 n 
+0000010522 00000 n 
+0000018009 00000 n 
+0000019099 00000 n 
+0000027875 00000 n 
+0000029347 00000 n 
+0000036691 00000 n 
+0000038149 00000 n 
+0000043364 00000 n 
+0000048181 00000 n 
+0000056119 00000 n 
+0000057932 00000 n 
+0000064506 00000 n 
+0000065567 00000 n 
+0000071960 00000 n 
+0000074114 00000 n 
+0000082107 00000 n 
+0000083906 00000 n 
+0000091240 00000 n 
+0000093543 00000 n 
+0000101224 00000 n 
+0000102303 00000 n 
+0000108924 00000 n 
+0000111167 00000 n 
+0000117637 00000 n 
+0000119839 00000 n 
+0000127148 00000 n 
+0000129473 00000 n 
+0000136066 00000 n 
+0000138860 00000 n 
+0000140247 00000 n 
+0000141862 00000 n 
+0000143447 00000 n 
+0000145121 00000 n 
+0000146892 00000 n 
+0000147160 00000 n 
+0000149334 00000 n 
+0000153280 00000 n 
+0000154679 00000 n 
+0000154846 00000 n 
+0000155013 00000 n 
+0000155180 00000 n 
+0000155347 00000 n 
+0000155514 00000 n 
+0000155681 00000 n 
+0000155848 00000 n 
+0000156016 00000 n 
+0000156184 00000 n 
+0000156352 00000 n 
+0000156520 00000 n 
+0000156688 00000 n 
+0000156856 00000 n 
+0000157024 00000 n 
+0000157192 00000 n 
+0000157360 00000 n 
+0000157528 00000 n 
+0000157696 00000 n 
+0000157864 00000 n 
+0000158032 00000 n 
+0000158200 00000 n 
+0000158368 00000 n 
+0000158536 00000 n 
+0000158704 00000 n 
+0000158872 00000 n 
+0000159040 00000 n 
+0000159208 00000 n 
+0000159376 00000 n 
+0000159544 00000 n 
+0000159712 00000 n 
+0000159880 00000 n 
+0000160048 00000 n 
+0000160216 00000 n 
+0000160384 00000 n 
+0000160552 00000 n 
+0000160720 00000 n 
+0000160888 00000 n 
+0000161056 00000 n 
+0000161224 00000 n 
+0000161392 00000 n 
+0000161463 00000 n 
+0000161539 00000 n 
+0000161618 00000 n 
 trailer
-<< /Size 71 /Root 1 0 R >>
+<< /Size 87 /Root 1 0 R >>
 startxref
-128556
+161696
 %%EOF
