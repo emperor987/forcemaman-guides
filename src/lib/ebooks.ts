@@ -1,12 +1,11 @@
 import {
-  Baby,
-  Backpack,
-  BedDouble,
+  BookOpen,
+  Boxes,
+  Briefcase,
   Heart,
-  ListChecks,
   Moon,
-  Package,
-  Shirt,
+  ShoppingBasket,
+  UtensilsCrossed,
 } from "lucide-react";
 
 export interface Ebook {
@@ -180,59 +179,60 @@ export interface FreeGuideSystem {
 }
 
 export const freeGuide = {
-  title: "Ma Liste de Naissance Essentielle",
-  subtitle: "Les 7 essentiels pour préparer l'arrivée de bébé, offerts par Maria.",
+  title: "Les 7 Systèmes ForceMaman",
+  subtitle:
+    "Des repères simples pour respirer avec un nouveau-né, offerts par Maria.",
   href: "/guide-gratuit",
 };
 
 export const freeGuideSystems: FreeGuideSystem[] = [
   {
     number: "01",
-    title: "Les bodies et pyjamas",
-    text: "Six bodies et six pyjamas suffisent les premiers jours. Le reste, c'est du superflu.",
-    icon: Shirt,
+    title: "Le Cahier Unique",
+    text: "Un seul endroit pour tout noter : rendez-vous, questions, idées. Ta tête respire enfin.",
+    icon: BookOpen,
   },
   {
     number: "02",
-    title: "Le coin sommeil",
-    text: "Un berceau ou cododo, une gigoteuse adaptée : le sommeil se prépare sans matériel inutile.",
-    icon: BedDouble,
+    title: "La Boîte à 3",
+    text: "Trois bacs : Actuel, Taille suivante, À laver. Cinq minutes de tri par semaine suffisent.",
+    icon: Boxes,
   },
   {
     number: "03",
-    title: "Le nécessaire de change",
-    text: "Une trentaine de langes, un tapis à langer et de quoi nettoyer : le change devient un geste simple.",
-    icon: Baby,
+    title: "Les Repas de Secours",
+    text: "Trois recettes validées d'avance, ingrédients toujours en stock. Zéro décision les jours difficiles.",
+    icon: UtensilsCrossed,
   },
   {
     number: "04",
-    title: "La trousse de premiers soins",
-    text: "Savon doux, sérum physiologique, coupe-ongles : le minimum pour les premiers soins.",
-    icon: Package,
+    title: "Le Panier Nomade",
+    text: "Un panier avec l'essentiel qui te suit de pièce en pièce : couches, lingettes, change complet.",
+    icon: ShoppingBasket,
   },
   {
     number: "05",
-    title: "La tenue de sortie",
-    text: "Combinaison, bonnet, couverture : sortir avec bébé sans stress ni oubli.",
-    icon: Heart,
+    title: "La Trousse Départ Éclair",
+    text: "Un sac toujours prêt, jamais vidé complètement : tu sors en moins de 5 minutes.",
+    icon: Briefcase,
   },
   {
     number: "06",
-    title: "Le sac de maternité",
-    text: "Une valise à la fois complète et légère, prête deux semaines avant le terme.",
-    icon: Backpack,
+    title: "La Règle du Suffisant",
+    text: "Une seule priorité par jour. Le reste est suffisant, sans culpabilité.",
+    icon: Heart,
   },
   {
     number: "07",
-    title: "Ce qu'on peut laisser de côté",
-    text: "La liste de ce que le marketing te vend et dont tu n'auras finalement pas besoin.",
+    title: "Le Sas du Soir",
+    text: "Cinq gestes simples le soir pour un lendemain nettement plus doux.",
     icon: Moon,
   },
 ];
 
 export const freeGuideChecklist = [
-  "Moins de stress dans la préparation.",
-  "Moins d'achats inutiles.",
-  "Moins d'oubli le jour J.",
-  "Plus de sérénité pour accueillir bébé.",
+  "Moins de décisions répétitives.",
+  "Moins de choses à retenir dans ta tête.",
+  "Un quotidien qui tient même sans énergie.",
+  "Plus de sérénité pour profiter de bébé.",
 ];

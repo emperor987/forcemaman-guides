@@ -131,9 +131,6 @@ export default function Landing() {
             <EmailForm id="hero" className="mt-10" />
           </Reveal>
           <Reveal delay={320}>
-            <p className="mt-4 text-[11px] uppercase tracking-[0.22em] text-foreground/50">
-              Gratuit • Désinscription en un clic • Aucun spam
-            </p>
             <p className="mt-2 text-[12px] italic tracking-wide text-foreground/55">
               Déjà rejoint par des centaines de jeunes mamans
             </p>
@@ -152,8 +149,8 @@ export default function Landing() {
               Ce que tu trouveras <span className="italic">dans le guide gratuit</span>
             </h2>
             <p className="mx-auto mt-5 max-w-sm text-center text-[15px] leading-relaxed text-foreground/65">
-              Sept essentiels concrets pour préparer l'arrivée de bébé, pensés
-              par une sage-femme.
+              Sept systèmes concrets pour simplifier la vie avec un bébé, dès
+              aujourd'hui.
             </p>
           </Reveal>
 
@@ -231,10 +228,10 @@ export default function Landing() {
         <div className="mx-auto max-w-md">
           <Reveal>
             <p className="text-center text-[11px] uppercase tracking-[0.28em] text-foreground/55">
-              La préparation
+              La méthode
             </p>
             <h2 className="mt-5 text-center font-serif text-[2.1rem] leading-[1.05] text-foreground">
-              Sept essentiels <span className="italic">signature</span>, pensés
+              Sept systèmes <span className="italic">signature</span>, pensés
               pour la vraie vie.
             </h2>
             <p className="mx-auto mt-5 max-w-sm text-center text-[15px] leading-relaxed text-foreground/65">

@@ -254,11 +254,10 @@ export default function Journal() {
                       Guide gratuit
                     </div>
                     <h2 className="mt-5 font-serif text-3xl leading-[1.1] text-foreground sm:text-4xl lg:text-[44px]">
-                      Reçois gratuitement la Liste de Naissance Essentielle,
-                      offerte par Maria
+                      Reçois gratuitement Les 7 Systèmes ForceMaman
                     </h2>
                     <p className="mt-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-                      PDF · 7 essentiels · à lire en 10 minutes
+                      PDF · 7 systèmes · à lire en 15 minutes
                     </p>
                   </div>
                   <Link

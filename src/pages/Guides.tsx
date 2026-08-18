@@ -287,7 +287,7 @@ export default function Guides() {
               </h2>
               <p className="mt-3 text-sm text-foreground/60">
                 Tout en un avec 23% de réduction, ou commence gratuitement par
-                les essentiels de la liste de naissance.
+                Les 7 Systèmes ForceMaman.
               </p>
             </header>
           </Reveal>
