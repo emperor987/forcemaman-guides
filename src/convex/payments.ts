@@ -137,16 +137,59 @@ export const syncProducts = action({
 });
 
 /**
- * Crée une session de checkout Stripe pour un produit et renvoie l'URL
- * de redirection.
+ * Crée une session de checkout Stripe pour un produit.
+ *
+ *  - mode "hosted"  : renvoie l'URL de la page de paiement hébergée Stripe.
+ *  - mode "embedded": renvoie le clientSecret + la clé publiable pour
+ *                      afficher le formulaire dans la page aux couleurs
+ *                      ForceMaman (/paiement/:productId).
+ *
+ * Le formulaire embedded (ui_mode "embedded_page") est habillé aux couleurs
+ * de la marque via les réglages de marque du dashboard Stripe (icône, logo,
+ * couleur des boutons) : voir scripts/apply-stripe-branding.mjs.
  */
 export const createCheckoutSession = action({
-  args: { productId: v.string() },
+  args: {
+    productId: v.string(),
+    mode: v.optional(v.union(v.literal("hosted"), v.literal("embedded"))),
+  },
   handler: async (_ctx, args) => {
     if (!PRODUCTS[args.productId]) {
       throw new Error(`Produit inconnu : ${args.productId}`);
     }
     const priceId = await resolvePriceId(args.productId);
+    const mode = args.mode ?? "hosted";
+
+    if (mode === "embedded") {
+      const session = (await stripeFetch("/checkout/sessions", {
+        method: "POST",
+        body: formEncode({
+          mode: "payment",
+          ui_mode: "embedded_page",
+          "payment_method_types[0]": "card",
+          "line_items[0][price]": priceId,
+          "line_items[0][quantity]": 1,
+          "managed_payments[enabled]": "false",
+          return_url: `${SITE_URL}/commande/reussie?session_id={CHECKOUT_SESSION_ID}`,
+          "metadata[productId]": args.productId,
+          // L'apparence (icône, logo, couleur des boutons) est pilotée par les
+          // réglages de marque du dashboard Stripe (Settings > Branding).
+          // L'icône et le logo ForceMaman y sont déjà uploadés via l'API
+          // Files (scripts/apply-stripe-branding.mjs).
+        }),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      })) as unknown as { client_secret: string };
+      const publishableKey =
+        process.env.VITE_STRIPE_PUBLISHABLE_KEY ??
+        process.env.STRIPE_PUBLISHABLE_KEY ??
+        "";
+      return {
+        url: null,
+        clientSecret: session.client_secret,
+        publishableKey,
+      };
+    }
+
     const session = (await stripeFetch("/checkout/sessions", {
       method: "POST",
       body: formEncode({
@@ -166,7 +209,7 @@ export const createCheckoutSession = action({
       }),
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
     })) as unknown as { url: string };
-    return { url: session.url };
+    return { url: session.url, clientSecret: null, publishableKey: null };
   },
 });
 

@@ -1,12 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router";
-import { useAction } from "convex/react";
+import { Link, useNavigate } from "react-router";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
 import { cn } from "@/lib/utils";
-import { api } from "@/convex/_generated/api";
-import { toast } from "sonner";
 import {
   ArrowRight,
   CheckCircle,
@@ -98,23 +95,17 @@ export default function ProductPage({
     },
   ];
 
+  const navigate = useNavigate();
   const [checkingOut, setCheckingOut] = useState(false);
-  const createCheckout = useAction(api.payments.createCheckoutSession);
 
-  const handleCheckout = async () => {
+  const handleCheckout = () => {
     if (checkingOut) return;
     setCheckingOut(true);
-    try {
-      const { url } = await createCheckout({ productId });
-      window.location.href = url;
-    } catch (error) {
-      console.error("Checkout error:", error);
-      toast("Le paiement en ligne arrive très bientôt.", {
-        description:
-          "En attendant, écris-nous à hello@forcemaman.fr pour réserver ton guide.",
-      });
-      setCheckingOut(false);
-    }
+    // Redirige vers la page de paiement aux couleurs ForceMaman
+    // (/paiement/:productId). Si la clé publiable Stripe n'est pas
+    // configurée, cette page bascule automatiquement vers le checkout
+    // hébergé Stripe.
+    navigate(`/paiement/${productId}`);
   };
 
   const checkoutButton = (extraClassName?: string) => (
@@ -130,7 +121,7 @@ export default function ProductPage({
     >
       <Lock className="size-4 opacity-80" />
       <span className="text-sm tracking-wide">
-        {checkingOut ? "Redirection vers Stripe…" : "Payer avec Stripe"}
+        {checkingOut ? "Redirection…" : "Payer avec Stripe"}
       </span>
       <ArrowRight className="size-4" />
     </button>
