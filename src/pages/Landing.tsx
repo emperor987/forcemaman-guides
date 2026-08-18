@@ -13,7 +13,7 @@ import coverBundle from "@/assets/covers/bundle.svg";
 import { ArrowRight, Check, Quote } from "lucide-react";
 import AccentDots from "@/components/AccentDots";
 import CountUp from "@/components/CountUp";
-import Marquee from "@/components/Marquee";
+
 
 const guideSystems = freeGuideSystems;
 
@@ -173,9 +173,6 @@ export default function Landing() {
           </Reveal>
         </div>
       </section>
-
-      {/* ============ MARQUEE ============ */}
-      <Marquee />
 
       {/* ============ LE GUIDE GRATUIT ============ */}
       <section className="cv-auto px-6 py-16">

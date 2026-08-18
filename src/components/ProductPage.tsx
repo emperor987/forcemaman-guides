@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
+import { useAction } from "convex/react";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
 import { cn } from "@/lib/utils";
 import AccentDots from "@/components/AccentDots";
+import { api } from "@/convex/_generated/api";
 import {
   ArrowRight,
   CheckCircle,
@@ -96,17 +98,20 @@ export default function ProductPage({
     },
   ];
 
-  const navigate = useNavigate();
   const [checkingOut, setCheckingOut] = useState(false);
+  const createCheckout = useAction(api.payments.createCheckoutSession);
 
   const handleCheckout = () => {
     if (checkingOut) return;
     setCheckingOut(true);
-    // Redirige vers la page de paiement aux couleurs ForceMaman
-    // (/paiement/:productId). Si la clé publiable Stripe n'est pas
-    // configurée, cette page bascule automatiquement vers le checkout
-    // hébergé Stripe.
-    navigate(`/paiement/${productId}`);
+    // Redirige vers le checkout hébergé Stripe (le plus rapide, sans page custom)
+    createCheckout({ productId, mode: "hosted" })
+      .then((res) => {
+        if (res.url) window.location.href = res.url;
+      })
+      .catch(() => {
+        setCheckingOut(false);
+      });
   };
 
   const checkoutButton = (extraClassName?: string) => (

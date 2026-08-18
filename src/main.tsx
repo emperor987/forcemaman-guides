@@ -18,7 +18,6 @@ const GuideGratuit = lazy(() => import("./pages/GuideGratuit.tsx"));
 const Contact = lazy(() => import("./pages/Contact.tsx"));
 const APpropos = lazy(() => import("./pages/APpropos.tsx"));
 const OrderSuccess = lazy(() => import("./pages/OrderSuccess.tsx"));
-const CheckoutEmbed = lazy(() => import("./pages/CheckoutEmbed.tsx"));
 const ListeNaissance = lazy(() => import("./pages/guides/ListeNaissance.tsx"));
 const CorpsApres = lazy(() => import("./pages/guides/CorpsApres.tsx"));
 const ChargeMentale = lazy(() => import("./pages/guides/ChargeMentale.tsx"));
@@ -168,7 +167,7 @@ createRoot(document.getElementById("root")!).render(
               <Route path="/a-propos" element={<APpropos />} />
               <Route path="/ressources" element={<Navigate to="/guide-gratuit" replace />} />
               <Route path="/commande/reussie" element={<OrderSuccess />} />
-              <Route path="/paiement/:productId" element={<CheckoutEmbed />} />
+              <Route path="/paiement/:productId" element={<Navigate to="/guides" replace />} />
               <Route path="/guides/liste-naissance" element={<ListeNaissance />} />
               <Route path="/guides/corps-apres" element={<CorpsApres />} />
               <Route path="/guides/charge-mentale" element={<ChargeMentale />} />

@@ -4,7 +4,18 @@ import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
 import { libraryItems, type LibraryItem } from "@/lib/ebooks";
+import coverListe from "@/assets/covers/liste-naissance.svg";
+import coverCorps from "@/assets/covers/corps-apres.svg";
+import coverCharge from "@/assets/covers/charge-mentale.svg";
+import coverBundle from "@/assets/covers/bundle.svg";
 import { ArrowRight, Search } from "lucide-react";
+
+const COVER_MAP: Record<string, string> = {
+  "liste-naissance": coverListe,
+  "corps-apres": coverCorps,
+  "charge-mentale": coverCharge,
+  bundle: coverBundle,
+};
 
 const heroBullets = [
   "Moins de charge mentale.",
@@ -47,6 +58,19 @@ function ResourceCard({ item, index }: { item: LibraryItem; index: number }) {
             {meta.label}
           </span>
         )}
+        {COVER_MAP[item.id] && (
+          <div className="mb-5 overflow-hidden rounded-2xl bg-muted">
+            <img
+              src={COVER_MAP[item.id]}
+              alt={`Couverture ${item.title}`}
+              width={600}
+              height={800}
+              className="aspect-[3/4] w-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.03]"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        )}
         <div className="flex items-center gap-2">
           <span
             aria-hidden="true"
@@ -60,7 +84,7 @@ function ResourceCard({ item, index }: { item: LibraryItem; index: number }) {
             {typeLabel(item)}
           </span>
         </div>
-        <h3 className="mt-5 font-serif text-[1.35rem] leading-[1.2] tracking-[-0.005em] text-foreground sm:text-[1.5rem]">
+        <h3 className="mt-4 font-serif text-[1.35rem] leading-[1.2] tracking-[-0.005em] text-foreground sm:text-[1.5rem]">
           {item.title}
         </h3>
         <p className="mt-3 flex-1 text-[0.9rem] leading-[1.65] text-foreground/60">

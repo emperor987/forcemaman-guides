@@ -1,16 +1,50 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router";
 import { useAction } from "convex/react";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
 import { api } from "@/convex/_generated/api";
-import { PRODUCT_FILES, SUPPORT_EMAIL } from "@/lib/payments";
-import { CheckCircle2, Download, FileText, Loader2 } from "lucide-react";
+import { SUPPORT_EMAIL } from "@/lib/payments";
+import {
+  CheckCircle2,
+  Download,
+  FileText,
+  Loader2,
+  Lock,
+  ShieldCheck,
+  Timer,
+} from "lucide-react";
+
+const PRODUCT_META: Record<
+  string,
+  { title: string; files: string[]; accent: string }
+> = {
+  "liste-naissance": {
+    title: "Ma Liste Naissance Complète",
+    files: ["liste-naissance.pdf"],
+    accent: "text-brand-terracotta",
+  },
+  "corps-apres": {
+    title: "Mon Corps Après l'Accouchement",
+    files: ["corps-apres.pdf"],
+    accent: "text-brand-sage",
+  },
+  "charge-mentale": {
+    title: "Charge Mentale & 40 Premiers Jours",
+    files: ["charge-mentale.pdf"],
+    accent: "text-brand-mauve",
+  },
+  bundle: {
+    title: "Pack Complet ForceMaman",
+    files: ["liste-naissance.pdf", "corps-apres.pdf", "charge-mentale.pdf"],
+    accent: "text-brand-terracotta",
+  },
+};
 
 type Status =
   | { state: "loading" }
-  | { state: "paid"; productId: string }
+  | { state: "paid"; productId: string; token: string }
   | { state: "unpaid" }
   | { state: "error" };
 
@@ -18,7 +52,10 @@ export default function OrderSuccess() {
   const [params] = useSearchParams();
   const sessionId = params.get("session_id") ?? "";
   const verifySession = useAction(api.payments.verifySession);
+  const createToken = useAction(api.downloads.createDownloadToken);
+  const getEbookData = useAction(api.downloads.getEbookData);
   const [status, setStatus] = useState<Status>({ state: "loading" });
+  const [downloading, setDownloading] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -30,10 +67,26 @@ export default function OrderSuccess() {
       try {
         const result = await verifySession({ sessionId });
         if (cancelled) return;
-        if (result.paid && result.productId) {
-          setStatus({ state: "paid", productId: result.productId });
-        } else {
+
+        if (!result.paid || !result.productId) {
           setStatus({ state: "unpaid" });
+          return;
+        }
+
+        try {
+          const tokenResult = await createToken({
+            sessionId,
+            productId: result.productId,
+          });
+          if (cancelled) return;
+          setStatus({
+            state: "paid",
+            productId: result.productId,
+            token: tokenResult.token,
+          });
+        } catch {
+          if (cancelled) return;
+          setStatus({ state: "error" });
         }
       } catch (error) {
         console.error("verifySession error:", error);
@@ -47,7 +100,45 @@ export default function OrderSuccess() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sessionId]);
 
-  const product = status.state === "paid" ? PRODUCT_FILES[status.productId] : null;
+  const handleDownload = useCallback(
+    async (fileName: string) => {
+      if (status.state !== "paid" || downloading) return;
+      setDownloading(fileName);
+      try {
+        const data = await getEbookData({ token: status.token });
+        const file = data.files.find((f) => f.name === fileName);
+        if (!file) throw new Error("Fichier non trouvé");
+
+        // Decode base64 et déclencher le téléchargement
+        const binaryString = atob(file.data);
+        const bytes = new Uint8Array(binaryString.length);
+        for (let i = 0; i < binaryString.length; i++) {
+          bytes[i] = binaryString.charCodeAt(i);
+        }
+        const blob = new Blob([bytes], { type: "application/pdf" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = file.name;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      } catch (err) {
+        console.error("Download error:", err);
+        alert(
+          "Le téléchargement a échoué. Réessaie ou écris-nous à " +
+            SUPPORT_EMAIL,
+        );
+      } finally {
+        setDownloading(null);
+      }
+    },
+    [status, getEbookData, downloading],
+  );
+
+  const meta =
+    status.state === "paid" ? PRODUCT_META[status.productId] : null;
 
   return (
     <Layout>
@@ -70,7 +161,7 @@ export default function OrderSuccess() {
             </Reveal>
           )}
 
-          {status.state === "paid" && product && (
+          {status.state === "paid" && meta && (
             <>
               <Reveal>
                 <span className="mx-auto grid size-16 place-items-center rounded-full bg-brand-sage/15">
@@ -80,47 +171,71 @@ export default function OrderSuccess() {
                   Commande confirmée
                 </p>
                 <h1 className="mt-5 font-serif text-4xl leading-[1.05] text-foreground sm:text-5xl">
-                  Merci ! Tes guides <span className="italic">sont à toi.</span>
+                  Merci ! Tes guides{" "}
+                  <span className="italic">sont à toi.</span>
                 </h1>
                 <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-foreground/65">
                   Le paiement est bien validé. Télécharge{" "}
-                  {product.files.length > 1 ? "tes guides" : "ton guide"} dès
-                  maintenant, ils restent disponibles pour toujours.
+                  {meta.files.length > 1 ? "tes guides" : "ton guide"} dès
+                  maintenant.
                 </p>
               </Reveal>
 
               <Reveal delay={120}>
                 <div className="mt-10 space-y-3 text-left">
                   <p className="text-[11px] uppercase tracking-[0.22em] text-foreground/50">
-                    {product.title}
+                    {meta.title}
                   </p>
-                  {product.files.map((file) => (
-                    <a
+                  {meta.files.map((file) => (
+                    <button
                       key={file}
-                      href={file}
-                      download
-                      className="group flex items-center justify-between gap-4 rounded-3xl border border-white/50 bg-[color-mix(in_oklab,var(--background)_75%,transparent)] p-5 shadow-[0_14px_36px_-22px_rgba(35,33,32,0.35),inset_0_1px_0_rgba(255,255,255,0.6)] backdrop-blur-md transition-all hover:border-foreground/25"
+                      type="button"
+                      onClick={() => handleDownload(file)}
+                      disabled={downloading !== null}
+                      className="group flex w-full items-center justify-between gap-4 rounded-3xl border border-white/50 bg-[color-mix(in_oklab,var(--background)_75%,transparent)] p-5 shadow-[0_14px_36px_-22px_rgba(35,33,32,0.35),inset_0_1px_0_rgba(255,255,255,0.6)] backdrop-blur-md transition-all hover:border-foreground/25 disabled:opacity-60"
                     >
                       <span className="flex items-center gap-4">
                         <span className="grid size-11 place-items-center rounded-2xl bg-brand-terracotta/12">
                           <FileText className="size-5 text-brand-terracotta" />
                         </span>
-                        <span>
+                        <span className="text-left">
                           <span className="block text-sm font-medium text-foreground">
-                            {file.split("/").pop()}
+                            {file}
                           </span>
                           <span className="block text-xs text-foreground/55">
-                            PDF · téléchargement immédiat
+                            {downloading === file
+                              ? "Préparation…"
+                              : "PDF · téléchargement sécurisé"}
                           </span>
                         </span>
                       </span>
-                      <Download className="size-5 text-foreground/60 transition-transform group-hover:translate-y-0.5" />
-                    </a>
+                      {downloading === file ? (
+                        <Loader2 className="size-5 animate-spin text-foreground/60" />
+                      ) : (
+                        <Download className="size-5 text-foreground/60 transition-transform group-hover:translate-y-0.5" />
+                      )}
+                    </button>
                   ))}
                 </div>
-                <p className="mt-6 text-center text-[11px] uppercase tracking-[0.18em] text-foreground/50">
-                  Garde ce lien précieusement : tes guides te sont envoyés par
-                  email en cas de besoin
+
+                <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-[11px] uppercase tracking-[0.14em] text-foreground/50">
+                  <span className="flex items-center gap-1.5">
+                    <Lock className="size-3" />
+                    Téléchargement sécurisé
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <Timer className="size-3" />
+                    Liens valables 30 minutes
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <ShieldCheck className="size-3" />
+                    Paiement vérifié Stripe
+                  </span>
+                </div>
+
+                <p className="mt-4 text-center text-[11px] text-foreground/50">
+                  Ce lien est personnel et à usage limité. Tu peux le
+                  réutiliser pendant 30 minutes après la confirmation.
                 </p>
               </Reveal>
             </>
@@ -151,8 +266,8 @@ export default function OrderSuccess() {
                 Une erreur <span className="italic">est survenue</span>
               </h1>
               <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-foreground/65">
-                Impossible de vérifier ta commande pour le moment. Réessaie dans
-                quelques instants, ou écris-nous à{" "}
+                Impossible de vérifier ta commande pour le moment. Réessaie
+                dans quelques instants, ou écris-nous à{" "}
                 <a
                   href={`mailto:${SUPPORT_EMAIL}`}
                   className="underline underline-offset-4 hover:text-foreground"
