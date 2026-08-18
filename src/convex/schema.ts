@@ -32,12 +32,17 @@ const schema = defineSchema(
       role: v.optional(roleValidator), // role of the user. do not remove
     }).index("email", ["email"]), // index for the email. do not remove or modify
 
-    // add other tables here
-
-    // tableName: defineTable({
-    //   ...
-    //   // table fields
-    // }).index("by_field", ["field"])
+    // --- Download tokens for paid ebook delivery ---
+    downloadTokens: defineTable({
+      token: v.string(),
+      productId: v.string(),
+      email: v.string(),
+      sessionId: v.optional(v.string()),
+      expiresAt: v.number(),
+      usedCount: v.number(),
+      maxUses: v.number(),
+    }).index("by_token", ["token"])
+      .index("by_session", ["sessionId"]),
   },
   {
     schemaValidation: false,
