@@ -100,6 +100,26 @@ class RootErrorBoundary extends React.Component<
 
 const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 
+/** Remonte en haut de page à chaque changement de route (navigation depuis
+ *  header, footer, boutons ou cartes). Les ancres (#guides, #gratuits…)
+ *  déclenchent un défilement doux vers la section ciblée. */
+function ScrollToTop() {
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      const el = document.getElementById(hash.slice(1));
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+    }
+    window.scrollTo(0, 0);
+  }, [pathname, hash]);
+
+  return null;
+}
+
 function RouteSyncer() {
   const location = useLocation();
   useEffect(() => {
@@ -131,6 +151,7 @@ createRoot(document.getElementById("root")!).render(
       </ToolbarErrorBoundary>
       <ConvexAuthProvider client={convex}>
         <BrowserRouter>
+          <ScrollToTop />
           <RouteSyncer />
           <Suspense fallback={<RouteLoading />}>
             <Routes>
