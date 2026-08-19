@@ -352,7 +352,7 @@ export default function Landing() {
               }}
             >
               <img
-                src={images.founder}
+                src="/images/maria-founder.jpg"
                 alt="Maria Garcia, fondatrice de ForceMaman, ancienne sage-femme"
                 width={448}
                 height={448}
