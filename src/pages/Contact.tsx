@@ -62,7 +62,7 @@ export default function Contact() {
                   const mailBody = encodeURIComponent(
                     `Bonjour Maria,\n\n${message}\n\n${firstName ? `Bien à toi,\n${firstName}` : "Bien à toi."}\n${email ? `\n(Je réponds depuis : ${email})` : ""}`,
                   );
-                  window.location.href = `mailto:hello@forcemaman.fr?subject=${mailSubject}&body=${mailBody}`;
+                  window.location.href = `mailto:hello@forcemaman.store?subject=${mailSubject}&body=${mailBody}`;
                   setSent(true);
                 }}
                 className="mt-12 space-y-5 rounded-3xl border border-border/60 bg-card/60 p-7 shadow-[0_30px_80px_-60px_rgba(35,33,32,0.35)] sm:p-10"
@@ -131,10 +131,10 @@ export default function Contact() {
               <div className="flex items-center justify-center gap-3 text-sm text-foreground/80">
                 <Mail className="size-4" />
                 <a
-                  href="mailto:hello@forcemaman.fr"
+                  href="mailto:hello@forcemaman.store"
                   className="underline underline-offset-4"
                 >
-                  hello@forcemaman.fr
+                  hello@forcemaman.store
                 </a>
               </div>
             </Reveal>

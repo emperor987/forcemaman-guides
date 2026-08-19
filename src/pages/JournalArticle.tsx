@@ -45,8 +45,8 @@ export default function JournalArticle() {
     description: article.excerpt,
     datePublished: article.date,
     inLanguage: "fr-FR",
-    image: `https://forcemaman.fr${articleSrc(article)}`,
-    mainEntityOfPage: `https://forcemaman.fr/journal/${article.id}`,
+    image: `https://forcemaman.store${articleSrc(article)}`,
+    mainEntityOfPage: `https://forcemaman.store/journal/${article.id}`,
     author: {
       "@type": "Person",
       name: "Maria Garcia",
@@ -55,7 +55,7 @@ export default function JournalArticle() {
     publisher: {
       "@type": "Organization",
       name: "ForceMaman",
-      logo: { "@type": "ImageObject", url: "https://forcemaman.fr/logo.svg" },
+      logo: { "@type": "ImageObject", url: "https://forcemaman.store/logo.svg" },
     },
   };
 
@@ -65,7 +65,7 @@ export default function JournalArticle() {
         title={`${article.title} · Le Journal ForceMaman`}
         description={article.excerpt}
         path={`/journal/${article.id}`}
-        image={`https://forcemaman.fr${articleSrc(article)}`}
+        image={`https://forcemaman.store${articleSrc(article)}`}
         jsonLd={jsonLd}
       />
       <article className="mx-auto max-w-3xl px-6 pb-24 pt-16 lg:pt-24">

@@ -13,7 +13,7 @@ export default function Confidentialite() {
         {
           title: "1. Responsable du traitement",
           content: [
-            "Le responsable du traitement des données personnelles est SAFAA Beauty, dont ForceMaman est une marque distincte. Contact : contact@forcemaman.fr.",
+            "Le responsable du traitement des données personnelles est SAFAA Beauty, dont ForceMaman est une marque distincte. Contact : contact@forcemaman.store.",
           ],
         },
         {
@@ -56,7 +56,7 @@ export default function Confidentialite() {
             "Droit à la limitation et à l'opposition du traitement.",
             "Droit à la portabilité de tes données.",
             "Droit de retirer ton consentement à tout moment.",
-            "Pour exercer ces droits, écris-nous à contact@forcemaman.fr. Nous te répondrons sous 30 jours maximum.",
+            "Pour exercer ces droits, écris-nous à contact@forcemaman.store. Nous te répondrons sous 30 jours maximum.",
             "Tu peux également introduire une réclamation auprès de la CNIL (www.cnil.fr).",
           ],
         },

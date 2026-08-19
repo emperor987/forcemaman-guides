@@ -21,7 +21,7 @@ export default function Remboursement() {
           title: "2. Comment demander un remboursement ?",
           content: [
             "Pour demander un remboursement, c'est très simple :",
-            "Envoie-nous un email à contact@forcemaman.fr avec ton numéro de commande (présent dans l'email de confirmation) et la raison de ta demande (facultatif mais bienvenu, cela nous aide à nous améliorer).",
+            "Envoie-nous un email à contact@forcemaman.store avec ton numéro de commande (présent dans l'email de confirmation) et la raison de ta demande (facultatif mais bienvenu, cela nous aide à nous améliorer).",
             "Nous te répondrons sous 48 heures ouvrées pour confirmer la prise en charge de ta demande.",
             "Le remboursement est effectué sur le moyen de paiement utilisé lors de l'achat, sous 5 à 10 jours ouvrés après validation de ta demande.",
           ],
@@ -43,7 +43,7 @@ export default function Remboursement() {
         {
           title: "5. Contact",
           content: [
-            "Pour toute question relative à un remboursement : contact@forcemaman.fr.",
+            "Pour toute question relative à un remboursement : contact@forcemaman.store.",
             "Nous répondons à tous les messages sous 48 heures ouvrées.",
           ],
         },

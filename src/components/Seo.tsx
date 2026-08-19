@@ -10,7 +10,7 @@ interface SeoProps {
 }
 
 const getSiteUrl = () =>
-  typeof window !== "undefined" ? window.location.origin : "https://forcemaman.fr";
+  typeof window !== "undefined" ? window.location.origin : "https://forcemaman.store";
 const DEFAULT_IMAGE = "/og-image.png";
 
 function upsertMeta(attr: "name" | "property", key: string, content: string) {

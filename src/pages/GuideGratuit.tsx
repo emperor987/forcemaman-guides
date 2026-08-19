@@ -83,7 +83,7 @@ const jsonLd = [
     name: "Les 7 Systèmes ForceMaman · Guide Gratuit",
     description:
       "Sept systèmes simples pour alléger la charge mentale avec un nouveau-né : Cahier Unique, Boîte à 3, Repas de Secours, Panier Nomade, Trousse Départ Éclair, Règle du Suffisant, Sas du Soir.",
-    url: "https://forcemaman.fr/guide-gratuit",
+    url: "https://forcemaman.store/guide-gratuit",
     inLanguage: "fr-FR",
     isAccessibleForFree: true,
   },

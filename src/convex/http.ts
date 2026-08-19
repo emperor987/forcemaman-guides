@@ -47,7 +47,7 @@ http.route({
       // Ignore les erreurs (email peut ne pas exister)
     }
 
-    const siteUrl = process.env.SITE_URL || "https://forcemaman.fr";
+    const siteUrl = process.env.SITE_URL || "https://forcemaman.store";
     return new Response(
       `<html><body style="font-family:sans-serif;text-align:center;padding:60px 20px;background:#FAF6F1;color:#5C4A3A;">
         <h2 style="font-size:24px;margin-bottom:12px;">Désabonnement confirmé</h2>

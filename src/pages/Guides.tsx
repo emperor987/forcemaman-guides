@@ -126,7 +126,7 @@ const faqItems = [
   {
     question: "Puis-je me faire rembourser ?",
     answer:
-      "Oui, sous 14 jours après l'achat. Écris-nous à hello@forcemaman.fr avec ton numéro de commande, nous traitons ta demande sous 48 heures.",
+      "Oui, sous 14 jours après l'achat. Écris-nous à hello@forcemaman.store avec ton numéro de commande, nous traitons ta demande sous 48 heures.",
   },
 ];
 
@@ -137,7 +137,7 @@ const jsonLd = [
   name: "La Bibliothèque des Guides ForceMaman",
   description:
     "Les guides post-partum de ForceMaman : liste de naissance, corps après l'accouchement, charge mentale, pack complet et ressources gratuites.",
-  url: "https://forcemaman.fr/guides",
+  url: "https://forcemaman.store/guides",
   inLanguage: "fr-FR",
   mainEntity: {
     "@type": "ItemList",
@@ -146,25 +146,25 @@ const jsonLd = [
         "@type": "ListItem",
         position: 1,
         name: "Ma Liste Naissance Complète",
-        url: "https://forcemaman.fr/guides/liste-naissance",
+        url: "https://forcemaman.store/guides/liste-naissance",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Mon Corps Après l'Accouchement",
-        url: "https://forcemaman.fr/guides/corps-apres",
+        url: "https://forcemaman.store/guides/corps-apres",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Charge Mentale & 40 Premiers Jours",
-        url: "https://forcemaman.fr/guides/charge-mentale",
+        url: "https://forcemaman.store/guides/charge-mentale",
       },
       {
         "@type": "ListItem",
         position: 4,
         name: "Pack Complet ForceMaman",
-        url: "https://forcemaman.fr/guides/bundle",
+        url: "https://forcemaman.store/guides/bundle",
       },
     ],
   },
@@ -182,8 +182,8 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://forcemaman.fr/" },
-      { "@type": "ListItem", position: 2, name: "Nos Guides", item: "https://forcemaman.fr/guides" },
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://forcemaman.store/" },
+      { "@type": "ListItem", position: 2, name: "Nos Guides", item: "https://forcemaman.store/guides" },
     ],
   },
 ];

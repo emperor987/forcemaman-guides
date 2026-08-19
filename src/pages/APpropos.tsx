@@ -32,7 +32,7 @@ const jsonLd = [
     name: "À propos de ForceMaman",
     description:
       "ForceMaman, les guides bienveillants du post-partum créés par Maria Garcia, ancienne sage-femme et maman.",
-    url: "https://forcemaman.fr/a-propos",
+    url: "https://forcemaman.store/a-propos",
     inLanguage: "fr-FR",
   },
   {

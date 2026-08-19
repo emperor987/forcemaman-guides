@@ -13,7 +13,7 @@ import { join } from "path";
 
 const STRIPE_API = "https://api.stripe.com/v1";
 const TOKEN_EXPIRY_MS = 30 * 60 * 1000; // 30 minutes
-const SITE_URL = process.env.SITE_URL || "https://forcemaman.fr";
+const SITE_URL = process.env.SITE_URL || "https://forcemaman.store";
 
 const PRODUCT_FILES: Record<string, string[]> = {
   "liste-naissance": ["liste-naissance.pdf"],

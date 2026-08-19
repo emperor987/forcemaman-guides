@@ -17,4 +17,4 @@ export const PRODUCT_NAMES: Record<string, string> = {
   bundle: "Pack Complet ForceMaman",
 };
 
-export const SUPPORT_EMAIL = "hello@forcemaman.fr";
+export const SUPPORT_EMAIL = "hello@forcemaman.store";

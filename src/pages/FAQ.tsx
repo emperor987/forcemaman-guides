@@ -67,7 +67,7 @@ const faqCategories = [
       {
         question: "Comment demander un remboursement ?",
         answer:
-          "Envoie-nous un email à hello@forcemaman.fr avec ton numéro de commande. Nous traitons ta demande sous 48 heures.",
+          "Envoie-nous un email à hello@forcemaman.store avec ton numéro de commande. Nous traitons ta demande sous 48 heures.",
       },
     ],
   },
@@ -94,12 +94,12 @@ const faqCategories = [
       {
         question: "Comment contacter ForceMaman ?",
         answer:
-          "Tu peux nous écrire à hello@forcemaman.fr. Nous répondons à tous les messages sous 48 heures. Pour une question urgente de santé, contacte directement un professionnel de santé.",
+          "Tu peux nous écrire à hello@forcemaman.store. Nous répondons à tous les messages sous 48 heures. Pour une question urgente de santé, contacte directement un professionnel de santé.",
       },
       {
         question: "Puis-je vous suggérer un sujet de guide ?",
         answer:
-          "Bien sûr ! Nous sommes toujours à l'écoute des besoins des mamans. Envoie-nous tes suggestions à hello@forcemaman.fr.",
+          "Bien sûr ! Nous sommes toujours à l'écoute des besoins des mamans. Envoie-nous tes suggestions à hello@forcemaman.store.",
       },
     ],
   },

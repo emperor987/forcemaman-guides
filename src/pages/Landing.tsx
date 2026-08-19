@@ -82,7 +82,7 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "ForceMaman",
-    url: "https://forcemaman.fr/",
+    url: "https://forcemaman.store/",
     inLanguage: "fr-FR",
     description:
       "Les guides bienveillants du post-partum, écrits par une sage-femme.",
@@ -91,7 +91,7 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "ForceMaman",
-    url: "https://forcemaman.fr/",
+    url: "https://forcemaman.store/",
     brand: "ForceMaman",
     founder: {
       "@type": "Person",

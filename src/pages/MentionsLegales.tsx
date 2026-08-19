@@ -15,7 +15,7 @@ export default function MentionsLegales() {
             "SIRET : À compléter ultérieurement",
             "Siège social : À compléter ultérieurement",
             "Directrice de la publication : Maria Garcia, fondatrice de ForceMaman.",
-            "Contact : contact@forcemaman.fr",
+            "Contact : contact@forcemaman.store",
           ],
         },
         {

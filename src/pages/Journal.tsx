@@ -31,7 +31,7 @@ const jsonLd = {
   name: "Le Journal ForceMaman",
   description:
     "Lectures lentes pour mères pressées : charge mentale, organisation du quotidien, systèmes postpartum, repas et routines réalistes.",
-  url: "https://forcemaman.fr/journal",
+  url: "https://forcemaman.store/journal",
   inLanguage: "fr-FR",
   blogPost: journalArticles.map((article) => ({
     "@type": "BlogPosting",

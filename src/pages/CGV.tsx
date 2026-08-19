@@ -47,7 +47,7 @@ export default function CGV() {
           title: "5. Livraison des produits numériques",
           content: [
             "Les produits étant des fichiers numériques, la livraison est immédiate : le lien de téléchargement est envoyé par email dès la confirmation du paiement.",
-            "En cas de non-réception de l'email (vérifie tes spams), contacte-nous à contact@forcemaman.fr et nous te renverrons ton lien rapidement.",
+            "En cas de non-réception de l'email (vérifie tes spams), contacte-nous à contact@forcemaman.store et nous te renverrons ton lien rapidement.",
           ],
         },
         {
@@ -74,14 +74,14 @@ export default function CGV() {
         {
           title: "9. Service client et réclamations",
           content: [
-            "Pour toute question, réclamation ou demande relative à une commande, contacte-nous à contact@forcemaman.fr. Nous nous engageons à répondre sous 48 heures ouvrées.",
+            "Pour toute question, réclamation ou demande relative à une commande, contacte-nous à contact@forcemaman.store. Nous nous engageons à répondre sous 48 heures ouvrées.",
           ],
         },
         {
           title: "10. Droit applicable et médiation",
           content: [
             "Les présentes CGV sont soumises au droit français. En cas de litige, une solution amiable sera recherchée en priorité.",
-            "Conformément aux articles L612-1 et suivants du Code de la consommation, tu peux recourir gratuitement à un médiateur de la consommation en cas de litige non résolu. Les coordonnées du médiateur seront communiquées sur demande à contact@forcemaman.fr.",
+            "Conformément aux articles L612-1 et suivants du Code de la consommation, tu peux recourir gratuitement à un médiateur de la consommation en cas de litige non résolu. Les coordonnées du médiateur seront communiquées sur demande à contact@forcemaman.store.",
           ],
         },
       ]}
