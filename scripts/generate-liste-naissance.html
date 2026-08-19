@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ma Liste Naissance Complète - ForceMaman</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --terracotta: #C97D5D;
+    --text: #5C4A3A;
+    --bg: #FAF6F1;
+    --light: #E8DFD4;
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: white;
+    font-size: 11pt;
+    line-height: 1.65;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 40mm 30mm 30mm 30mm;
+    page-break-after: always;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .page:last-child { page-break-after: auto; }
+
+  /* Cover page */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60mm 30mm;
+  }
+
+  .cover .brand {
+    font-family: 'Inter', sans-serif;
+    font-size: 11pt;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 30px;
+  }
+
+  .cover .icon {
+    font-size: 64px;
+    color: var(--terracotta);
+    margin-bottom: 40px;
+  }
+
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36pt;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .cover .subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 14pt;
+    color: var(--terracotta);
+    margin-top: 8px;
+  }
+
+  /* Sommaire */
+  .sommaire h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24pt;
+    color: var(--terracotta);
+    margin-bottom: 24px;
+  }
+
+  .sommaire ol {
+    list-style: none;
+    counter-reset: chapter;
+  }
+
+  .sommaire li {
+    counter-increment: chapter;
+    padding: 6px 0;
+    font-size: 11pt;
+    color: var(--text);
+    border-bottom: none;
+  }
+
+  .sommaire li::before {
+    content: counter(chapter) ".";
+    color: var(--terracotta);
+    font-weight: 600;
+    margin-right: 8px;
+  }
+
+  /* Chapter headers */
+  .icon-center {
+    text-align: center;
+    font-size: 48px;
+    color: var(--terracotta);
+    margin-bottom: 20px;
+  }
+
+  h2.chapter {
+    font-family: 'Playfair Display', serif;
+    font-size: 20pt;
+    color: var(--terracotta);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 13pt;
+    font-weight: 600;
+    color: var(--text);
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin-bottom: 10px;
+    line-height: 1.7;
+  }
+
+  /* Checklist */
+  .checklist {
+    list-style: none;
+    padding: 0;
+  }
+
+  .checklist li {
+    padding: 4px 0 4px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.6;
+  }
+
+  .checklist li::before {
+    content: "☐";
+    color: var(--terracotta);
+    font-size: 13pt;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* Quote */
+  .quote {
+    border-left: 3px solid var(--terracotta);
+    padding-left: 16px;
+    margin: 20px 0;
+    font-style: italic;
+    color: var(--terracotta);
+    font-size: 10.5pt;
+  }
+
+  /* Tip */
+  .tip {
+    font-size: 10pt;
+    color: #8a7563;
+    margin-top: 10px;
+  }
+
+  /* Fill-in pages */
+  .fill-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--light);
+  }
+
+  .fill-line::before {
+    content: "☐";
+    color: var(--terracotta);
+    font-size: 12pt;
+  }
+
+  .fill-line span {
+    flex: 1;
+    border-bottom: 1px solid var(--light);
+    min-height: 20px;
+  }
+
+  .journal-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 12pt;
+    color: var(--text);
+    margin-bottom: 6px;
+    margin-top: 14px;
+  }
+
+  .journal-line {
+    border-bottom: 1px solid var(--light);
+    min-height: 24px;
+    margin-bottom: 8px;
+  }
+
+  /* Closing page */
+  .closing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 200mm;
+  }
+
+  .closing .icon { margin-bottom: 30px; }
+
+  .closing h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22pt;
+    color: var(--terracotta);
+    margin-bottom: 20px;
+  }
+
+  .closing p {
+    font-size: 11pt;
+    max-width: 380px;
+    text-align: center;
+  }
+
+  .closing .sign {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--terracotta);
+    margin-top: 20px;
+    font-size: 11pt;
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== COVER ==================== -->
+<div class="page cover">
+  <div class="brand">FORCEMAMAN</div>
+  <div class="icon">🧳</div>
+  <h1>Ma liste naissance complète</h1>
+  <div class="subtitle">Tout ce qu'il faut, sans oublier l'essentiel</div>
+</div>
+
+<!-- ==================== SOMMAIRE ==================== -->
+<div class="page">
+  <div class="sommaire">
+    <h2>Sommaire</h2>
+    <ol>
+      <li>Avant de commencer</li>
+      <li>Pourquoi bien se préparer change tout</li>
+      <li>La valise de maternité — Pour toi, maman</li>
+      <li>La valise de maternité — Pour bébé</li>
+      <li>Le dossier administratif</li>
+      <li>La liste de naissance — Sommeil</li>
+      <li>La liste de naissance — Repas et allaitement</li>
+      <li>La liste de naissance — Hygiène et change</li>
+      <li>La liste de naissance — Habillage</li>
+      <li>La liste de naissance — Sorties et déplacements</li>
+      <li>Préparer la chambre et la maison</li>
+      <li>Budget et astuces pour dépenser mieux</li>
+      <li>Checklist finale récapitulative</li>
+      <li>Ma liste personnalisée (page à remplir)</li>
+      <li>Mes ressentis avant le grand jour (page à remplir)</li>
+      <li>Un mot pour finir</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ==================== CHAPITRE 1 ==================== -->
+<div class="page">
+  <div class="icon-center">📋</div>
+  <h2 class="chapter">1. Avant de commencer</h2>
+  <p>Préparer l'arrivée de bébé peut vite devenir une source de stress : trop de listes différentes trouvées ici et là, des conseils parfois contradictoires d'une personne à l'autre, et cette peur sourde d'oublier quelque chose d'important le jour venu.</p>
+  <p>Ce guide a été pensé pour tu simplifier la vie. Tu y trouverez des listes claires, organisées par thème, que tu pourrez cocher au fur et à mesure de tes achats et de tes préparatifs. Chaque section a été construite à partir de ce que recherchent réellement les futures mamans, pour être la plus utile et la plus concrète possible.</p>
+  <p>Chaque famille est différente : utilisez ces listes comme une base solide, et adaptez-les selon tes besoins, ton budget, ton logement et ton mode de vie. Il n'existe pas une seule bonne façon de se préparer, seulement celle qui tu convient.</p>
+  <div class="quote">« On ne peut jamais être totalement prête, mais on peut être sereine. »</div>
+</div>
+
+<!-- ==================== CHAPITRE 2 ==================== -->
+<div class="page">
+  <h2 class="chapter">2. Pourquoi bien se préparer change tout</h2>
+  <p>On sous-estime souvent à quel point une préparation organisée influence les premières semaines avec bébé. Ce n'est pas une question de perfectionnisme, mais de tranquillité d'esprit : quand tout est prêt à l'avance, tu peux consacrer ton énergie à ce qui compte vraiment, ton bébé et ta récupération.</p>
+  <p>Voici les trois bénéfices concrets d'une préparation anticipée :</p>
+  <ul class="checklist">
+    <li>Moins de stress de dernière minute : plus besoin de courir les magasins avec un nouveau-né ou en fin de grossesse</li>
+    <li>Un budget mieux maîtrisé : anticiper permet de profiter des soldes, des ventes privées et d'étaler les achats sur plusieurs mois</li>
+    <li>Un entourage mieux orienté : une liste claire aide ton famille et tes proches à savoir quoi offrir pour la naissance</li>
+  </ul>
+  <p>La règle d'or : commencez à préparer ton valise de maternité dès le début du 8e mois de grossesse, et le reste de la liste de naissance peut être étalé dès le 6e ou 7e mois selon ton rythme.</p>
+</div>
+
+<!-- ==================== CHAPITRE 3 ==================== -->
+<div class="page">
+  <div class="icon-center">🧳</div>
+  <h2 class="chapter">3. La valise de maternité — Pour toi, maman</h2>
+  <p>Ton valise doit être prête et accessible dès le 8e mois de grossesse, car un accouchement peut survenir plus tôt que prévu. Voici tout ce qu'il tu faut pour ton séjour à la maternité, qui dure généralement entre 2 et 5 jours.</p>
+
+  <h3>Trousse de toilette et hygiène</h3>
+  <ul class="checklist">
+    <li>Trousse de toilette complète (brosse à dents, dentifrice, déodorant, brosse à cheveux)</li>
+    <li>3 à 5 culottes filet ou culottes post-partum jetables, très pratiques et confortables</li>
+    <li>Serviettes hygiéniques maternité grand format, spécialement conçues pour les saignements post-accouchement</li>
+    <li>Gel douche et shampoing au format voyage</li>
+    <li>Une petite serviette de toilette personnelle si tu préférez la vôtre</li>
+  </ul>
+
+  <h3>Allaitement, si tu le prévoyez</h3>
+  <ul class="checklist">
+    <li>2 à 3 soutiens-gorge d'allaitement, à choisir en taille légèrement au-dessus de ton taille actuelle</li>
+    <li>Coussinets d'allaitement lavables ou jetables, pour absorber les petites fuites</li>
+    <li>Crème pour les mamelons à base de lanoline, à appliquer dès les premières tétées</li>
+  </ul>
+
+  <h3>Confort et vêtements</h3>
+  <ul class="checklist">
+    <li>2 pyjas confortables et faciles à ouvrir devant si tu allaitez</li>
+    <li>Une robe de chambre ou un gilet chaud pour tu déplacer dans les couloirs</li>
+    <li>Chaussettes chaudes et chaussons antidérapants</li>
+    <li>Une tenue de sortie de maternité : privilégiez une tenue de grossesse ou une taille au-dessus, le corps ne reprend pas sa forme immédiatement</li>
+  </ul>
+
+  <h3>Le petit plus qui change tout</h3>
+  <ul class="checklist">
+    <li>Chargeur de téléphone avec câble long (les prises sont rarement près du lit)</li>
+    <li>Une bouteille d'eau réutilisable pour rester hydratée</li>
+    <li>Coussin d'allaitement si tu en as déjà un</li>
+    <li>Quelques encas sucrés ou salés pour les petits creux entre deux repas</li>
+  </ul>
+</div>
+
+<!-- ==================== CHAPITRE 4 ==================== -->
+<div class="page">
+  <div class="icon-center">👶</div>
+  <h2 class="chapter">4. La valise de maternité — Pour bébé</h2>
+  <p>Contrairement à ce qu'on pourrait croire, bébé n'a pas besoin de beaucoup de choses pour son séjour à la maternité. Voici l'essentiel, à prévoir en taille naissance (attention, certains bébés dépassent vite cette taille, gardez un œil sur les vêtements 1 mois en réserve à la maison).</p>
+  <ul class="checklist">
+    <li>5 à 7 bodies manches longues, taille naissance</li>
+    <li>5 à 7 pyjas ou grenouillères faciles à enfiler</li>
+    <li>2 gigoteuses adaptées à la saison de la naissance</li>
+    <li>1 bonnet et 1 paire de moufles, hors saison estivale</li>
+    <li>Une paire de chaussettes ou de chaussons</li>
+    <li>Une couverture légère pour le trajet du retour</li>
+    <li>Une turbulette si le séjour venait à se prolonger</li>
+  </ul>
+  <p class="tip">Bon à savoir : la plupart des maternités fournissent les couches, le nécessaire de change et parfois même quelques vêtements pour les premiers jours. Renseigne-toi auprès de ton établissement pour ne pas doubler certains achats.</p>
+</div>
+
+<!-- ==================== CHAPITRE 5 ==================== -->
+<div class="page">
+  <div class="icon-center">📋</div>
+  <h2 class="chapter">5. Le dossier administratif</h2>
+  <p>Un dossier bien préparé tu évite du stress inutile le jour de l'accouchement. Rassemblez tous ces documents dans une pochette unique, à glisser directement dans ton valise.</p>
+  <ul class="checklist">
+    <li>Carte d'identité et carte vitale, les vôtres et celles du futur second parent si applicable</li>
+    <li>Dossier de suivi de grossesse complet, remis par ton sage-femme ou gynécologue</li>
+    <li>Carnet de santé si tu en possédez déjà un (rare pour un premier enfant)</li>
+    <li>Attestation d'employeur ou dossier de congé maternité</li>
+    <li>Projet de naissance, si tu en as rédigé un, pour informer l'équipe médicale de tes souhaits</li>
+    <li>Résultats des dernières échographies et analyses</li>
+  </ul>
+</div>
+
+<!-- ==================== CHAPITRE 6 ==================== -->
+<div class="page">
+  <div class="icon-center">🛏️</div>
+  <h2 class="chapter">6. La liste de naissance — Sommeil</h2>
+  <p>Le sommeil de bébé (et le vôtre) est l'un des sujets qui reviennent le plus dans les recherches des jeunes parents. Voici l'équipement de base pour des nuits plus sereines.</p>
+  <ul class="checklist">
+    <li>Lit bébé avec matelas ferme aux normes en vigueur</li>
+    <li>2 à 3 draps housses adaptés à la taille exacte du matelas</li>
+    <li>1 à 2 gigoteuses par saison, à choisir selon le TOG adapté à la température de la chambre</li>
+    <li>Un babyphone, audio ou vidéo selon tes préférences et ton budget</li>
+    <li>Une veilleuse douce, optionnelle mais pratique pour les tétées de nuit</li>
+    <li>Un tapis de change ou une têtière si le lit est surélevé</li>
+  </ul>
+  <p class="tip">Astuce : évitez tout coussin, couverture épaisse, tour de lit ou peluche dans le lit de bébé les premiers mois, conformément aux recommandations de prévention de la mort subite du nourrisson.</p>
+</div>
+
+<!-- ==================== CHAPITRE 7 ==================== -->
+<div class="page">
+  <div class="icon-center">🍼</div>
+  <h2 class="chapter">7. La liste de naissance — Repas et allaitement</h2>
+  <p>Que tu choisissiez l'allaitement, le biberon ou une solution mixte, voici ce qu'il tu faut pour bien démarrer.</p>
+
+  <h3>Si tu allaitez</h3>
+  <ul class="checklist">
+    <li>Coussin d'allaitement pour soutenir bébé et soulager ton dos</li>
+    <li>3 à 5 soutiens-gorge et brassières d'allaitement</li>
+    <li>Un tire-lait manuel ou électrique, pratique pour soulager l'engorgement ou constituer une réserve</li>
+    <li>Sachets ou pots de conservation du lait maternel</li>
+  </ul>
+
+  <h3>Si tu donnez le biberon, ou en complément</h3>
+  <ul class="checklist">
+    <li>2 à 3 biberons anti-coliques de contenances adaptées</li>
+    <li>Un stérilisateur électrique ou une casserole dédiée à la stérilisation</li>
+    <li>Un chauffe-biberon, particulièrement pratique la nuit</li>
+    <li>Le lait infantile adapté à l'âge de bébé, sur recommandation de ton pédiatre</li>
+  </ul>
+
+  <h3>Dans tous les cas</h3>
+  <ul class="checklist">
+    <li>Bavoirs en tissu, prévoir au moins 5 à 8 exemplaires</li>
+    <li>Une chaise haute évolutive, à prévoir pour la diversification alimentaire vers 4 à 6 mois</li>
+  </ul>
+</div>
+
+<!-- ==================== CHAPITRE 8 ==================== -->
+<div class="page">
+  <div class="icon-center">📋</div>
+  <h2 class="chapter">8. La liste de naissance — Hygiène et change</h2>
+  <ul class="checklist">
+    <li>Table à langer fixe ou tapis de change nomade pour les déplacements</li>
+    <li>Couches taille 1, en prévoyant aussi un petit stock de taille 2 car bébé grandit vite</li>
+    <li>Lingettes nettoyantes ou coton et eau nettoyante, plus doux pour la peau du nouveau-né</li>
+    <li>Liniment oléo-calcaire, un incontournable pour le change quotidien</li>
+    <li>Crème pour le change en cas de rougeurs</li>
+    <li>Baignoire pour bébé ou transat de bain</li>
+    <li>2 à 3 serviettes de bain à capuche</li>
+    <li>Thermomètre de bain pour vérifier la température de l'eau</li>
+    <li>Produits de soin adaptés : savon surgras, huile de massage douce</li>
+  </ul>
+</div>
+
+<!-- ==================== CHAPITRE 9 ==================== -->
+<div class="page">
+  <div class="icon-center">👶</div>
+  <h2 class="chapter">9. La liste de naissance — Habillage</h2>
+  <p>Inutile de multiplier les achats en taille naissance : les bébés grandissent vite, souvent en quelques semaines seulement. Privilégiez la qualité et le confort à la quantité.</p>
+  <ul class="checklist">
+    <li>6 à 8 bodies manches longues, taille naissance</li>
+    <li>6 à 8 pyjas ou grenouillères</li>
+    <li>2 gilets ou petites vestes légères</li>
+    <li>Bonnets et moufles selon la saison de naissance</li>
+    <li>Chaussettes ou chaussons souples</li>
+    <li>Une tenue de sortie de maternité un peu plus habillée</li>
+  </ul>
+</div>
+
+<!-- ==================== CHAPITRE 10 ==================== -->
+<div class="page">
+  <div class="icon-center">🛒</div>
+  <h2 class="chapter">10. La liste de naissance — Sorties et déplacements</h2>
+  <ul class="checklist">
+    <li>Un siège auto adapté au poids de naissance, conforme à la norme en vigueur, c'est un achat non négociable et à ne jamais faire d'occasion sans certitude sur son historique</li>
+    <li>Une poussette ou un système de portage adapté à ton mode de vie et ton logement</li>
+    <li>Un sac à langer équipé, avec de quoi changer bébé en toutes circonstances</li>
+    <li>Une écharpe de portage ou un porte-bébé physiologique</li>
+    <li>Une couverture ou une housse de pluie pour la poussette</li>
+  </ul>
+  <p class="tip">Conseil budget : le siège auto et la poussette représentent souvent le plus gros poste de dépense de la liste de naissance. N'hésite pas à les inclure dans ton liste de naissance officielle pour que plusieurs proches puissent participer ensemble.</p>
+</div>
+
+<!-- ==================== CHAPITRE 11 ==================== -->
+<div class="page">
+  <div class="icon-center">📋</div>
+  <h2 class="chapter">11. Préparer la chambre et la maison</h2>
+
+  <h3>La chambre de bébé</h3>
+  <ul class="checklist">
+    <li>Vérifier que le lit respecte les normes de sécurité en vigueur</li>
+    <li>Prévoir un espace de rangement accessible pour les vêtements et le linge</li>
+    <li>Installer un thermomètre pour surveiller la température de la pièce, idéalement entre 18 et 20°C</li>
+    <li>Prévoir un éclairage doux et progressif pour les tétées ou changes de nuit</li>
+    <li>Sécuriser les prises électriques et fixer les meubles hauts si tu as d'autres enfants à la maison</li>
+  </ul>
+
+  <h3>Le reste de la maison</h3>
+  <ul class="checklist">
+    <li>Préparer un coin repas ou allaitement confortable, avec de quoi tu hydrater à portée de main</li>
+    <li>Anticiper quelques repas à congeler pour les deux à trois premières semaines</li>
+    <li>Prévoir une place dédiée pour le sac à langer et les affaires de sortie, pour ne jamais chercher dans l'urgence</li>
+    <li>Informer ton entourage de tes préférences pour les visites des premiers jours : horaires, durée, cadeaux</li>
+  </ul>
+</div>
+
+<!-- ==================== CHAPITRE 12 ==================== -->
+<div class="page">
+  <h2 class="chapter">12. Budget et astuces pour dépenser mieux</h2>
+  <p>Équiper l'arrivée de bébé représente un budget conséquent, mais il existe de nombreuses façons de dépenser intelligemment sans rien sacrifier au confort et à la sécurité de ton enfant.</p>
+  <ul class="checklist">
+    <li>La seconde main fonctionne très bien pour la puériculture non soumise à des normes de sécurité strictes : vêtements, jouets, mobilier, transat</li>
+    <li>Pour le siège auto, privilégiez toujours le neuf ou une provenance de confiance connue, car son historique de choc est impossible à vérifier</li>
+    <li>Étalez tes achats sur plusieurs mois pour profiter des périodes de soldes et ventes privées</li>
+    <li>La liste de naissance permet de mutualiser les gros achats entre plusieurs proches plutôt que de multiplier les petits cadeaux</li>
+    <li>N'achetez le change en trop grande quantité qu'en taille 1 : les besoins évoluent vite et les tailles suivantes se trouvent facilement en cours de route</li>
+  </ul>
+</div>
+
+<!-- ==================== CHAPITRE 13 ==================== -->
+<div class="page">
+  <h2 class="chapter">13. Checklist finale récapitulative</h2>
+  <p>Une dernière vérification avant le grand jour, à faire idéalement en fin de 8e mois :</p>
+  <ul class="checklist">
+    <li>Valise de maternité prête et accessible près de la porte d'entrée</li>
+    <li>Siège auto installé et vérifié dans le véhicule</li>
+    <li>Lit de bébé monté, testé et conforme aux normes de sécurité</li>
+    <li>Stock de couches taille 1 disponible à la maison</li>
+    <li>Dossier administratif complet dans la valise</li>
+    <li>Numéros importants enregistrés dans le téléphone : maternité, sage-femme, pédiatre, personne de confiance</li>
+    <li>Personne de confiance prévenue pour garder un ainé ou un animal si besoin</li>
+    <li>Trajet jusqu'à la maternité anticipé : temps de route, essence, options de parking</li>
+    <li>Quelques repas préparés et congelés pour le retour à la maison</li>
+  </ul>
+</div>
+
+<!-- ==================== PAGE PERSONNALISÉE ==================== -->
+<div class="page">
+  <div class="icon-center">📋</div>
+  <h2 class="chapter">Ma liste personnalisée</h2>
+  <p>Utilise cet espace pour noter ce qu'il te manque encore, au fil de tes achats et de tes envies.</p>
+  <div class="fill-line"><span></span></div>
+  <div class="fill-line"><span></span></div>
+  <div class="fill-line"><span></span></div>
+  <div class="fill-line"><span></span></div>
+  <div class="fill-line"><span></span></div>
+  <div class="fill-line"><span></span></div>
+  <div class="fill-line"><span></span></div>
+  <div class="fill-line"><span></span></div>
+  <div class="fill-line"><span></span></div>
+  <div class="fill-line"><span></span></div>
+  <div class="fill-line"><span></span></div>
+  <div class="fill-line"><span></span></div>
+  <div class="fill-line"><span></span></div>
+  <div class="fill-line"><span></span></div>
+</div>
+
+<!-- ==================== RESSENTIS ==================== -->
+<div class="page">
+  <div class="icon-center">👶</div>
+  <h2 class="chapter">Mes ressentis avant le grand jour</h2>
+  <p>Prends un moment pour noter ce que tu ressens à l'approche de la naissance : tes espoirs, tes questions, tes craintes aussi. Il n'y a pas de mauvaise réponse.</p>
+
+  <div class="journal-title">Ce qui m'excite le plus dans cette arrivée...</div>
+  <div class="journal-line"></div>
+  <div class="journal-line"></div>
+
+  <div class="journal-title">Ce qui m'inquiète un peu...</div>
+  <div class="journal-line"></div>
+  <div class="journal-line"></div>
+
+  <div class="journal-title">La personne sur qui je sais pouvoir compter...</div>
+  <div class="journal-line"></div>
+  <div class="journal-line"></div>
+
+  <div class="journal-title">Un mot que je veux me rappeler ce jour-là...</div>
+  <div class="journal-line"></div>
+  <div class="journal-line"></div>
+</div>
+
+<!-- ==================== MOT POUR FINIR ==================== -->
+<div class="page">
+  <div class="closing">
+    <div class="icon">🧳</div>
+    <h2>16. Un mot pour finir</h2>
+    <p>Merci d'avoir choisi ce guide pour tu accompagner dans cette étape si particulière de ton vie.</p>
+    <p style="margin-top: 12px;"><em>Tu voilà prête. Le plus important n'est pas d'avoir absolument tout, mais d'être sereine pour accueillir ton bébé dans les meilleures conditions.</em></p>
+    <div class="sign">Toute l'équipe ForceMaman tu souhaite une belle arrivée.</div>
+  </div>
+</div>
+
+</body>
+</html>
