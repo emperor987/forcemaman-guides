@@ -199,8 +199,8 @@ export default function Landing() {
               }}
             >
               <img
-                src={images.guideLifestyle}
-                alt="Aperçu du guide gratuit 7 systèmes"
+                src="/images/guide-maman-bebe.jpg"
+                alt="Maman tenant son nouveau-né dans ses bras, moment de tendresse post-partum"
                 width={1200}
                 height={800}
                 className="h-auto w-full object-cover"
