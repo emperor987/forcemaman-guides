@@ -47,11 +47,12 @@ http.route({
       // Ignore les erreurs (email peut ne pas exister)
     }
 
+    const siteUrl = process.env.SITE_URL || "https://forcemaman.fr";
     return new Response(
       `<html><body style="font-family:sans-serif;text-align:center;padding:60px 20px;background:#FAF6F1;color:#5C4A3A;">
         <h2 style="font-size:24px;margin-bottom:12px;">Désabonnement confirmé</h2>
         <p style="color:#8a7563;">Tu ne recevras plus d'emails de ForceMaman.</p>
-        <p style="margin-top:24px;"><a href="https://forcemaman.fr" style="color:#C97D5D;">Retour au site</a></p>
+        <p style="margin-top:24px;"><a href="${siteUrl}" style="color:#C97D5D;">Retour au site</a></p>
       </body></html>`,
       {
         status: 200,

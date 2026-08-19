@@ -11,8 +11,9 @@ import { action } from "./_generated/server";
 import { v } from "convex/values";
 import { vly } from "../lib/vly-integrations";
 
-const GUIDE_URL = "https://forcemaman.fr/ebooks/guide-gratuit-7-systemes.pdf";
-const UNSUBSCRIBE_BASE = "https://forcemaman.fr/api/unsubscribe";
+const SITE_URL = process.env.SITE_URL || "https://forcemaman.fr";
+const GUIDE_URL = `${SITE_URL}/ebooks/guide-gratuit-7-systemes.pdf`;
+const UNSUBSCRIBE_BASE = `${SITE_URL}/api/unsubscribe`;
 
 /**
  * Inscription newsletter + envoi du guide gratuit.
@@ -58,7 +59,7 @@ export const subscribe = action({
           <hr style="border:none;border-top:1px solid #E8DFD4;margin:20px 0;">
           <p style="font-size:12px;line-height:1.5;color:#a89888;margin:0;">Maria, fondatrice de ForceMaman</p>
           <p style="font-size:11px;line-height:1.5;color:#c4b8a8;margin:20px 0 0;">
-            Tu reçois cet email car tu as téléchargé le guide gratuit sur <a href="https://forcemaman.fr" style="color:#C97D5D;text-decoration:underline;">forcemaman.fr</a>.
+            Tu reçois cet email car tu as téléchargé le guide gratuit sur <a href="${SITE_URL}" style="color:#C97D5D;text-decoration:underline;">forcemaman.fr</a>.
             <br><a href="${unsubscribeUrl}" style="color:#C97D5D;text-decoration:underline;">Se désinscrire en un clic</a>
           </p>
         </div>

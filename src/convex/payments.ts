@@ -37,7 +37,7 @@ export const PRODUCTS: Record<
 };
 
 const STRIPE_API = "https://api.stripe.com/v1";
-const SITE_URL = "https://forcemaman.fr";
+const SITE_URL = process.env.SITE_URL || "https://forcemaman.fr";
 
 /* ── Rate limiting en mémoire ───────────────────────────────────────── */
 
