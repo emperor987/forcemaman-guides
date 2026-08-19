@@ -9,7 +9,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { freeGuideSystems } from "@/lib/ebooks";
-import { images } from "@/lib/assets";
+import { images, src } from "@/lib/assets";
 import AccentDots from "@/components/AccentDots";
 import { Check } from "lucide-react";
 
@@ -131,7 +131,7 @@ export default function GuideGratuit() {
               <div className="relative rounded-[1.75rem] bg-[color-mix(in_oklab,var(--card)_86%,var(--accent))] p-4 shadow-2xl">
                 <div className="overflow-hidden rounded-[1.25rem] border border-border/70 bg-card">
                   <img
-                    src={images.guideEditorial}
+                    src={src(images.guideEditorial)}
                     alt="Aperçu du guide gratuit 7 systèmes"
                     width={800}
                     height={1000}

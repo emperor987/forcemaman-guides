@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
+import OptimizedImage from "@/components/OptimizedImage";
 import { journalArticles } from "@/lib/journal";
 import AccentDots from "@/components/AccentDots";
 import { ArrowRight, Sparkles } from "lucide-react";
@@ -125,9 +126,11 @@ export default function Journal() {
                 >
                   <div className="lg:col-span-7">
                     <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-muted sm:aspect-[16/11]">
-                      <img
-                        src={featured.image}
+                      <OptimizedImage
+                        image={featured.image}
                         alt={featured.title}
+                        loading="eager"
+                        fetchPriority="high"
                         className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.03]"
                       />
                     </div>
@@ -163,8 +166,8 @@ export default function Journal() {
                   <Reveal key={article.id} delay={(i % 3) * 60}>
                     <Link to={`/journal/${article.id}`} className="group block">
                       <div className="relative aspect-[4/4.6] overflow-hidden rounded-2xl bg-muted">
-                        <img
-                          src={article.image}
+                        <OptimizedImage
+                          image={article.image}
                           alt={article.title}
                           loading="lazy"
                           className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-[1.04]"

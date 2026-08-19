@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
 import EmailForm from "@/components/EmailForm";
+import OptimizedImage from "@/components/OptimizedImage";
 import { freeGuideSystems, ebooks, bundle } from "@/lib/ebooks";
 import { journalArticles } from "@/lib/journal";
 import { images } from "@/lib/assets";
@@ -198,15 +199,18 @@ export default function Landing() {
                   "0 30px 60px -30px rgba(35,33,32,0.45), 0 8px 20px -12px rgba(35,33,32,0.25)",
               }}
             >
-              <img
-                src="/images/guide-maman-bebe.jpg"
-                alt="Maman tenant son nouveau-né dans ses bras, moment de tendresse post-partum"
-                width={1200}
-                height={800}
-                className="h-auto w-full object-cover"
-                loading="lazy"
-                decoding="async"
-              />
+              <picture>
+                <source srcSet="/images/webp/guide-maman-bebe.webp" type="image/webp" />
+                <img
+                  src="/images/guide-maman-bebe.jpg"
+                  alt="Maman tenant son nouveau-né dans ses bras, moment de tendresse post-partum"
+                  width={1200}
+                  height={800}
+                  className="h-auto w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
           </Reveal>
 
@@ -352,7 +356,7 @@ export default function Landing() {
               }}
             >
               <img
-                src="/images/maria-founder.jpg"
+                src="/images/webp/maria-founder.webp"
                 alt="Maria Garcia, fondatrice de ForceMaman, ancienne sage-femme"
                 width={448}
                 height={448}
@@ -564,12 +568,11 @@ export default function Landing() {
                   }}
                 >
                   <div className="relative size-24 shrink-0 overflow-hidden rounded-2xl bg-muted">
-                    <img
-                      src={card.image}
+                    <OptimizedImage
+                      image={card.image}
                       alt={card.title}
-                      width={96}
-                      height={96}
                       loading="lazy"
+                      sizes="96px"
                       className="h-full w-full object-cover"
                     />
                   </div>

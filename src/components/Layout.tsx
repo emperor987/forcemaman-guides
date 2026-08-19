@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import AmbientBackground from "@/components/AmbientBackground";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -12,15 +11,12 @@ export default function Layout({ children }: LayoutProps) {
     <div className="relative flex min-h-screen flex-col bg-background">
       <AmbientBackground />
       <Header />
-      <motion.main
+      <main
         id="main"
-        className="flex-1 pb-24"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
+        className="flex-1 pb-24 animate-fade-in"
       >
         {children}
-      </motion.main>
+      </main>
       <Footer />
     </div>
   );

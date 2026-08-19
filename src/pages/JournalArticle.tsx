@@ -2,7 +2,8 @@ import { Link, useParams } from "react-router";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
-import { journalArticles } from "@/lib/journal";
+import OptimizedImage from "@/components/OptimizedImage";
+import { journalArticles, articleSrc } from "@/lib/journal";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export default function JournalArticle() {
@@ -44,7 +45,7 @@ export default function JournalArticle() {
     description: article.excerpt,
     datePublished: article.date,
     inLanguage: "fr-FR",
-    image: `https://forcemaman.fr${article.image}`,
+    image: `https://forcemaman.fr${articleSrc(article)}`,
     mainEntityOfPage: `https://forcemaman.fr/journal/${article.id}`,
     author: {
       "@type": "Person",
@@ -64,7 +65,7 @@ export default function JournalArticle() {
         title={`${article.title} · Le Journal ForceMaman`}
         description={article.excerpt}
         path={`/journal/${article.id}`}
-        image={`https://forcemaman.fr${article.image}`}
+        image={`https://forcemaman.fr${articleSrc(article)}`}
         jsonLd={jsonLd}
       />
       <article className="mx-auto max-w-3xl px-6 pb-24 pt-16 lg:pt-24">
@@ -86,14 +87,12 @@ export default function JournalArticle() {
 
         <Reveal delay={80}>
           <div className="mt-10 overflow-hidden rounded-3xl border border-border/60 bg-muted">
-            <img
-              src={article.image}
+            <OptimizedImage
+              image={article.image}
               alt={article.title}
-              width={1200}
-              height={800}
-              className="h-auto w-full object-cover"
               loading="eager"
-              decoding="async"
+              fetchPriority="high"
+              className="h-auto w-full object-cover"
             />
           </div>
         </Reveal>

@@ -3,7 +3,7 @@ import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
 import { ebooks, bundle } from "@/lib/ebooks";
-import { images } from "@/lib/assets";
+import { images, src } from "@/lib/assets";
 import AccentDots from "@/components/AccentDots";
 import { ArrowRight, HeartHandshake, ShieldCheck, Sparkles } from "lucide-react";
 
@@ -80,7 +80,7 @@ export default function APpropos() {
             <div className="flex flex-col items-center">
               <div className="relative h-52 w-52 overflow-hidden rounded-full shadow-[0_20px_40px_-20px_rgba(35,33,32,0.4)] sm:h-60 sm:w-60">
                 <img
-                  src={images.founder}
+                  src={src(images.founder)}
                   alt="Maria Garcia, fondatrice de ForceMaman, ancienne sage-femme"
                   width={480}
                   height={480}

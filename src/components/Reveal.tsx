@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface RevealProps {
@@ -12,12 +12,10 @@ interface RevealProps {
   duration?: number;
 }
 
-export const EASE = [0.22, 1, 0.36, 1] as const;
-
 /**
- * Scroll-reveal wrapper powered by framer-motion.
- * Animates transform/opacity only (GPU friendly), triggers once per element,
- * and is fully disabled when the user prefers reduced motion.
+ * Scroll-reveal wrapper using IntersectionObserver + CSS transitions.
+ * Zero framer-motion overhead. Animates transform/opacity only (GPU).
+ * Respects prefers-reduced-motion automatically.
  */
 export default function Reveal({
   children,
@@ -26,21 +24,48 @@ export default function Reveal({
   y = 24,
   duration = 0.55,
 }: RevealProps) {
-  const reduce = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const reduce =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduce) {
+      setVisible(true);
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+    );
+
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   return (
-    <motion.div
-      className={className}
-      initial={reduce ? false : { opacity: 0, y }}
-      whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15, margin: "0px 0px -40px 0px" }}
-      transition={{
-        duration: reduce ? 0 : duration,
-        ease: EASE,
-        delay: reduce ? 0 : delay,
+    <div
+      ref={ref}
+      className={cn(className)}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "none" : `translateY(${y}px)`,
+        transition: `opacity ${duration}s cubic-bezier(0.22,1,0.36,1) ${delay}ms, transform ${duration}s cubic-bezier(0.22,1,0.36,1) ${delay}ms`,
+        willChange: visible ? "auto" : "transform, opacity",
       }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

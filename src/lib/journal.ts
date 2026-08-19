@@ -1,4 +1,4 @@
-import { images } from "@/lib/assets";
+import { images, src, type ImageSrc } from "@/lib/assets";
 
 export interface JournalArticle {
   id: string;
@@ -7,7 +7,7 @@ export interface JournalArticle {
   date: string;
   readTime: string;
   excerpt: string;
-  image: string;
+  image: ImageSrc;
   body: string[];
   featured?: boolean;
 }
@@ -137,3 +137,8 @@ export const journalArticles: JournalArticle[] = [
     ],
   },
 ];
+
+/** Helper: returns the WebP src for simple <img> usage */
+export function articleSrc(article: JournalArticle): string {
+  return src(article.image);
+}

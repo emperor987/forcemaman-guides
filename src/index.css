@@ -55,7 +55,7 @@
   --color-brand-sage: var(--sage);
   --color-brand-mauve: var(--mauve);
 
-  /* Fonts */
+  /* Fonts — web fonts swap to system instantly (font-display:swap in Google Fonts URL) */
   --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
   --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
@@ -286,12 +286,24 @@
 
 .animate-float {
   animation: float 6s var(--ease) infinite;
-  will-change: transform;
 }
 
 .animate-float-slow {
   animation: float 9s var(--ease) infinite;
-  will-change: transform;
+}
+
+/* Mobile: disable non-essential animations for performance */
+@media (max-width: 640px) {
+  .animate-float,
+  .animate-float-slow {
+    animation: none;
+  }
+  .marquee-track {
+    animation-duration: 18s;
+  }
+  .btn-shine::after {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -307,5 +319,8 @@
   }
   html {
     scroll-behavior: auto;
+  }
+  .marquee-track {
+    animation: none;
   }
 }
