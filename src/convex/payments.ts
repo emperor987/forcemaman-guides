@@ -37,7 +37,7 @@ export const PRODUCTS: Record<
 };
 
 const STRIPE_API = "https://api.stripe.com/v1";
-const SITE_URL = process.env.SITE_URL || "https://forcemaman.fr";
+const SITE_URL_FALLBACK = process.env.SITE_URL || "";
 
 /* ── Rate limiting en mémoire ───────────────────────────────────────── */
 
@@ -170,6 +170,7 @@ export const createCheckoutSession = action({
     mode: v.optional(
       v.union(v.literal("hosted"), v.literal("embedded")),
     ),
+    siteUrl: v.optional(v.string()),
   },
   handler: async (_ctx, args) => {
     // Rate limiting : max 5 sessions / produit / minute
@@ -180,6 +181,12 @@ export const createCheckoutSession = action({
     }
     const priceId = await resolvePriceId(args.productId);
     const mode = args.mode ?? "hosted";
+    const baseUrl = args.siteUrl || SITE_URL_FALLBACK;
+    if (!baseUrl) {
+      throw new Error(
+        "SITE_URL manquante. Ajoute-la dans l'onglet Keys du projet Convex, ou passe l'URL depuis le navigateur.",
+      );
+    }
 
     if (mode === "embedded") {
       const session = (await stripeFetch("/checkout/sessions", {
@@ -191,7 +198,7 @@ export const createCheckoutSession = action({
           "line_items[0][price]": priceId,
           "line_items[0][quantity]": 1,
           "managed_payments[enabled]": "false",
-          return_url: `${SITE_URL}/commande/reussie?session_id={CHECKOUT_SESSION_ID}`,
+          return_url: `${baseUrl}/commande/reussie?session_id={CHECKOUT_SESSION_ID}`,
           "metadata[productId]": args.productId,
         }),
         headers: {
@@ -217,8 +224,8 @@ export const createCheckoutSession = action({
         "line_items[0][price]": priceId,
         "line_items[0][quantity]": 1,
         "managed_payments[enabled]": "false",
-        success_url: `${SITE_URL}/commande/reussie?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${SITE_URL}/guides/${args.productId}`,
+        success_url: `${baseUrl}/commande/reussie?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${baseUrl}/guides/${args.productId}`,
         "metadata[productId]": args.productId,
       }),
       headers: {

@@ -9,8 +9,9 @@ interface SeoProps {
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const SITE_URL = "https://forcemaman.fr";
-const DEFAULT_IMAGE = `${SITE_URL}/og-image.png`;
+const getSiteUrl = () =>
+  typeof window !== "undefined" ? window.location.origin : "https://forcemaman.fr";
+const DEFAULT_IMAGE = "/og-image.png";
 
 function upsertMeta(attr: "name" | "property", key: string, content: string) {
   let el = document.head.querySelector<HTMLMetaElement>(
@@ -60,7 +61,7 @@ export default function Seo({
   image = DEFAULT_IMAGE,
   jsonLd,
 }: SeoProps) {
-  const url = `${SITE_URL}${path}`;
+  const url = `${getSiteUrl()}${path}`;
   const jsonLdKey = jsonLd ? JSON.stringify(jsonLd) : "";
 
   useEffect(() => {

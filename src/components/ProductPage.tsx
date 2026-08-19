@@ -71,29 +71,30 @@ export default function ProductPage({
     price.replace("€", "").replace(",", ".").trim(),
   );
   const productId = path.split("/").pop() ?? "";
+  const siteOrigin = window.location.origin;
   const jsonLd = [
     {
       "@context": "https://schema.org",
       "@type": "Product",
       name: title,
       description: seoDescription,
-      image: `https://forcemaman.fr${cover}`,
+      image: `${siteOrigin}${cover}`,
       brand: { "@type": "Brand", name: "ForceMaman" },
       offers: {
         "@type": "Offer",
         price: Number.isFinite(priceNumber) ? priceNumber : undefined,
         priceCurrency: "EUR",
         availability: "https://schema.org/InStock",
-        url: `https://forcemaman.fr${path}`,
+        url: `${siteOrigin}${path}`,
       },
     },
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Accueil", item: "https://forcemaman.fr/" },
-        { "@type": "ListItem", position: 2, name: "Nos Guides", item: "https://forcemaman.fr/guides" },
-        { "@type": "ListItem", position: 3, name: title, item: `https://forcemaman.fr${path}` },
+        { "@type": "ListItem", position: 1, name: "Accueil", item: `${siteOrigin}/` },
+        { "@type": "ListItem", position: 2, name: "Nos Guides", item: `${siteOrigin}/guides` },
+        { "@type": "ListItem", position: 3, name: title, item: `${siteOrigin}${path}` },
       ],
     },
   ];
@@ -104,8 +105,10 @@ export default function ProductPage({
   const handleCheckout = () => {
     if (checkingOut) return;
     setCheckingOut(true);
-    // Redirige vers le checkout hébergé Stripe (le plus rapide, sans page custom)
-    createCheckout({ productId, mode: "hosted" })
+    // On envoie l'origine courante du navigateur pour que le redirect Stripe
+    // fonctionne quelle que soit l'URL de déploiement (Freebuff, domaine perso, etc.)
+    const siteUrl = window.location.origin;
+    createCheckout({ productId, mode: "hosted", siteUrl })
       .then((res) => {
         if (res.url) window.location.href = res.url;
       })
@@ -145,7 +148,7 @@ export default function ProductPage({
         title={seoTitle}
         description={seoDescription}
         path={path}
-        image={`https://forcemaman.fr${cover}`}
+        image={`${siteOrigin}${cover}`}
         jsonLd={jsonLd}
       />
       {/* ============ HERO ============ */}
