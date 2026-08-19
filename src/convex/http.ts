@@ -2,10 +2,12 @@
  * Convex HTTP Router.
  * - Auth routes
  * - Unsubscribe endpoint (RGPD)
+ * - Direct PDF download endpoint via action
  */
 
 import { httpRouter } from "convex/server";
 import { httpAction } from "./_generated/server";
+import { api } from "./_generated/api";
 import { auth } from "./auth";
 
 const http = httpRouter();
@@ -13,12 +15,72 @@ const http = httpRouter();
 auth.addHttpRoutes(http);
 
 /**
- * Endpoint de désabonnement newsletter (RGPD).
- * GET /api/unsubscribe?email=user@example.com
- *
- * Appelé depuis le lien "Se désinscrire" dans les emails.
- * Redirige vers une page de confirmation.
+ * GET /api/download/:token
+ * Sert le(s) PDF(s) directement en tant que téléchargement.
+ * Vérifie le jeton HMAC via l'action getEbookData, puis renvoie le PDF
+ * avec les headers de téléchargement appropriés.
  */
+http.route({
+  path: "/api/download/:token",
+  method: "GET",
+  handler: httpAction(async (ctx, request) => {
+    const url = new URL(request.url);
+    // Extraire le token depuis le chemin
+    const pathParts = url.pathname.split("/");
+    const token = pathParts[pathParts.length - 1]?.split("?")[0] ?? "";
+    const requestedFile = url.searchParams.get("file") ?? undefined;
+
+    if (!token) {
+      return new Response("Token manquant.", { status: 400 });
+    }
+
+    try {
+      // Utilise l'action existante qui vérifie le HMAC et lit les PDFs
+      const result = await ctx.runAction(api.downloads.getEbookData, { token });
+
+      if (!result.files || result.files.length === 0) {
+        return new Response("Aucun fichier disponible.", { status: 404 });
+      }
+
+      // Si un fichier spécifique est demandé (pour le bundle)
+      const targetFile = requestedFile
+        ? result.files.find((f) => f.name === requestedFile)
+        : result.files[0];
+
+      if (!targetFile) {
+        return new Response("Fichier non trouvé.", { status: 404 });
+      }
+
+      // Décoder le base64 en buffer
+      const binaryString = atob(targetFile.data);
+      const bytes = new Uint8Array(binaryString.length);
+      for (let i = 0; i < binaryString.length; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+      }
+
+      return new Response(bytes, {
+        status: 200,
+        headers: {
+          "Content-Type": "application/pdf",
+          "Content-Disposition": `attachment; filename="${targetFile.name}"`,
+          "Content-Length": String(bytes.length),
+          "Cache-Control": "no-store, no-cache, must-revalidate",
+          "X-Content-Type-Options": "nosniff",
+        },
+      });
+    } catch (err) {
+      console.error("Download error:", err);
+      const message =
+        err instanceof Error ? err.message : "Erreur inconnue";
+      return new Response(
+        `Téléchargement impossible : ${message}`,
+        { status: 403, headers: { "Content-Type": "text/plain; charset=utf-8" } },
+      );
+    }
+  }),
+});
+
+/** Endpoint de désabonnement newsletter (RGPD). */
 http.route({
   path: "/api/unsubscribe",
   method: "GET",

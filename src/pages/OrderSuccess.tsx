@@ -53,7 +53,6 @@ export default function OrderSuccess() {
   const sessionId = params.get("session_id") ?? "";
   const verifySession = useAction(api.payments.verifySession);
   const createToken = useAction(api.downloads.createDownloadToken);
-  const getEbookData = useAction(api.downloads.getEbookData);
   const [status, setStatus] = useState<Status>({ state: "loading" });
   const [downloading, setDownloading] = useState<string | null>(null);
 
@@ -105,25 +104,15 @@ export default function OrderSuccess() {
       if (status.state !== "paid" || downloading) return;
       setDownloading(fileName);
       try {
-        const data = await getEbookData({ token: status.token });
-        const file = data.files.find((f) => f.name === fileName);
-        if (!file) throw new Error("Fichier non trouvé");
-
-        // Decode base64 et déclencher le téléchargement
-        const binaryString = atob(file.data);
-        const bytes = new Uint8Array(binaryString.length);
-        for (let i = 0; i < binaryString.length; i++) {
-          bytes[i] = binaryString.charCodeAt(i);
-        }
-        const blob = new Blob([bytes], { type: "application/pdf" });
-        const url = URL.createObjectURL(blob);
+        // Téléchargement direct via endpoint HTTP Convex
+        const downloadUrl = `${window.location.origin}/api/download/${status.token}?file=${encodeURIComponent(fileName)}`;
         const a = document.createElement("a");
-        a.href = url;
-        a.download = file.name;
+        a.href = downloadUrl;
+        a.download = fileName;
+        a.style.display = "none";
         document.body.appendChild(a);
         a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
+        setTimeout(() => document.body.removeChild(a), 200);
       } catch (err) {
         console.error("Download error:", err);
         alert(
@@ -131,10 +120,10 @@ export default function OrderSuccess() {
             SUPPORT_EMAIL,
         );
       } finally {
-        setDownloading(null);
+        setTimeout(() => setDownloading(null), 2000);
       }
     },
-    [status, getEbookData, downloading],
+    [status, downloading],
   );
 
   const meta =
