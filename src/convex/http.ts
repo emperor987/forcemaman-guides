@@ -2,7 +2,7 @@
  * Convex HTTP Router.
  * - Auth routes
  * - Unsubscribe endpoint (RGPD)
- * - Direct PDF download endpoint via action
+ * - Direct PDF download endpoint via token verification + redirect
  */
 
 import { httpRouter } from "convex/server";
@@ -15,19 +15,15 @@ const http = httpRouter();
 auth.addHttpRoutes(http);
 
 /**
- * GET /api/download/:token
- * Sert le(s) PDF(s) directement en tant que téléchargement.
- * Vérifie le jeton HMAC via l'action getEbookData, puis renvoie le PDF
- * avec les headers de téléchargement appropriés.
+ * GET /api/download?token=xxx&file=xxx.pdf
+ * Vérifie le jeton HMAC puis redirige vers le PDF public.
  */
 http.route({
-  path: "/api/download/:token",
+  path: "/api/download",
   method: "GET",
   handler: httpAction(async (ctx, request) => {
     const url = new URL(request.url);
-    // Extraire le token depuis le chemin
-    const pathParts = url.pathname.split("/");
-    const token = pathParts[pathParts.length - 1]?.split("?")[0] ?? "";
+    const token = url.searchParams.get("token") ?? "";
     const requestedFile = url.searchParams.get("file") ?? undefined;
 
     if (!token) {
@@ -35,8 +31,7 @@ http.route({
     }
 
     try {
-      // Utilise l'action existante qui vérifie le HMAC et lit les PDFs
-      const result = await ctx.runAction(api.downloads.getEbookData, { token });
+      const result = await ctx.runAction(api.downloads.getDownloadInfo, { token });
 
       if (!result.files || result.files.length === 0) {
         return new Response("Aucun fichier disponible.", { status: 404 });
@@ -51,27 +46,16 @@ http.route({
         return new Response("Fichier non trouvé.", { status: 404 });
       }
 
-      // Décoder le base64 en buffer
-      const binaryString = atob(targetFile.data);
-      const bytes = new Uint8Array(binaryString.length);
-      for (let i = 0; i < binaryString.length; i++) {
-        bytes[i] = binaryString.charCodeAt(i);
-      }
-
-      return new Response(bytes, {
-        status: 200,
+      // Redirige vers le PDF public (noms aléatoires non devinables)
+      return new Response(null, {
+        status: 302,
         headers: {
-          "Content-Type": "application/pdf",
-          "Content-Disposition": `attachment; filename="${targetFile.name}"`,
-          "Content-Length": String(bytes.length),
+          Location: targetFile.url,
           "Cache-Control": "no-store, no-cache, must-revalidate",
-          "X-Content-Type-Options": "nosniff",
         },
       });
     } catch (err) {
-      console.error("Download error:", err);
-      const message =
-        err instanceof Error ? err.message : "Erreur inconnue";
+      const message = err instanceof Error ? err.message : "Erreur inconnue";
       return new Response(
         `Téléchargement impossible : ${message}`,
         { status: 403, headers: { "Content-Type": "text/plain; charset=utf-8" } },

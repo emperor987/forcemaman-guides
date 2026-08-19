@@ -1,6 +1,8 @@
 /**
  * Actions Convex pour les jetons de téléchargement sécurisés.
- * Tout le code crypto est ici (fichier "use node").
+ * 
+ * Les PDFs sont dans public/ebooks/ (noms aléatoires non devinables).
+ * Le flow : token HMAC vérifié → redirect vers le PDF public.
  */
 
 "use node";
@@ -8,18 +10,26 @@
 import { action } from "./_generated/server";
 import { v } from "convex/values";
 import { createHmac, timingSafeEqual } from "crypto";
-import { readFileSync, existsSync } from "fs";
-import { join } from "path";
 
-const STRIPE_API = "https://api.stripe.com/v1";
 const TOKEN_EXPIRY_MS = 30 * 60 * 1000; // 30 minutes
 const SITE_URL = process.env.SITE_URL || "https://forcemaman.store";
 
-const PRODUCT_FILES: Record<string, string[]> = {
-  "liste-naissance": ["liste-naissance.pdf"],
-  "corps-apres": ["corps-apres.pdf"],
-  "charge-mentale": ["charge-mentale.pdf"],
-  bundle: ["liste-naissance.pdf", "corps-apres.pdf", "charge-mentale.pdf"],
+// URLs publiques des PDFs (noms aléatoires dans public/ebooks/)
+const PRODUCT_FILES: Record<string, { name: string; file: string }[]> = {
+  "liste-naissance": [
+    { name: "Ma_Liste_Naissance_Complete.pdf", file: "fm-ln-7f3a.pdf" },
+  ],
+  "corps-apres": [
+    { name: "Mon_Corps_Apres_Accouchement.pdf", file: "fm-ca-9b2d.pdf" },
+  ],
+  "charge-mentale": [
+    { name: "Charge_Mentale_40_Premiers_Jours.pdf", file: "fm-cm-4e8c.pdf" },
+  ],
+  bundle: [
+    { name: "Ma_Liste_Naissance_Complete.pdf", file: "fm-ln-7f3a.pdf" },
+    { name: "Mon_Corps_Apres_Accouchement.pdf", file: "fm-ca-9b2d.pdf" },
+    { name: "Charge_Mentale_40_Premiers_Jours.pdf", file: "fm-cm-4e8c.pdf" },
+  ],
 };
 
 function hmacSecret(): string {
@@ -32,22 +42,6 @@ function hmacSecret(): string {
   return secret;
 }
 
-function stripeSecret(): string {
-  const key = process.env.STRIPE_SECRET_KEY;
-  if (!key) throw new Error("STRIPE_SECRET_KEY manquante.");
-  return key;
-}
-
-async function stripeFetch(path: string) {
-  const res = await fetch(`${STRIPE_API}${path}`, {
-    headers: { Authorization: `Bearer ${stripeSecret()}` },
-  });
-  const body = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(`Stripe ${res.status} : ${JSON.stringify(body)}`);
-  return body as Record<string, any>;
-}
-
-/** Génère un jeton HMAC signé. */
 function signToken(productId: string, expiresAt: number): string {
   const secret = hmacSecret();
   const payload = `${productId}|${expiresAt}`;
@@ -56,7 +50,6 @@ function signToken(productId: string, expiresAt: number): string {
   return `${encoded}.${hmac}`;
 }
 
-/** Vérifie un jeton HMAC (timing-safe). */
 function verifyHmac(token: string): { productId: string; expiresAt: number } | null {
   try {
     const [encoded, providedHmac] = token.split(".");
@@ -96,17 +89,16 @@ export const createDownloadToken = action({
       throw new Error(`Produit inconnu : ${args.productId}`);
     }
 
-    const session = (await stripeFetch(
-      `/checkout/sessions/${args.sessionId}`,
-    )) as unknown as {
-      payment_status: string;
-      metadata?: Record<string, string>;
-    };
+    const STRIPE_API = "https://api.stripe.com/v1";
+    const res = await fetch(`${STRIPE_API}/checkout/sessions/${args.sessionId}`, {
+      headers: { Authorization: `Bearer ${process.env.STRIPE_SECRET_KEY}` },
+    });
+    const session = await res.json();
+    if (!res.ok) throw new Error(`Stripe error: ${JSON.stringify(session)}`);
 
     if (session.payment_status !== "paid") {
       throw new Error("Paiement non confirmé.");
     }
-
     if (session.metadata?.productId !== args.productId) {
       throw new Error("Le produit ne correspond pas à la session de paiement.");
     }
@@ -117,15 +109,15 @@ export const createDownloadToken = action({
     return {
       token,
       expiresAt,
-      downloadUrl: `${SITE_URL}/api/download/${token}`,
+      downloadUrl: `${SITE_URL}/api/download?token=${encodeURIComponent(token)}`,
     };
   },
 });
 
 /**
- * Lit les ebook PDFs et les renvoie en base64 pour téléchargement.
+ * Vérifie un token et renvoie les infos de téléchargement.
  */
-export const getEbookData = action({
+export const getDownloadInfo = action({
   args: { token: v.string() },
   handler: async (_ctx, args) => {
     const result = verifyHmac(args.token);
@@ -138,18 +130,12 @@ export const getEbookData = action({
       throw new Error("Aucun fichier pour ce produit.");
     }
 
-    const baseDir = join(process.cwd(), "private", "ebooks");
-    const results: { name: string; data: string }[] = [];
-
-    for (const fileName of files) {
-      const filePath = join(baseDir, fileName);
-      if (!existsSync(filePath)) {
-        throw new Error(`Fichier non trouvé : ${fileName}`);
-      }
-      const buffer = readFileSync(filePath);
-      results.push({ name: fileName, data: buffer.toString("base64") });
-    }
-
-    return { files: results, expiresAt: result.expiresAt };
+    return {
+      files: files.map((f) => ({
+        name: f.name,
+        url: `${SITE_URL}/ebooks/${f.file}`,
+      })),
+      expiresAt: result.expiresAt,
+    };
   },
 });

@@ -105,7 +105,7 @@ export default function OrderSuccess() {
       setDownloading(fileName);
       try {
         // Téléchargement direct via endpoint HTTP Convex
-        const downloadUrl = `${window.location.origin}/api/download/${status.token}?file=${encodeURIComponent(fileName)}`;
+        const downloadUrl = `${window.location.origin}/api/download?token=${encodeURIComponent(status.token)}&file=${encodeURIComponent(fileName)}`;
         const a = document.createElement("a");
         a.href = downloadUrl;
         a.download = fileName;
