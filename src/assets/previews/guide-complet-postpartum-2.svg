@@ -1,0 +1,19 @@
+<svg width="1000" height="1290" viewBox="0 0 1000 1290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="La récupération physique">
+  <rect width="1000" height="1290" fill="#FAF6F1"/>
+  <rect x="80" y="104" width="840" height="1090" rx="12" fill="rgba(92,74,58,0.14)"/>
+  <rect x="60" y="70" width="840" height="1090" rx="12" fill="#FFFFFF"/>
+  <rect x="60" y="70" width="840" height="14" rx="7" fill="#8A9A7E"/>
+  <text x="480" y="240" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="30" letter-spacing="12" fill="#8A9A7E">FORCEMAMAN</text>
+  <text x="480" y="390" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="58" fill="#5C4A3A">La récupération</text>
+  <text x="480" y="470" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="42" font-style="italic" fill="#8A9A7E">physique jour par jour</text>
+  <line x1="380" y1="520" x2="580" y2="520" stroke="rgba(92,74,58,0.35)" stroke-width="1.5"/>
+  <circle cx="215" cy="592" r="8" fill="#8A9A7E"/>
+  <rect x="250" y="584" width="540" height="16" rx="8" fill="#E8DFD4"/>
+  <circle cx="215" cy="656" r="8" fill="#8A9A7E"/>
+  <rect x="250" y="648" width="500" height="16" rx="8" fill="#E8DFD4"/>
+  <circle cx="215" cy="720" r="8" fill="#8A9A7E"/>
+  <rect x="250" y="712" width="560" height="16" rx="8" fill="#E8DFD4"/>
+  <circle cx="215" cy="784" r="8" fill="#8A9A7E"/>
+  <rect x="250" y="776" width="480" height="16" rx="8" fill="#E8DFD4"/>
+  <text x="480" y="1060" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="26" fill="rgba(92,74,58,0.45)">2</text>
+</svg>

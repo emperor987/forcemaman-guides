@@ -156,7 +156,7 @@ export const libraryCategories = [
   {
     id: "tout-en-un",
     title: "Le Pack Complet",
-    description: "Les 3 guides réunis pour un accompagnement global du post-partum.",
+    description: "Les 6 guides réunis pour un accompagnement global du post-partum.",
     dot: "bg-brand-mauve",
   },
 ];

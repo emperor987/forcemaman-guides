@@ -1,5 +1,3 @@
-import { useMemo, useState } from "react";
-import { Link } from "react-router";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
@@ -8,12 +6,19 @@ import coverListe from "@/assets/covers/liste-naissance.svg";
 import coverCorps from "@/assets/covers/corps-apres.svg";
 import coverCharge from "@/assets/covers/charge-mentale.svg";
 import coverBundle from "@/assets/covers/bundle.svg";
-import { ArrowRight, Search } from "lucide-react";
+import coverRecettes from "@/assets/covers/recettes-postpartum.svg";
+import coverGuideComplet from "@/assets/covers/guide-complet-postpartum.svg";
+import coverSoinBebe from "@/assets/covers/soin-bebe.svg";
+import { Link } from "react-router";
+import { ArrowRight } from "lucide-react";
 
 const COVER_MAP: Record<string, string> = {
   "liste-naissance": coverListe,
   "corps-apres": coverCorps,
   "charge-mentale": coverCharge,
+  "recettes-postpartum": coverRecettes,
+  "guide-complet-postpartum": coverGuideComplet,
+  "soin-bebe": coverSoinBebe,
   bundle: coverBundle,
 };
 
@@ -207,22 +212,9 @@ const jsonLd = [
 ];
 
 export default function Guides() {
-  const [query, setQuery] = useState("");
-  const q = query.trim().toLowerCase();
-
-  const visible = useMemo(
-    () =>
-      libraryItems.filter(
-        (item) =>
-          !q ||
-          [item.title, item.benefit, item.badgeLabel].join(" ").toLowerCase().includes(q),
-      ),
-    [q],
-  );
-
-  const popular = visible.filter((item) => item.featured);
-  const guides = visible.filter((item) => item.id !== "bundle");
-  const freebies = visible.filter((item) => item.id === "bundle");
+  const popular = libraryItems.filter((item) => item.featured);
+  const guides = libraryItems.filter((item) => item.id !== "bundle");
+  const freebies = libraryItems.filter((item) => item.id === "bundle");
 
   return (
     <Layout>
@@ -244,7 +236,7 @@ export default function Guides() {
               <span className="italic">après l'arrivée de bébé.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-[0.95rem] leading-relaxed text-foreground/65 sm:text-base">
-              Trois ebooks PDF et un pack complet, écrits par une sage-femme, à
+              Six ebooks PDF et un pack complet, écrits par une sage-femme, à
               télécharger immédiatement après le paiement.
             </p>
             <ul className="mx-auto mt-8 flex max-w-md flex-col gap-1.5 text-sm text-foreground/70">
@@ -258,26 +250,6 @@ export default function Guides() {
             </p>
           </section>
         </Reveal>
-
-        {/* ============ RECHERCHE ============ */}
-        <div id="ressources" className="mt-20 sm:mt-28 scroll-mt-24">
-          <div className="mx-auto max-w-xl">
-            <label htmlFor="search" className="sr-only">
-              Rechercher une ressource
-            </label>
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-              <input
-                id="search"
-                type="search"
-                placeholder="Rechercher : liste naissance, corps, charge mentale…"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                className="h-14 w-full rounded-full border border-border/70 bg-background pl-12 pr-5 text-sm text-foreground placeholder:text-foreground/40 focus:border-foreground/40 focus:outline-none"
-              />
-            </div>
-          </div>
-        </div>
 
         {/* ============ LES PLUS POPULAIRES ============ */}
         <section className="cv-auto mt-20">
@@ -337,8 +309,7 @@ export default function Guides() {
                 Le pack & le guide gratuit
               </h2>
               <p className="mt-3 text-sm text-foreground/60">
-                Tout en un avec 23% de réduction, ou commence gratuitement par
-                Les 7 Systèmes ForceMaman.
+                Tout en un avec 30% de réduction. Six guides pour le prix de quatre.
               </p>
             </header>
           </Reveal>

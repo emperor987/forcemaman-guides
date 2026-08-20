@@ -11,6 +11,9 @@ import coverListe from "@/assets/covers/liste-naissance.svg";
 import coverCorps from "@/assets/covers/corps-apres.svg";
 import coverCharge from "@/assets/covers/charge-mentale.svg";
 import coverBundle from "@/assets/covers/bundle.svg";
+import coverRecettes from "@/assets/covers/recettes-postpartum.svg";
+import coverGuideComplet from "@/assets/covers/guide-complet-postpartum.svg";
+import coverSoinBebe from "@/assets/covers/soin-bebe.svg";
 import { ArrowRight, Check, Quote, BookOpen } from "lucide-react";
 import AccentDots from "@/components/AccentDots";
 import CountUp from "@/components/CountUp";
@@ -80,9 +83,9 @@ const guideCards = [
   { ...ebooks[0], cover: coverListe },
   { ...ebooks[1], cover: coverCorps },
   { ...ebooks[2], cover: coverCharge },
-  { ...ebooks[3], cover: coverListe },
-  { ...ebooks[4], cover: coverCorps },
-  { ...ebooks[5], cover: coverCharge },
+  { ...ebooks[3], cover: coverRecettes },
+  { ...ebooks[4], cover: coverGuideComplet },
+  { ...ebooks[5], cover: coverSoinBebe },
 ];
 
 const jsonLd = [

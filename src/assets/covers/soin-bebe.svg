@@ -1,0 +1,14 @@
+<svg width="900" height="1200" viewBox="0 0 900 1200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Couverture de Soin Bébé après l'Accouchement">
+  <rect width="900" height="1200" fill="#A78BA3"/>
+  <circle cx="450" cy="1050" r="220" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+  <circle cx="450" cy="1050" r="150" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+  <circle cx="450" cy="150" r="180" fill="rgba(255,255,255,0.06)"/>
+  <rect x="56" y="56" width="788" height="1088" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="2"/>
+  <rect x="72" y="72" width="756" height="1056" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <text x="450" y="330" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="30" letter-spacing="12" fill="rgba(255,255,255,0.85)">FORCEMAMAN</text>
+  <text x="450" y="520" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="64" fill="#FFFFFF">Soin Bébé</text>
+  <text x="450" y="615" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="56" font-style="italic" fill="#FFFFFF">après l'Accouchement</text>
+  <line x1="330" y1="680" x2="570" y2="680" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+  <text x="450" y="750" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="32" fill="rgba(255,255,255,0.85)">Les gestes essentiels du quotidien</text>
+  <text x="450" y="1065" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="28" font-style="italic" fill="rgba(255,255,255,0.75)">Maria Garcia · Sage-femme</text>
+</svg>

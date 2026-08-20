@@ -1,0 +1,13 @@
+<svg width="1000" height="1290" viewBox="0 0 1000 1290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Page de garde">
+  <rect width="1000" height="1290" fill="#FAF6F1"/>
+  <rect x="80" y="104" width="840" height="1090" rx="12" fill="rgba(92,74,58,0.14)"/>
+  <rect x="60" y="70" width="840" height="1090" rx="12" fill="#FFFFFF"/>
+  <rect x="60" y="70" width="840" height="14" rx="7" fill="#A78BA3"/>
+  <text x="480" y="250" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="30" letter-spacing="12" fill="#A78BA3">FORCEMAMAN</text>
+  <text x="480" y="400" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="64" fill="#5C4A3A">Soin Bébé</text>
+  <text x="480" y="490" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="52" font-style="italic" fill="#A78BA3">après l'Accouchement</text>
+  <line x1="360" y1="545" x2="600" y2="545" stroke="rgba(92,74,58,0.35)" stroke-width="1.5"/>
+  <text x="480" y="625" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="34" fill="rgba(92,74,58,0.7)">Les gestes essentiels,</text>
+  <text x="480" y="675" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="34" fill="rgba(92,74,58,0.7)">en toute sérénité</text>
+  <text x="480" y="1060" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="26" fill="rgba(92,74,58,0.45)">1</text>
+</svg>

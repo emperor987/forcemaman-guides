@@ -1,14 +1,14 @@
 import ProductPage from "@/components/ProductPage";
-import cover from "@/assets/covers/liste-naissance.svg";
-import preview1 from "@/assets/previews/liste-naissance-1.svg";
-import preview2 from "@/assets/previews/liste-naissance-2.svg";
-import preview3 from "@/assets/previews/liste-naissance-3.svg";
+import cover from "@/assets/covers/recettes-postpartum.svg";
+import preview1 from "@/assets/previews/recettes-postpartum-1.svg";
+import preview2 from "@/assets/previews/recettes-postpartum-2.svg";
+import preview3 from "@/assets/previews/recettes-postpartum-3.svg";
 
 export default function RecettesPostPartum() {
   return (
     <ProductPage
       title="Recettes Post-Partum"
-      subtitle="Des repas simples et nourrissants pour les premières semaines"
+      subtitle="Manger sainement, simplement, sans culpabilité"
       price="8,90€"
       accent="bg-brand-terracotta"
       accentText="text-brand-terracotta"
@@ -16,19 +16,20 @@ export default function RecettesPostPartum() {
       previewImages={[preview1, preview2, preview3]}
       path="/guides/recettes-postpartum"
       description={[
-        "Les premières semaines après l'accouchement sont intenses. Manger sainement devient un défi quand on manque de temps, d'énergie et d'idées. Ce guide te propose des recettes pensées pour les mamans en post-partum : simples, rapides et nourrissantes.",
-        "Chaque recette a été choisie pour ses bienfaits sur la récupération et l'allaitement. Tu trouveras des idées de repas pour chaque moment de la journée, avec une liste de courses prête à l'emploi et des conseils pour anticiper les repas les jours difficiles.",
-        "En tant que sage-femme, je sais que bien manger n'est pas un luxe, c'est un besoin. Ce guide est là pour t'aider à te nourrir simplement, sans culpabilité, même les jours où tu n'as pas la force de cuisiner.",
+        "Les premières semaines après l'accouchement, cuisiner devient un défi. Tu manques de temps, d'énergie, parfois d'idées. Et pourtant, bien manger reste essentiel pour ta récupération et, si tu allaites, pour ton lait. Ce guide a été pensé pour t'accompagner concrètement : des recettes rapides, des plats que tu peux préparer à l'avance, et une liste de courses qui t'évite de stresser au supermarché avec un bébé dans les bras.",
+        "Chaque recette a été choisie pour ses bienfaits sur la récupération post-partum : aliments riches en fer, en calcium, en oméga-3, en protéines. Pas de régime, pas d'injonction, juste des repas simples et nourrissants qui te font du bien. Tu trouveras des idées pour le petit-déjeuner, le déjeuner, le dîner, et surtout des collations rapides pour les creux entre les tétées.",
+        "En tant que sage-femme, je vois chaque jour des mamans qui n'ont pas le temps de manger correctement. Ce guide est là pour te rappeler que te nourrir, c'est aussi prendre soin de bébé. Et avec des recettes à 15 minutes maximum, même les jours les plus difficiles, tu peux te préparer un repas qui te remet sur pied.",
       ]}
       chapters={[
         "Pourquoi bien manger en post-partum compte",
-        "Les repas express pour les jours sans énergie",
+        "Les recettes express à 15 minutes",
         "Les smoothies et collations riches en nutriments",
-        "Les recettes à préparer à l'avance",
-        "Les plats pour l'allaitement",
+        "Les plats à préparer à l'avance et congeler",
+        "Les repas adaptés à l'allaitement",
         "Les recettes réconfortantes du soir",
         "La liste de courses de la semaine",
-        "Les conseils pour manger quand on a un nouveau-né",
+        "Manger quand on a un nouveau-né : les astuces",
+        "Les erreurs à éviter et les aliments à privilégier",
       ]}
       previewPages={[
         "Page de garde",
