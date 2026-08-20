@@ -33,7 +33,19 @@ export const PRODUCTS: Record<
     name: "Charge Mentale & 40 Premiers Jours",
     unitAmountCents: 1190,
   },
-  bundle: { name: "Pack Complet ForceMaman", unitAmountCents: 2290 },
+  "recettes-postpartum": {
+    name: "Recettes Post-Partum",
+    unitAmountCents: 890,
+  },
+  "guide-complet-postpartum": {
+    name: "Guide Complet Post-Partum",
+    unitAmountCents: 1290,
+  },
+  "soin-bebe": {
+    name: "Soin Bébé après l'Accouchement",
+    unitAmountCents: 990,
+  },
+  bundle: { name: "Pack Complet ForceMaman", unitAmountCents: 4290 },
 };
 
 const STRIPE_API = "https://api.stripe.com/v1";

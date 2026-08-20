@@ -1,8 +1,8 @@
 /**
  * Actions Convex pour les jetons de téléchargement sécurisés.
- * 
- * Les PDFs sont dans public/ebooks/ (noms aléatoires non devinables).
- * Le flow : token HMAC vérifié → redirect vers le PDF public.
+ *
+ * Les PDFs sont stockés dans Convex File Storage.
+ * Le flow : token HMAC vérifié → URL de storage signée → redirect.
  */
 
 "use node";
@@ -14,21 +14,33 @@ import { createHmac, timingSafeEqual } from "crypto";
 const TOKEN_EXPIRY_MS = 30 * 60 * 1000; // 30 minutes
 const SITE_URL = process.env.SITE_URL || "https://forcemaman.store";
 
-// URLs publiques des PDFs (noms aléatoires dans public/ebooks/)
-const PRODUCT_FILES: Record<string, { name: string; file: string }[]> = {
+// Convex File Storage IDs for each product's PDF
+const PRODUCT_FILES: Record<string, { name: string; storageId: string }[]> = {
   "liste-naissance": [
-    { name: "Ma_Liste_Naissance_Complete.pdf", file: "fm-ln-7f3a.pdf" },
+    { name: "Ma_Liste_Naissance_Complete.pdf", storageId: "kg22qb5p54mgtamss1dcf6mw258cv77v" },
   ],
   "corps-apres": [
-    { name: "Mon_Corps_Apres_Accouchement.pdf", file: "fm-ca-9b2d.pdf" },
+    { name: "Mon_Corps_Apres_Accouchement.pdf", storageId: "kg2fx1w1p8srng3tev3cyga1wh8cvqcf" },
   ],
   "charge-mentale": [
-    { name: "Charge_Mentale_40_Premiers_Jours.pdf", file: "fm-cm-4e8c.pdf" },
+    { name: "Charge_Mentale_40_Premiers_Jours.pdf", storageId: "kg25k0vh48q44en77c3xdhjzsh8cv1nt" },
+  ],
+  "recettes-postpartum": [
+    { name: "ForceMaman_Recettes_PostPartum.pdf", storageId: "kg286fq6zqfdwrakqjv95c1ern8cty2c" },
+  ],
+  "guide-complet-postpartum": [
+    { name: "ForceMaman_Guide_Complet_PostPartum.pdf", storageId: "kg28mnf2kpqb5ma0zry9fhktqx8ctq7j" },
+  ],
+  "soin-bebe": [
+    { name: "ForceMaman_Soin_Bebe_Apres_Accouchement.pdf", storageId: "kg27h9a6j3n90y5vpyffd2ygeh8ctxw4" },
   ],
   bundle: [
-    { name: "Ma_Liste_Naissance_Complete.pdf", file: "fm-ln-7f3a.pdf" },
-    { name: "Mon_Corps_Apres_Accouchement.pdf", file: "fm-ca-9b2d.pdf" },
-    { name: "Charge_Mentale_40_Premiers_Jours.pdf", file: "fm-cm-4e8c.pdf" },
+    { name: "Ma_Liste_Naissance_Complete.pdf", storageId: "kg22qb5p54mgtamss1dcf6mw258cv77v" },
+    { name: "Mon_Corps_Apres_Accouchement.pdf", storageId: "kg2fx1w1p8srng3tev3cyga1wh8cvqcf" },
+    { name: "Charge_Mentale_40_Premiers_Jours.pdf", storageId: "kg25k0vh48q44en77c3xdhjzsh8cv1nt" },
+    { name: "ForceMaman_Recettes_PostPartum.pdf", storageId: "kg286fq6zqfdwrakqjv95c1ern8cty2c" },
+    { name: "ForceMaman_Guide_Complet_PostPartum.pdf", storageId: "kg28mnf2kpqb5ma0zry9fhktqx8ctq7j" },
+    { name: "ForceMaman_Soin_Bebe_Apres_Accouchement.pdf", storageId: "kg27h9a6j3n90y5vpyffd2ygeh8ctxw4" },
   ],
 };
 
@@ -76,9 +88,6 @@ function verifyHmac(token: string): { productId: string; expiresAt: number } | n
   }
 }
 
-/**
- * Crée un jeton de téléchargement sécurisé après vérification du paiement.
- */
 export const createDownloadToken = action({
   args: {
     sessionId: v.string(),
@@ -116,10 +125,11 @@ export const createDownloadToken = action({
 
 /**
  * Vérifie un token et renvoie les infos de téléchargement.
+ * Returns both `url` (Convex File Storage URL) and `file` (filename, for backward compat).
  */
 export const getDownloadInfo = action({
   args: { token: v.string() },
-  handler: async (_ctx, args) => {
+  handler: async (ctx, args) => {
     const result = verifyHmac(args.token);
     if (!result) {
       throw new Error("Jeton invalide ou expiré. Demande un nouveau lien.");
@@ -130,11 +140,15 @@ export const getDownloadInfo = action({
       throw new Error("Aucun fichier pour ce produit.");
     }
 
+    const filesWithUrls = await Promise.all(
+      files.map(async (f) => {
+        const url = await ctx.storage.getUrl(f.storageId);
+        return { name: f.name, file: f.name, url: url || "" };
+      }),
+    );
+
     return {
-      files: files.map((f) => ({
-        name: f.name,
-        file: f.file,
-      })),
+      files: filesWithUrls,
       expiresAt: result.expiresAt,
     };
   },

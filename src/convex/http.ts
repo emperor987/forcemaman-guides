@@ -16,7 +16,7 @@ auth.addHttpRoutes(http);
 
 /**
  * GET /api/download?token=xxx&file=xxx.pdf
- * Vérifie le jeton HMAC puis redirige vers le PDF public.
+ * Vérifie le jeton HMAC puis redirige vers le PDF dans Convex File Storage.
  */
 http.route({
   path: "/api/download",
@@ -42,16 +42,15 @@ http.route({
         ? result.files.find((f) => f.name === requestedFile)
         : result.files[0];
 
-      if (!targetFile) {
+      if (!targetFile || !targetFile.url) {
         return new Response("Fichier non trouvé.", { status: 404 });
       }
 
-      // Redirige vers le PDF public (noms aléatoires non devinables)
-      const siteUrl = process.env.SITE_URL || "https://forcemaman.store";
+      // Redirige vers le PDF dans Convex File Storage
       return new Response(null, {
         status: 302,
         headers: {
-          Location: `${siteUrl}/ebooks/${targetFile.file}`,
+          Location: targetFile.url,
           "Cache-Control": "no-store, no-cache, must-revalidate",
         },
       });

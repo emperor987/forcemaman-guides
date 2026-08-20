@@ -11,20 +11,15 @@ const STORAGE_IDS = [
   "kg27h9a6j3n90y5vpyffd2ygeh8ctxw4",
 ];
 
-export const identifyAll = action({
+/** Get URLs for all 6 storage files (for debugging) */
+export const getUrls = action({
   args: {},
   handler: async (ctx) => {
-    const results: { id: string; size: number; url: string | null }[] = [];
-
+    const results: { id: string; url: string | null }[] = [];
     for (const id of STORAGE_IDS) {
-      try {
-        const url = await ctx.storage.getUrl(id);
-        results.push({ id, size: 0, url });
-      } catch (err) {
-        results.push({ id, size: 0, url: null });
-      }
+      const url = await ctx.storage.getUrl(id);
+      results.push({ id, url });
     }
-
     return results;
   },
 });

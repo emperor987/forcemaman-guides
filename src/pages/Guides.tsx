@@ -136,7 +136,7 @@ const jsonLd = [
     "@type": "CollectionPage",
   name: "La Bibliothèque des Guides ForceMaman",
   description:
-    "Les guides post-partum de ForceMaman : liste de naissance, corps après l'accouchement, charge mentale, pack complet et ressources gratuites.",
+    "Les guides post-partum de ForceMaman : liste de naissance, corps après l'accouchement, charge mentale, recettes, guide complet, soin bébé, pack complet et ressources gratuites.",
   url: "https://forcemaman.store/guides",
   inLanguage: "fr-FR",
   mainEntity: {
@@ -163,6 +163,24 @@ const jsonLd = [
       {
         "@type": "ListItem",
         position: 4,
+        name: "Recettes Post-Partum",
+        url: "https://forcemaman.store/guides/recettes-postpartum",
+      },
+      {
+        "@type": "ListItem",
+        position: 5,
+        name: "Guide Complet Post-Partum",
+        url: "https://forcemaman.store/guides/guide-complet-postpartum",
+      },
+      {
+        "@type": "ListItem",
+        position: 6,
+        name: "Soin Bébé après l'Accouchement",
+        url: "https://forcemaman.store/guides/soin-bebe",
+      },
+      {
+        "@type": "ListItem",
+        position: 7,
         name: "Pack Complet ForceMaman",
         url: "https://forcemaman.store/guides/bundle",
       },

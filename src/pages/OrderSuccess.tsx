@@ -18,31 +18,39 @@ import {
 
 const PRODUCT_META: Record<
   string,
-  { title: string; files: string[]; accent: string }
+  { title: string; accent: string }
 > = {
   "liste-naissance": {
     title: "Ma Liste Naissance Complète",
-    files: ["liste-naissance.pdf"],
     accent: "text-brand-terracotta",
   },
   "corps-apres": {
     title: "Mon Corps Après l'Accouchement",
-    files: ["corps-apres.pdf"],
     accent: "text-brand-sage",
   },
   "charge-mentale": {
     title: "Charge Mentale & 40 Premiers Jours",
-    files: ["charge-mentale.pdf"],
+    accent: "text-brand-mauve",
+  },
+  "recettes-postpartum": {
+    title: "Recettes Post-Partum",
+    accent: "text-brand-terracotta",
+  },
+  "guide-complet-postpartum": {
+    title: "Guide Complet Post-Partum",
+    accent: "text-brand-sage",
+  },
+  "soin-bebe": {
+    title: "Soin Bébé après l'Accouchement",
     accent: "text-brand-mauve",
   },
   bundle: {
     title: "Pack Complet ForceMaman",
-    files: ["liste-naissance.pdf", "corps-apres.pdf", "charge-mentale.pdf"],
     accent: "text-brand-terracotta",
   },
 };
 
-type DownloadFile = { name: string; url: string };
+type DownloadFile = { name: string; file: string; url: string };
 
 type Status =
   | { state: "loading" }
@@ -82,183 +90,74 @@ export default function OrderSuccess() {
           });
           if (cancelled) return;
 
-          // Récupérer les noms de fichiers via le token
-          const downloadInfo = await getDownloadInfo({ token: tokenResult.token }) as { files: { name: string; file: string }[]; expiresAt: number };
+          const downloadInfo = await getDownloadInfo({ token: tokenResult.token });
           if (cancelled) return;
-          // Construire les URLs de téléchargement depuis le domaine actuel (Freebuff)
-          const filesWithUrls: DownloadFile[] = downloadInfo.files.map((f) => ({
-            name: f.name,
-            url: `${window.location.origin}/ebooks/${f.file}`,
-          }));
+
           setStatus({
             state: "paid",
             productId: result.productId,
             token: tokenResult.token,
-            files: filesWithUrls,
+            files: downloadInfo.files,
           });
         } catch {
           if (cancelled) return;
           setStatus({ state: "error" });
         }
-      } catch (error) {
-        console.error("verifySession error:", error);
+      } catch {
         if (!cancelled) setStatus({ state: "error" });
       }
     }
     check();
-    return () => {
-      cancelled = true;
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sessionId]);
+    return () => { cancelled = true; };
+  }, [sessionId, verifySession, createToken, getDownloadInfo]);
 
   const handleDownload = useCallback(
-    async (fileName: string) => {
-      if (status.state !== "paid" || downloading) return;
-      setDownloading(fileName);
-      try {
-        const fileInfo = status.files.find((f) => f.name === fileName);
-        if (!fileInfo) {
-          throw new Error(`Fichier non trouvé : ${fileName}`);
-        }
-        // Téléchargement direct depuis le serveur Freebuff
-        const a = document.createElement("a");
-        a.href = fileInfo.url;
-        a.download = fileName;
-        a.style.display = "none";
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(() => document.body.removeChild(a), 200);
-      } catch (err) {
-        console.error("Download error:", err);
-        alert(
-          "Le téléchargement a échoué. Réessaie ou écris-nous à " +
-            SUPPORT_EMAIL,
-        );
-      } finally {
-        setTimeout(() => setDownloading(null), 2000);
-      }
+    (file: DownloadFile) => {
+      if (downloading) return;
+      setDownloading(file.name);
+      window.open(file.url, "_blank");
+      setTimeout(() => setDownloading(null), 2000);
     },
-    [status, downloading],
+    [downloading],
   );
 
-  const meta =
-    status.state === "paid" ? PRODUCT_META[status.productId] : null;
+  const meta = status.state === "paid" ? PRODUCT_META[status.productId] : null;
 
   return (
     <Layout>
       <Seo
-        title="Merci pour ta commande · ForceMaman"
-        description="Ta commande ForceMaman est confirmée. Télécharge tes guides post-partum ici."
+        title="Commande confirmée · ForceMaman"
+        description="Ton paiement a été confirmé. Télécharge tes guides ForceMaman."
         path="/commande/reussie"
-        noindex
       />
-      <section className="px-6 pb-24 pt-16 sm:pb-32 sm:pt-24">
-        <div className="mx-auto max-w-xl text-center">
+      <section className="px-6 py-20 sm:py-32">
+        <div className="mx-auto max-w-lg text-center">
           {status.state === "loading" && (
             <Reveal>
-              <div className="flex flex-col items-center gap-4 py-16">
-                <Loader2 className="size-8 animate-spin text-brand-terracotta" />
+              <div className="flex flex-col items-center gap-4">
+                <Loader2 className="size-10 animate-spin text-foreground/40" />
                 <p className="text-sm text-foreground/60">
-                  Vérification de ton paiement…
+                  Vérification du paiement…
                 </p>
               </div>
             </Reveal>
           )}
 
-          {status.state === "paid" && meta && (
-            <>
-              <Reveal>
-                <span className="mx-auto grid size-16 place-items-center rounded-full bg-brand-sage/15">
-                  <CheckCircle2 className="size-8 text-brand-sage" />
-                </span>
-                <p className="mt-8 text-[11px] uppercase tracking-[0.28em] text-foreground/50">
-                  Commande confirmée
-                </p>
-                <h1 className="mt-5 font-serif text-4xl leading-[1.05] text-foreground sm:text-5xl">
-                  Merci ! Tes guides{" "}
-                  <span className="italic">sont à toi.</span>
-                </h1>
-                <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-foreground/65">
-                  Le paiement est bien validé. Télécharge{" "}
-                  {meta.files.length > 1 ? "tes guides" : "ton guide"} dès
-                  maintenant.
-                </p>
-              </Reveal>
-
-              <Reveal delay={120}>
-                <div className="mt-10 space-y-3 text-left">
-                  <p className="text-[11px] uppercase tracking-[0.22em] text-foreground/50">
-                    {meta.title}
-                  </p>
-                  {meta.files.map((file) => (
-                    <button
-                      key={file}
-                      type="button"
-                      onClick={() => handleDownload(file)}
-                      disabled={downloading !== null}
-                      className="group flex w-full items-center justify-between gap-4 rounded-3xl border border-white/50 bg-[color-mix(in_oklab,var(--background)_75%,transparent)] p-5 shadow-[0_14px_36px_-22px_rgba(35,33,32,0.35),inset_0_1px_0_rgba(255,255,255,0.6)] backdrop-blur-md transition-all hover:border-foreground/25 disabled:opacity-60"
-                    >
-                      <span className="flex items-center gap-4">
-                        <span className="grid size-11 place-items-center rounded-2xl bg-brand-terracotta/12">
-                          <FileText className="size-5 text-brand-terracotta" />
-                        </span>
-                        <span className="text-left">
-                          <span className="block text-sm font-medium text-foreground">
-                            {file}
-                          </span>
-                          <span className="block text-xs text-foreground/55">
-                            {downloading === file
-                              ? "Préparation…"
-                              : "PDF · téléchargement sécurisé"}
-                          </span>
-                        </span>
-                      </span>
-                      {downloading === file ? (
-                        <Loader2 className="size-5 animate-spin text-foreground/60" />
-                      ) : (
-                        <Download className="size-5 text-foreground/60 transition-transform group-hover:translate-y-0.5" />
-                      )}
-                    </button>
-                  ))}
-                </div>
-
-                <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-[11px] uppercase tracking-[0.14em] text-foreground/50">
-                  <span className="flex items-center gap-1.5">
-                    <Lock className="size-3" />
-                    Téléchargement sécurisé
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Timer className="size-3" />
-                    Liens valables 30 minutes
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <ShieldCheck className="size-3" />
-                    Paiement vérifié Stripe
-                  </span>
-                </div>
-
-                <p className="mt-4 text-center text-[11px] text-foreground/50">
-                  Ce lien est personnel et à usage limité. Tu peux le
-                  réutiliser pendant 30 minutes après la confirmation.
-                </p>
-              </Reveal>
-            </>
-          )}
-
           {status.state === "unpaid" && (
             <Reveal>
-              <h1 className="font-serif text-4xl leading-[1.05] text-foreground sm:text-5xl">
-                Paiement <span className="italic">non confirmé</span>
+              <div className="mx-auto flex size-16 items-center justify-center rounded-full bg-amber-100">
+                <Timer className="size-8 text-amber-500" />
+              </div>
+              <h1 className="mt-6 font-serif text-3xl text-foreground">
+                Paiement en attente
               </h1>
-              <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-foreground/65">
-                Nous n'avons pas pu confirmer ton paiement. Si tu as été
-                débitée, écris-nous à {SUPPORT_EMAIL} et nous vérifions ta
-                commande sous 48 heures.
+              <p className="mt-4 text-sm leading-relaxed text-foreground/60">
+                Le paiement n'a pas encore été confirmé. Si tu viens de payer,
+                patiente quelques instants et recharge la page.
               </p>
               <Link
                 to="/guides"
-                className="mt-8 inline-flex h-12 items-center justify-center rounded-full bg-foreground px-8 text-xs font-medium uppercase tracking-[0.18em] text-background transition-opacity hover:opacity-90"
+                className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-foreground/70 underline underline-offset-4 transition-colors hover:text-foreground"
               >
                 Retour aux guides
               </Link>
@@ -267,26 +166,95 @@ export default function OrderSuccess() {
 
           {status.state === "error" && (
             <Reveal>
-              <h1 className="font-serif text-4xl leading-[1.05] text-foreground sm:text-5xl">
-                Une erreur <span className="italic">est survenue</span>
+              <div className="mx-auto flex size-16 items-center justify-center rounded-full bg-red-100">
+                <FileText className="size-8 text-red-400" />
+              </div>
+              <h1 className="mt-6 font-serif text-3xl text-foreground">
+                Oups, une erreur
               </h1>
-              <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-foreground/65">
-                Impossible de vérifier ta commande pour le moment. Réessaie
-                dans quelques instants, ou écris-nous à{" "}
-                <a
-                  href={`mailto:${SUPPORT_EMAIL}`}
-                  className="underline underline-offset-4 hover:text-foreground"
-                >
-                  {SUPPORT_EMAIL}
-                </a>
-                .
+              <p className="mt-4 text-sm leading-relaxed text-foreground/60">
+                Nous n'avons pas pu vérifier ta commande.{" "}
+                {SUPPORT_EMAIL && (
+                  <>
+                    Écris-nous à{" "}
+                    <a
+                      href={`mailto:${SUPPORT_EMAIL}`}
+                      className="underline underline-offset-2"
+                    >
+                      {SUPPORT_EMAIL}
+                    </a>{" "}
+                    avec ton numéro de commande.
+                  </>
+                )}
               </p>
               <Link
                 to="/guides"
-                className="mt-8 inline-flex h-12 items-center justify-center rounded-full bg-foreground px-8 text-xs font-medium uppercase tracking-[0.18em] text-background transition-opacity hover:opacity-90"
+                className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-foreground/70 underline underline-offset-4 transition-colors hover:text-foreground"
               >
                 Retour aux guides
               </Link>
+            </Reveal>
+          )}
+
+          {status.state === "paid" && (
+            <Reveal>
+              <div className="mx-auto flex size-16 items-center justify-center rounded-full bg-brand-sage/15">
+                <CheckCircle2 className="size-8 text-brand-sage" />
+              </div>
+              <h1 className="mt-6 font-serif text-3xl text-foreground sm:text-4xl">
+                Merci pour ton achat <span className="italic">!</span>
+              </h1>
+              <p className="mt-4 text-sm leading-relaxed text-foreground/60">
+                {meta?.title || "Ton guide"} est prêt à être téléchargé.
+              </p>
+
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+                {[
+                  { icon: Timer, label: "Téléchargement immédiat" },
+                  { icon: Lock, label: "Paiement sécurisé" },
+                  { icon: ShieldCheck, label: "Remboursement 14 jours" },
+                ].map((item) => (
+                  <span
+                    key={item.label}
+                    className="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] text-foreground/55"
+                  >
+                    <item.icon className="size-3.5" />
+                    {item.label}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-10 space-y-3">
+                {status.files.map((file, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => handleDownload(file)}
+                    disabled={downloading !== null}
+                    className="flex w-full items-center justify-center gap-3 rounded-full bg-foreground px-6 py-4 text-sm font-medium text-background transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70"
+                  >
+                    {downloading === file.name ? (
+                      <Loader2 className="size-4 animate-spin" />
+                    ) : (
+                      <Download className="size-4" />
+                    )}
+                    Télécharger {file.name}
+                  </button>
+                ))}
+              </div>
+
+              <p className="mt-6 text-xs text-foreground/50">
+                Conserve ces liens, ils expirent dans 30 minutes.
+              </p>
+
+              <div className="mt-8">
+                <Link
+                  to="/guides"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-foreground/70 underline underline-offset-4 transition-colors hover:text-foreground"
+                >
+                  Découvrir les autres guides
+                </Link>
+              </div>
             </Reveal>
           )}
         </div>
