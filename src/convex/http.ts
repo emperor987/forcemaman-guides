@@ -47,10 +47,11 @@ http.route({
       }
 
       // Redirige vers le PDF public (noms aléatoires non devinables)
+      const siteUrl = process.env.SITE_URL || "https://forcemaman.store";
       return new Response(null, {
         status: 302,
         headers: {
-          Location: targetFile.url,
+          Location: `${siteUrl}/ebooks/${targetFile.file}`,
           "Cache-Control": "no-store, no-cache, must-revalidate",
         },
       });

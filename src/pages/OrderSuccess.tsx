@@ -42,9 +42,11 @@ const PRODUCT_META: Record<
   },
 };
 
+type DownloadFile = { name: string; url: string };
+
 type Status =
   | { state: "loading" }
-  | { state: "paid"; productId: string; token: string }
+  | { state: "paid"; productId: string; token: string; files: DownloadFile[] }
   | { state: "unpaid" }
   | { state: "error" };
 
@@ -53,6 +55,7 @@ export default function OrderSuccess() {
   const sessionId = params.get("session_id") ?? "";
   const verifySession = useAction(api.payments.verifySession);
   const createToken = useAction(api.downloads.createDownloadToken);
+  const getDownloadInfo = useAction(api.downloads.getDownloadInfo);
   const [status, setStatus] = useState<Status>({ state: "loading" });
   const [downloading, setDownloading] = useState<string | null>(null);
 
@@ -78,10 +81,20 @@ export default function OrderSuccess() {
             productId: result.productId,
           });
           if (cancelled) return;
+
+          // Récupérer les noms de fichiers via le token
+          const downloadInfo = await getDownloadInfo({ token: tokenResult.token }) as { files: { name: string; file: string }[]; expiresAt: number };
+          if (cancelled) return;
+          // Construire les URLs de téléchargement depuis le domaine actuel (Freebuff)
+          const filesWithUrls: DownloadFile[] = downloadInfo.files.map((f) => ({
+            name: f.name,
+            url: `${window.location.origin}/ebooks/${f.file}`,
+          }));
           setStatus({
             state: "paid",
             productId: result.productId,
             token: tokenResult.token,
+            files: filesWithUrls,
           });
         } catch {
           if (cancelled) return;
@@ -104,10 +117,13 @@ export default function OrderSuccess() {
       if (status.state !== "paid" || downloading) return;
       setDownloading(fileName);
       try {
-        // Téléchargement direct via endpoint HTTP Convex
-        const downloadUrl = `${window.location.origin}/api/download?token=${encodeURIComponent(status.token)}&file=${encodeURIComponent(fileName)}`;
+        const fileInfo = status.files.find((f) => f.name === fileName);
+        if (!fileInfo) {
+          throw new Error(`Fichier non trouvé : ${fileName}`);
+        }
+        // Téléchargement direct depuis le serveur Freebuff
         const a = document.createElement("a");
-        a.href = downloadUrl;
+        a.href = fileInfo.url;
         a.download = fileName;
         a.style.display = "none";
         document.body.appendChild(a);

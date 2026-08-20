@@ -133,7 +133,7 @@ export const getDownloadInfo = action({
     return {
       files: files.map((f) => ({
         name: f.name,
-        url: `${SITE_URL}/ebooks/${f.file}`,
+        file: f.file,
       })),
       expiresAt: result.expiresAt,
     };
