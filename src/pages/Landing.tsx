@@ -80,6 +80,9 @@ const guideCards = [
   { ...ebooks[0], cover: coverListe },
   { ...ebooks[1], cover: coverCorps },
   { ...ebooks[2], cover: coverCharge },
+  { ...ebooks[3], cover: coverListe },
+  { ...ebooks[4], cover: coverCorps },
+  { ...ebooks[5], cover: coverCharge },
 ];
 
 const jsonLd = [
@@ -133,9 +136,9 @@ export default function Landing() {
           </Reveal>
           <Reveal delay={160}>
             <p className="mx-auto mt-6 max-w-sm text-[15px] leading-relaxed text-foreground/65">
-              Trois ebooks PDF écrits par Maria Garcia, sage-femme pendant 8 ans
-              et maman, pour préparer l'arrivée de bébé, comprendre ton corps
-              et alléger ta charge mentale.
+              Six ebooks PDF écrits par Maria Garcia, sage-femme pendant 8 ans
+              et maman, pour préparer l'arrivée de bébé, comprendre ton corps,
+              alléger ta charge mentale et prendre soin de ton nouveau-né.
             </p>
           </Reveal>
 
@@ -180,7 +183,7 @@ export default function Landing() {
               <div className="px-2 text-center">
                 <dt className="sr-only">Nombre de guides</dt>
                 <dd className="font-serif text-3xl text-foreground">
-                  <CountUp value={3} label="guides" />
+                  <CountUp value={6} label="guides" />
                 </dd>
                 <dd className="mt-1 text-[10px] uppercase tracking-[0.18em] text-foreground/50">
                   guides
@@ -213,7 +216,7 @@ export default function Landing() {
                 <span className="italic">pour toi.</span>
               </h2>
               <p className="mx-auto mt-5 max-w-sm text-[15px] leading-relaxed text-foreground/65">
-                Trois ebooks PDF à télécharger immédiatement, ou le pack
+                Six ebooks PDF à télécharger immédiatement, ou le pack
                 complet avec 23% de réduction.
               </p>
             </div>
