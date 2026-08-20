@@ -1,7 +1,7 @@
 /**
  * Livraison des ebooks ForceMaman.
  *
- * Les PDFs des 3 guides payants vivent dans private/ebooks/ (protégés).
+ * Les PDFs des 6 guides payants vivent dans private/ebooks/ (protégés).
  * Le téléchargement se fait via un jeton HMAC signé généré côté Convex
  * après vérification du paiement Stripe (actions downloads:createDownloadToken
  * et downloads:getEbookData).

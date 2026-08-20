@@ -13,6 +13,9 @@ import coverListe from "@/assets/covers/liste-naissance.svg";
 import coverCorps from "@/assets/covers/corps-apres.svg";
 import coverCharge from "@/assets/covers/charge-mentale.svg";
 import coverBundle from "@/assets/covers/bundle.svg";
+import coverRecettes from "@/assets/covers/recettes-postpartum.svg";
+import coverGuideComplet from "@/assets/covers/guide-complet-postpartum.svg";
+import coverSoinBebe from "@/assets/covers/soin-bebe.svg";
 import {
   ArrowLeft,
   Loader2,
@@ -37,6 +40,9 @@ const COVERS: Record<string, string> = {
   "liste-naissance": coverListe,
   "corps-apres": coverCorps,
   "charge-mentale": coverCharge,
+  "recettes-postpartum": coverRecettes,
+  "guide-complet-postpartum": coverGuideComplet,
+  "soin-bebe": coverSoinBebe,
   bundle: coverBundle,
 };
 
@@ -59,11 +65,29 @@ const PRODUCT_META: Record<string, { title: string; price: string; accentText: s
     accentText: "text-brand-mauve",
     tagline: "Traverse le tsunami émotionnel des premières semaines.",
   },
+  "recettes-postpartum": {
+    title: "Recettes Post-Partum",
+    price: "8,90 €",
+    accentText: "text-brand-terracotta",
+    tagline: "Des repas simples et nourrissants pour les premières semaines.",
+  },
+  "guide-complet-postpartum": {
+    title: "Guide Complet Post-Partum",
+    price: "12,90 €",
+    accentText: "text-brand-sage",
+    tagline: "Tout ce qu'il faut savoir pour les premiers mois.",
+  },
+  "soin-bebe": {
+    title: "Soin Bébé après l'Accouchement",
+    price: "9,90 €",
+    accentText: "text-brand-mauve",
+    tagline: "Les gestes essentiels pour prendre soin de ton nouveau-né.",
+  },
   bundle: {
     title: "Pack Complet ForceMaman",
-    price: "22,90 €",
+    price: "42,90 €",
     accentText: "text-brand-terracotta",
-    tagline: "Les 3 guides réunis pour un accompagnement global du post-partum.",
+    tagline: "Les 6 guides réunis pour un accompagnement global du post-partum.",
   },
 };
 

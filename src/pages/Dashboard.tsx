@@ -59,8 +59,8 @@ export default function Dashboard() {
           </CardHeader>
           <CardContent className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-ink/70">
-              Trois guides bienveillants pour t'accompagner dans le post-partum,
-              ou le Pack Complet avec 23% de réduction.
+              Six guides bienveillants pour t'accompagner dans le post-partum,
+              ou le Pack Complet avec 30% de réduction.
             </p>
             <Button
               asChild

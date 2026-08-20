@@ -24,7 +24,7 @@ export default function CGV() {
             "Ma Liste Naissance Complète : 7,90 € TTC",
             "Mon Corps Après l'Accouchement : 9,90 € TTC",
             "Charge Mentale & 40 Premiers Jours : 11,90 € TTC",
-            "Pack Complet ForceMaman (les 3 guides) : 22,90 € TTC au lieu de 29,70 € TTC, soit une remise de 23%.",
+            "Pack Complet ForceMaman (les 6 guides) : 42,90 € TTC au lieu de 61,40 € TTC, soit une remise de 30%.",
             "Les prix sont indiqués en euros, toutes taxes comprises (TVA non applicable, art. 293 B du CGI). ForceMaman se réserve le droit de modifier ses prix à tout moment, les produits étant facturés sur la base des tarifs en vigueur au moment de la commande.",
           ],
         },

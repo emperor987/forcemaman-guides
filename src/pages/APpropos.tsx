@@ -129,7 +129,7 @@ export default function APpropos() {
             <div className="text-center">
               <p className="eyebrow">Nos guides</p>
               <h2 className="mt-4 font-serif text-3xl leading-tight text-foreground sm:text-4xl">
-                Trois guides, <span className="italic">un même fil.</span>
+                Six guides, <span className="italic">un même fil.</span>
               </h2>
               <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-muted-foreground">
                 Préparer l'arrivée, comprendre ton corps, alléger ta charge

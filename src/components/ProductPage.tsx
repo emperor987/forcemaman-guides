@@ -338,7 +338,7 @@ export default function ProductPage({
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/65 sm:text-base">
               {type === "bundle"
-                ? "Les 3 guides pour un accompagnement complet du post-partum."
+                ? "Les 6 guides pour un accompagnement complet du post-partum."
                 : "Reçois ton guide en quelques secondes et commence à lire."}
             </p>
             <div className="mx-auto mt-8 max-w-md">

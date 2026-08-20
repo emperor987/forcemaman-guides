@@ -220,7 +220,7 @@ export default function Landing() {
               </h2>
               <p className="mx-auto mt-5 max-w-sm text-[15px] leading-relaxed text-foreground/65">
                 Six ebooks PDF à télécharger immédiatement, ou le pack
-                complet avec 23% de réduction.
+                complet avec 30% de réduction.
               </p>
             </div>
           </Reveal>
