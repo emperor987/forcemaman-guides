@@ -663,19 +663,7 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ============ STICKY CTA MOBILE ============ */}
-      <div className="fixed inset-x-0 bottom-0 z-50 block sm:hidden">
-        <div className="mx-auto max-w-md px-4 pb-4">
-          <Link
-            to="/guides"
-            className="flex h-12 w-full items-center justify-center gap-2.5 rounded-full font-medium text-background transition-transform active:scale-[0.98]"
-            style={DARK_BUTTON_STYLE}
-          >
-            <BookOpen className="size-4" />
-            <span className="text-[12px] tracking-wide uppercase">Découvrir les ebooks</span>
-          </Link>
-        </div>
-      </div>
+
     </Layout>
   );
 }
