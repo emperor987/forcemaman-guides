@@ -76,7 +76,7 @@ const faqItems = [
   {
     question: "Vais-je recevoir trop d'emails ?",
     answer:
-      "Non. Une lettre douce le dimanche, et rien d'autre. Tu peux te désinscrire en un clic à tout moment.",
+      "Tu recevras des conseils par email selon la communication prévue par ForceMaman. Tu peux te désinscrire à tout moment via le lien prévu dans les messages.",
   },
 ];
 
@@ -123,7 +123,6 @@ export default function GuideGratuit() {
         title="Conseils gratuits · Les 7 Systèmes ForceMaman"
         description="Inscris-toi pour recevoir par email les premiers conseils ForceMaman : sept systèmes simples pour alléger ta charge mentale avec un nouveau-né."
         path="/guide-gratuit"
-        keywords="conseils gratuits post-partum, 7 systèmes ForceMaman, alléger charge mentale, nouveau-né, organisation bébé, conseils maman"
         jsonLd={jsonLd}
       />
       {/* ============ HERO ============ */}

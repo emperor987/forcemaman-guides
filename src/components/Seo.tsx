@@ -6,6 +6,7 @@ interface SeoProps {
   path: string;
   noindex?: boolean;
   image?: string;
+  /** Retained for backwards-compatible page props; not emitted because Google ignores meta keywords. */
   keywords?: string;
   author?: string;
   type?: "website" | "article" | "product";
@@ -82,7 +83,6 @@ export default function Seo({
   useEffect(() => {
     document.title = title;
     upsertMeta("name", "description", description);
-    if (keywords) upsertMeta("name", "keywords", keywords);
     upsertMeta("name", "author", author);
     upsertMeta("name", "language", "fr-FR");
     upsertMeta("property", "og:title", title);
@@ -112,7 +112,7 @@ export default function Seo({
       upsertJsonLd(Array.isArray(jsonLd) ? jsonLd : [jsonLd]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [title, description, url, noindex, image, jsonLdKey, keywords, author, type, datePublished, dateModified]);
+  }, [title, description, url, noindex, image, jsonLdKey, author, type, datePublished, dateModified]);
 
   return null;
 }

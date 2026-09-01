@@ -99,7 +99,7 @@ const jsonLd = [
     url: `${siteOrigin}/`,
     inLanguage: "fr-FR",
     description:
-      "6 guides post-partum bienveillants écrits par une sage-femme. Liste de naissance, corps après accouchement, charge mentale, recettes, soin bébé. PDF à téléchargement immédiat.",
+      "Des guides post-partum bienveillants écrits par une sage-femme : liste de naissance, récupération, charge mentale, recettes et soins de bébé.",
     potentialAction: {
       "@type": "SearchAction",
       target: {
@@ -215,7 +215,6 @@ export default function Landing() {
         title="ForceMaman · Guides post-partum écrits par une sage-femme"
         description="Des guides numériques bienveillants pour le post-partum : liste de naissance, récupération après l'accouchement, charge mentale, recettes et soins de bébé. Créés par Maria Garcia, ancienne sage-femme et maman."
         path="/"
-        keywords="post-partum, guide post-partum, maman, ebook, sage-femme, naissance, bébé, charge mentale, corps après accouchement, liste naissance, recettes post-partum, nouveau-né, guide maman, PDF, télécharger, ForceMaman"
         jsonLd={jsonLd}
       />
 
@@ -316,8 +315,7 @@ export default function Landing() {
                 <span className="italic">pour toi.</span>
               </h2>
               <p className="mx-auto mt-5 max-w-sm text-[15px] leading-relaxed text-foreground/65">
-                Six ebooks PDF à télécharger immédiatement, ou le pack
-                complet avec 30% de réduction.
+                Six ebooks numériques à découvrir, ou le pack complet avec 30% de réduction.
               </p>
             </div>
           </Reveal>

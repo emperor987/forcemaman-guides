@@ -230,7 +230,6 @@ export default function Guides() {
         title="Nos Guides · ebooks post-partum par une sage-femme · ForceMaman"
         description="Découvre les six guides numériques ForceMaman pour le post-partum : préparation, récupération, charge mentale, recettes et soins de bébé, avec un pack complet."
         path="/guides"
-        keywords="guides post-partum, ebook post-partum, liste naissance, corps après accouchement, charge mentale, recettes post-partum, soin bébé, guide maman, pack complet"
         jsonLd={jsonLd}
       />
       <div className="mx-auto max-w-6xl px-5 pb-24 pt-10 sm:px-8 lg:px-12">
