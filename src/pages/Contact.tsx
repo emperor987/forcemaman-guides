@@ -14,6 +14,7 @@ export default function Contact() {
         title="Contact · Écris à ForceMaman"
         description="Une question, une suggestion, un mot. Maria lit chaque message et répond personnellement sous 48 heures ouvrées."
         path="/contact"
+        keywords="contact ForceMaman, contacter sage-femme, support client, aide, question guide post-partum"
       />
       <div className="bg-background">
         <div className="mx-auto max-w-xl px-6 py-20 lg:py-28">

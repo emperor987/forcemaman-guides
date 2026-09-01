@@ -1,4 +1,30 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /auth
+Disallow: /dashboard
+Disallow: /commande/
 
 Sitemap: https://forcemaman.store/sitemap.xml
+
+# Google-specific
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# Social crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: Pinterest
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /

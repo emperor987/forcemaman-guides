@@ -53,6 +53,8 @@ export default function APpropos() {
         title="À propos · Maria Garcia, sage-femme et fondatrice de ForceMaman"
         description="Derrière ForceMaman, une femme : Maria Garcia, ancienne sage-femme pendant 8 ans et maman. Découvre l'histoire des guides post-partum ForceMaman."
         path="/a-propos"
+        keywords="Maria Garcia, sage-femme, fondatrice ForceMaman, post-partum, guide post-partum, accompagnement post-partum, expertise sage-femme"
+        type="article"
         jsonLd={jsonLd}
       />
       {/* ============ HERO ============ */}

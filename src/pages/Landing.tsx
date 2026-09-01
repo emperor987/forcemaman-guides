@@ -93,21 +93,115 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "ForceMaman",
+    alternateName: "ForceMaman - Guides post-partum",
     url: "https://forcemaman.store/",
     inLanguage: "fr-FR",
     description:
-      "Les guides bienveillants du post-partum, écrits par une sage-femme.",
+      "6 guides post-partum bienveillants écrits par une sage-femme. Liste de naissance, corps après accouchement, charge mentale, recettes, soin bébé. PDF à téléchargement immédiat.",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://forcemaman.store/guides?q={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
+    },
   },
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "ForceMaman",
     url: "https://forcemaman.store/",
+    logo: "https://forcemaman.store/favicon.svg",
     brand: "ForceMaman",
+    description: "Guides post-partum écrits par une sage-femme",
     founder: {
       "@type": "Person",
       name: "Maria Garcia",
       jobTitle: "Fondatrice et sage-femme",
+      sameAs: [
+        "https://www.instagram.com/forcemaman",
+        "https://www.facebook.com/forcemaman",
+        "https://www.youtube.com/@forcemaman",
+      ],
+    },
+    sameAs: [
+      "https://www.instagram.com/forcemaman",
+      "https://www.facebook.com/forcemaman",
+      "https://www.youtube.com/@forcemaman",
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Accueil",
+        item: "https://forcemaman.store/",
+      },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "ForceMaman - Guides post-partum écrits par une sage-femme",
+    description: "6 guides post-partum bienveillants pour mamans : liste de naissance, récupération, charge mentale, recettes, soin bébé. Écrits par Maria Garcia, sage-femme.",
+    url: "https://forcemaman.store/",
+    inLanguage: "fr-FR",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "ForceMaman",
+      url: "https://forcemaman.store/",
+    },
+    about: {
+      "@type": "Thing",
+      name: "Post-partum",
+      sameAs: "https://fr.wikipedia.org/wiki/Post-partum",
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      name: "Guides post-partum ForceMaman",
+      numberOfItems: 6,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Ma Liste Naissance Complète",
+          url: "https://forcemaman.store/guides/liste-naissance",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Mon Corps Après l'Accouchement",
+          url: "https://forcemaman.store/guides/corps-apres",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Charge Mentale & 40 Premiers Jours",
+          url: "https://forcemaman.store/guides/charge-mentale",
+        },
+        {
+          "@type": "ListItem",
+          position: 4,
+          name: "Recettes Post-Partum",
+          url: "https://forcemaman.store/guides/recettes-postpartum",
+        },
+        {
+          "@type": "ListItem",
+          position: 5,
+          name: "Guide Complet Post-Partum",
+          url: "https://forcemaman.store/guides/guide-complet-postpartum",
+        },
+        {
+          "@type": "ListItem",
+          position: 6,
+          name: "Soin Bébé après l'Accouchement",
+          url: "https://forcemaman.store/guides/soin-bebe",
+        },
+      ],
     },
   },
 ];
@@ -117,8 +211,9 @@ export default function Landing() {
     <Layout>
       <Seo
         title="ForceMaman · Guides post-partum écrits par une sage-femme"
-        description="Liste de naissance, corps après l'accouchement, charge mentale : des guides PDF bienveillants, écrits par Maria Garcia, sage-femme. Téléchargement immédiat, paiement sécurisé Stripe."
+        description="6 guides post-partum bienveillants : liste de naissance, corps après accouchement, charge mentale, recettes, soin bébé. Écrits par Maria Garcia, sage-femme. PDF téléchargeable, paiement Stripe."
         path="/"
+        keywords="post-partum, guide post-partum, maman, ebook, sage-femme, naissance, bébé, charge mentale, corps après accouchement, liste naissance, recettes post-partum, nouveau-né, guide maman, PDF, télécharger, ForceMaman"
         jsonLd={jsonLd}
       />
 

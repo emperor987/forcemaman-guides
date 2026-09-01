@@ -55,8 +55,9 @@ export default function Journal() {
     <Layout>
       <Seo
         title="Le Journal · lectures douces pour jeunes mamans · ForceMaman"
-        description="Des essais, des protocoles et des rituels pour alléger la charge mentale des jeunes mamans. Toujours réalistes, jamais culpabilisants."
+        description="Des essais, des protocoles et des rituels pour alléger la charge mentale des jeunes mamans. Post-partum, organisation, charge mentale. Toujours réalistes, jamais culpabilisants."
         path="/journal"
+        keywords="journal post-partum, charge mentale maman, organisation post-partum, conseils maman, article post-partum, blog post-partum, jeune maman"
         jsonLd={jsonLd}
       />
       <div className="bg-background">

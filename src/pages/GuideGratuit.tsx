@@ -105,6 +105,7 @@ export default function GuideGratuit() {
         title="Guide Gratuit · Les 7 Systèmes ForceMaman · PDF"
         description="Reçois gratuitement Les 7 Systèmes ForceMaman : Cahier Unique, Boîte à 3, Repas de Secours, Panier Nomade, Trousse Départ Éclair, Règle du Suffisant, Sas du Soir. Des repères simples pour respirer avec un nouveau-né."
         path="/guide-gratuit"
+        keywords="guide gratuit post-partum, 7 systèmes ForceMaman, alléger charge mentale, nouveau-né, organisation bébé, guide maman gratuit, PDF gratuit"
         jsonLd={jsonLd}
       />
       {/* ============ HERO ============ */}

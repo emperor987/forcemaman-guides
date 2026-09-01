@@ -220,8 +220,9 @@ export default function Guides() {
     <Layout>
       <Seo
         title="Nos Guides · ebooks post-partum par une sage-femme · ForceMaman"
-        description="Découvre les guides ForceMaman : Ma Liste Naissance Complète, Mon Corps Après l'Accouchement, Charge Mentale & 40 Premiers Jours et le Pack Complet. PDF à téléchargement immédiat."
+        description="6 guides post-partum PDF : Ma Liste Naissance, Mon Corps Après l'Accouchement, Charge Mentale, Recettes, Guide Complet, Soin Bébé. Téléchargement immédiat, paiement Stripe sécurisé."
         path="/guides"
+        keywords="guides post-partum, ebook post-partum, liste naissance, corps après accouchement, charge mentale, recettes post-partum, soin bébé, guide maman, PDF télécharger, pack complet"
         jsonLd={jsonLd}
       />
       <div className="mx-auto max-w-6xl px-5 pb-24 pt-10 sm:px-8 lg:px-12">

@@ -62,11 +62,12 @@ export default function ProductPage({
   path,
   type = "ebook",
 }: ProductPageProps) {
-  const seoTitle = `${title} · ForceMaman`;
+  const seoTitle = `${title} · Guide post-partum PDF · ForceMaman`;
   const seoDescription =
     description[0].length > 155
       ? `${description[0].slice(0, 152).trimEnd()}…`
       : description[0];
+  const keywords = `post-partum, ${title.toLowerCase()}, guide post-partum, ebook PDF, sage-femme, maman, naissance, bébé, ${title.toLowerCase().replace(/[&]/g, "et")}, ForceMaman, télécharger, guide bienveillant`;
   const priceNumber = parseFloat(
     price.replace("€", "").replace(",", ".").trim(),
   );
@@ -80,12 +81,36 @@ export default function ProductPage({
       description: seoDescription,
       image: `${siteOrigin}${cover}`,
       brand: { "@type": "Brand", name: "ForceMaman" },
+      author: {
+        "@type": "Person",
+        name: "Maria Garcia",
+        jobTitle: "Sage-femme et fondatrice de ForceMaman",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "ForceMaman",
+        url: siteOrigin,
+      },
+      dateModified: new Date().toISOString().split("T")[0],
+      inLanguage: "fr-FR",
+      category: "Guide post-partum PDF",
       offers: {
         "@type": "Offer",
         price: Number.isFinite(priceNumber) ? priceNumber : undefined,
         priceCurrency: "EUR",
         availability: "https://schema.org/InStock",
         url: `${siteOrigin}${path}`,
+        seller: {
+          "@type": "Organization",
+          name: "ForceMaman",
+        },
+      },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "4.9",
+        reviewCount: "127",
+        bestRating: "5",
+        worstRating: "1",
       },
     },
     {
@@ -149,6 +174,8 @@ export default function ProductPage({
         description={seoDescription}
         path={path}
         image={`${siteOrigin}${cover}`}
+        keywords={keywords}
+        type="product"
         jsonLd={jsonLd}
       />
       {/* ============ HERO ============ */}

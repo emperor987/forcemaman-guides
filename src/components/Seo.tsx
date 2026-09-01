@@ -6,6 +6,9 @@ interface SeoProps {
   path: string;
   noindex?: boolean;
   image?: string;
+  keywords?: string;
+  author?: string;
+  type?: "website" | "article" | "product";
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
@@ -59,6 +62,9 @@ export default function Seo({
   path,
   noindex = false,
   image = DEFAULT_IMAGE,
+  keywords,
+  author = "Maria Garcia, ForceMaman",
+  type = "website",
   jsonLd,
 }: SeoProps) {
   const url = `${getSiteUrl()}${path}`;
@@ -67,9 +73,12 @@ export default function Seo({
   useEffect(() => {
     document.title = title;
     upsertMeta("name", "description", description);
+    if (keywords) upsertMeta("name", "keywords", keywords);
+    upsertMeta("name", "author", author);
+    upsertMeta("name", "language", "fr-FR");
     upsertMeta("property", "og:title", title);
     upsertMeta("property", "og:description", description);
-    upsertMeta("property", "og:type", "website");
+    upsertMeta("property", "og:type", type);
     upsertMeta("property", "og:url", url);
     upsertMeta("property", "og:site_name", "ForceMaman");
     upsertMeta("property", "og:locale", "fr_FR");
@@ -86,13 +95,13 @@ export default function Seo({
     upsertMeta(
       "name",
       "robots",
-      noindex ? "noindex, nofollow" : "index, follow",
+      noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1",
     );
     if (jsonLd) {
       upsertJsonLd(Array.isArray(jsonLd) ? jsonLd : [jsonLd]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [title, description, url, noindex, image, jsonLdKey]);
+  }, [title, description, url, noindex, image, jsonLdKey, keywords, author, type]);
 
   return null;
 }

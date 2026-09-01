@@ -124,6 +124,7 @@ export default function FAQ() {
         title="FAQ · Questions fréquentes sur les guides ForceMaman"
         description="Tout savoir sur les ebooks ForceMaman : format PDF, paiement Stripe sécurisé, remboursement sous 14 jours, compatibilité de lecture et avertissements."
         path="/faq"
+        keywords="FAQ ForceMaman, questions fréquentes, guide post-partum, paiement Stripe, remboursement, PDF, ebook, sage-femme"
         jsonLd={jsonLd}
       />
       {/* ============ HEADER ============ */}
