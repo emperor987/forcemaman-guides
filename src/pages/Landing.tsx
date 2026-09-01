@@ -213,7 +213,7 @@ export default function Landing() {
     <Layout>
       <Seo
         title="ForceMaman · Guides post-partum écrits par une sage-femme"
-        description="6 guides post-partum bienveillants : liste de naissance, corps après accouchement, charge mentale, recettes, soin bébé. Écrits par Maria Garcia, sage-femme. PDF téléchargeable, paiement Stripe."
+        description="Des guides numériques bienveillants pour le post-partum : liste de naissance, récupération après l'accouchement, charge mentale, recettes et soins de bébé. Créés par Maria Garcia, ancienne sage-femme et maman."
         path="/"
         keywords="post-partum, guide post-partum, maman, ebook, sage-femme, naissance, bébé, charge mentale, corps après accouchement, liste naissance, recettes post-partum, nouveau-né, guide maman, PDF, télécharger, ForceMaman"
         jsonLd={jsonLd}

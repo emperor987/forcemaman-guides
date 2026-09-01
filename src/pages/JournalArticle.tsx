@@ -40,7 +40,13 @@ export default function JournalArticle() {
     );
   }
 
-  const siteOrigin = typeof window !== "undefined" ? window.location.origin : "https://forcemaman.store";
+  const siteOrigin =
+    typeof window === "undefined"
+      ? "https://forcemaman.store"
+      : window.location.hostname === "forcemaman.store" ||
+          window.location.hostname === "www.forcemaman.store"
+        ? "https://forcemaman.store"
+        : window.location.origin;
   const jsonLd = [
     {
       "@context": "https://schema.org",
