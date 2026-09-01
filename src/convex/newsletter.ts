@@ -1,7 +1,7 @@
 /**
  * Action newsletter ForceMaman.
  *
- * Envoie le guide gratuit par email via le service email intégré Freebuff (VLY).
+ * Envoie les premiers conseils par email via le service email intégré Freebuff (VLY).
  * Stocke le consentement RGPD dans la table subscribers.
  */
 
@@ -12,11 +12,10 @@ import { v } from "convex/values";
 import { vly } from "../lib/vly-integrations";
 
 const SITE_URL = process.env.SITE_URL || "https://forcemaman.store";
-const GUIDE_URL = `${SITE_URL}/ebooks/guide-gratuit-7-systemes.pdf`;
 const UNSUBSCRIBE_BASE = `${SITE_URL}/api/unsubscribe`;
 
 /**
- * Inscription newsletter + envoi du guide gratuit.
+ * Inscription newsletter + envoi d'un message de bienvenue.
  * Utilise le service email intégré Freebuff (VLY).
  */
 export const subscribe = action({
@@ -29,7 +28,7 @@ export const subscribe = action({
 
     // 1. Stocker le subscriber avec consentement RGPD
     const consentText =
-      "J'accepte de recevoir le guide gratuit et les emails de ForceMaman. Je peux me désinscrire en un clic à tout moment.";
+      "J'accepte de recevoir les conseils et les emails de ForceMaman. Je peux me désinscrire en un clic à tout moment.";
     try {
       await ctx.runMutation("newsletterSubscribers:subscribe" as any, {
         email,
@@ -44,18 +43,14 @@ export const subscribe = action({
 
     // 2. Construire l'email avec lien de désabonnement
     const unsubscribeUrl = `${UNSUBSCRIBE_BASE}?email=${encodeURIComponent(email)}`;
-    const subject = "Ton guide gratuit ForceMaman est prêt 🌿";
+    const subject = "Tes premiers conseils ForceMaman arrivent 🌿";
     const html = `
       <div style="background:#FAF6F1;padding:32px 16px;font-family:Georgia,'Times New Roman',serif;">
         <div style="max-width:520px;margin:0 auto;background:#ffffff;border-radius:20px;padding:36px 32px;color:#5C4A3A;">
           <p style="text-align:center;color:#8A9A7E;font-size:12px;letter-spacing:4px;text-transform:uppercase;margin:0 0 18px;">ForceMaman</p>
-          <h1 style="font-size:26px;line-height:1.2;color:#5C4A3A;margin:0 0 12px;">Les 7 Systèmes ForceMaman</h1>
-          <p style="font-size:15px;line-height:1.7;margin:0 0 20px;">Des repères simples pour respirer avec un nouveau-né. Ton guide est prêt, il t'attend juste en dessous.</p>
-          <p style="text-align:center;margin:28px 0;">
-            <a href="${GUIDE_URL}" style="display:inline-block;background:#C97D5D;color:#fff;text-decoration:none;padding:14px 28px;border-radius:999px;font-size:14px;">Télécharger ton guide gratuit</a>
-          </p>
-          <p style="font-size:13px;line-height:1.6;color:#8a7563;margin:0 0 8px;">Si le bouton ne s'affiche pas, copie ce lien : ${GUIDE_URL}</p>
-          <p style="font-size:13px;line-height:1.6;color:#8a7563;margin:0 0 16px;">Pense à vérifier tes spams si tu ne vois pas cet email. Bienvenue jeune maman, on est ravies de t'accompagner.</p>
+          <h1 style="font-size:26px;line-height:1.2;color:#5C4A3A;margin:0 0 12px;">Bienvenue chez ForceMaman</h1>
+          <p style="font-size:15px;line-height:1.7;margin:0 0 20px;">Merci pour ton inscription. Tu vas recevoir tes premiers conseils par email dans quelques minutes.</p>
+          <p style="font-size:13px;line-height:1.6;color:#8a7563;margin:0 0 16px;">Pense à vérifier tes spams si tu ne vois pas notre message. Bienvenue jeune maman, on est ravies de t'accompagner.</p>
           <hr style="border:none;border-top:1px solid #E8DFD4;margin:20px 0;">
           <p style="font-size:12px;line-height:1.5;color:#a89888;margin:0;">Maria, fondatrice de ForceMaman</p>
           <p style="font-size:11px;line-height:1.5;color:#c4b8a8;margin:20px 0 0;">
@@ -66,13 +61,10 @@ export const subscribe = action({
       </div>
     `;
     const text = [
-      "Les 7 Systèmes ForceMaman",
-      "Des repères simples pour respirer avec un nouveau-né.",
+      "Bienvenue chez ForceMaman",
+      "Merci pour ton inscription. Tu vas recevoir tes premiers conseils par email dans quelques minutes.",
       "",
-      "Télécharge ton guide gratuit ici :",
-      GUIDE_URL,
-      "",
-      "Pense à vérifier tes spams si tu ne vois pas cet email.",
+      "Pense à vérifier tes spams si tu ne vois pas notre message.",
       "Bienvenue jeune maman, on est ravies de t'accompagner.",
       "",
       "Maria, fondatrice de ForceMaman",
@@ -87,7 +79,7 @@ export const subscribe = action({
     if (result.success === false) {
       console.error("Erreur envoi email VLY:", result.error);
       // On ne bloque pas l'inscription même si l'email échoue
-      // L'utilisateur peut réessayer ou télécharger directement
+      // L'inscription reste enregistrée même si l'email échoue
     }
 
     return {

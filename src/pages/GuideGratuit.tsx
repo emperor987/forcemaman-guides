@@ -114,10 +114,10 @@ export default function GuideGratuit() {
   return (
     <Layout>
       <Seo
-        title="Guide Gratuit · Les 7 Systèmes ForceMaman · PDF"
-        description="Reçois gratuitement Les 7 Systèmes ForceMaman : Cahier Unique, Boîte à 3, Repas de Secours, Panier Nomade, Trousse Départ Éclair, Règle du Suffisant, Sas du Soir. Des repères simples pour respirer avec un nouveau-né."
+        title="Conseils gratuits · Les 7 Systèmes ForceMaman"
+        description="Inscris-toi pour recevoir par email les premiers conseils ForceMaman : sept systèmes simples pour alléger ta charge mentale avec un nouveau-né."
         path="/guide-gratuit"
-        keywords="guide gratuit post-partum, 7 systèmes ForceMaman, alléger charge mentale, nouveau-né, organisation bébé, guide maman gratuit, PDF gratuit"
+        keywords="conseils gratuits post-partum, 7 systèmes ForceMaman, alléger charge mentale, nouveau-né, organisation bébé, conseils maman"
         jsonLd={jsonLd}
       />
       {/* ============ HERO ============ */}
@@ -125,11 +125,11 @@ export default function GuideGratuit() {
         <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1.02fr_0.78fr] lg:gap-20">
           <div className="text-center lg:text-left">
             <Reveal>
-              <p className="eyebrow">Guide gratuit</p>
+              <p className="eyebrow">Conseils gratuits par email</p>
               <AccentDots className="mt-4" />
               <h1 className="mx-auto mt-6 max-w-3xl font-serif text-[2.85rem] leading-[0.98] text-foreground sm:text-6xl lg:mx-0 lg:text-[4.65rem]">
                 7 systèmes qui simplifient <span className="italic">vraiment</span> la vie
-                avec un bébé.
+                avec un bébé, directement dans ta boîte mail.
               </h1>
             </Reveal>
             <Reveal delay={160}>
@@ -145,7 +145,7 @@ export default function GuideGratuit() {
                 <div className="overflow-hidden rounded-[1.25rem] border border-border/70 bg-card">
                   <img
                     src={src(images.guideEditorial)}
-                    alt="Aperçu du guide gratuit 7 systèmes"
+                    alt="Aperçu des conseils ForceMaman pour les premières semaines avec bébé"
                     width={800}
                     height={1000}
                     className="h-auto w-full object-cover"
@@ -191,12 +191,12 @@ export default function GuideGratuit() {
         <div className="mx-auto max-w-6xl">
           <Reveal>
             <div className="mx-auto max-w-2xl text-center">
-              <p className="eyebrow">Dans le guide</p>
+              <p className="eyebrow">Dans tes premiers conseils</p>
               <h2 className="mt-5 font-serif text-[2.35rem] leading-[1.04] text-foreground sm:text-5xl">
-                Les 7 systèmes <span className="italic">prêts à poser</span>
+                Les 7 systèmes <span className="italic">à découvrir</span>
               </h2>
               <p className="mx-auto mt-6 max-w-xl text-[15px] leading-relaxed text-foreground/65">
-                Chaque système a été pensé pour réduire une décision répétitive,
+                Chaque conseil est pensé pour réduire une décision répétitive,
                 sécuriser un moment fragile ou libérer de la place dans ta tête.
               </p>
             </div>
@@ -372,16 +372,14 @@ export default function GuideGratuit() {
         {/* ============ CTA FINAL ============ */}
       <section className="px-6 py-20 sm:px-8 sm:py-32">
         <div className="mx-auto max-w-5xl overflow-hidden rounded-[2rem] border border-border/60 bg-[linear-gradient(135deg,color-mix(in_oklab,var(--accent)_32%,var(--background)),color-mix(in_oklab,var(--card)_86%,var(--background))_48%,var(--background))] px-6 py-16 text-center shadow-2xl sm:px-12 sm:py-24">
-          <Reveal>
-            <p className="eyebrow">Guide gratuit</p>
+          <Reveal>              <p className="eyebrow">Conseils ForceMaman</p>
             <h2 className="mx-auto mt-5 max-w-2xl font-serif text-[2.45rem] leading-[1.02] text-foreground sm:text-5xl">
               Prête à alléger ta <span className="italic">charge mentale</span> ?
             </h2>
           </Reveal>
           <Reveal delay={80}>
             <p className="mx-auto mt-6 max-w-lg text-[15px] leading-relaxed text-foreground/68">
-              Reçois gratuitement Les 7 Systèmes ForceMaman, directement dans
-              ta boîte mail.
+              Reçois tes premiers conseils ForceMaman directement dans ta boîte mail.
             </p>
           </Reveal>
           <Reveal delay={160}>

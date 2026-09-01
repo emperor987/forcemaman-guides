@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAction } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { ArrowRight, Download, Mail, Sparkles } from "lucide-react";
+import { ArrowRight, Mail, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface EmailFormProps {
@@ -18,8 +18,6 @@ interface EmailFormProps {
   subtitle?: string;
   className?: string;
 }
-
-const GUIDE_PDF = "/ebooks/guide-gratuit-7-systemes.pdf";
 
 export default function EmailForm({
   variant = "hero",
@@ -81,20 +79,11 @@ export default function EmailForm({
               C'est parfait ! 🎉
             </h3>
             <p className="mx-auto mt-4 max-w-sm text-sm leading-relaxed text-foreground/70">
-              Ton guide arrive dans ta boîte mail d'ici quelques minutes. Pense
-              à vérifier tes spams si tu ne le vois pas.
+              Merci ! Tu vas recevoir tes premiers conseils par email dans quelques minutes.
             </p>
             <p className="mt-5 text-[13px] italic leading-relaxed text-foreground/60">
               Bienvenue jeune maman, on est ravies de t'accompagner.
             </p>
-            <a
-              href={GUIDE_PDF}
-              download
-              className="mt-8 inline-flex h-12 items-center justify-center gap-2 rounded-full border border-foreground/25 px-7 text-[11px] font-medium uppercase tracking-[0.18em] text-foreground/80 transition-colors hover:border-foreground/60 hover:text-foreground"
-            >
-              <Download className="size-4" />
-              Télécharger maintenant
-            </a>
           </div>
         </div>
       </div>
@@ -128,7 +117,7 @@ export default function EmailForm({
           disabled={sending}
           className="inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-brand-terracotta px-7 text-[11px] font-medium uppercase tracking-[0.18em] text-[#fff8f2] transition-colors hover:bg-brand-terracotta/90 disabled:opacity-70"
         >
-          Télécharger le guide
+          Recevoir les conseils
         </button>
       </form>
     );
@@ -176,7 +165,7 @@ export default function EmailForm({
         >
           <Sparkles className="size-4 opacity-90" />
           <span className="text-sm tracking-wide">
-            {sending ? "Envoi en cours…" : "Télécharger le guide gratuit"}
+            {sending ? "Envoi en cours…" : "Recevoir les conseils"}
           </span>
           <ArrowRight className="size-4" />
         </button>
