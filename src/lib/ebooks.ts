@@ -146,6 +146,8 @@ export interface LibraryItem {
   badgeLabel: string;
   category: string;
   featured: boolean;
+  datePublished: string;
+  dateModified: string;
 }
 
 export const badgeStyles: Record<LibraryBadge, string> = {
@@ -188,6 +190,8 @@ export const libraryItems: LibraryItem[] = [
     badgeLabel: "Le plus téléchargé",
     category: "preparer",
     featured: true,
+    datePublished: "2026-03-01",
+    dateModified: "2026-03-01",
   },
   {
     id: "corps-apres",
@@ -201,6 +205,8 @@ export const libraryItems: LibraryItem[] = [
     badgeLabel: "Essentiel",
     category: "soigner",
     featured: true,
+    datePublished: "2026-03-01",
+    dateModified: "2026-03-01",
   },
   {
     id: "charge-mentale",
@@ -214,6 +220,8 @@ export const libraryItems: LibraryItem[] = [
     badgeLabel: "Le plus téléchargé",
     category: "soigner",
     featured: true,
+    datePublished: "2026-03-01",
+    dateModified: "2026-03-01",
   },
   {
     id: "recettes-postpartum",
@@ -227,6 +235,8 @@ export const libraryItems: LibraryItem[] = [
     badgeLabel: "Nouveau",
     category: "preparer",
     featured: false,
+    datePublished: "2026-06-01",
+    dateModified: "2026-06-01",
   },
   {
     id: "guide-complet-postpartum",
@@ -240,6 +250,8 @@ export const libraryItems: LibraryItem[] = [
     badgeLabel: "Nouveau",
     category: "soigner",
     featured: false,
+    datePublished: "2026-06-01",
+    dateModified: "2026-06-01",
   },
   {
     id: "soin-bebe",
@@ -253,6 +265,8 @@ export const libraryItems: LibraryItem[] = [
     badgeLabel: "Nouveau",
     category: "preparer",
     featured: false,
+    datePublished: "2026-06-01",
+    dateModified: "2026-06-01",
   },
   {
     id: "bundle",
@@ -266,6 +280,8 @@ export const libraryItems: LibraryItem[] = [
     badgeLabel: "Gain de temps",
     category: "tout-en-un",
     featured: true,
+    datePublished: "2026-03-01",
+    dateModified: "2026-06-01",
   },
 ];
 

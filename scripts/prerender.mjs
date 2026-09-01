@@ -1,23 +1,27 @@
 /**
  * Prerendering script for ForceMaman
- * Generates static HTML files for all public pages so search engines
- * can crawl full content without executing JavaScript.
  *
- * Usage: node scripts/prerender.mjs
- * Run after: vite build
+ * Starts a Vite preview server on a dynamic port, renders each public page
+ * with Puppeteer, writes the resulting HTML to dist/, then shuts down the
+ * server cleanly. No process is left running afterward.
  *
- * Uses puppeteer-core + @sparticuz/chromium (already in devDeps)
- * to render each page and extract the final HTML.
+ * Usage:
+ *   bun run build          # builds dist/
+ *   node scripts/prerender.mjs  # prerenders pages into dist/
+ *
+ * Or combined via the "build:prerender" script in package.json.
  */
 
+import { createServer } from "vite";
 import puppeteer from "puppeteer-core";
 import chromium from "@sparticuz/chromium";
-import { readFileSync, writeFileSync, existsSync } from "fs";
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const DIST = resolve(__dirname, "../dist");
+const ROOT = resolve(__dirname, "..");
+const DIST = resolve(ROOT, "dist");
 
 // All public, indexable routes
 const PUBLIC_ROUTES = [
@@ -49,23 +53,39 @@ const PUBLIC_ROUTES = [
   "/remboursement",
 ];
 
-// Routes that should NOT be prerendered (private/dynamic)
-const NO_PRERENDER = ["/auth", "/dashboard", "/commande", "/api"];
-
-const PORT = 4173;
-
 async function prerender() {
   console.log("🔍 Starting prerendering...\n");
 
-  // Check if dist exists
   if (!existsSync(DIST)) {
-    console.error("❌ dist/ directory not found. Run 'vite build' first.");
+    console.error("❌ dist/ directory not found. Run 'bun run build' first.");
     process.exit(1);
   }
 
-  const executablePath = await chromium.executablePath();
-  console.log(`📦 Chromium: ${executablePath}`);
+  // ── 1. Start Vite preview server on a dynamic port ──
+  const server = await createServer({
+    root: ROOT,
+    configFile: resolve(ROOT, "vite.config.ts"),
+    preview: {
+      port: 0, // dynamic: OS picks a free port
+      strictPort: false,
+    },
+    server: false, // no HMR dev server
+  });
 
+  await server.listen();
+  const info = server.resolvedUrls;
+  const previewUrl = info?.local?.[0] ?? info?.network?.[0];
+  if (!previewUrl) {
+    console.error("❌ Could not determine preview server URL.");
+    await server.close();
+    process.exit(1);
+  }
+
+  const base = previewUrl.replace(/\/$/, "");
+  console.log(`📦 Preview server running at ${base}`);
+
+  // ── 2. Launch Puppeteer ──
+  const executablePath = await chromium.executablePath();
   const browser = await puppeteer.launch({
     args: chromium.args,
     defaultViewport: chromium.defaultViewport,
@@ -81,35 +101,26 @@ async function prerender() {
   let success = 0;
   let failed = 0;
 
+  // ── 3. Prerender each route ──
   for (const route of PUBLIC_ROUTES) {
-    const url = `http://localhost:${PORT}${route}`;
+    const url = `${base}${route}`;
     const filePath = route === "/" ? "/index.html" : `${route}/index.html`;
     const fullPath = resolve(DIST, filePath.slice(1));
 
     try {
-      console.log(`⏳ Prerendering: ${route}`);
-      await page.goto(url, {
-        waitUntil: "networkidle0",
-        timeout: 30000,
-      });
-
-      // Wait for React to render
+      console.log(`⏳ ${route}`);
+      await page.goto(url, { waitUntil: "networkidle0", timeout: 30000 });
       await page.waitForSelector("#root > *", { timeout: 10000 });
-
-      // Extra wait for lazy-loaded components and SEO metadata
+      // Extra wait for lazy components + SEO metadata injection
       await new Promise((r) => setTimeout(r, 2000));
 
-      // Extract the rendered HTML
       const html = await page.content();
 
-      // Write to dist
       const dir = dirname(fullPath);
-      if (!existsSync(dir)) {
-        const { mkdirSync } = await import("fs");
-        mkdirSync(dir, { recursive: true });
-      }
+      if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
+
       writeFileSync(fullPath, html, "utf-8");
-      console.log(`  ✅ ${route} → ${filePath}`);
+      console.log(`  ✅ → ${filePath}`);
       success++;
     } catch (err) {
       console.error(`  ❌ ${route}: ${err.message}`);
@@ -117,13 +128,12 @@ async function prerender() {
     }
   }
 
+  // ── 4. Cleanup: close browser + server ──
   await browser.close();
+  await server.close();
 
-  console.log(`\n📊 Prerendering complete: ${success} success, ${failed} failed`);
-
-  if (failed > 0) {
-    console.log("⚠️  Some pages failed but the build continues.");
-  }
+  console.log(`\n📊 Done: ${success} success, ${failed} failed`);
+  if (failed > 0) process.exit(1);
 }
 
 prerender().catch((err) => {

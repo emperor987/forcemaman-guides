@@ -38,7 +38,7 @@ export default function JournalArticle() {
     );
   }
 
-  const siteOrigin = "https://forcemaman.store";
+  const siteOrigin = typeof window !== "undefined" ? window.location.origin : "https://forcemaman.store";
   const jsonLd = [
     {
       "@context": "https://schema.org",
