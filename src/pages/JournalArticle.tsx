@@ -6,6 +6,7 @@ import OptimizedImage from "@/components/OptimizedImage";
 import { journalArticles, articleSrc } from "@/lib/journal";
 import { ebooks } from "@/lib/ebooks";
 import { ArrowLeft, ArrowRight, BookOpen } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 export default function JournalArticle() {
   const { slug } = useParams<{ slug: string }>();
@@ -149,6 +150,7 @@ export default function JournalArticle() {
                     </p>
                     <Link
                       to={guide.href}
+                      onClick={() => trackEvent("guide_click", { source: "article", guide: guide.id })}
                       className="mt-4 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-foreground/70 underline underline-offset-4 transition-colors hover:text-foreground"
                     >
                       Découvrir le guide

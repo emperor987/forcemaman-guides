@@ -14,6 +14,8 @@ import { images, src } from "@/lib/assets";
 import { ArrowRight } from "lucide-react";
 import AccentDots from "@/components/AccentDots";
 import { Check } from "lucide-react";
+import { useEffect } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 const problemCards = [
   {
@@ -111,6 +113,10 @@ const jsonLd = [
 ];
 
 export default function GuideGratuit() {
+  useEffect(() => {
+    trackEvent("guide_gratuit_view");
+  }, []);
+
   return (
     <Layout>
       <Seo
@@ -351,6 +357,7 @@ export default function GuideGratuit() {
                 <Reveal key={guide.id} delay={i * 60}>
                   <Link
                     to={guide.href}
+                    onClick={() => trackEvent("guide_click", { source: "guide_gratuit", guide: guide.id })}
                     className="group flex h-full flex-col items-start rounded-3xl border border-border/60 bg-card/55 p-6 text-left shadow-sm transition-all hover:border-foreground/30"
                   >
                     <h3 className="font-serif text-xl leading-snug text-foreground">

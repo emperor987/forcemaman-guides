@@ -154,9 +154,11 @@ function RouteSyncer() {
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <RootErrorBoundary>
-      <ToolbarErrorBoundary>
-        <VlyToolbar />
-      </ToolbarErrorBoundary>
+      {typeof window !== "undefined" && window.location.hostname.endsWith(".vly.sh") && (
+        <ToolbarErrorBoundary>
+          <VlyToolbar />
+        </ToolbarErrorBoundary>
+      )}
       <ConvexAuthProvider client={convex}>
         <BrowserRouter>
           <ScrollToTop />

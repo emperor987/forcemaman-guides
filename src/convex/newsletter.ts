@@ -54,7 +54,7 @@ export const subscribe = action({
           <hr style="border:none;border-top:1px solid #E8DFD4;margin:20px 0;">
           <p style="font-size:12px;line-height:1.5;color:#a89888;margin:0;">Maria, fondatrice de ForceMaman</p>
           <p style="font-size:11px;line-height:1.5;color:#c4b8a8;margin:20px 0 0;">
-            Tu reçois cet email car tu as téléchargé le guide gratuit sur <a href="${SITE_URL}" style="color:#C97D5D;text-decoration:underline;">forcemaman.store</a>.
+            Tu reçois cet email parce que tu t'es inscrite aux conseils ForceMaman sur <a href="${SITE_URL}" style="color:#C97D5D;text-decoration:underline;">forcemaman.store</a>.
             <br><a href="${unsubscribeUrl}" style="color:#C97D5D;text-decoration:underline;">Se désinscrire en un clic</a>
           </p>
         </div>

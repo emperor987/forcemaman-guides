@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { useAction } from "convex/react";
 import Layout from "@/components/Layout";
@@ -9,6 +9,7 @@ import AccentDots from "@/components/AccentDots";
 import { ebooks } from "@/lib/ebooks";
 import { journalArticles, articleSrc } from "@/lib/journal";
 import { api } from "@/convex/_generated/api";
+import { trackEvent } from "@/lib/analytics";
 import {
   ArrowRight,
   CheckCircle,
@@ -90,6 +91,10 @@ export default function ProductPage({
   const ebookData = ebooks.find((e) => e.id === productId);
   const productFaq = ebookData?.faq ?? [];
 
+  useEffect(() => {
+    trackEvent("product_view", { product: productId });
+  }, [productId]);
+
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -154,6 +159,7 @@ export default function ProductPage({
   const handleCheckout = () => {
     if (checkingOut) return;
     setCheckingOut(true);
+    trackEvent("checkout_start", { product: productId });
     // On envoie l'origine courante du navigateur pour que le redirect Stripe
     // fonctionne quelle que soit l'URL de déploiement (Freebuff, domaine perso, etc.)
     const siteUrl = window.location.origin;

@@ -3,6 +3,7 @@ import { useAction } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { ArrowRight, Mail, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { trackEvent } from "@/lib/analytics";
 
 interface EmailFormProps {
   /**
@@ -12,7 +13,7 @@ interface EmailFormProps {
    */
   variant?: "hero" | "footer";
   id?: string;
-  /** Affiche le bloc "Reçois ton guide gratuit" + sous-titre (défaut : hero) */
+  /** Affiche le bloc de conseils gratuits + sous-titre (défaut : hero) */
   showHeading?: boolean;
   title?: string;
   subtitle?: string;
@@ -31,6 +32,7 @@ export default function EmailForm({
   const [email, setEmail] = useState("");
   const [sending, setSending] = useState(false);
   const [done, setDone] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const subscribe = useAction(api.newsletter.subscribe);
 
   const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
@@ -39,13 +41,19 @@ export default function EmailForm({
     e.preventDefault();
     if (!isValid || sending) return;
     setSending(true);
+    setErrorMessage(null);
     try {
       await subscribe({ email: email.trim() });
+      trackEvent("email_success");
+      setDone(true);
     } catch (error) {
       console.error("Newsletter subscribe error:", error);
+      setErrorMessage(
+        "Nous n'avons pas pu enregistrer ton inscription. Vérifie ton adresse puis réessaie dans un instant.",
+      );
+    } finally {
+      setSending(false);
     }
-    setSending(false);
-    setDone(true);
   };
 
   /* ============ ÉCRAN DE CONFIRMATION ============ */
@@ -62,7 +70,7 @@ export default function EmailForm({
             C'est parfait ! 🎉
           </p>
           <p className="mt-1 text-xs leading-relaxed text-foreground/60">
-            Ton guide arrive dans ta boîte mail d'ici quelques minutes.
+            Tes premiers conseils arrivent dans ta boîte mail d'ici quelques minutes.
           </p>
         </div>
       );
@@ -97,6 +105,11 @@ export default function EmailForm({
         onSubmit={handleSubmit}
         className={cn("flex flex-col gap-3 sm:flex-row", className)}
       >
+        {errorMessage && (
+          <p role="alert" className="text-sm leading-relaxed text-destructive sm:col-span-2">
+            {errorMessage}
+          </p>
+        )}
         <label htmlFor={`${id}-email`} className="sr-only">
           Email
         </label>
@@ -138,6 +151,11 @@ export default function EmailForm({
       )}
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-3">
+        {errorMessage && (
+          <p role="alert" className="rounded-2xl border border-destructive/20 bg-destructive/5 px-4 py-3 text-sm leading-relaxed text-destructive">
+            {errorMessage}
+          </p>
+        )}
         <label htmlFor={`${id}-email`} className="sr-only">
           Ton email
         </label>
