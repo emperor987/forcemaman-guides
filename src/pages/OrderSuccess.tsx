@@ -129,6 +129,7 @@ export default function OrderSuccess() {
         title="Commande confirmée · ForceMaman"
         description="Ton paiement a été confirmé. Télécharge tes guides ForceMaman."
         path="/commande/reussie"
+        noindex
       />
       <section className="px-6 py-20 sm:py-32">
         <div className="mx-auto max-w-lg text-center">

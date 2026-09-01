@@ -9,8 +9,8 @@ Allow: /
 Disallow: /api/
 Disallow: /auth
 Disallow: /dashboard
-Disallow: /commande/
-Disallow: /paiement/
+Disallow: /commande
+Disallow: /paiement
 
 # ===== Google =====
 User-agent: Googlebot

@@ -88,13 +88,15 @@ const guideCards = [
   { ...ebooks[5], cover: coverSoinBebe },
 ];
 
+const siteOrigin = typeof window !== "undefined" ? window.location.origin : "https://forcemaman.store";
+
 const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "ForceMaman",
     alternateName: "ForceMaman - Guides post-partum",
-    url: "https://forcemaman.store/",
+    url: `${siteOrigin}/`,
     inLanguage: "fr-FR",
     description:
       "6 guides post-partum bienveillants écrits par une sage-femme. Liste de naissance, corps après accouchement, charge mentale, recettes, soin bébé. PDF à téléchargement immédiat.",
@@ -102,7 +104,7 @@ const jsonLd = [
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: "https://forcemaman.store/guides?q={search_term_string}",
+        urlTemplate: `${siteOrigin}/guides?q={search_term_string}`,
       },
       "query-input": "required name=search_term_string",
     },
@@ -111,8 +113,8 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "ForceMaman",
-    url: "https://forcemaman.store/",
-    logo: "https://forcemaman.store/favicon.svg",
+    url: `${siteOrigin}/`,
+    logo: `${siteOrigin}/favicon.svg`,
     brand: "ForceMaman",
     description: "Guides post-partum écrits par une sage-femme",
     founder: {
@@ -139,7 +141,7 @@ const jsonLd = [
         "@type": "ListItem",
         position: 1,
         name: "Accueil",
-        item: "https://forcemaman.store/",
+        item: `${siteOrigin}/`,
       },
     ],
   },
@@ -148,12 +150,12 @@ const jsonLd = [
     "@type": "WebPage",
     name: "ForceMaman - Guides post-partum écrits par une sage-femme",
     description: "6 guides post-partum bienveillants pour mamans : liste de naissance, récupération, charge mentale, recettes, soin bébé. Écrits par Maria Garcia, sage-femme.",
-    url: "https://forcemaman.store/",
+    url: `${siteOrigin}/`,
     inLanguage: "fr-FR",
     isPartOf: {
       "@type": "WebSite",
       name: "ForceMaman",
-      url: "https://forcemaman.store/",
+      url: `${siteOrigin}/`,
     },
     about: {
       "@type": "Thing",
@@ -169,37 +171,37 @@ const jsonLd = [
           "@type": "ListItem",
           position: 1,
           name: "Ma Liste Naissance Complète",
-          url: "https://forcemaman.store/guides/liste-naissance",
+          url: `${siteOrigin}/guides/liste-naissance`,
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Mon Corps Après l'Accouchement",
-          url: "https://forcemaman.store/guides/corps-apres",
+          url: `${siteOrigin}/guides/corps-apres`,
         },
         {
           "@type": "ListItem",
           position: 3,
           name: "Charge Mentale & 40 Premiers Jours",
-          url: "https://forcemaman.store/guides/charge-mentale",
+          url: `${siteOrigin}/guides/charge-mentale`,
         },
         {
           "@type": "ListItem",
           position: 4,
           name: "Recettes Post-Partum",
-          url: "https://forcemaman.store/guides/recettes-postpartum",
+          url: `${siteOrigin}/guides/recettes-postpartum`,
         },
         {
           "@type": "ListItem",
           position: 5,
           name: "Guide Complet Post-Partum",
-          url: "https://forcemaman.store/guides/guide-complet-postpartum",
+          url: `${siteOrigin}/guides/guide-complet-postpartum`,
         },
         {
           "@type": "ListItem",
           position: 6,
           name: "Soin Bébé après l'Accouchement",
-          url: "https://forcemaman.store/guides/soin-bebe",
+          url: `${siteOrigin}/guides/soin-bebe`,
         },
       ],
     },

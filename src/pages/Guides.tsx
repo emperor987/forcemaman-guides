@@ -135,62 +135,64 @@ const faqItems = [
   },
 ];
 
+const siteOrigin = typeof window !== "undefined" ? window.location.origin : "https://forcemaman.store";
+
 const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-  name: "La Bibliothèque des Guides ForceMaman",
-  description:
-    "Les guides post-partum de ForceMaman : liste de naissance, corps après l'accouchement, charge mentale, recettes, guide complet, soin bébé, pack complet et ressources gratuites.",
-  url: "https://forcemaman.store/guides",
-  inLanguage: "fr-FR",
-  mainEntity: {
-    "@type": "ItemList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Ma Liste Naissance Complète",
-        url: "https://forcemaman.store/guides/liste-naissance",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Mon Corps Après l'Accouchement",
-        url: "https://forcemaman.store/guides/corps-apres",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "Charge Mentale & 40 Premiers Jours",
-        url: "https://forcemaman.store/guides/charge-mentale",
-      },
-      {
-        "@type": "ListItem",
-        position: 4,
-        name: "Recettes Post-Partum",
-        url: "https://forcemaman.store/guides/recettes-postpartum",
-      },
-      {
-        "@type": "ListItem",
-        position: 5,
-        name: "Guide Complet Post-Partum",
-        url: "https://forcemaman.store/guides/guide-complet-postpartum",
-      },
-      {
-        "@type": "ListItem",
-        position: 6,
-        name: "Soin Bébé après l'Accouchement",
-        url: "https://forcemaman.store/guides/soin-bebe",
-      },
-      {
-        "@type": "ListItem",
-        position: 7,
-        name: "Pack Complet ForceMaman",
-        url: "https://forcemaman.store/guides/bundle",
-      },
-    ],
-  },
+    name: "La Bibliothèque des Guides ForceMaman",
+    description:
+      "Les guides post-partum de ForceMaman : liste de naissance, corps après l'accouchement, charge mentale, recettes, guide complet, soin bébé, pack complet et ressources gratuites.",
+    url: `${siteOrigin}/guides`,
+    inLanguage: "fr-FR",
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Ma Liste Naissance Complète",
+          url: `${siteOrigin}/guides/liste-naissance`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Mon Corps Après l'Accouchement",
+          url: `${siteOrigin}/guides/corps-apres`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Charge Mentale & 40 Premiers Jours",
+          url: `${siteOrigin}/guides/charge-mentale`,
+        },
+        {
+          "@type": "ListItem",
+          position: 4,
+          name: "Recettes Post-Partum",
+          url: `${siteOrigin}/guides/recettes-postpartum`,
+        },
+        {
+          "@type": "ListItem",
+          position: 5,
+          name: "Guide Complet Post-Partum",
+          url: `${siteOrigin}/guides/guide-complet-postpartum`,
+        },
+        {
+          "@type": "ListItem",
+          position: 6,
+          name: "Soin Bébé après l'Accouchement",
+          url: `${siteOrigin}/guides/soin-bebe`,
+        },
+        {
+          "@type": "ListItem",
+          position: 7,
+          name: "Pack Complet ForceMaman",
+          url: `${siteOrigin}/guides/bundle`,
+        },
+      ],
+    },
   },
   {
     "@context": "https://schema.org",
@@ -205,8 +207,8 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://forcemaman.store/" },
-      { "@type": "ListItem", position: 2, name: "Nos Guides", item: "https://forcemaman.store/guides" },
+      { "@type": "ListItem", position: 1, name: "Accueil", item: `${siteOrigin}/` },
+      { "@type": "ListItem", position: 2, name: "Nos Guides", item: `${siteOrigin}/guides` },
     ],
   },
 ];

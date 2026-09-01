@@ -76,6 +76,8 @@ const faqItems = [
   },
 ];
 
+const siteOrigin = typeof window !== "undefined" ? window.location.origin : "https://forcemaman.store";
+
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -83,7 +85,7 @@ const jsonLd = [
     name: "Les 7 Systèmes ForceMaman · Guide Gratuit",
     description:
       "Sept systèmes simples pour alléger la charge mentale avec un nouveau-né : Cahier Unique, Boîte à 3, Repas de Secours, Panier Nomade, Trousse Départ Éclair, Règle du Suffisant, Sas du Soir.",
-    url: "https://forcemaman.store/guide-gratuit",
+    url: `${siteOrigin}/guide-gratuit`,
     inLanguage: "fr-FR",
     isAccessibleForFree: true,
   },
@@ -95,6 +97,14 @@ const jsonLd = [
       name: item.question,
       acceptedAnswer: { "@type": "Answer", text: item.answer },
     })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: `${siteOrigin}/` },
+      { "@type": "ListItem", position: 2, name: "Guide Gratuit", item: `${siteOrigin}/guide-gratuit` },
+    ],
   },
 ];
 

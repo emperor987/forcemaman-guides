@@ -25,6 +25,8 @@ const values = [
   },
 ];
 
+const siteOrigin = typeof window !== "undefined" ? window.location.origin : "https://forcemaman.store";
+
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -32,7 +34,7 @@ const jsonLd = [
     name: "À propos de ForceMaman",
     description:
       "ForceMaman, les guides bienveillants du post-partum créés par Maria Garcia, ancienne sage-femme et maman.",
-    url: "https://forcemaman.store/a-propos",
+    url: `${siteOrigin}/a-propos`,
     inLanguage: "fr-FR",
   },
   {
@@ -43,6 +45,14 @@ const jsonLd = [
     description:
       "Ancienne sage-femme pendant 8 ans et maman, fondatrice de ForceMaman.",
     worksFor: { "@type": "Organization", name: "ForceMaman" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: `${siteOrigin}/` },
+      { "@type": "ListItem", position: 2, name: "À propos", item: `${siteOrigin}/a-propos` },
+    ],
   },
 ];
 

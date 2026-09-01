@@ -5,6 +5,27 @@ import Seo from "@/components/Seo";
 import AccentDots from "@/components/AccentDots";
 import { Check, Mail } from "lucide-react";
 
+const siteOrigin = typeof window !== "undefined" ? window.location.origin : "https://forcemaman.store";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Contact ForceMaman",
+    description: "Contacte ForceMaman : une question, une suggestion, un mot. Réponse sous 48 heures ouvrées.",
+    url: `${siteOrigin}/contact`,
+    inLanguage: "fr-FR",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: `${siteOrigin}/` },
+      { "@type": "ListItem", position: 2, name: "Contact", item: `${siteOrigin}/contact` },
+    ],
+  },
+];
+
 export default function Contact() {
   const [sent, setSent] = useState(false);
 
@@ -15,6 +36,7 @@ export default function Contact() {
         description="Une question, une suggestion, un mot. Maria lit chaque message et répond personnellement sous 48 heures ouvrées."
         path="/contact"
         keywords="contact ForceMaman, contacter sage-femme, support client, aide, question guide post-partum"
+        jsonLd={jsonLd}
       />
       <div className="bg-background">
         <div className="mx-auto max-w-xl px-6 py-20 lg:py-28">

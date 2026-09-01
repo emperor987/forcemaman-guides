@@ -25,23 +25,35 @@ const piliers = [
   },
 ];
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Blog",
-  name: "Le Journal ForceMaman",
-  description:
-    "Lectures lentes pour mères pressées : charge mentale, organisation du quotidien, systèmes postpartum, repas et routines réalistes.",
-  url: "https://forcemaman.store/journal",
-  inLanguage: "fr-FR",
-  blogPost: journalArticles.map((article) => ({
-    "@type": "BlogPosting",
-    headline: article.title,
-    description: article.excerpt,
-    datePublished: article.datePublished,
-    dateModified: article.dateModified,
+const siteOrigin = typeof window !== "undefined" ? window.location.origin : "https://forcemaman.store";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "Le Journal ForceMaman",
+    description:
+      "Lectures lentes pour mères pressées : charge mentale, organisation du quotidien, systèmes postpartum, repas et routines réalistes.",
+    url: `${siteOrigin}/journal`,
     inLanguage: "fr-FR",
-  })),
-};
+    blogPost: journalArticles.map((article) => ({
+      "@type": "BlogPosting",
+      headline: article.title,
+      description: article.excerpt,
+      datePublished: article.datePublished,
+      dateModified: article.dateModified,
+      inLanguage: "fr-FR",
+    })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: `${siteOrigin}/` },
+      { "@type": "ListItem", position: 2, name: "Journal", item: `${siteOrigin}/journal` },
+    ],
+  },
+];
 
 export default function Journal() {
   const featured = journalArticles[0];
