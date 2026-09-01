@@ -1,4 +1,49 @@
+# robots.txt — ForceMaman
+# https://forcemaman.store
+
+# ===== Default: allow all crawlers =====
 User-agent: *
 Allow: /
 
+# ===== Block private/irrelevant routes =====
+Disallow: /api/
+Disallow: /auth
+Disallow: /dashboard
+Disallow: /commande
+Disallow: /paiement
+
+# ===== Google =====
+User-agent: Googlebot
+Allow: /
+Allow: /guides/
+Allow: /journal/
+
+# ===== Bing =====
+User-agent: Bingbot
+Allow: /
+
+# ===== Social crawlers (for OG preview) =====
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: Pinterest
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# ===== AI crawlers =====
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# ===== Sitemap =====
 Sitemap: https://forcemaman.store/sitemap.xml
