@@ -233,7 +233,9 @@ export default function ProductPage({
               >
                 <img
                   src={cover}
-                  alt={title}
+                  alt={`Couverture de l'ebook « ${title} »`}
+                  width={900}
+                  height={1200}
                   className="aspect-[3/4] h-auto w-full object-cover"
                   loading="eager"
                   decoding="async"
@@ -371,7 +373,9 @@ export default function ProductPage({
                   <div className="overflow-hidden rounded-2xl">
                     <img
                       src={previewImages[index]}
-                      alt={page}
+                      alt={`Aperçu de l'ebook « ${title} » : ${page}`}
+                      width={1000}
+                      height={1290}
                       loading="lazy"
                       decoding="async"
                       className="aspect-[1000/1290] w-full object-cover"

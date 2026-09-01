@@ -112,7 +112,9 @@ export default function JournalArticle() {
           <div className="mt-10 overflow-hidden rounded-3xl border border-border/60 bg-muted">
             <OptimizedImage
               image={article.image}
-              alt={article.title}
+              alt={`Illustration de l'article « ${article.title} »`}
+              width={1200}
+              height={800}
               loading="eager"
               fetchPriority="high"
               className="h-auto w-full object-cover"
@@ -126,6 +128,13 @@ export default function JournalArticle() {
               <p key={i}>{paragraph}</p>
             ))}
           </div>
+          <p className="mt-8 text-sm leading-relaxed text-foreground/65">
+            Pour poursuivre selon ton besoin, retrouve aussi les conseils de la rubrique{" "}
+            <Link className="font-medium underline underline-offset-4" to="/journal">
+              Journal ForceMaman
+            </Link>{" "}
+            et les guides consacrés à l'organisation du quotidien et au post-partum.
+          </p>
           <p className="mt-8 text-sm italic text-muted-foreground">
             Cet article est un partage d'expérience et d'information. Il ne
             remplace pas un avis médical professionnel : en cas de doute, parle

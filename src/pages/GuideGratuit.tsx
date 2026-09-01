@@ -76,7 +76,7 @@ const faqItems = [
   {
     question: "Vais-je recevoir trop d'emails ?",
     answer:
-      "Tu recevras des conseils par email selon la communication prévue par ForceMaman. Tu peux te désinscrire à tout moment via le lien prévu dans les messages.",
+      "Tu recevras les conseils ForceMaman par email. Tu peux te désinscrire à tout moment via le lien prévu dans les messages.",
   },
 ];
 
@@ -150,7 +150,7 @@ export default function GuideGratuit() {
                 <div className="overflow-hidden rounded-[1.25rem] border border-border/70 bg-card">
                   <img
                     src={src(images.guideEditorial)}
-                    alt="Aperçu des conseils ForceMaman pour les premières semaines avec bébé"
+                    alt="Illustration des conseils ForceMaman pour alléger la charge mentale avec un nouveau-né"
                     width={800}
                     height={1000}
                     className="h-auto w-full object-cover"

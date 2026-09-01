@@ -8,6 +8,8 @@ interface OptimizedImageProps {
   loading?: "lazy" | "eager";
   fetchPriority?: "high" | "low" | "auto";
   sizes?: string;
+  width?: number;
+  height?: number;
   /** Aspect ratio hint for CLS prevention */
   aspectRatio?: string;
   style?: React.CSSProperties;
@@ -25,6 +27,8 @@ export default function OptimizedImage({
   loading = "lazy",
   fetchPriority,
   sizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
+  width,
+  height,
   aspectRatio,
   style,
 }: OptimizedImageProps) {
@@ -41,6 +45,8 @@ export default function OptimizedImage({
         className={className}
         loading={loading}
         fetchPriority={fetchPriority}
+        width={width}
+        height={height}
         decoding="async"
         onError={() => setFailed(true)}
         style={{
