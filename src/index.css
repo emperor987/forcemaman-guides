@@ -292,37 +292,29 @@
   animation: float 9s var(--ease) infinite;
 }
 
-/* Mobile: aggressive performance optimizations */
+/* Mobile: latency optimizations only — all animations preserved */
 @media (max-width: 640px) {
-  .animate-float,
-  .animate-float-slow {
-    animation: none;
-  }
   .marquee-track {
-    animation-duration: 22s;
-    /* Pause marquee on mobile to save GPU cycles */
-    animation-play-state: paused;
+    animation-duration: 20s;
   }
-  .btn-shine::after {
-    display: none;
-  }
-  /* Eliminate expensive backdrop-filter on mobile — saves 30-60fps GPU cost */
+  /* Eliminate backdrop-filter on mobile — saves heavy GPU compositing, no visual loss */
   [style*="backdrop-filter"],
   [style*="-webkit-backdrop-filter"] {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
-  /* Force GPU compositing for animated elements */
+  /* Optimize layout containment for animated elements */
   .reveal,
   .animate-fade-in {
     contain: layout style;
   }
-}
-
-/* Reduce stagger delays on mobile for faster perceived load */
-@media (max-width: 640px) {
+  /* Faster reveal for snappier perceived load */
   .reveal {
-    transition-duration: 0.4s;
+    transition-duration: 0.45s;
+  }
+  /* Reduce paint complexity on large surfaces */
+  .cv-auto {
+    contain-intrinsic-size: auto 500px;
   }
 }
 

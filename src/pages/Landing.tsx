@@ -131,13 +131,13 @@ export default function Landing() {
             </p>
             <AccentDots className="mt-4" />
           </Reveal>
-          <Reveal delay={40}>
+          <Reveal delay={80}>
             <h1 className="mt-7 font-serif text-[2.75rem] leading-[1.04] text-foreground sm:text-5xl">
               Des guides bienveillants pour traverser le post-partum,{" "}
               <span className="italic">sans culpabilité.</span>
             </h1>
           </Reveal>
-          <Reveal delay={80}>
+          <Reveal delay={160}>
             <p className="mx-auto mt-6 max-w-sm text-[15px] leading-relaxed text-foreground/65">
               Six ebooks PDF écrits par Maria Garcia, sage-femme pendant 8 ans
               et maman, pour préparer l'arrivée de bébé, comprendre ton corps,
@@ -227,7 +227,7 @@ export default function Landing() {
 
           <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
             {guideCards.map((guide, i) => (
-              <Reveal key={guide.id} delay={i * 40}>
+              <Reveal key={guide.id} delay={i * 70}>
                 <Link
                   to={guide.href}
                   className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/40 bg-[color-mix(in_oklab,var(--background)_88%,transparent)] sm:bg-[color-mix(in_oklab,var(--background)_78%,transparent)] sm:backdrop-blur-md transition-all duration-500 ease-out hover:-translate-y-[2px] hover:border-foreground/20"
@@ -267,7 +267,7 @@ export default function Landing() {
             ))}
           </div>
 
-          <Reveal delay={80}>
+          <Reveal delay={160}>
             <Link
               to={bundle.href}
               className="group mt-6 flex flex-col items-center justify-between gap-6 overflow-hidden rounded-3xl border border-white/40 bg-[color-mix(in_oklab,var(--card)_60%,var(--background))] p-7 backdrop-blur-md transition-all duration-500 ease-out hover:border-foreground/20 sm:flex-row sm:p-8"
@@ -355,7 +355,7 @@ export default function Landing() {
             </div>
           </Reveal>
 
-          <Reveal delay={80}>
+          <Reveal delay={160}>
             <ul className="mt-10 space-y-3">
               {guideSystems.map((system) => (
                 <li
@@ -520,7 +520,7 @@ export default function Landing() {
             </div>
           </Reveal>
 
-          <Reveal delay={40}>
+          <Reveal delay={160}>
             <p className="mt-10 text-center text-[11px] uppercase tracking-[0.28em] text-foreground/55">
               La fondatrice
             </p>
