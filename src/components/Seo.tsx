@@ -9,6 +9,8 @@ interface SeoProps {
   keywords?: string;
   author?: string;
   type?: "website" | "article" | "product";
+  datePublished?: string;
+  dateModified?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
@@ -65,6 +67,8 @@ export default function Seo({
   keywords,
   author = "Maria Garcia, ForceMaman",
   type = "website",
+  datePublished,
+  dateModified,
   jsonLd,
 }: SeoProps) {
   const url = `${getSiteUrl()}${path}`;
@@ -97,11 +101,13 @@ export default function Seo({
       "robots",
       noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1",
     );
+    if (datePublished) upsertMeta("name", "article:published_time", datePublished);
+    if (dateModified) upsertMeta("name", "article:modified_time", dateModified);
     if (jsonLd) {
       upsertJsonLd(Array.isArray(jsonLd) ? jsonLd : [jsonLd]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [title, description, url, noindex, image, jsonLdKey, keywords, author, type]);
+  }, [title, description, url, noindex, image, jsonLdKey, keywords, author, type, datePublished, dateModified]);
 
   return null;
 }

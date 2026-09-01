@@ -59,6 +59,26 @@ const schema = defineSchema(
       windowStart: v.number(),
       count: v.number(),
     }).index("by_key", ["key"]),
+
+    // --- SEO content metadata (future-proof, non-destructive) ---
+    // Optional: use when you want to manage SEO data from Convex dashboard
+    // instead of hardcoded arrays. NOT required for current functionality.
+    seoPages: defineTable({
+      slug: v.string(),
+      type: v.union(v.literal("guide"), v.literal("article"), v.literal("page")),
+      title: v.string(),
+      description: v.string(),
+      seoTitle: v.optional(v.string()),
+      seoDescription: v.optional(v.string()),
+      keywords: v.optional(v.string()),
+      canonical: v.optional(v.string()),
+      noIndex: v.optional(v.boolean()),
+      datePublished: v.string(),
+      dateModified: v.string(),
+      authorId: v.optional(v.string()),
+      image: v.optional(v.string()),
+    }).index("by_slug", ["slug"])
+      .index("by_type", ["type"]),
   },
   {
     schemaValidation: false,

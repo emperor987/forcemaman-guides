@@ -20,6 +20,8 @@ export interface Ebook {
   accent: string;
   accentText: string;
   features: string[];
+  datePublished: string;
+  dateModified: string;
 }
 
 export const ebooks: Ebook[] = [
@@ -36,6 +38,8 @@ export const ebooks: Ebook[] = [
       "Organisée par âge gestationnel",
       "Des conseils de sage-femme à chaque étape",
     ],
+    datePublished: "2026-03-01",
+    dateModified: "2026-03-01",
   },
   {
     id: "corps-apres",
@@ -50,6 +54,8 @@ export const ebooks: Ebook[] = [
       "Séquences douces de récupération",
       "Les signaux d'alerte à connaître",
     ],
+    datePublished: "2026-03-01",
+    dateModified: "2026-03-01",
   },
   {
     id: "charge-mentale",
@@ -64,6 +70,8 @@ export const ebooks: Ebook[] = [
       "Communiquer avec ton/ta partenaire",
       "Des rituels d'autosoins en 5 minutes",
     ],
+    datePublished: "2026-03-01",
+    dateModified: "2026-03-01",
   },
   {
     id: "recettes-postpartum",
@@ -78,6 +86,8 @@ export const ebooks: Ebook[] = [
       "Adaptées à l'allaitement",
       "Liste de courses et planification",
     ],
+    datePublished: "2026-06-01",
+    dateModified: "2026-06-01",
   },
   {
     id: "guide-complet-postpartum",
@@ -92,6 +102,8 @@ export const ebooks: Ebook[] = [
       "Récupération physique et émotionnelle",
       "Quand consulter et quoi attendre",
     ],
+    datePublished: "2026-06-01",
+    dateModified: "2026-06-01",
   },
   {
     id: "soin-bebe",
@@ -106,6 +118,8 @@ export const ebooks: Ebook[] = [
       "Les signaux de bébé décodés",
       "Des routines simples et adaptables",
     ],
+    datePublished: "2026-06-01",
+    dateModified: "2026-06-01",
   },
 ];
 

@@ -37,7 +37,8 @@ const jsonLd = {
     "@type": "BlogPosting",
     headline: article.title,
     description: article.excerpt,
-    datePublished: article.date,
+    datePublished: article.datePublished,
+    dateModified: article.dateModified,
     inLanguage: "fr-FR",
   })),
 };
@@ -58,6 +59,7 @@ export default function Journal() {
         description="Des essais, des protocoles et des rituels pour alléger la charge mentale des jeunes mamans. Post-partum, organisation, charge mentale. Toujours réalistes, jamais culpabilisants."
         path="/journal"
         keywords="journal post-partum, charge mentale maman, organisation post-partum, conseils maman, article post-partum, blog post-partum, jeune maman"
+        type="article"
         jsonLd={jsonLd}
       />
       <div className="bg-background">

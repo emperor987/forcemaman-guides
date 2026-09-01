@@ -5,6 +5,8 @@ export interface JournalArticle {
   title: string;
   category: string;
   date: string;
+  datePublished: string;
+  dateModified: string;
   readTime: string;
   excerpt: string;
   image: ImageSrc;
@@ -28,6 +30,8 @@ export const journalArticles: JournalArticle[] = [
     title: "Comment alléger la charge mentale en sept gestes simples",
     category: "Charge mentale",
     date: "Juin 2026",
+    datePublished: "2026-06-01",
+    dateModified: "2026-06-01",
     readTime: "8 min",
     excerpt:
       "Un protocole doux pour reposer le cerveau maternel sans ajouter une seule tâche à votre journée.",
@@ -43,6 +47,8 @@ export const journalArticles: JournalArticle[] = [
     title: "5 produits qui simplifient vraiment la vie avec un bébé",
     category: "Organisation du quotidien",
     date: "Juin 2026",
+    datePublished: "2026-06-15",
+    dateModified: "2026-06-15",
     readTime: "8 min",
     excerpt:
       "Cinq objets simples qui réduisent la charge mentale postpartum et transforment le quotidien avec un bébé.",
@@ -57,6 +63,8 @@ export const journalArticles: JournalArticle[] = [
     title: "Un rituel du matin réaliste, même avec un nouveau-né",
     category: "Routines réalistes",
     date: "Mai 2026",
+    datePublished: "2026-05-10",
+    dateModified: "2026-05-10",
     readTime: "6 min",
     excerpt:
       "Trois minutes, une fenêtre ouverte, une intention. La version honnête du matin lent.",
@@ -71,6 +79,8 @@ export const journalArticles: JournalArticle[] = [
     title: "Le batch cooking postpartum, sans culpabilité",
     category: "Repas postpartum",
     date: "Mai 2026",
+    datePublished: "2026-05-20",
+    dateModified: "2026-05-20",
     readTime: "10 min",
     excerpt:
       "Trois bases, sept repas, zéro plan compliqué. La méthode qui tient debout avec un bébé dans les bras.",
@@ -85,6 +95,8 @@ export const journalArticles: JournalArticle[] = [
     title: "Le système du linge qui ne déborde plus jamais",
     category: "Organisation du quotidien",
     date: "Avril 2026",
+    datePublished: "2026-04-05",
+    dateModified: "2026-04-05",
     readTime: "5 min",
     excerpt:
       "Un panier, un jour, une règle. Pourquoi les familles organisées ne trient plus.",
@@ -99,6 +111,8 @@ export const journalArticles: JournalArticle[] = [
     title: "Le premier mois postpartum : ce dont personne ne parle",
     category: "Systèmes postpartum",
     date: "Avril 2026",
+    datePublished: "2026-04-15",
+    dateModified: "2026-04-15",
     readTime: "12 min",
     excerpt:
       "Hormones, identité, silence. Une lettre honnête à la femme que vous étiez avant.",
@@ -113,6 +127,8 @@ export const journalArticles: JournalArticle[] = [
     title: "Aménager la chambre de bébé sans surconsommer",
     category: "Organisation bébé",
     date: "Mars 2026",
+    datePublished: "2026-03-10",
+    dateModified: "2026-03-10",
     readTime: "7 min",
     excerpt:
       "Huit éléments suffisent. Le reste est du marketing déguisé en nécessité.",
@@ -127,6 +143,8 @@ export const journalArticles: JournalArticle[] = [
     title: "Tenir un journal de décharge, cinq minutes le soir",
     category: "Charge mentale",
     date: "Mars 2026",
+    datePublished: "2026-03-25",
+    dateModified: "2026-03-25",
     readTime: "6 min",
     excerpt:
       "Vider la tête sur le papier, cinq minutes le soir, et la nuit s'allège déjà.",

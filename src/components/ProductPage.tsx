@@ -73,6 +73,17 @@ export default function ProductPage({
   );
   const productId = path.split("/").pop() ?? "";
   const siteOrigin = window.location.origin;
+  // Static dates per product — never generate dynamically
+  const productDates: Record<string, { published: string; modified: string }> = {
+    "liste-naissance": { published: "2026-03-01", modified: "2026-03-01" },
+    "corps-apres": { published: "2026-03-01", modified: "2026-03-01" },
+    "charge-mentale": { published: "2026-03-01", modified: "2026-03-01" },
+    "recettes-postpartum": { published: "2026-06-01", modified: "2026-06-01" },
+    "guide-complet-postpartum": { published: "2026-06-01", modified: "2026-06-01" },
+    "soin-bebe": { published: "2026-06-01", modified: "2026-06-01" },
+    bundle: { published: "2026-03-01", modified: "2026-06-01" },
+  };
+  const dates = productDates[productId] ?? { published: "2026-03-01", modified: "2026-03-01" };
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -91,7 +102,8 @@ export default function ProductPage({
         name: "ForceMaman",
         url: siteOrigin,
       },
-      dateModified: new Date().toISOString().split("T")[0],
+      datePublished: dates.published,
+      dateModified: dates.modified,
       inLanguage: "fr-FR",
       category: "Guide post-partum PDF",
       offers: {
@@ -104,13 +116,6 @@ export default function ProductPage({
           "@type": "Organization",
           name: "ForceMaman",
         },
-      },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "127",
-        bestRating: "5",
-        worstRating: "1",
       },
     },
     {
@@ -176,6 +181,8 @@ export default function ProductPage({
         image={`${siteOrigin}${cover}`}
         keywords={keywords}
         type="product"
+        datePublished={dates.published}
+        dateModified={dates.modified}
         jsonLd={jsonLd}
       />
       {/* ============ HERO ============ */}

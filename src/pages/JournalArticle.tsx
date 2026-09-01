@@ -38,26 +38,39 @@ export default function JournalArticle() {
     );
   }
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: article.title,
-    description: article.excerpt,
-    datePublished: article.date,
-    inLanguage: "fr-FR",
-    image: `https://forcemaman.store${articleSrc(article)}`,
-    mainEntityOfPage: `https://forcemaman.store/journal/${article.id}`,
-    author: {
-      "@type": "Person",
-      name: "Maria Garcia",
-      jobTitle: "Fondatrice de ForceMaman, ancienne sage-femme",
+  const siteOrigin = "https://forcemaman.store";
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: article.title,
+      description: article.excerpt,
+      datePublished: article.datePublished,
+      dateModified: article.dateModified,
+      inLanguage: "fr-FR",
+      image: `${siteOrigin}${articleSrc(article)}`,
+      mainEntityOfPage: `${siteOrigin}/journal/${article.id}`,
+      author: {
+        "@type": "Person",
+        name: "Maria Garcia",
+        jobTitle: "Fondatrice de ForceMaman, ancienne sage-femme",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "ForceMaman",
+        logo: { "@type": "ImageObject", url: `${siteOrigin}/favicon.svg` },
+      },
     },
-    publisher: {
-      "@type": "Organization",
-      name: "ForceMaman",
-      logo: { "@type": "ImageObject", url: "https://forcemaman.store/logo.svg" },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Accueil", item: `${siteOrigin}/` },
+        { "@type": "ListItem", position: 2, name: "Journal", item: `${siteOrigin}/journal` },
+        { "@type": "ListItem", position: 3, name: article.title, item: `${siteOrigin}/journal/${article.id}` },
+      ],
     },
-  };
+  ];
 
   return (
     <Layout>
@@ -65,7 +78,9 @@ export default function JournalArticle() {
         title={`${article.title} · Le Journal ForceMaman`}
         description={article.excerpt}
         path={`/journal/${article.id}`}
-        image={`https://forcemaman.store${articleSrc(article)}`}
+        image={`${siteOrigin}${articleSrc(article)}`}
+        datePublished={article.datePublished}
+        dateModified={article.dateModified}
         jsonLd={jsonLd}
       />
       <article className="mx-auto max-w-3xl px-6 pb-24 pt-16 lg:pt-24">
