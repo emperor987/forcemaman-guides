@@ -33,7 +33,7 @@ export default function Header() {
       >
         Aller au contenu
       </a>
-      <header className="sticky top-0 z-40 w-full border-b border-border/50 bg-[color-mix(in_oklab,var(--background)_82%,transparent)] backdrop-blur-xl">
+      <header className="sticky top-0 z-40 w-full border-b border-border/50 bg-[color-mix(in_oklab,var(--background)_92%,transparent)] sm:bg-[color-mix(in_oklab,var(--background)_82%,transparent)] sm:backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-12">
           {/* Logo */}
           <Link
@@ -69,11 +69,10 @@ export default function Header() {
         className="fixed inset-x-0 bottom-0 z-50 flex justify-center px-4 pb-[max(env(safe-area-inset-bottom),0.75rem)] pt-2"
       >
         <div
-          className="relative flex w-full max-w-md items-stretch gap-1 rounded-full border border-white/40 bg-[color-mix(in_oklab,var(--background)_70%,transparent)] p-1.5 backdrop-blur-xl"
+          className="relative flex w-full max-w-md items-stretch gap-1 rounded-full border border-white/40 bg-[color-mix(in_oklab,var(--background)_88%,transparent)] p-1.5 sm:backdrop-blur-xl"
           style={{
             boxShadow:
               "0 20px 60px -20px rgba(35,33,32,0.35), 0 2px 6px -2px rgba(35,33,32,0.15), inset 0 1px 0 rgba(255,255,255,0.6)",
-            WebkitBackdropFilter: "blur(20px) saturate(160%)",
           }}
         >
           {mobileNav.map((item) => {

@@ -131,13 +131,13 @@ export default function Landing() {
             </p>
             <AccentDots className="mt-4" />
           </Reveal>
-          <Reveal delay={80}>
+          <Reveal delay={40}>
             <h1 className="mt-7 font-serif text-[2.75rem] leading-[1.04] text-foreground sm:text-5xl">
               Des guides bienveillants pour traverser le post-partum,{" "}
               <span className="italic">sans culpabilité.</span>
             </h1>
           </Reveal>
-          <Reveal delay={160}>
+          <Reveal delay={80}>
             <p className="mx-auto mt-6 max-w-sm text-[15px] leading-relaxed text-foreground/65">
               Six ebooks PDF écrits par Maria Garcia, sage-femme pendant 8 ans
               et maman, pour préparer l'arrivée de bébé, comprendre ton corps,
@@ -146,7 +146,7 @@ export default function Landing() {
           </Reveal>
 
           {/* Double CTA : email + voir les guides */}
-          <Reveal delay={240}>
+          <Reveal delay={120}>
             <div className="mt-10 flex flex-col items-center gap-3">
               <EmailForm id="hero" className="w-full" />
               <Link
@@ -161,7 +161,7 @@ export default function Landing() {
             </div>
           </Reveal>
 
-          <Reveal delay={320}>
+          <Reveal delay={200}>
             <p className="mt-3 text-[12px] italic tracking-wide text-foreground/55">
               Déjà rejoint par des centaines de jeunes mamans
             </p>
@@ -227,10 +227,10 @@ export default function Landing() {
 
           <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
             {guideCards.map((guide, i) => (
-              <Reveal key={guide.id} delay={i * 70}>
+              <Reveal key={guide.id} delay={i * 40}>
                 <Link
                   to={guide.href}
-                  className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/40 bg-[color-mix(in_oklab,var(--background)_78%,transparent)] backdrop-blur-md transition-all duration-500 ease-out hover:-translate-y-[2px] hover:border-foreground/20"
+                  className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/40 bg-[color-mix(in_oklab,var(--background)_88%,transparent)] sm:bg-[color-mix(in_oklab,var(--background)_78%,transparent)] sm:backdrop-blur-md transition-all duration-500 ease-out hover:-translate-y-[2px] hover:border-foreground/20"
                   style={CARD_STYLE}
                 >
                   <div className="relative aspect-[3/4] overflow-hidden bg-muted">
@@ -239,9 +239,10 @@ export default function Landing() {
                       alt={`Couverture du guide ${guide.title}`}
                       width={600}
                       height={800}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       loading="lazy"
                       decoding="async"
-                      className="h-full w-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.03]"
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                     />
                   </div>
                   <div className="flex flex-1 flex-col p-6">
@@ -266,7 +267,7 @@ export default function Landing() {
             ))}
           </div>
 
-          <Reveal delay={160}>
+          <Reveal delay={80}>
             <Link
               to={bundle.href}
               className="group mt-6 flex flex-col items-center justify-between gap-6 overflow-hidden rounded-3xl border border-white/40 bg-[color-mix(in_oklab,var(--card)_60%,var(--background))] p-7 backdrop-blur-md transition-all duration-500 ease-out hover:border-foreground/20 sm:flex-row sm:p-8"
@@ -278,6 +279,7 @@ export default function Landing() {
                   alt="Couverture du Pack Complet ForceMaman"
                   width={120}
                   height={160}
+                  sizes="96px"
                   loading="lazy"
                   decoding="async"
                   className="w-20 rounded-xl object-cover shadow-lg sm:w-24"
@@ -338,21 +340,22 @@ export default function Landing() {
               }}
             >
               <picture>
-                <source srcSet="/images/webp/guide-maman-bebe.webp" type="image/webp" />
+                <source srcSet="/images/webp/guide-maman-bebe.webp" type="image/webp" sizes="(max-width: 640px) 100vw, 68vw" />
                 <img
                   src="/images/guide-maman-bebe.jpg"
                   alt="Maman tenant son nouveau-né dans ses bras, moment de tendresse post-partum"
                   width={1200}
                   height={800}
+                  fetchPriority="high"
+                  decoding="async"
                   className="h-auto w-full object-cover"
                   loading="lazy"
-                  decoding="async"
                 />
               </picture>
             </div>
           </Reveal>
 
-          <Reveal delay={160}>
+          <Reveal delay={80}>
             <ul className="mt-10 space-y-3">
               {guideSystems.map((system) => (
                 <li
@@ -371,7 +374,7 @@ export default function Landing() {
             </ul>
           </Reveal>
 
-          <Reveal delay={220}>
+          <Reveal delay={140}>
             <Link
               to="/guide-gratuit"
               className="group mt-10 flex h-14 w-full items-center justify-center gap-3 rounded-full font-medium text-background transition-transform active:scale-[0.98]"
@@ -498,6 +501,7 @@ export default function Landing() {
                 alt="Maria Garcia, fondatrice de ForceMaman, ancienne sage-femme"
                 width={448}
                 height={448}
+                sizes="224px"
                 className="h-full w-full object-cover"
                 loading="lazy"
                 decoding="async"
@@ -516,7 +520,7 @@ export default function Landing() {
             </div>
           </Reveal>
 
-          <Reveal delay={80}>
+          <Reveal delay={40}>
             <p className="mt-10 text-center text-[11px] uppercase tracking-[0.28em] text-foreground/55">
               La fondatrice
             </p>
@@ -620,7 +624,7 @@ export default function Landing() {
             ))}
           </div>
 
-          <Reveal delay={240}>
+          <Reveal delay={120}>
             <div className="mt-8 text-center">
               <Link
                 to="/journal"

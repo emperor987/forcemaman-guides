@@ -47,12 +47,17 @@ export default function Reveal({
           io.disconnect();
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+      { threshold: 0.08, rootMargin: "0px 0px 20px 0px" },
     );
 
     io.observe(el);
     return () => io.disconnect();
   }, []);
+
+  // On mobile, cap delay at 100ms and duration at 0.4s for snappier feel
+  const isMobile = typeof window !== "undefined" && window.innerWidth <= 640;
+  const mobileDelay = isMobile ? Math.min(delay, 100) : delay;
+  const mobileDuration = isMobile ? Math.min(duration, 0.4) : duration;
 
   return (
     <div
@@ -61,7 +66,7 @@ export default function Reveal({
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "none" : `translateY(${y}px)`,
-        transition: `opacity ${duration}s cubic-bezier(0.22,1,0.36,1) ${delay}ms, transform ${duration}s cubic-bezier(0.22,1,0.36,1) ${delay}ms`,
+        transition: `opacity ${mobileDuration}s cubic-bezier(0.22,1,0.36,1) ${mobileDelay}ms, transform ${mobileDuration}s cubic-bezier(0.22,1,0.36,1) ${mobileDelay}ms`,
         willChange: visible ? "auto" : "transform, opacity",
       }}
     >
