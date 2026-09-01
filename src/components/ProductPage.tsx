@@ -76,7 +76,11 @@ export default function ProductPage({
     price.replace("€", "").replace(",", ".").trim(),
   );
   const productId = path.split("/").pop() ?? "";
-  const siteOrigin = window.location.origin;
+  const siteOrigin =
+    window.location.hostname === "forcemaman.store" ||
+    window.location.hostname === "www.forcemaman.store"
+      ? "https://forcemaman.store"
+      : window.location.origin;
   // Static dates per product — never generate dynamically
   const productDates: Record<string, { published: string; modified: string }> = {
     "liste-naissance": { published: "2026-03-01", modified: "2026-03-01" },

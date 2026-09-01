@@ -14,8 +14,13 @@ interface SeoProps {
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const getSiteUrl = () =>
-  typeof window !== "undefined" ? window.location.origin : "https://forcemaman.store";
+const getSiteUrl = () => {
+  if (typeof window === "undefined") return "https://forcemaman.store";
+  const hostname = window.location.hostname;
+  return hostname === "forcemaman.store" || hostname === "www.forcemaman.store"
+    ? "https://forcemaman.store"
+    : window.location.origin;
+};
 const DEFAULT_IMAGE = "/og-image.png";
 
 function upsertMeta(attr: "name" | "property", key: string, content: string) {
