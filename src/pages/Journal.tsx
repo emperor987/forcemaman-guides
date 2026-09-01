@@ -263,7 +263,7 @@ export default function Journal() {
                     to="/guide-gratuit"
                     className="inline-flex h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-primary px-8 py-2 text-xs font-medium uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-primary/90 sm:w-auto"
                   >
-                    Télécharger le guide gratuit
+                    Recevoir les conseils gratuits
                   </Link>
                 </div>
               </section>

@@ -478,7 +478,7 @@ export default function Landing() {
               style={DARK_BUTTON_STYLE}
             >
               <span className="text-[13px] tracking-wide">
-                Télécharger le guide gratuitement
+                Recevoir les conseils gratuitsement
               </span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -653,7 +653,7 @@ export default function Landing() {
               style={DARK_BUTTON_STYLE}
             >
               <span className="text-[13px] tracking-wide">
-                Télécharger le guide gratuit
+                Recevoir les conseils gratuits
               </span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -255,7 +255,7 @@ export default function APpropos() {
                 to="/guide-gratuit"
                 className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full border border-foreground/25 px-8 text-[11px] uppercase tracking-[0.18em] text-foreground/80 transition-colors hover:border-foreground/60 hover:text-foreground sm:w-auto"
               >
-                Télécharger le guide gratuit
+                Recevoir les conseils gratuits
               </Link>
             </div>
           </Reveal>

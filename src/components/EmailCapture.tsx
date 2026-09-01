@@ -10,8 +10,8 @@ interface EmailCaptureProps {
 }
 
 export default function EmailCapture({
-  buttonLabel = "Télécharger le guide gratuit",
-  successMessage = "C'est noté ! Vérifie ta boîte mail, ton guide t'attend.",
+  buttonLabel = "Recevoir les conseils gratuits",
+  successMessage = "Merci ! Tu vas recevoir tes premiers conseils par email dans quelques minutes.",
   dark = false,
   className,
 }: EmailCaptureProps) {
