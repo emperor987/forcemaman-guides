@@ -4,7 +4,8 @@ import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
 import OptimizedImage from "@/components/OptimizedImage";
 import { journalArticles, articleSrc } from "@/lib/journal";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ebooks } from "@/lib/ebooks";
+import { ArrowLeft, ArrowRight, BookOpen } from "lucide-react";
 
 export default function JournalArticle() {
   const { slug } = useParams<{ slug: string }>();
@@ -125,7 +126,79 @@ export default function JournalArticle() {
           </p>
         </Reveal>
 
-        <Reveal delay={200}>
+        {/* ============ CTA GUIDE ============ */}
+        {article.relatedGuide && (() => {
+          const guide = ebooks.find((e) => e.href === article.relatedGuide);
+          if (!guide) return null;
+          return (
+            <Reveal delay={160}>
+              <div className="mt-12 rounded-3xl border border-foreground/10 bg-[color-mix(in_oklab,var(--background)_70%,transparent)] p-7 shadow-sm sm:p-9">
+                <div className="flex items-start gap-4">
+                  <span className="grid size-10 shrink-0 place-items-center rounded-full bg-[color-mix(in_oklab,var(--accent)_25%,var(--background))]">
+                    <BookOpen className="size-4 text-foreground/60" />
+                  </span>
+                  <div>
+                    <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+                      Ce guide peut t'aider
+                    </p>
+                    <h3 className="mt-2 font-serif text-xl text-foreground sm:text-2xl">
+                      {guide.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-foreground/65">
+                      {guide.tagline}
+                    </p>
+                    <Link
+                      to={guide.href}
+                      className="mt-4 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-foreground/70 underline underline-offset-4 transition-colors hover:text-foreground"
+                    >
+                      Découvrir le guide
+                      <ArrowRight className="size-3" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          );
+        })()}
+
+        {/* ============ LIRE AUSSI ============ */}
+        {article.relatedArticles && article.relatedArticles.length > 0 && (() => {
+          const related = article.relatedArticles
+            .map((id) => journalArticles.find((a) => a.id === id))
+            .filter(Boolean) as typeof journalArticles;
+          if (related.length === 0) return null;
+          return (
+            <Reveal delay={200}>
+              <div className="mt-16 border-t border-border/60 pt-12">
+                <p className="eyebrow">Lire aussi</p>
+                <h3 className="mt-3 font-serif text-2xl text-foreground sm:text-3xl">
+                  D'autres lectures <span className="italic">pour t'accompagner.</span>
+                </h3>
+                <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {related.map((rel) => (
+                    <Link
+                      key={rel.id}
+                      to={`/journal/${rel.id}`}
+                      className="group block rounded-3xl border border-border/60 bg-card/55 p-6 transition-all hover:border-foreground/30"
+                    >
+                      <p className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+                        {rel.category} · {rel.readTime}
+                      </p>
+                      <h4 className="mt-3 font-serif text-lg leading-snug text-foreground transition-colors group-hover:text-primary">
+                        {rel.title}
+                      </h4>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground line-clamp-2">
+                        {rel.excerpt}
+                      </p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          );
+        })()}
+
+        <Reveal delay={240}>
           <div className="mt-16 flex flex-col items-start justify-between gap-6 border-t border-border/60 pt-10 sm:flex-row sm:items-center">
             <div>
               <p className="eyebrow">Continuer la lecture</p>

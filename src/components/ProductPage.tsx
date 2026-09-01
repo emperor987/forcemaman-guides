@@ -6,10 +6,13 @@ import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
 import { cn } from "@/lib/utils";
 import AccentDots from "@/components/AccentDots";
+import { ebooks } from "@/lib/ebooks";
+import { journalArticles, articleSrc } from "@/lib/journal";
 import { api } from "@/convex/_generated/api";
 import {
   ArrowRight,
   CheckCircle,
+  HelpCircle,
   Info,
   Lock,
   ShieldCheck,
@@ -84,6 +87,9 @@ export default function ProductPage({
     bundle: { published: "2026-03-01", modified: "2026-06-01" },
   };
   const dates = productDates[productId] ?? { published: "2026-03-01", modified: "2026-03-01" };
+  const ebookData = ebooks.find((e) => e.id === productId);
+  const productFaq = ebookData?.faq ?? [];
+
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -127,6 +133,19 @@ export default function ProductPage({
         { "@type": "ListItem", position: 3, name: title, item: `${siteOrigin}${path}` },
       ],
     },
+    ...(productFaq.length > 0
+      ? [
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: productFaq.map((item) => ({
+              "@type": "Question",
+              name: item.question,
+              acceptedAnswer: { "@type": "Answer", text: item.answer },
+            })),
+          },
+        ]
+      : []),
   ];
 
   const [checkingOut, setCheckingOut] = useState(false);
@@ -393,6 +412,87 @@ export default function ProductPage({
           </Reveal>
         </div>
       </section>
+
+      {/* ============ ARTICLES DU JOURNAL ============ */}
+      {(() => {
+        const ebookData = ebooks.find((e) => e.id === productId);
+        const relatedIds = ebookData?.relatedArticles ?? [];
+        const related = relatedIds
+          .map((id) => journalArticles.find((a) => a.id === id))
+          .filter(Boolean) as typeof journalArticles;
+        if (related.length === 0) return null;
+        return (
+          <section className="cv-auto px-6 py-16 sm:py-24">
+            <div className="mx-auto max-w-4xl">
+              <Reveal>
+                <p className="eyebrow text-center lg:text-left">Articles du Journal</p>
+                <h2 className="mt-4 text-center font-serif text-3xl leading-[1.05] text-foreground sm:text-4xl lg:text-left">
+                  Pour aller <span className="italic">plus loin.</span>
+                </h2>
+                <p className="mx-auto mt-4 max-w-xl text-center text-[15px] leading-relaxed text-foreground/65 lg:text-left">
+                  Des lectures complémentaires pour approfondir ce sujet.
+                </p>
+              </Reveal>
+              <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {related.map((article, i) => (
+                  <Reveal key={article.id} delay={i * 70}>
+                    <Link
+                      to={`/journal/${article.id}`}
+                      className="group block rounded-3xl border border-foreground/10 bg-background/70 p-5 transition-all hover:border-foreground/25"
+                    >
+                      <p className="text-[10px] uppercase tracking-[0.22em] text-foreground/55">
+                        {article.category} · {article.readTime}
+                      </p>
+                      <h3 className="mt-3 font-serif text-lg leading-snug text-foreground transition-colors group-hover:text-primary">
+                        {article.title}
+                      </h3>
+                      <p className="mt-2 text-sm leading-relaxed text-foreground/60 line-clamp-2">
+                        {article.excerpt}
+                      </p>
+                    </Link>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })()}
+
+      {/* ============ FAQ ============ */}
+      {(() => {
+        const ebookData = ebooks.find((e) => e.id === productId);
+        const faq = ebookData?.faq ?? [];
+        if (faq.length === 0) return null;
+        return (
+          <section className="cv-auto border-t border-foreground/10 px-6 py-16 sm:py-24">
+            <div className="mx-auto max-w-3xl">
+              <Reveal>
+                <p className="eyebrow text-center lg:text-left">Questions fréquentes</p>
+                <h2 className="mt-4 text-center font-serif text-3xl leading-[1.05] text-foreground sm:text-4xl lg:text-left">
+                  Tu as des questions <span className="italic">?</span>
+                </h2>
+              </Reveal>
+              <div className="mt-10 divide-y divide-foreground/10">
+                {faq.map((item, i) => (
+                  <Reveal key={item.question} delay={i * 40}>
+                    <details className="group py-5">
+                      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-[15px] text-foreground sm:text-base">
+                        {item.question}
+                        <span className="text-foreground/40 transition-transform group-open:rotate-45">
+                          ＋
+                        </span>
+                      </summary>
+                      <p className="mt-3 text-sm leading-relaxed text-foreground/65">
+                        {item.answer}
+                      </p>
+                    </details>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })()}
     </Layout>
   );
 }

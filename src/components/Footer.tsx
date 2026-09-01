@@ -50,6 +50,38 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Guides */}
+          <div>
+            <p className="eyebrow">Guides</p>
+            <ul className="mt-6 space-y-3 text-sm">
+              <li>
+                <Link to="/guides" className="text-foreground/75 hover:text-foreground">
+                  Tous les guides
+                </Link>
+              </li>
+              <li>
+                <Link to="/guides/liste-naissance" className="text-foreground/75 hover:text-foreground">
+                  Liste naissance
+                </Link>
+              </li>
+              <li>
+                <Link to="/guides/corps-apres" className="text-foreground/75 hover:text-foreground">
+                  Corps après
+                </Link>
+              </li>
+              <li>
+                <Link to="/guides/charge-mentale" className="text-foreground/75 hover:text-foreground">
+                  Charge mentale
+                </Link>
+              </li>
+              <li>
+                <Link to="/guides/recettes-postpartum" className="text-foreground/75 hover:text-foreground">
+                  Recettes post-partum
+                </Link>
+              </li>
+            </ul>
+          </div>
+
           {/* Informations */}
           <div>
             <p className="eyebrow">Informations</p>

@@ -5,7 +5,7 @@ import Seo from "@/components/Seo";
 import OptimizedImage from "@/components/OptimizedImage";
 import { journalArticles } from "@/lib/journal";
 import AccentDots from "@/components/AccentDots";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, BookOpen, Sparkles } from "lucide-react";
 
 const piliers = [
   {
@@ -205,6 +205,35 @@ export default function Journal() {
                 ))}
               </div>
             )}
+          </div>
+        </section>
+
+        {/* ============ CTA GUIDES ============ */}
+        <section className="cv-auto border-t border-border/60">
+          <div className="mx-auto max-w-6xl px-6 py-16 lg:px-12">
+            <Reveal>
+              <div className="flex flex-col items-center justify-between gap-6 rounded-3xl border border-border/50 bg-[color-mix(in_oklab,var(--card)_86%,var(--background))] p-8 text-center shadow-sm sm:flex-row sm:text-left sm:p-10">
+                <div>
+                  <div className="inline-flex items-center gap-2 rounded-full border border-foreground/15 bg-background/60 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-foreground/80">
+                    <BookOpen className="size-3" />
+                    Accompagnement
+                  </div>
+                  <h2 className="mt-4 font-serif text-2xl leading-tight text-foreground sm:text-3xl">
+                    Besoin d'un accompagnement <span className="italic">plus structuré ?</span>
+                  </h2>
+                  <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
+                    Les guides ForceMaman t'accompagnent concrètement à chaque étape du post-partum.
+                  </p>
+                </div>
+                <Link
+                  to="/guides"
+                  className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-foreground px-8 text-[11px] uppercase tracking-[0.18em] text-background transition-opacity hover:opacity-90"
+                >
+                  Voir les guides
+                  <ArrowRight className="size-3" />
+                </Link>
+              </div>
+            </Reveal>
           </div>
         </section>
 

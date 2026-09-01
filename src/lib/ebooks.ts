@@ -11,6 +11,11 @@ import {
   BookMarked,
 } from "lucide-react";
 
+export interface EbookFaq {
+  question: string;
+  answer: string;
+}
+
 export interface Ebook {
   id: string;
   title: string;
@@ -22,6 +27,8 @@ export interface Ebook {
   features: string[];
   datePublished: string;
   dateModified: string;
+  relatedArticles?: string[];
+  faq?: EbookFaq[];
 }
 
 export const ebooks: Ebook[] = [
@@ -56,6 +63,12 @@ export const ebooks: Ebook[] = [
     ],
     datePublished: "2026-03-01",
     dateModified: "2026-03-01",
+    relatedArticles: ["premier-mois", "rituel-matin"],
+    faq: [
+      { question: "Ce guide est-il adapté si je viens d'accoucher ?", answer: "Oui, il est conçu pour les premières semaines comme pour les mois qui suivent." },
+      { question: "Le guide contient-il des exercices pratiques ?", answer: "Oui, des séquences douces de récupération et des signaux d'alerte à connaître sont inclus." },
+      { question: "Est-ce que ça remplace une consultation médicale ?", answer: "Non, ce guide est un outil d'accompagnement. Il ne remplace pas un avis médical." },
+    ],
   },
   {
     id: "charge-mentale",
@@ -72,6 +85,12 @@ export const ebooks: Ebook[] = [
     ],
     datePublished: "2026-03-01",
     dateModified: "2026-03-01",
+    relatedArticles: ["charge-mentale-7-gestes", "journal-decharge"],
+    faq: [
+      { question: "Pour qui est ce guide ?", answer: "Pour toute jeune maman qui traverse les premières semaines après la naissance de bébé." },
+      { question: "Comment le guide aide-t-il concrètement ?", answer: "Il propose des outils concrets : un cahier unique, des systèmes de rangement, des rituels d'autosoins." },
+      { question: "Puis-je lire le guide sur téléphone ?", answer: "Oui, le PDF est optimisé pour tous les écrans." },
+    ],
   },
   {
     id: "recettes-postpartum",
@@ -88,6 +107,12 @@ export const ebooks: Ebook[] = [
     ],
     datePublished: "2026-06-01",
     dateModified: "2026-06-01",
+    relatedArticles: ["batch-cooking", "5-produits"],
+    faq: [
+      { question: "Les recettes sont-elles adaptées à l'allaitement ?", answer: "Oui, les recettes sont compatibles avec l'allaitement." },
+      { question: "Combien de temps faut-il pour cuisiner ?", answer: "La plupart des recettes se préparent en 15 minutes maximum." },
+      { question: "Le guide contient-il une liste de courses ?", answer: "Oui, une liste de courses complète est incluse." },
+    ],
   },
   {
     id: "guide-complet-postpartum",
@@ -104,6 +129,12 @@ export const ebooks: Ebook[] = [
     ],
     datePublished: "2026-06-01",
     dateModified: "2026-06-01",
+    relatedArticles: ["premier-mois", "linge"],
+    faq: [
+      { question: "Que couvre le guide ?", answer: "La récupération physique, les émotions, l'allaitement, le sommeil, la relation de couple, et les signaux d'alerte." },
+      { question: "À quel moment le consulter ?", answer: "Dès les premiers jours et tout au long des premiers mois." },
+      { question: "Est-ce un mode d'emploi rigide ?", answer: "Non, c'est un compagnon de route bienveillant, sans injonction." },
+    ],
   },
   {
     id: "soin-bebe",
@@ -120,6 +151,12 @@ export const ebooks: Ebook[] = [
     ],
     datePublished: "2026-06-01",
     dateModified: "2026-06-01",
+    relatedArticles: ["chambre-bebe", "5-produits"],
+    faq: [
+      { question: "Le guide est-il adapté aux nouveau-nés ?", answer: "Oui, il couvre les premiers jours comme les premiers mois. Les gestes essentiels sont expliqués simplement, sans alarmisme." },
+      { question: "Les conseils sont-ils basés sur des recommandations officielles ?", answer: "Oui, les conseils sont inspirés des recommandations des professionnels de santé. Mais le guide ne remplace pas un avis médical personnalisé." },
+      { question: "Puis-je imprimer le guide ?", answer: "Oui, le PDF est conçu pour être lisible sur écran comme sur papier. Tu peux l'imprimer si tu préfères." },
+    ],
   },
 ];
 

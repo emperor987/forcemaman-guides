@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
@@ -8,8 +9,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { freeGuideSystems } from "@/lib/ebooks";
+import { freeGuideSystems, ebooks } from "@/lib/ebooks";
 import { images, src } from "@/lib/assets";
+import { ArrowRight } from "lucide-react";
 import AccentDots from "@/components/AccentDots";
 import { Check } from "lucide-react";
 
@@ -332,9 +334,42 @@ export default function GuideGratuit() {
             </Accordion>
           </Reveal>
         </div>
-      </section>
+      </section>        {/* ============ ALLER PLUS LOIN ============ */}
+        <section className="cv-auto border-t border-border/60 px-6 py-20 sm:px-8 sm:py-28">
+          <div className="mx-auto max-w-4xl text-center">
+            <Reveal>
+              <p className="eyebrow">Envie d'aller plus loin ?</p>
+              <h2 className="mt-5 font-serif text-[2.35rem] leading-[1.04] text-foreground sm:text-5xl">
+                Découvre les guides <span className="italic">complets.</span>
+              </h2>
+              <p className="mx-auto mt-6 max-w-xl text-[15px] leading-relaxed text-foreground/65">
+                Si ces systèmes t'ont parlé, les guides ForceMaman vont plus loin pour t'accompagner concrètement.
+              </p>
+            </Reveal>
+            <div className="mt-12 grid gap-4 sm:grid-cols-3">
+              {[ebooks[2], ebooks[4], ebooks[0]].map((guide, i) => (
+                <Reveal key={guide.id} delay={i * 60}>
+                  <Link
+                    to={guide.href}
+                    className="group flex h-full flex-col items-start rounded-3xl border border-border/60 bg-card/55 p-6 text-left shadow-sm transition-all hover:border-foreground/30"
+                  >
+                    <h3 className="font-serif text-xl leading-snug text-foreground">
+                      {guide.title}
+                    </h3>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-foreground/60">
+                      {guide.tagline}
+                    </p>
+                    <span className="mt-5 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-foreground/70 group-hover:text-foreground">
+                      Découvrir <ArrowRight className="size-3" />
+                    </span>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
 
-      {/* ============ CTA FINAL ============ */}
+        {/* ============ CTA FINAL ============ */}
       <section className="px-6 py-20 sm:px-8 sm:py-32">
         <div className="mx-auto max-w-5xl overflow-hidden rounded-[2rem] border border-border/60 bg-[linear-gradient(135deg,color-mix(in_oklab,var(--accent)_32%,var(--background)),color-mix(in_oklab,var(--card)_86%,var(--background))_48%,var(--background))] px-6 py-16 text-center shadow-2xl sm:px-12 sm:py-24">
           <Reveal>
