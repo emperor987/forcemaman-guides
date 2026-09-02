@@ -17,6 +17,8 @@ import coverSoinBebe from "@/assets/covers/soin-bebe.svg";
 import { ArrowRight, Check, Quote, BookOpen, Sparkles, ShieldCheck, Zap, Layers3 } from "lucide-react";
 import AccentDots from "@/components/AccentDots";
 import CountUp from "@/components/CountUp";
+import { useEffect } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 
 const guideSystems = freeGuideSystems;
@@ -209,6 +211,10 @@ const jsonLd = [
 ];
 
 export default function Landing() {
+  useEffect(() => {
+    trackEvent("landing_view");
+  }, []);
+
   return (
     <Layout>
       <Seo
@@ -250,6 +256,7 @@ export default function Landing() {
               <EmailForm id="hero" className="w-full" />
               <Link
                 to="/guides"
+                onClick={() => trackEvent("hero_cta_click", { destination: "guides" })}
                 className="group flex h-12 w-full items-center justify-center gap-2.5 rounded-full border border-foreground/20 bg-[color-mix(in_oklab,var(--background)_90%,transparent)] px-6 text-[12px] font-medium uppercase tracking-[0.18em] text-foreground/80 backdrop-blur-md transition-all hover:border-foreground/40 hover:text-foreground active:scale-[0.98]"
                 style={OUTLINE_BUTTON_STYLE}
               >
@@ -342,6 +349,7 @@ export default function Landing() {
               <Reveal key={guide.id} delay={i * 70}>
                 <Link
                   to={guide.href}
+                  onClick={() => trackEvent("ebook_click", { product: guide.id, location: "landing_library" })}
                   className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/40 bg-[color-mix(in_oklab,var(--background)_88%,transparent)] sm:bg-[color-mix(in_oklab,var(--background)_78%,transparent)] sm:backdrop-blur-md transition-all duration-500 ease-out hover:-translate-y-[2px] hover:border-foreground/20"
                   style={CARD_STYLE}
                 >
@@ -380,9 +388,25 @@ export default function Landing() {
             ))}
           </div>
 
+          <Reveal delay={140}>
+            <div className="mt-10 grid gap-3 rounded-3xl border border-border/60 bg-card/35 p-5 sm:grid-cols-2 sm:p-6">
+              <div>
+                <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-foreground/50">Choisir simplement</p>
+                <h3 className="mt-2 font-serif text-xl text-foreground">Un besoin précis ?</h3>
+                <p className="mt-2 text-sm leading-relaxed text-foreground/60">Commence par l'ebook qui répond à ta situation du moment.</p>
+              </div>
+              <div className="border-t border-border/60 pt-4 sm:border-l sm:border-t-0 sm:pl-6 sm:pt-0">
+                <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-brand-terracotta">Tout le parcours</p>
+                <h3 className="mt-2 font-serif text-xl text-foreground">Les six réunis</h3>
+                <p className="mt-2 text-sm leading-relaxed text-foreground/60">Le Pack complet à 42,90 € rassemble toute la bibliothèque au même endroit.</p>
+              </div>
+            </div>
+          </Reveal>
+
           <Reveal delay={160}>
             <Link
               to={bundle.href}
+              onClick={() => trackEvent("pack_click", { location: "landing_library" })}
               className="group mt-6 flex flex-col items-center justify-between gap-6 overflow-hidden rounded-3xl border-2 border-brand-terracotta/35 bg-[color-mix(in_oklab,var(--card)_60%,var(--background))] p-7 backdrop-blur-md transition-all duration-500 ease-out hover:border-brand-terracotta/60 sm:flex-row sm:p-8"
               aria-label={`Découvrir ${bundle.title} à ${bundle.price}`}
             >
