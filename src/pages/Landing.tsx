@@ -243,10 +243,9 @@ export default function Landing() {
           </Reveal>
           <Reveal delay={160}>
             <p className="mx-auto mt-6 max-w-sm text-[15px] leading-relaxed text-foreground/65">
-              Six ebooks numériques écrits par Maria Garcia, sage-femme pendant 8 ans
-              et maman, pour préparer l'arrivée de bébé, comprendre ton corps,
-              alléger ta charge mentale et prendre soin de ton nouveau-né. Choisis
-              le guide qui correspond à ton besoin ou retrouve-les tous dans le Pack à 42,90 €.
+              Six ebooks écrits par Maria Garcia, sage-femme et maman, pour
+              préparer bébé, comprendre ton corps et alléger ton quotidien.
+              Choisis ton guide ou le Pack complet à 42,90 €.
             </p>
           </Reveal>
 
@@ -330,11 +329,10 @@ export default function Landing() {
             </div>
           </Reveal>
 
-          <div className="mb-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
-            {[
-              { icon: ShieldCheck, label: "Paiement sécurisé", text: "Un checkout Stripe clair et protégé." },
-              { icon: Zap, label: "Accès numérique", text: "Tes ebooks après validation du paiement." },
-              { icon: Layers3, label: "À ton rythme", text: "Sur téléphone, tablette ou ordinateur." },
+          <div className="mb-8 grid grid-cols-1 gap-3 sm:grid-cols-3">                {[
+              { icon: ShieldCheck, label: "Paiement sécurisé", text: "Avec Stripe." },
+              { icon: Zap, label: "Accès numérique", text: "Après paiement." },
+              { icon: Layers3, label: "À ton rythme", text: "Sur tous tes écrans." },
             ].map(({ icon: Icon, label, text }) => (
               <div key={label} className="rounded-2xl border border-border/60 bg-background/60 px-4 py-4 text-center">
                 <Icon className="mx-auto size-4 text-brand-terracotta" aria-hidden="true" />
@@ -464,8 +462,7 @@ export default function Landing() {
               Ce que tu trouveras <span className="italic">dans le guide gratuit</span>
             </h2>
             <p className="mx-auto mt-5 max-w-sm text-center text-[15px] leading-relaxed text-foreground/65">
-              Sept systèmes concrets pour simplifier la vie avec un bébé, dès
-              aujourd'hui.
+              Sept systèmes simples pour alléger tes journées avec bébé.
             </p>
           </Reveal>
 
@@ -554,8 +551,7 @@ export default function Landing() {
               pour la vraie vie.
             </h2>
             <p className="mx-auto mt-5 max-w-sm text-center text-[15px] leading-relaxed text-foreground/65">
-              Des repères doux, pensés pour tenir même les jours où tu es
-              fatiguée.
+              Des repères doux pour les jours avec peu d'énergie.
             </p>
           </Reveal>
         </div>
@@ -802,7 +798,7 @@ export default function Landing() {
               Reçois nos conseils <span className="italic">directement dans ta boîte mail.</span>
             </h2>
             <p className="mx-auto mt-5 max-w-sm text-[15px] leading-relaxed text-foreground/65">
-              Un email par semaine avec des conseils bienveillants pour le post-partum, sans spam.
+              Des conseils bienveillants pour le post-partum, sans spam.
             </p>
           </Reveal>
           <Reveal delay={100}>
