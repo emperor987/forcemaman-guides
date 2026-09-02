@@ -14,7 +14,7 @@ import coverBundle from "@/assets/covers/bundle.svg";
 import coverRecettes from "@/assets/covers/recettes-postpartum.svg";
 import coverGuideComplet from "@/assets/covers/guide-complet-postpartum.svg";
 import coverSoinBebe from "@/assets/covers/soin-bebe.svg";
-import { ArrowRight, Check, Quote, BookOpen, Sparkles } from "lucide-react";
+import { ArrowRight, Check, Quote, BookOpen, Sparkles, ShieldCheck, Zap, Layers3 } from "lucide-react";
 import AccentDots from "@/components/AccentDots";
 import CountUp from "@/components/CountUp";
 
@@ -237,9 +237,10 @@ export default function Landing() {
           </Reveal>
           <Reveal delay={160}>
             <p className="mx-auto mt-6 max-w-sm text-[15px] leading-relaxed text-foreground/65">
-              Six ebooks PDF écrits par Maria Garcia, sage-femme pendant 8 ans
+              Six ebooks numériques écrits par Maria Garcia, sage-femme pendant 8 ans
               et maman, pour préparer l'arrivée de bébé, comprendre ton corps,
-              alléger ta charge mentale et prendre soin de ton nouveau-né.
+              alléger ta charge mentale et prendre soin de ton nouveau-né. Choisis
+              le guide qui correspond à ton besoin ou retrouve-les tous dans le Pack à 42,90 €.
             </p>
           </Reveal>
 
@@ -317,10 +318,24 @@ export default function Landing() {
                 <span className="italic">pour toi.</span>
               </h2>
               <p className="mx-auto mt-5 max-w-sm text-[15px] leading-relaxed text-foreground/65">
-                Six ebooks numériques à découvrir, ou le pack complet avec 30% de réduction.
+                Choisis un ebook pour répondre à un besoin précis, ou retrouve les six dans le Pack complet à 42,90 €.
               </p>
             </div>
           </Reveal>
+
+          <div className="mb-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
+            {[
+              { icon: ShieldCheck, label: "Paiement sécurisé", text: "Un checkout Stripe clair et protégé." },
+              { icon: Zap, label: "Accès numérique", text: "Tes ebooks après validation du paiement." },
+              { icon: Layers3, label: "À ton rythme", text: "Sur téléphone, tablette ou ordinateur." },
+            ].map(({ icon: Icon, label, text }) => (
+              <div key={label} className="rounded-2xl border border-border/60 bg-background/60 px-4 py-4 text-center">
+                <Icon className="mx-auto size-4 text-brand-terracotta" aria-hidden="true" />
+                <p className="mt-2 text-[11px] font-medium uppercase tracking-[0.15em] text-foreground/75">{label}</p>
+                <p className="mt-1 text-xs leading-relaxed text-foreground/55">{text}</p>
+              </div>
+            ))}
+          </div>
 
           <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
             {guideCards.map((guide, i) => (
@@ -368,8 +383,8 @@ export default function Landing() {
           <Reveal delay={160}>
             <Link
               to={bundle.href}
-              className="group mt-6 flex flex-col items-center justify-between gap-6 overflow-hidden rounded-3xl border border-white/40 bg-[color-mix(in_oklab,var(--card)_60%,var(--background))] p-7 backdrop-blur-md transition-all duration-500 ease-out hover:border-foreground/20 sm:flex-row sm:p-8"
-              style={CARD_STYLE}
+              className="group mt-6 flex flex-col items-center justify-between gap-6 overflow-hidden rounded-3xl border-2 border-brand-terracotta/35 bg-[color-mix(in_oklab,var(--card)_60%,var(--background))] p-7 backdrop-blur-md transition-all duration-500 ease-out hover:border-brand-terracotta/60 sm:flex-row sm:p-8"
+              aria-label={`Découvrir ${bundle.title} à ${bundle.price}`}
             >
               <div className="flex items-center gap-6">
                 <img
@@ -386,6 +401,7 @@ export default function Landing() {
                   <span className="inline-flex items-center rounded-full bg-brand-terracotta px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[#fff8f2]">
                     {bundle.discount}
                   </span>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-terracotta">Pack complet · 42,90 €</p>
                   <h3 className="mt-3 font-serif text-2xl leading-tight text-foreground">
                     {bundle.title}
                   </h3>
@@ -479,7 +495,7 @@ export default function Landing() {
               style={DARK_BUTTON_STYLE}
             >
               <span className="text-[13px] tracking-wide">
-                Recevoir les conseils gratuitsement
+                Recevoir les conseils gratuits
               </span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
