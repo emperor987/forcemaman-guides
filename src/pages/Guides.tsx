@@ -71,7 +71,8 @@ function ResourceCard({ item, index }: { item: LibraryItem; index: number }) {
               width={600}
               height={800}
               className="aspect-[3/4] w-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.03]"
-              loading="lazy"
+              loading={index < 3 ? "eager" : "lazy"}
+              fetchPriority={index === 0 ? "high" : "auto"}
               decoding="async"
             />
           </div>

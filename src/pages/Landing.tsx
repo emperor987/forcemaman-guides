@@ -14,7 +14,7 @@ import coverBundle from "@/assets/covers/bundle.svg";
 import coverRecettes from "@/assets/covers/recettes-postpartum.svg";
 import coverGuideComplet from "@/assets/covers/guide-complet-postpartum.svg";
 import coverSoinBebe from "@/assets/covers/soin-bebe.svg";
-import { ArrowRight, Check, Quote, BookOpen } from "lucide-react";
+import { ArrowRight, Check, Quote, BookOpen, Sparkles } from "lucide-react";
 import AccentDots from "@/components/AccentDots";
 import CountUp from "@/components/CountUp";
 
@@ -219,7 +219,9 @@ export default function Landing() {
       />
 
       {/* ============ HERO ============ */}
-      <section className="relative px-6 pb-10 pt-12 sm:pt-20">
+      <section className="relative overflow-hidden px-6 pb-10 pt-12 sm:pt-20">
+        <div aria-hidden="true" className="pointer-events-none absolute -right-24 top-8 size-72 rounded-full bg-brand-terracotta/10 blur-3xl" />
+        <div aria-hidden="true" className="pointer-events-none absolute -left-24 bottom-0 size-64 rounded-full bg-brand-sage/10 blur-3xl" />
         <div className="mx-auto max-w-md text-center">
           <Reveal>
             <p className="text-[11px] uppercase tracking-[0.28em] text-foreground/55">
@@ -335,7 +337,8 @@ export default function Landing() {
                       width={600}
                       height={800}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      loading="lazy"
+                      loading={i < 3 ? "eager" : "lazy"}
+                      fetchPriority={i === 0 ? "high" : "auto"}
                       decoding="async"
                       className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                     />

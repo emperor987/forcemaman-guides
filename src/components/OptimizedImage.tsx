@@ -34,11 +34,12 @@ export default function OptimizedImage({
 }: OptimizedImageProps) {
   const [failed, setFailed] = useState(false);
   const imgSrc = failed ? image.jpg : image.webp;
+  const fallbackSrc = image.jpg === image.webp ? undefined : image.jpg;
 
   return (
     <picture>
       <source srcSet={image.webp} type="image/webp" sizes={sizes} />
-      <source srcSet={image.jpg} type="image/jpeg" sizes={sizes} />
+      {fallbackSrc ? <source srcSet={fallbackSrc} type="image/jpeg" sizes={sizes} /> : null}
       <img
         src={imgSrc}
         alt={alt}
