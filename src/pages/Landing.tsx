@@ -329,16 +329,27 @@ export default function Landing() {
               aria-label={`Découvrir ${bundle.title} à ${bundle.price}`}
             >
               <div className="flex items-center gap-4 text-left">
-                <span className="inline-flex items-center rounded-full bg-brand-terracotta px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[#fff8f2]">
-                  {bundle.discount}
-                </span>
-                <div>
-                  <h3 className="font-serif text-xl leading-tight text-foreground">
-                    {bundle.title}
-                  </h3>
-                  <p className="mt-1 text-[13px] text-foreground/60">
-                    Les six guides réunis, à télécharger immédiatement.
-                  </p>
+                <img
+                  src={coverBundle}
+                  alt="Couverture du Pack Complet ForceMaman"
+                  width={96}
+                  height={128}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-auto w-16 shrink-0 rounded-xl object-cover shadow-lg sm:w-24"
+                />
+                <div className="flex flex-col items-start gap-2">
+                  <span className="inline-flex items-center rounded-full bg-brand-terracotta px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[#fff8f2]">
+                    {bundle.discount}
+                  </span>
+                  <div>
+                    <h3 className="font-serif text-xl leading-tight text-foreground">
+                      {bundle.title}
+                    </h3>
+                    <p className="mt-1 text-[13px] text-foreground/60">
+                      Les six guides réunis, à télécharger immédiatement.
+                    </p>
+                  </div>
                 </div>
               </div>
               <div className="flex shrink-0 items-center gap-3">
