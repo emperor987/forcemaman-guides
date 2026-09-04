@@ -44,71 +44,89 @@ const CARD_CLASS =
 
 function ResourceCard({ item, index }: { item: LibraryItem; index: number }) {
   const meta = badgeMeta[item.badge];
+  const cardContent = (
+    <>
+      {/* Halo d'accent par carte, révélé au survol (signature ForceMaman) */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-20 left-1/2 size-52 -translate-x-1/2 rounded-full opacity-0 blur-3xl transition-opacity duration-700 ease-out group-hover:opacity-30"
+        style={{ background: meta.line }}
+      />
+      <span
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-40 opacity-60 transition-[transform,opacity] duration-700 ease-out group-hover:scale-x-100 group-hover:opacity-100"
+        style={{ background: meta.line }}
+      />
+      {item.badgeLabel && (
+        <span className="absolute right-6 top-6 rounded-full border border-foreground/12 bg-background/70 px-2.5 py-1 text-[0.6rem] uppercase tracking-[0.18em] text-foreground/60 backdrop-blur">
+          {meta.label}
+        </span>
+      )}
+      {COVER_MAP[item.id] && (
+        <div className="mb-5 overflow-hidden rounded-2xl bg-muted">
+          <img
+            src={COVER_MAP[item.id]}
+            alt={`Couverture ${item.title}`}
+            width={600}
+            height={800}
+            className="aspect-[3/4] w-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.03]"
+            loading={index < 3 ? "eager" : "lazy"}
+            fetchPriority={index === 0 ? "high" : "auto"}
+            decoding="async"
+          />
+        </div>
+      )}
+      <div className="flex items-center gap-2">
+        <span
+          aria-hidden="true"
+          className="inline-block h-[5px] w-[5px] rounded-full"
+          style={{ background: meta.dot }}
+        />
+        <span
+          className="text-[0.6rem] font-medium uppercase tracking-[0.24em]"
+          style={{ color: meta.text }}
+        >
+          {typeLabel(item)}
+        </span>
+      </div>
+      <h3 className="mt-4 font-serif text-[1.35rem] leading-[1.2] tracking-[-0.005em] text-foreground sm:text-[1.5rem]">
+        {item.title}
+      </h3>
+      <p className="mt-3 flex-1 text-[0.9rem] leading-[1.65] text-foreground/60">
+        {item.benefit}
+      </p>
+      <div className="mt-8 flex items-center justify-between gap-3">
+        {item.id === "bundle" ? (
+          <>
+            <span
+              className="font-serif text-xl leading-none"
+              style={{ color: meta.text }}
+            >
+              {item.price}
+            </span>
+            <span className="inline-flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.22em] text-foreground/70 transition-transform duration-500 ease-out group-hover:translate-x-1">
+              Découvrir le pack
+              <ArrowRight className="size-3" />
+            </span>
+          </>
+        ) : (
+          <span className="inline-flex items-center rounded-full border border-brand-terracotta/30 bg-brand-terracotta/10 px-3 py-1 text-[0.6rem] font-medium uppercase tracking-[0.16em] text-brand-terracotta">
+            Inclus dans le pack
+          </span>
+        )}
+      </div>
+    </>
+  );
+
   return (
     <Reveal delay={(index % 3) * 60}>
-      <Link to={item.href} className={CARD_CLASS}>
-        {/* Halo d'accent par carte, révélé au survol (signature ForceMaman) */}
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-20 left-1/2 size-52 -translate-x-1/2 rounded-full opacity-0 blur-3xl transition-opacity duration-700 ease-out group-hover:opacity-30"
-          style={{ background: meta.line }}
-        />
-        <span
-          aria-hidden="true"
-          className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-40 opacity-60 transition-[transform,opacity] duration-700 ease-out group-hover:scale-x-100 group-hover:opacity-100"
-          style={{ background: meta.line }}
-        />
-        {item.badgeLabel && (
-          <span className="absolute right-6 top-6 rounded-full border border-foreground/12 bg-background/70 px-2.5 py-1 text-[0.6rem] uppercase tracking-[0.18em] text-foreground/60 backdrop-blur">
-            {meta.label}
-          </span>
-        )}
-        {COVER_MAP[item.id] && (
-          <div className="mb-5 overflow-hidden rounded-2xl bg-muted">
-            <img
-              src={COVER_MAP[item.id]}
-              alt={`Couverture ${item.title}`}
-              width={600}
-              height={800}
-              className="aspect-[3/4] w-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.03]"
-              loading={index < 3 ? "eager" : "lazy"}
-              fetchPriority={index === 0 ? "high" : "auto"}
-              decoding="async"
-            />
-          </div>
-        )}
-        <div className="flex items-center gap-2">
-          <span
-            aria-hidden="true"
-            className="inline-block h-[5px] w-[5px] rounded-full"
-            style={{ background: meta.dot }}
-          />
-          <span
-            className="text-[0.6rem] font-medium uppercase tracking-[0.24em]"
-            style={{ color: meta.text }}
-          >
-            {typeLabel(item)}
-          </span>
-        </div>
-        <h3 className="mt-4 font-serif text-[1.35rem] leading-[1.2] tracking-[-0.005em] text-foreground sm:text-[1.5rem]">
-          {item.title}
-        </h3>
-        <p className="mt-3 flex-1 text-[0.9rem] leading-[1.65] text-foreground/60">
-          {item.benefit}
-        </p>
-        <div className="mt-8 flex items-center justify-between gap-3">
-          <span
-            className="font-serif text-xl leading-none"
-            style={{ color: meta.text }}
-          >
-            {item.price}
-          </span>
-          <span className="inline-flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.22em] text-foreground/70 transition-transform duration-500 ease-out group-hover:translate-x-1">
-            {item.id === "bundle" ? "Découvrir le pack" : "Voir le guide"}
-            <ArrowRight className="size-3" />
-          </span>
-        </div>
-      </Link>
+      {item.id === "bundle" ? (
+        <Link to={item.href} className={CARD_CLASS}>
+          {cardContent}
+        </Link>
+      ) : (
+        <div className={CARD_CLASS}>{cardContent}</div>
+      )}
     </Reveal>
   );
 }
@@ -221,9 +239,8 @@ const jsonLd = [
 ];
 
 export default function Guides() {
-  const popular = libraryItems.filter((item) => item.featured);
+  const bundleItem = libraryItems.find((item) => item.id === "bundle");
   const guides = libraryItems.filter((item) => item.id !== "bundle");
-  const freebies = libraryItems.filter((item) => item.id === "bundle");
 
   return (
     <Layout>
@@ -245,8 +262,8 @@ export default function Guides() {
               <span className="italic">après l'arrivée de bébé.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-[0.95rem] leading-relaxed text-foreground/65 sm:text-base">
-              Six ebooks PDF et un pack complet, écrits par une sage-femme, à
-              télécharger immédiatement après le paiement.
+              Un seul programme complet, écrit par une sage-femme, à télécharger
+              immédiatement après le paiement.
             </p>
             <ul className="mx-auto mt-8 flex max-w-md flex-col gap-1.5 text-sm text-foreground/70">
               {heroBullets.map((b) => (
@@ -260,70 +277,45 @@ export default function Guides() {
           </section>
         </Reveal>
 
-        {/* ============ LES PLUS POPULAIRES ============ */}
-        <section className="cv-auto mt-20">
+        {/* ============ PACK COMPLET ============ */}
+        <section id="gratuits" className="cv-auto mt-16 scroll-mt-24 sm:mt-24">
           <Reveal>
-            <div className="mb-8 text-center">
-              <p className="text-[0.65rem] uppercase tracking-[0.28em] text-foreground/50">
-                Populaires
+            <header className="mx-auto mb-10 max-w-2xl text-center">
+              <p className="text-[0.65rem] uppercase tracking-[0.28em] text-brand-terracotta">
+                Offre complète
               </p>
               <h2 className="mt-3 font-serif text-3xl text-foreground sm:text-4xl">
-                Les guides préférés des mamans
+                Le Pack Complet ForceMaman
               </h2>
-            </div>
+              <p className="mt-3 text-sm leading-relaxed text-foreground/60">
+                Les six guides réunis dans une seule offre à 42,90 €, avec un accès numérique après paiement.
+              </p>
+            </header>
           </Reveal>
-          {popular.length > 0 ? (
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {popular.map((item, i) => (
-                <ResourceCard key={item.id} item={item} index={i} />
-              ))}
+          {bundleItem && (
+            <div className="mx-auto max-w-xl">
+              <ResourceCard item={bundleItem} index={0} />
             </div>
-          ) : (
-            <p className="mt-8 text-center text-sm text-foreground/55">
-              Aucun guide ne correspond à ta recherche.
-            </p>
           )}
         </section>
 
-        {/* ============ LES GUIDES ============ */}
+        {/* ============ CONTENU DU PACK ============ */}
         <section id="guides" className="cv-auto mt-24 scroll-mt-24 sm:mt-32">
           <Reveal>
             <header className="mb-10 max-w-2xl">
               <p className="text-[0.65rem] uppercase tracking-[0.28em] text-foreground/50">
-                Catégorie
+                Les six inclus
               </p>
               <h2 className="mt-3 font-serif text-3xl text-foreground sm:text-4xl">
-                Les guides
+                Ce que contient le Pack Complet
               </h2>
-              <p className="mt-3 text-sm text-foreground/60">
-                Des lectures courtes pour aller plus loin.
+              <p className="mt-3 text-sm leading-relaxed text-foreground/60">
+                Chaque couverture correspond à un guide inclus dans le Pack, pour avancer à ton rythme.
               </p>
             </header>
           </Reveal>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {guides.map((item, i) => (
-              <ResourceCard key={item.id} item={item} index={i} />
-            ))}
-          </div>
-        </section>
-
-        {/* ============ PACK & GRATUITS ============ */}
-        <section id="gratuits" className="cv-auto mt-24 scroll-mt-24 sm:mt-32">
-          <Reveal>
-            <header className="mb-10 max-w-2xl">
-              <p className="text-[0.65rem] uppercase tracking-[0.28em] text-foreground/50">
-                Catégorie
-              </p>
-              <h2 className="mt-3 font-serif text-3xl text-foreground sm:text-4xl">
-                Le pack & le guide gratuit
-              </h2>
-              <p className="mt-3 text-sm text-foreground/60">
-                Tout en un avec 30% de réduction. Six guides pour le prix de quatre.
-              </p>
-            </header>
-          </Reveal>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {freebies.map((item, i) => (
               <ResourceCard key={item.id} item={item} index={i} />
             ))}
           </div>

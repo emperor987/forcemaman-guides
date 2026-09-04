@@ -20,6 +20,7 @@ export interface Ebook {
   id: string;
   title: string;
   tagline: string;
+  // Legacy display metadata kept for compatibility; individual entries must not use these fields as purchase links.
   price: string;
   href: string;
   accent: string;
@@ -164,6 +165,7 @@ export const bundle = {
   title: "Pack Complet ForceMaman",
   tagline: "Les 6 guides réunis pour un accompagnement global du post-partum.",
   price: "42,90 €",
+  // Verified total of the six individual prices; do not duplicate this as another bundle field.
   originalPrice: "61,40 €",
   discount: "-30%",
   href: "/guides/bundle",
@@ -175,6 +177,7 @@ export interface LibraryItem {
   id: string;
   title: string;
   benefit: string;
+  // Kept for legacy displays; the six individual entries are informational and are not direct purchase offers.
   price: string;
   href: string;
   accent: string;

@@ -12,7 +12,14 @@ const PRODUCT_FILES: Record<string, string[]> = {
   "liste-naissance": ["liste-naissance.pdf"],
   "corps-apres": ["corps-apres.pdf"],
   "charge-mentale": ["charge-mentale.pdf"],
-  bundle: ["liste-naissance.pdf", "corps-apres.pdf", "charge-mentale.pdf"],
+  bundle: [
+    "Ma_Liste_Naissance_Complete.pdf",
+    "Mon_Corps_Apres_Accouchement.pdf",
+    "Charge_Mentale_40_Premiers_Jours.pdf",
+    "ForceMaman_Recettes_PostPartum.pdf",
+    "ForceMaman_Guide_Complet_PostPartum.pdf",
+    "ForceMaman_Soin_Bebe_Apres_Accouchement.pdf",
+  ],
 };
 
 export const verifyDownloadToken = query({

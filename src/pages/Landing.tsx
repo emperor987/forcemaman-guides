@@ -324,7 +324,7 @@ export default function Landing() {
                 <span className="italic">pour toi.</span>
               </h2>
               <p className="mx-auto mt-5 max-w-sm text-[15px] leading-relaxed text-foreground/65">
-                Choisis un ebook pour répondre à un besoin précis, ou retrouve les six dans le Pack complet à 42,90 €.
+                Retrouve les six guides dans le Pack complet à 42,90 €.
               </p>
             </div>
           </Reveal>
@@ -342,70 +342,18 @@ export default function Landing() {
             ))}
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {guideCards.map((guide, i) => (
-              <Reveal key={guide.id} delay={i * 70}>
-                <Link
-                  to={guide.href}
-                  onClick={() => trackEvent("ebook_click", { product: guide.id, location: "landing_library" })}
-                  className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/40 bg-[color-mix(in_oklab,var(--background)_88%,transparent)] sm:bg-[color-mix(in_oklab,var(--background)_78%,transparent)] sm:backdrop-blur-md transition-all duration-500 ease-out hover:-translate-y-[2px] hover:border-foreground/20"
-                  style={CARD_STYLE}
-                >
-                  <div className="relative aspect-[3/4] overflow-hidden bg-muted">
-                    <img
-                      src={guide.cover}
-                      alt={`Couverture du guide ${guide.title}`}
-                      width={600}
-                      height={800}
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      loading={i < 3 ? "eager" : "lazy"}
-                      fetchPriority={i === 0 ? "high" : "auto"}
-                      decoding="async"
-                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                    />
-                  </div>
-                  <div className="flex flex-1 flex-col p-6">
-                    <h3 className="font-serif text-[1.3rem] leading-tight text-foreground">
-                      {guide.title}
-                    </h3>
-                    <p className="mt-2 flex-1 text-[13px] leading-relaxed text-foreground/60">
-                      {guide.tagline}
-                    </p>
-                    <div className="mt-5 flex items-center justify-between">
-                      <span className="font-serif text-xl text-foreground">
-                        {guide.price}
-                      </span>
-                      <span className="inline-flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.2em] text-foreground/70 transition-transform duration-500 ease-out group-hover:translate-x-1">
-                        Voir le guide
-                        <ArrowRight className="size-3" />
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={140}>
-            <div className="mt-10 grid gap-3 rounded-3xl border border-border/60 bg-card/35 p-5 sm:grid-cols-2 sm:p-6">
-              <div>
-                <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-foreground/50">Choisir simplement</p>
-                <h3 className="mt-2 font-serif text-xl text-foreground">Un besoin précis ?</h3>
-                <p className="mt-2 text-sm leading-relaxed text-foreground/60">Commence par l'ebook qui répond à ta situation du moment.</p>
-              </div>
-              <div className="border-t border-border/60 pt-4 sm:border-l sm:border-t-0 sm:pl-6 sm:pt-0">
-                <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-brand-terracotta">Tout le parcours</p>
-                <h3 className="mt-2 font-serif text-xl text-foreground">Les six réunis</h3>
-                <p className="mt-2 text-sm leading-relaxed text-foreground/60">Le Pack complet à 42,90 € rassemble toute la bibliothèque au même endroit.</p>
-              </div>
+          <Reveal delay={100}>
+            <div className="mb-5 text-center">
+              <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-brand-terracotta">Le programme complet</p>
+              <h3 className="mt-2 font-serif text-2xl text-foreground">Les six guides réunis dans un seul pack.</h3>
             </div>
           </Reveal>
 
-          <Reveal delay={160}>
+          <Reveal delay={120}>
             <Link
               to={bundle.href}
               onClick={() => trackEvent("pack_click", { location: "landing_library" })}
-              className="group mt-6 flex flex-col items-center justify-between gap-6 overflow-hidden rounded-3xl border-2 border-brand-terracotta/35 bg-[color-mix(in_oklab,var(--card)_60%,var(--background))] p-7 backdrop-blur-md transition-all duration-500 ease-out hover:border-brand-terracotta/60 sm:flex-row sm:p-8"
+              className="group mb-10 flex flex-col items-center justify-between gap-6 overflow-hidden rounded-3xl border-2 border-brand-terracotta/35 bg-[color-mix(in_oklab,var(--card)_60%,var(--background))] p-7 backdrop-blur-md transition-all duration-500 ease-out hover:border-brand-terracotta/60 sm:flex-row sm:p-8"
               aria-label={`Découvrir ${bundle.title} à ${bundle.price}`}
             >
               <div className="flex items-center gap-6">
@@ -434,11 +382,12 @@ export default function Landing() {
               </div>
               <div className="flex shrink-0 flex-col items-center gap-2 sm:items-end">
                 <span className="flex items-baseline gap-2">
-                  <span className="font-serif text-3xl text-foreground">
-                    {bundle.price}
-                  </span>
                   <span className="text-sm text-foreground/45 line-through">
                     {bundle.originalPrice}
+                  </span>
+                  <span aria-hidden="true" className="text-sm text-foreground/45">→</span>
+                  <span className="font-serif text-3xl text-foreground">
+                    {bundle.price}
                   </span>
                 </span>
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-foreground px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.18em] text-background transition-transform duration-500 ease-out group-hover:translate-x-1">
@@ -448,6 +397,52 @@ export default function Landing() {
               </div>
             </Link>
           </Reveal>
+
+          <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {guideCards.map((guide, i) => (
+              <Reveal key={guide.id} delay={i * 70}>
+                <div
+                  className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/40 bg-[color-mix(in_oklab,var(--background)_88%,transparent)] sm:bg-[color-mix(in_oklab,var(--background)_78%,transparent)] sm:backdrop-blur-md transition-all duration-500 ease-out hover:-translate-y-[2px] hover:border-foreground/20"
+                  style={CARD_STYLE}
+                >
+                  <div className="relative aspect-[3/4] overflow-hidden bg-muted">
+                    <img
+                      src={guide.cover}
+                      alt={`Couverture du guide ${guide.title}`}
+                      width={600}
+                      height={800}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      loading={i < 3 ? "eager" : "lazy"}
+                      fetchPriority={i === 0 ? "high" : "auto"}
+                      decoding="async"
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="font-serif text-[1.3rem] leading-tight text-foreground">
+                      {guide.title}
+                    </h3>
+                    <p className="mt-2 flex-1 text-[13px] leading-relaxed text-foreground/60">
+                      {guide.tagline}
+                    </p>
+                    <span className="mt-5 inline-flex w-fit items-center rounded-full border border-brand-terracotta/30 bg-brand-terracotta/10 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.16em] text-brand-terracotta">
+                      Inclus dans le pack
+                    </span>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={140}>
+            <div className="mt-10 rounded-3xl border border-border/60 bg-card/35 p-5 sm:p-6">
+              <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-brand-terracotta">Inclus dans le Pack complet</p>
+              <h3 className="mt-2 font-serif text-xl text-foreground">Les six guides, au même endroit.</h3>
+              <p className="mt-2 text-sm leading-relaxed text-foreground/60">Préparation, corps, charge mentale, recettes, repères post-partum et soins de bébé réunis dans une seule offre à 42,90 €.</p>
+            </div>
+          </Reveal>
+
+
         </div>
       </section>
 
