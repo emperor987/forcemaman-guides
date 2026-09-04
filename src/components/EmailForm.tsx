@@ -13,7 +13,7 @@ interface EmailFormProps {
    */
   variant?: "hero" | "footer";
   id?: string;
-  /** Affiche le bloc de conseils gratuits + sous-titre (défaut : hero) */
+  /** Affiche le bloc de conseils + sous-titre (défaut : hero) */
   showHeading?: boolean;
   title?: string;
   subtitle?: string;
@@ -24,7 +24,7 @@ export default function EmailForm({
   variant = "hero",
   id = "email",
   showHeading = variant === "hero",
-  title = "Reçois ton guide gratuit",
+  title = "Reçois nos conseils chaque semaine",
   subtitle =
     "Les 7 systèmes pour alléger ta charge mentale, directement dans ta boîte mail",
   className,

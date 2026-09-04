@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
+import EmailForm from "@/components/EmailForm";
 import { ebooks, bundle } from "@/lib/ebooks";
 import { images, src } from "@/lib/assets";
 import AccentDots from "@/components/AccentDots";
@@ -240,8 +241,8 @@ export default function APpropos() {
               Prête à être accompagnée <span className="italic">à ton rythme ?</span>
             </h2>
             <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-              Choisis le guide qui correspond à ton moment, ou commence par le
-              guide gratuit.
+              Choisis le guide qui correspond à ton moment, ou inscris-toi pour
+              recevoir nos conseils par email.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
@@ -251,12 +252,9 @@ export default function APpropos() {
                 Découvrir les guides
                 <ArrowRight className="size-3" />
               </Link>
-              <Link
-                to="/guide-gratuit"
-                className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full border border-foreground/25 px-8 text-[11px] uppercase tracking-[0.18em] text-foreground/80 transition-colors hover:border-foreground/60 hover:text-foreground sm:w-auto"
-              >
-                Recevoir les conseils gratuits
-              </Link>
+            </div>
+            <div className="mx-auto mt-8 w-full max-w-md">
+              <EmailForm variant="footer" id="apropos-newsletter" />
             </div>
           </Reveal>
         </div>

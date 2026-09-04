@@ -336,7 +336,6 @@ export const freeGuide = {
   title: "Les 7 Systèmes ForceMaman",
   subtitle:
     "Des repères simples pour respirer avec un nouveau-né, offerts par Maria.",
-  href: "/guide-gratuit",
 };
 
 export const freeGuideSystems: FreeGuideSystem[] = [

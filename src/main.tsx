@@ -16,7 +16,6 @@ const Landing = lazy(() => import("./pages/Landing.tsx"));
 const Guides = lazy(() => import("./pages/Guides.tsx"));
 const Journal = lazy(() => import("./pages/Journal.tsx"));
 const JournalArticle = lazy(() => import("./pages/JournalArticle.tsx"));
-const GuideGratuit = lazy(() => import("./pages/GuideGratuit.tsx"));
 const Contact = lazy(() => import("./pages/Contact.tsx"));
 const APpropos = lazy(() => import("./pages/APpropos.tsx"));
 const OrderSuccess = lazy(() => import("./pages/OrderSuccess.tsx"));
@@ -169,10 +168,10 @@ createRoot(document.getElementById("root")!).render(
               <Route path="/guides" element={<Guides />} />
               <Route path="/journal" element={<Journal />} />
               <Route path="/journal/:slug" element={<JournalArticle />} />
-              <Route path="/guide-gratuit" element={<GuideGratuit />} />
+              <Route path="/guide-gratuit" element={<Navigate to="/" replace />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/a-propos" element={<APpropos />} />
-              <Route path="/ressources" element={<Navigate to="/guide-gratuit" replace />} />
+              <Route path="/ressources" element={<Navigate to="/" replace />} />
               <Route path="/commande/reussie" element={<OrderSuccess />} />
               <Route path="/paiement/:productId" element={<Navigate to="/guides" replace />} />
               <Route path="/guides/liste-naissance" element={<ListeNaissance />} />

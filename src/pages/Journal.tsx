@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import Layout from "@/components/Layout";
 import Reveal from "@/components/Reveal";
 import Seo from "@/components/Seo";
+import EmailForm from "@/components/EmailForm";
 import OptimizedImage from "@/components/OptimizedImage";
 import { journalArticles } from "@/lib/journal";
 import AccentDots from "@/components/AccentDots";
@@ -242,7 +243,7 @@ export default function Journal() {
           </div>
         </section>
 
-        {/* ============ GUIDE GRATUIT CTA ============ */}
+        {/* ============ NEWSLETTER CTA ============ */}
         <section className="cv-auto border-t border-border/60">
           <div className="mx-auto max-w-6xl px-6 py-20 lg:px-12">
             <Reveal>
@@ -255,21 +256,18 @@ export default function Journal() {
                   <div>
                     <div className="inline-flex items-center gap-2 rounded-full border border-foreground/15 bg-background/60 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-foreground/80">
                       <Sparkles className="size-3" />
-                      Guide gratuit
+                      Newsletter
                     </div>
                     <h2 className="mt-5 font-serif text-3xl leading-[1.1] text-foreground sm:text-4xl lg:text-[44px]">
-                      Reçois gratuitement Les 7 Systèmes ForceMaman
+                      Reçois chaque semaine des conseils de sage-femme
                     </h2>
                     <p className="mt-4 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-                      PDF · 7 systèmes · à lire en 15 minutes
+                      Un système concret, une lecture douce, dans ta boîte mail
                     </p>
                   </div>
-                  <Link
-                    to="/guide-gratuit"
-                    className="inline-flex h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-primary px-8 py-2 text-xs font-medium uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-primary/90 sm:w-auto"
-                  >
-                    Recevoir les conseils gratuits
-                  </Link>
+                  <div className="w-full sm:max-w-sm">
+                    <EmailForm variant="footer" id="journal-newsletter" />
+                  </div>
                 </div>
               </section>
             </Reveal>

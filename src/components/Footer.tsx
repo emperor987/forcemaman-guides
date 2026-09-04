@@ -33,9 +33,9 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/guide-gratuit" className="text-foreground/75 hover:text-foreground">
-                  Guide Gratuit
-                </Link>
+                <a href="#newsletter" className="text-foreground/75 hover:text-foreground">
+                  Newsletter
+                </a>
               </li>
               <li>
                 <Link to="/faq" className="text-foreground/75 hover:text-foreground">

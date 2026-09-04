@@ -430,18 +430,18 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ============ LE GUIDE GRATUIT ============ */}
+      {/* ============ NEWSLETTER ============ */}
       <section className="cv-auto px-6 py-16">
         <div className="mx-auto max-w-md">
           <Reveal>
             <p className="text-center text-[11px] uppercase tracking-[0.28em] text-foreground/55">
-              Le guide gratuit
+              La newsletter
             </p>
             <h2 className="mt-5 text-center font-serif text-[2.25rem] leading-[1.05] text-foreground">
-              Ce que tu trouveras <span className="italic">dans le guide gratuit</span>
+              Ce que tu recevras <span className="italic">dans ta boîte mail</span>
             </h2>
             <p className="mx-auto mt-5 max-w-sm text-center text-[15px] leading-relaxed text-foreground/65">
-              Sept systèmes simples pour alléger tes journées avec bébé.
+              Chaque semaine, un système concret pour alléger ta charge mentale avec bébé.
             </p>
           </Reveal>
 
@@ -489,31 +489,12 @@ export default function Landing() {
           </Reveal>
 
           <Reveal delay={140}>
-            <Link
-              to="/guide-gratuit"
-              className="group mt-10 flex h-14 w-full items-center justify-center gap-3 rounded-full font-medium text-background transition-transform active:scale-[0.98]"
-              style={DARK_BUTTON_STYLE}
-            >
-              <span className="text-[13px] tracking-wide">
-                Recevoir les conseils gratuits
-              </span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="size-4 transition-transform group-hover:translate-x-1"
-                aria-hidden="true"
-              >
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </Link>
+            <div className="mt-10">
+              <EmailForm variant="footer" id="methode-newsletter" />
+            </div>
+            <p className="mt-4 text-center text-[11px] uppercase tracking-[0.22em] text-foreground/50">
+              Gratuit • Désinscription en un clic • Aucun spam
+            </p>
           </Reveal>
         </div>
       </section>
